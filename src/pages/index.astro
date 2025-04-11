@@ -1,0 +1,15 @@
+---
+// Importa el layout que acabas de crear
+import Layout from '../layouts/Layout.astro';
+
+// Define las props para la página
+const title = "Inicio";
+const description = "Inicio de la pagina.";
+---
+<!-- Usa el Layout y pasa las props para el título y la descripción -->
+<Layout title={title} description={description}>
+  <!-- Aquí va tu contenido -->
+  <div>
+    <img src="/src/assets/hero/herobackground.png" class="w-full" alt="Polyvac logo">
+  </div>
+</Layout>
