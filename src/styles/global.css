@@ -7,4 +7,5 @@
     --color-grisbg: #D9D9D9;
     --color-azulsecundario: #0C3C61;
     --font-fuenteprincipal: "Space Grotesk", sans-serif;
+    --breakpoint-xl: 70rem;
 }
