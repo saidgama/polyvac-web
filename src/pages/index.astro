@@ -1,15 +1,48 @@
 ---
 // Importa el layout que acabas de crear
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // Define las props para la página
 const title = "Inicio";
 const description = "Inicio de la pagina.";
+
+import { Image } from "astro:assets";
+import heroImageMobile from "/public/hero/herobackground-mobile.png"; // Imagen optimizada para móvil
+import heroImageDesktop from "/public/hero/herobackground.png"; // Imagen para escritorio
 ---
+
 <!-- Usa el Layout y pasa las props para el título y la descripción -->
 <Layout title={title} description={description}>
-  <!-- Aquí va tu contenido -->
-  <div>
-    <img src="/src/assets/hero/herobackground.png" class="w-full" alt="Polyvac logo">
-  </div>
+  <section class="relative w-full pb-20">
+    <picture>
+      <source media="(max-width: 767px)" srcset={heroImageMobile.src} />
+      <source media="(min-width: 1024px)" srcset={heroImageDesktop.src} />
+      <Image
+        src={heroImageDesktop} 
+        alt="Descripción de la imagen"
+        class="absolute inset-0 w-full h-auto object-cover"
+      />
+    </picture>
+    <div class="relative inset-0 flex flex-row pl-8 pt-8 md:pt-2 font-fuenteprincipal">
+      <div class="w-3/5 md:w-2/5 xl:w-9/20 md:pt-10 md:pl-10">
+        <div class="w-10 md:w-16 h-1 bg-white mb-4 md:mb-5"></div>
+        <h1 class="text-left font-bold text-white text-xl md:text-3xl xl:text-5xl lg:leading-[1.6] xl:leading-[1.6] mb-4 md:mb-5 ">
+          Empresa dedicada a la fabricación y distribución de tintas para impresión textil
+        </h1>
+        <a
+          href="/catalogo"
+          class="px-3 py-1.5 md:px-5 py-2.5 text-sm md:text-base font-medium text-white inline-flex items-center bg-azulprimario hover:bg-blue-800 focus:outline-none focus:ring-blue-300 text-center"
+        >
+          Conócenos
+          <svg class="ml-3 w-5 h-5" viewBox="0 0 20 11" fill="none">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"
+              fill="white"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>

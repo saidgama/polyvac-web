@@ -3,86 +3,168 @@ const url = new URL(Astro.request.url); // Convierte el string en objeto URL
 const currentPath = url.pathname;
 ---
 
-<nav class="bg-white fixed w-full z-20 top-0 start-0 font-fuenteprincipal font-bold">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pt-2">
+<nav class="bg-white fixed w-full z-20 top-0 start-0 font-fuenteprincipal">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
     <a href="#" class="flex items-center">
-        <img src="/src/assets/header/logo3.png" class="h-15" alt="Polyvac logo">
+      <img src="/header/logo3.png" class="h-10 md:h-15" alt="Polyvac logo" />
     </a>
-    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-      <div class="hidden md:flex md:space-x-4 md:mr-5">
-        <a href="https://facebook.com" class="text-gray-600 hover:text-blue-600 transition-colors" aria-label="Facebook">
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 font-bold"
+      id="navbar-sticky"
+    >
+      <div class="hidden md:flex md:space-x-3 md:mr-5">
+        <a
+          href="https://facebook.com"
+          class="text-gray-600 hover:text-blue-600 transition-colors"
+          aria-label="Facebook"
+        >
           <!-- Ejemplo de ícono: Facebook (puedes usar tu propio SVG o librería de iconos) -->
-          <svg class="w-5 h-5" viewBox="0 0 10 18" fill="currentColor">
-            <path d="M9.34469 10.125L9.86325 6.86742H6.62096V4.75348C6.62096 3.86227 7.07388 2.99355 8.526 2.99355H10V0.220078C10 0.220078 8.66239 0 7.38349 0C4.71337 0 2.96806 1.56023 2.96806 4.38469V6.86742H0V10.125H2.96806V18H6.62096V10.125H9.34469Z" fill="#616161"/>
-            </svg>
+          <svg class="w-4 h-4" viewBox="0 0 10 18" fill="currentColor">
+            <path
+              d="M9.34469 10.125L9.86325 6.86742H6.62096V4.75348C6.62096 3.86227 7.07388 2.99355 8.526 2.99355H10V0.220078C10 0.220078 8.66239 0 7.38349 0C4.71337 0 2.96806 1.56023 2.96806 4.38469V6.86742H0V10.125H2.96806V18H6.62096V10.125H9.34469Z"
+              fill="#616161"></path>
+          </svg>
         </a>
-        <a href="https://twitter.com" class="text-gray-600 hover:text-blue-400 transition-colors" aria-label="Twitter">
-          <svg class="w-5 h-5" viewBox="0 0 16 18" fill="currentColor">
-            <path d="M15.0794 4.21685C14.1627 4.02461 13.3327 3.55035 12.7102 2.8632C12.0878 2.17606 11.7055 1.31195 11.619 0.396848V0H8.45695V12.3032C8.455 12.8479 8.27902 13.3783 7.95374 13.8198C7.62846 14.2614 7.17024 14.5919 6.64347 14.765C6.1167 14.9381 5.54785 14.945 5.01687 14.7848C4.48588 14.6245 4.01945 14.3052 3.68312 13.8717C3.34156 13.4309 3.15209 12.8949 3.14218 12.3415C3.13228 11.788 3.30245 11.2458 3.62801 10.7936C3.95358 10.3413 4.41763 10.0025 4.95285 9.82619C5.48808 9.64992 6.06666 9.64538 6.60469 9.81322V6.66363C5.4049 6.50102 4.18328 6.71014 3.11069 7.26175C2.0381 7.81336 1.16819 8.67986 0.622646 9.74004C0.0771006 10.8002 -0.116797 12.0011 0.0680739 13.1746C0.252945 14.3482 0.807338 15.4357 1.65371 16.2852C2.46084 17.0948 3.49577 17.6503 4.62637 17.8808C5.75697 18.1112 6.93197 18.0061 8.00137 17.5789C9.07077 17.1516 9.98606 16.4217 10.6304 15.4822C11.2748 14.5427 11.6189 13.4362 11.619 12.3041V6.01751C12.8969 6.9132 14.4291 7.39347 16 7.39073V4.31044C15.6906 4.31081 15.3821 4.27944 15.0794 4.21685Z" fill="#616161"/>
-            </svg>
+        <a
+          href="https://twitter.com"
+          class="text-gray-600 hover:text-blue-400 transition-colors"
+          aria-label="Twitter"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 16 18" fill="currentColor">
+            <path
+              d="M15.0794 4.21685C14.1627 4.02461 13.3327 3.55035 12.7102 2.8632C12.0878 2.17606 11.7055 1.31195 11.619 0.396848V0H8.45695V12.3032C8.455 12.8479 8.27902 13.3783 7.95374 13.8198C7.62846 14.2614 7.17024 14.5919 6.64347 14.765C6.1167 14.9381 5.54785 14.945 5.01687 14.7848C4.48588 14.6245 4.01945 14.3052 3.68312 13.8717C3.34156 13.4309 3.15209 12.8949 3.14218 12.3415C3.13228 11.788 3.30245 11.2458 3.62801 10.7936C3.95358 10.3413 4.41763 10.0025 4.95285 9.82619C5.48808 9.64992 6.06666 9.64538 6.60469 9.81322V6.66363C5.4049 6.50102 4.18328 6.71014 3.11069 7.26175C2.0381 7.81336 1.16819 8.67986 0.622646 9.74004C0.0771006 10.8002 -0.116797 12.0011 0.0680739 13.1746C0.252945 14.3482 0.807338 15.4357 1.65371 16.2852C2.46084 17.0948 3.49577 17.6503 4.62637 17.8808C5.75697 18.1112 6.93197 18.0061 8.00137 17.5789C9.07077 17.1516 9.98606 16.4217 10.6304 15.4822C11.2748 14.5427 11.6189 13.4362 11.619 12.3041V6.01751C12.8969 6.9132 14.4291 7.39347 16 7.39073V4.31044C15.6906 4.31081 15.3821 4.27944 15.0794 4.21685Z"
+              fill="#616161"></path>
+          </svg>
         </a>
       </div>
-      
+
       <div class="border-l border-gray-300 h-10 mr-4"></div>
 
-      <ul class="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:space-x-2 md:flex-row md:mt-0 md:border-0">
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:space-x-2 md:flex-row md:mt-0 md:border-0"
+      >
         <li>
-          <a href="/" class="group relative block py-2 px-3 transition-all"
-            class:list={{ "text-azulprimario": currentPath === "/", "text-gris": currentPath !== "/" }}>
-            <span class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
-              class:list={{ "scale-x-100": currentPath === "/" }}>
+          <a
+            href="/"
+            class="group relative block py-2 px-3 transition-all"
+            class:list={{
+              "text-azulprimario": currentPath === "/",
+              "text-gris": currentPath !== "/",
+            }}
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class:list={{ "scale-x-100": currentPath === "/" }}
+            >
             </span>
             Inicio
           </a>
         </li>
         <li>
-          <a href="/acerca" class="group relative block py-2 px-3 transition-all"
-            class:list={{ "text-azulprimario": currentPath === "/acerca", "text-gris": currentPath !== "/acerca" }}>
-            <span class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
-              class:list={{ "scale-x-100": currentPath === "/acerca" }}>
+          <a
+            href="/acerca"
+            class="group relative block py-2 px-3 transition-all"
+            class:list={{
+              "text-azulprimario": currentPath === "/acerca",
+              "text-gris": currentPath !== "/acerca",
+            }}
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class:list={{ "scale-x-100": currentPath === "/acerca" }}
+            >
             </span>
             Acerca de Nosotros
           </a>
         </li>
         <li>
-          <a href="/servicios" class="group relative block py-2 px-3 transition-all"
-            class:list={{ "text-azulprimario": currentPath === "/servicios", "text-gris": currentPath !== "/servicios" }}>
-            <span class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
-              class:list={{ "scale-x-100": currentPath === "/servicios" }}>
+          <a
+            href="/servicios"
+            class="group relative block py-2 px-3 transition-all"
+            class:list={{
+              "text-azulprimario": currentPath === "/servicios",
+              "text-gris": currentPath !== "/servicios",
+            }}
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class:list={{ "scale-x-100": currentPath === "/servicios" }}
+            >
             </span>
             Servicios
           </a>
         </li>
         <li>
-          <a href="/contacto" class="group relative block py-2 px-3 transition-all"
-            class:list={{ "text-azulprimario": currentPath === "/contacto", "text-gris": currentPath !== "/contacto" }}>
-            <span class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
-              class:list={{ "scale-x-100": currentPath === "/contacto" }}>
+          <a
+            href="/contacto"
+            class="group relative block py-2 px-3 transition-all"
+            class:list={{
+              "text-azulprimario": currentPath === "/contacto",
+              "text-gris": currentPath !== "/contacto",
+            }}
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class:list={{ "scale-x-100": currentPath === "/contacto" }}
+            >
             </span>
             Contacto
           </a>
-        </li> 
+        </li>
       </ul>
     </div>
     <div class="flex md:order-2 space-x-3 md:space-x-0">
-      <button type="button" class="text-white bg-azulprimario text-sm px-4 py-2 text-center flex flex-row ">
-        Catálogo  
-        <span>
-          <svg class="ml-3 w-5 h-5" viewBox="0 0 20 11" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z" fill="white"/>
-            </svg>
-        </span>
-      </button>
-      <button type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      <button class="hidden md:inline-flex items-center mr-4">
+        <svg  class="w-7 h-7 fill-gris hover:fill-azulprimario" viewBox="0 0 26 26">
+          <path d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"></path>
         </svg>
-    </button>
-  </div>
+      </button>
+      <a
+        href="/catalogo"
+        class="px-3 py-1.5 md:px-5 py-2.5 text-sm md:text-base font-medium text-white inline-flex items-center bg-azulprimario hover:bg-blue-800 focus:outline-none focus:ring-blue-300 text-center"
+      >
+        Catálogo
+        <svg class="ml-3 w-5 h-5" viewBox="0 0 20 11" fill="none">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"
+            fill="white"></path>
+        </svg>
+      </a>
+      <a  href="/cotizador" class="relative inline-flex items-center ml-1 md:ml-5 text-sm text-center text-white">
+        <svg class="w-8 h-8 md:w-10 md:h-10 fill-gris hover:fill-azulprimario" viewBox="0 0 33 36">
+          <path
+            d="M5.375 35.8333C3.88194 35.8333 2.61285 35.3108 1.56771 34.2656C0.522569 33.2205 0 31.9514 0 30.4583V25.0833H5.375V0L8.0625 2.6875L10.75 0L13.4375 2.6875L16.125 0L18.8125 2.6875L21.5 0L24.1875 2.6875L26.875 0L29.5625 2.6875L32.25 0V30.4583C32.25 31.9514 31.7274 33.2205 30.6823 34.2656C29.6372 35.3108 28.3681 35.8333 26.875 35.8333H5.375ZM26.875 32.25C27.3826 32.25 27.8082 32.0783 28.1516 31.7349C28.495 31.3915 28.6667 30.966 28.6667 30.4583V5.375H8.95833V25.0833H25.0833V30.4583C25.0833 30.966 25.255 31.3915 25.5984 31.7349C25.9418 32.0783 26.3674 32.25 26.875 32.25ZM10.75 12.5417V8.95833H21.5V12.5417H10.75ZM10.75 17.9167V14.3333H21.5V17.9167H10.75ZM25.0833 12.5417C24.5757 12.5417 24.1502 12.37 23.8068 12.0266C23.4634 11.6832 23.2917 11.2576 23.2917 10.75C23.2917 10.2424 23.4634 9.81684 23.8068 9.47344C24.1502 9.13003 24.5757 8.95833 25.0833 8.95833C25.591 8.95833 26.0165 9.13003 26.3599 9.47344C26.7033 9.81684 26.875 10.2424 26.875 10.75C26.875 11.2576 26.7033 11.6832 26.3599 12.0266C26.0165 12.37 25.591 12.5417 25.0833 12.5417ZM25.0833 17.9167C24.5757 17.9167 24.1502 17.745 23.8068 17.4016C23.4634 17.0582 23.2917 16.6326 23.2917 16.125C23.2917 15.6174 23.4634 15.1918 23.8068 14.8484C24.1502 14.505 24.5757 14.3333 25.0833 14.3333C25.591 14.3333 26.0165 14.505 26.3599 14.8484C26.7033 15.1918 26.875 15.6174 26.875 16.125C26.875 16.6326 26.7033 17.0582 26.3599 17.4016C26.0165 17.745 25.591 17.9167 25.0833 17.9167ZM5.375 32.25H21.5V28.6667H3.58333V30.4583C3.58333 30.966 3.75503 31.3915 4.09844 31.7349C4.44184 32.0783 4.86736 32.25 5.375 32.25Z"></path>
+        </svg>
+        <div class="absolute inline-flex items-center justify-center w-5 h-5 md:w-6 md:h-6 text-xs font-base text-white bg-azulprimario rounded-full -top-1 md:-top-2 -end-3">
+          3
+        </div>
+        
+      </a>
+      <button
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-sticky"
+        aria-expanded="false"
+      >
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
-<script>
-  
-</script>
+<script></script>
