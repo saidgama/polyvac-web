@@ -1,11 +1,14 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/header/logo3.png';
+
 const url = new URL(Astro.request.url); // Convierte el string en objeto URL
 const currentPath = url.pathname;
 ---
 <nav class="bg-white fixed w-full z-20 top-0 start-0 font-fuenteprincipal">
   <div class="flex flex-wrap items-center justify-between mx-auto p-4 md:px-[3%]">
     <a href="/" class="flex items-center space-x-3">
-        <img src="/header/logo3.png" class="h-10 md:h-12" alt="Polyvac Logo">
+        <Image src={logo} alt="Polyvac Logo" class="h-10 md:h-12 w-auto"/>
     </a>
     <div class="hidden lg:flex items-center space-x-2 ml-[3%]">
       <a href="https://www.facebook.com/p/Industrias-Polyvac-100042747596287/">

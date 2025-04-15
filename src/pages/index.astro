@@ -3,6 +3,13 @@
 import Indexcard from "../components/Indexcard.astro";
 import Layout from "../layouts/Layout.astro";
 
+import { Image } from 'astro:assets';
+import bgHero from '../assets/hero/test.png';
+import logoHero from '../assets/hero/logohero.png';
+import card1 from '../assets/index/card1.png'
+import card2 from '../assets/index/card2.png'
+import card3 from '../assets/index/card3.png'
+import card4 from '../assets/index/card4.png'
 // Define las props para la página
 const title = "Industrias Polyvac";
 const description = "Inicio de la pagina.";
@@ -13,7 +20,7 @@ const description = "Inicio de la pagina.";
   <!-- hero section -->
   <section class="relative w-full h-[488px]" id="home">
     <div class="absolute inset-0">
-        <img src="/hero/test.png" alt="Background Image" class="object-cover object-center w-full h-full" />
+        <Image src={bgHero} alt="Background Image" class="object-cover object-center w-full h-full" style="z-index: -1;"/>
     </div>
     <div class="absolute inset-0 bg-black opacity-40"></div> <!-- Dark overlay -->
     <div class="absolute inset-9 flex flex-col md:flex-row  font-fuenteprincipal">
@@ -30,7 +37,7 @@ const description = "Inicio de la pagina.";
             </a>
         </div>
         <div class="flex justify-center items-center h-full md:h-auto md:w-1/2">
-          <img class="h-20 md:h-30" src="/hero/logohero.png" alt="logo">
+          <Image src={logoHero} alt="Logo" class="h-auto md:h-auto w-auto" />
         </div>
     </div>
   </section>
@@ -45,7 +52,7 @@ const description = "Inicio de la pagina.";
     </p>
   </div>
   <Indexcard 
-      imageUrl="/index/card1.png"
+      imageUrl={card1}
       altText="Tinta para serigrafía base agua"
       title="Serigrafía"
       description="Base Agua / Plastisol"
@@ -54,7 +61,7 @@ const description = "Inicio de la pagina.";
       position="right">
   </Indexcard>
   <Indexcard 
-      imageUrl="/index/card2.png"
+      imageUrl={card2}
       altText="Tinta para Sublimación base agua"
       title="Sublimación"
       description="Base Agua / Base solvente"
@@ -63,7 +70,7 @@ const description = "Inicio de la pagina.";
       position="left">
   </Indexcard>
   <Indexcard 
-      imageUrl="/index/card3.png"
+      imageUrl={card3}
       altText="Tinta para Offset"
       title="Offset"
       description="Texto / Texto"
@@ -72,7 +79,7 @@ const description = "Inicio de la pagina.";
       position="right">
   </Indexcard>
   <Indexcard 
-      imageUrl="/index/card4.png"
+      imageUrl={card4}
       altText="Igualación de Color"
       title="Igualación de Color"
       description="Texto / Texto"

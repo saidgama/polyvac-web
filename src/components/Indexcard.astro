@@ -1,25 +1,5 @@
 ---
-interface Props {
-  /** URL de la imagen */
-  imageUrl: string;
-  /** Texto alternativo de la imagen (opcional) */
-  altText?: string;
-  /** Título principal */
-  title: string;
-  /** Subtítulo o descripción */
-  description: string;
-  /** Texto del botón */
-  buttonLabel?: string;
-  /** Enlace del botón */
-  buttonHref?: string;
-  /**
-   * Posición de la imagen en pantallas medianas/grandes:
-   * - 'left': imagen a la izquierda
-   * - 'right': imagen a la derecha
-   * Por defecto: 'left'
-   */
-  position?: 'left' | 'right';
-}
+import { Image } from 'astro:assets';
 
 const {
   imageUrl,
@@ -35,7 +15,7 @@ const {
 <!-- Contenedor principal -->
 <div class="mx-auto max-w-7xl px-4 py-8 font-fuenteprincipal">
   <!-- Usamos flex-col por defecto (móvil) y flex-row en md (pantallas medianas) -->
-  <div class="flex flex-col md:flex-row items-center items-stretch h-max">
+  <div class="flex flex-col md:flex-row items-stretch h-max">
 
     <!-- Imagen -->
     <div 
@@ -47,11 +27,7 @@ const {
         `
       }
     >
-      <img
-        src={imageUrl}
-        alt={altText}
-        class="w-full h-full object-cover"
-      />
+      <Image src={imageUrl} alt={altText} class="w-full h-full object-cover"/>
     </div>
 
     <!-- Texto y botón -->
