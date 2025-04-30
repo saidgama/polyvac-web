@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import cubetaImg from '../../assets/cubeta.png';
+import productos from '../../data/productos.js';
+
+export async function getStaticPaths() {
+  return productos.map((producto) => ({
+    params: { id: producto.id }
+  }));
+}
+
+const { id } = Astro.params;
+const producto = productos.find(p => p.id === id);
+
+if (!producto) {
+  throw new Error('Producto no encontrado');
+}
+---
+<Layout title={producto.titulo} description={producto.descripcion}>
+  <div class="max-w-6xl mx-auto py-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Imagen fija de la cubeta usando Image de astro -->
+    <div>
+      <div class="relative w-full aspect-square bg-white rounded-md overflow-hidden flex items-center justify-center">
+        <Image src={cubetaImg} alt="Cubeta" class="object-contain w-full h-full" />
+      </div>
+    </div>
+    <!-- Información del producto -->
+    <div>
+      <nav class="text-xs text-gray-500 mb-2">
+        Inicio / {producto.categoria} / <span class="text-gray-700 font-semibold">{producto.titulo}</span>
+      </nav>
+      <h1 class="text-3xl font-bold mb-4">{producto.titulo}</h1>
+      <p class="mb-4 text-gray-700">{producto.descripcion}</p>
+      <a href={producto.fichaTecnica} class="flex items-center mb-4 font-semibold text-[#23406e] hover:underline" target="_blank" rel="noopener">
+
+        Descarga la ficha tecnica completa.
+      </a>
+      <div class="mb-4">
+        <span class="font-bold">Presentaciones :</span>
+        <div class="flex gap-2 mt-2">
+          {producto.presentaciones.map(p => (
+            <button class="px-3 py-1 border border-gray-400 rounded-md text-sm font-semibold bg-white hover:bg-gray-100 focus:bg-gray-200 focus:outline-none">
+              {p}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div class="mb-4">
+        <span class="font-bold">COLOR {producto.codigoColor}</span>
+        <div class="flex flex-wrap gap-2 mt-2">
+          {producto.colores.map(color => (
+            <button class="w-8 h-8 rounded-md flex items-center justify-center border border-gray-300" style={`background:${color.hex}`}> 
+              
+            </button>
+          ))}
+        </div>
+        <button class="mt-2 text-xs text-gray-500 underline">LIMPIAR</button>
+      </div>
+      <div class="flex items-center gap-2 mt-4">
+        <input type="number" min="1" value="1" class="w-16 border border-gray-300 rounded-md px-2 py-1" />
+        <button class="bg-azulprimario text-white font-bold px-6 py-3 rounded-md hover:bg-blue-700 transition">AÑADIR A LA COTIZACIÓN</button>
+      </div>
+    </div>
+  </div>
+  <!-- Visualizador de PDF embebido -->
+  <div class="mt-8 w-full max-w-3xl mx-auto">
+    <h2 class="text-lg font-semibold mb-2">Ficha técnica</h2>
+    <iframe src={producto.fichaTecnica} class="w-full h-[600px] border rounded-md" title="Ficha técnica PDF" allowfullscreen></iframe>
+  </div>
+</Layout>

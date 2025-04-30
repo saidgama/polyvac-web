@@ -2,14 +2,14 @@
 // Importa el layout que acabas de crear
 import Indexcard from "../components/Indexcard.astro";
 import Layout from "../layouts/Layout.astro";
-
-import { Image } from 'astro:assets';
-import bgHero from '../assets/hero/test.png';
-import logoHero from '../assets/hero/logohero.png';
-import card1 from '../assets/index/card1.png'
-import card2 from '../assets/index/card2.png'
-import card3 from '../assets/index/card3.png'
-import card4 from '../assets/index/card4.png'
+import { Image } from "astro:assets";
+import bgHero from "../assets/hero/test.png";
+import logoHero from "../assets/hero/logohero.png";
+import card1 from "../assets/index/card1.png";
+import card2 from "../assets/index/card2.png";
+import card3 from "../assets/index/card3.png";
+import card4 from "../assets/index/card4.png";
+import Badge from "../components/Badge.astro";
 // Define las props para la página
 const title = "Industrias Polyvac";
 const description = "Inicio de la pagina.";
@@ -17,133 +17,154 @@ const description = "Inicio de la pagina.";
 
 <!-- Usa el Layout y pasa las props para el título y la descripción -->
 <Layout title={title} description={description}>
-  <!-- hero section -->
-  <section class="relative w-full h-[488px]" id="home">
-    <div class="absolute inset-0">
-        <Image src={bgHero} alt="Background Image" class="object-cover object-center w-full h-full" style="z-index: -1;"/>
-    </div>
-    <div class="absolute inset-0 bg-black opacity-40"></div> <!-- Dark overlay -->
-    <div class="absolute inset-9 flex flex-col md:flex-row  font-fuenteprincipal">
-        <div class="h-1/2 md:w-1/2 mb-4 md:mb-0">
-            <h1 class="text-white font-bold text-2xl md:text-3xl xl:text-5xl p-6 md:p-10 leading-tight">
-                Empresa dedicada a la fabricación y distribución de tintas para impresión textil
-            </h1>
-            <a href="/acerca"
-                class="m-6 md:m-10 px-7 py-3 bg-azulprimario text-white text-lg md:text-xl font-medium 
-                hover:bg-blue-800  
-                transition duration-200">Conócenos<svg class="inline-flex ml-3 w-7 h-7 fill-white" viewBox="0 0 20 11">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"/>
-                </svg>
+    <!-- hero section -->
+    <section class="relative w-full h-[488px]" id="home">
+        <div class="absolute inset-0">
+            <Image
+                src={bgHero}
+                alt="Background Image"
+                class="object-cover object-center w-full h-full"
+                style="z-index: -1;"
+            />
+        </div>
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <!-- Dark overlay -->
+        <div
+            class="absolute inset-9 flex flex-col md:flex-row font-fuenteprincipal"
+        >
+            <div class="h-1/2 md:w-1/2 mb-4 md:mb-0">
+                <h1
+                    class="text-white font-bold text-2xl md:text-3xl xl:text-5xl p-6 md:p-10 leading-tight"
+                >
+                    Empresa dedicada a la fabricación y distribución de tintas
+                    para impresión textil
+                </h1>
+                <a
+                    href="/acerca"
+                    class="m-6 md:m-10 px-7 py-3 bg-azulprimario text-white text-lg md:text-xl font-medium
+                hover:bg-blue-800
+                transition duration-200"
+                    >Conócenos
+                    <svg
+                        class="inline-flex ml-3 w-7 h-7 fill-white"
+                        viewBox="0 0 20 11"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"
+                        ></path>
+                    </svg>
+                </a>
+            </div>
+            <div
+                class="flex justify-center items-center h-full md:h-auto md:w-1/2"
+            >
+                <Image
+                    src={logoHero}
+                    alt="Logo"
+                    class="h-auto md:h-auto w-auto"
+                />
+            </div>
+        </div>
+    </section>
+
+    <Badge text="Nuestros Productos"/>
+
+    <Indexcard
+        imageUrl={card1}
+        altText="Tinta para serigrafía base agua"
+        title="Serigrafía"
+        description="Base Agua / Plastisol"
+        buttonLabel="Ver tintas para Serigrafía"
+        buttonHref="/serigrafia"
+        position="right"
+    />
+    <Indexcard
+        imageUrl={card2}
+        altText="Tinta para Sublimación base agua"
+        title="Sublimación"
+        description="Base Agua / Base solvente"
+        buttonLabel="Ver tintas para Sublimación"
+        buttonHref="/sublimacion"
+        position="left"
+    />
+    <Indexcard
+        imageUrl={card3}
+        altText="Tinta para Offset"
+        title="Offset"
+        description="Texto / Texto"
+        buttonLabel="Ver tintas para Offset"
+        buttonHref="/offset"
+        position="right"
+    />
+    <Indexcard
+        imageUrl={card4}
+        altText="Igualación de Color"
+        title="Igualación de Color"
+        description="Texto / Texto"
+        buttonLabel="Ver igualación de Color"
+        buttonHref="/igualacion"
+        position="left"
+    />
+
+    <Badge text="Productos destacados" />
+
+    <div
+        class="flex flex-col lg:flex-row justify-center items-center md:space-x-10 space-y-10 md:space-y-0"
+    >
+        <div class="bg-white border border-gray-200 shadow-sm">
+            <a href="#">
+                <img class="" src="/destacados/product.png" alt="" />
             </a>
+            <div class="p-5">
+                <a
+                    href="#"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                >
+                    Ver producto
+                </a>
+            </div>
         </div>
-        <div class="flex justify-center items-center h-full md:h-auto md:w-1/2">
-          <Image src={logoHero} alt="Logo" class="h-auto md:h-auto w-auto" />
+        <div class="bg-white border border-gray-200 shadow-sm">
+            <a href="#">
+                <img class="" src="/destacados/product.png" alt="" />
+            </a>
+            <div class="p-5">
+                <a
+                    href="#"
+                    class="inline-flex items-start px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                >
+                    Ver producto
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white border border-gray-200 shadow-sm">
+            <a href="#">
+                <img class="" src="/destacados/product.png" alt="" />
+            </a>
+            <div class="p-5">
+                <a
+                    href="#"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                >
+                    Ver producto
+                </a>
+            </div>
+        </div>
+        <div class="bg-white border border-gray-200 shadow-sm">
+            <a href="#">
+                <img class="" src="/destacados/product.png" alt="" />
+            </a>
+            <div class="p-5">
+                <a
+                    href="#"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                >
+                    Ver producto
+                </a>
+            </div>
         </div>
     </div>
-  </section>
-
-  <div class="flex justify-center items-center m-6 text-lg md:text-3xl md:m-10 font-fuenteprincipal">
-    <p class="relative bg-azulprimario text-white font-bold px-8 py-4 md:px-10 md:py-6
-        after:content-[''] after:absolute 
-        after:top-2 after:left-2 after:border-b-20 after:border-r-20
-        md:after:top-3 md:after:left-3 md:after:border-b-20 md:after:border-r-20
-        after:w-full after:h-full after:border-rojo after:-z-10">
-        Nuestros Productos
-    </p>
-  </div>
-  <Indexcard 
-      imageUrl={card1}
-      altText="Tinta para serigrafía base agua"
-      title="Serigrafía"
-      description="Base Agua / Plastisol"
-      buttonLabel="Ver tintas para Serigrafía"
-      buttonHref="/serigrafia"
-      position="right">
-  </Indexcard>
-  <Indexcard 
-      imageUrl={card2}
-      altText="Tinta para Sublimación base agua"
-      title="Sublimación"
-      description="Base Agua / Base solvente"
-      buttonLabel="Ver tintas para Sublimación"
-      buttonHref="/sublimacion"
-      position="left">
-  </Indexcard>
-  <Indexcard 
-      imageUrl={card3}
-      altText="Tinta para Offset"
-      title="Offset"
-      description="Texto / Texto"
-      buttonLabel="Ver tintas para Offset"
-      buttonHref="/offset"
-      position="right">
-  </Indexcard>
-  <Indexcard 
-      imageUrl={card4}
-      altText="Igualación de Color"
-      title="Igualación de Color"
-      description="Texto / Texto"
-      buttonLabel="Ver igualación de Color"
-      buttonHref="/igualacion"
-      position="left">
-  </Indexcard>
-  
-  <div class="flex justify-center items-center m-6 text-lg md:text-3xl md:m-10 font-fuenteprincipal">
-    <p class="relative bg-azulprimario text-white font-bold px-8 py-4 md:px-10 md:py-6
-        after:content-[''] after:absolute my-10
-        after:top-2 after:left-2 after:border-b-20 after:border-r-20
-        md:after:top-3 md:after:left-3 md:after:border-b-20 md:after:border-r-20
-        after:w-full after:h-full after:border-rojo after:-z-10">
-        Productos destacados
-    </p>
-  </div>
-  <div class="flex flex-col lg:flex-row justify-center items-center md:space-x-10 space-y-10 md:space-y-0">
-    <div class="bg-white border border-gray-200 shadow-sm">
-      <a href="#">  
-          <img class="" src="/destacados/product.png" alt="" />
-      </a>
-      <div class="p-5">
-          <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-              Ver producto
-          </a>
-      </div>
-    </div>
-    <div class="bg-white border border-gray-200 shadow-sm">
-      <a href="#">
-          <img class="" src="/destacados/product.png" alt="" />
-      </a>
-      <div class="p-5">
-          <a href="#" class="inline-flex items-start px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-              Ver producto
-          </a>
-      </div>
-    </div>
-
-    <div class="bg-white border border-gray-200 shadow-sm">
-      <a href="#">  
-          <img class="" src="/destacados/product.png" alt="" />
-      </a>
-      <div class="p-5">
-          <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-              Ver producto
-          </a>
-      </div>
-    </div>
-    <div class="bg-white border border-gray-200 shadow-sm">
-      <a href="#">  
-          <img class="" src="/destacados/product.png" alt="" />
-      </a>
-      <div class="p-5">
-          <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-              Ver producto
-          </a>
-      </div>
-    </div>
-   
-  </div>
-  
-
-  
-
-
 </Layout>
