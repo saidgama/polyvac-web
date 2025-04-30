@@ -10,7 +10,7 @@ export default [
     imagenes: [
       "../assets/cubeta.png"
     ],
-    fichaTecnica: "/pdfs/ficha-aquaflex.pdf",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-aquaflex.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "AQUA",
     colores: [
@@ -27,7 +27,7 @@ export default [
     imagenes: [
       "../assets/cubeta.png"
     ],
-    fichaTecnica: "https://drive.google.com/file/d/1HtOPaKIEnDW-7xYJIQcXiG29iGs7HTmJ/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-plastisol-vm-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "PLAST",
     colores: [
@@ -42,7 +42,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-ahulado-ao-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/14Q5F7EgiNmSxrfd4oZmAxwemMaOLd6hS/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-ahulado-ao-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
@@ -56,7 +56,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-plastisol-vm-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/1HtOPaKIEnDW-7xYJIQcXiG29iGs7HTmJ/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-plastisol-vm-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
@@ -70,7 +70,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-plastivac-vs-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/1AQJ5GwGTnVHLf7GlHwnQAMT8l47LPtm2/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-plastivac-vs-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
@@ -84,7 +84,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-polyprint-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/12Jow_jkzDVmWxuLLZlom3C-0w62Bc3G6/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-polyprint-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
@@ -98,7 +98,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-polytransfer-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/1m0k0Z3o1Xc7TIPantMWwo8h5nKks5bcM/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-polytransfer-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
@@ -112,7 +112,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-sublisol-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/1P7h3hJF_WMePJLK3PvN5CNM-PNjTvjq5/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-sublisol-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
@@ -126,7 +126,7 @@ export default [
     categoria: "Dummy",
     descripcion: "Producto dummy generado para ficha-sublivac-ht.pdf.",
     imagenes: ["../assets/cubeta.png"],
-    fichaTecnica: "https://drive.google.com/file/d/1RwW4JnHgGQo3hhmJWyvaGqh7RGaCRhr-/view?usp=drive_link",
+    fichaTecnica: "https://industrias-polyvac.pages.dev/pdfs/ficha-sublivac-ht.pdf",
     presentaciones: ["1kg", "4kg", "20kg"],
     codigoColor: "DUMMY",
     colores: [
