@@ -3,67 +3,32 @@ import Layout from "../layouts/Layout.astro";
 import CategoryBanner from "../components/Category_banner.astro";
 import Badge from "../components/Badge.astro";
 import ProductCardList from "../components/ProductCardList.astro";
-import bg from '../assets/index/card4.png';
-const title = "Igualaciones - Industrias Polyvac";
+import bg from '../assets/index/card2.png';
+import productosData from '../data/productos.js';
+
+const title = "Igualacion - Industrias Polyvac";
 const description = "Pagina de categoria";
 
-// Simulación de fetch de productos
-const productos = [
-  {
-    titulo: "AQUAFLEX",
-    badgeType: 1,
-    badge: "Base Agua",
-    descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100%, totalmente libres de gas Nafta, metales pesados, PVC y Orto-Ftalatos; lo cual les da una excelente estabilidad en el esténcil, haciendo posible la estampación en el pulpo manual y automático.",
-    buttonHref: "/producto/aquaflex"
-  },
-  {
-    titulo: "PLASTISOL",
-    badgeType: 2,
-    badge: "Plastisol",
-    descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    buttonHref: "/producto/plastisol"
-  },
-  {
-    titulo: "PLASTISOL",
-    badgeType: 1,
-    badge: "Plastisol",
-    descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100% , totalmente libres de gas Nafta, metales pesados , PVC y Orto-Ftalatos; lo cual les da una excelente estabilidad en el esténcil, haciendo posible la estampación en el pulpo manual y automático.",
-    buttonHref: "/producto/plastisol"
-  },
-  {
-    titulo: "PLASTISOL",
-    badgeType: 2,
-    badge: "Plastisol",
-    descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    buttonHref: "/producto/plastisol"
-  }
-  // ...más productos
-];
+// Filtrar productos de la categoría Igualacion
+const productos = productosData.filter(p => p.categoria && p.categoria.toLowerCase() === "igualacion");
 ---
 
 <Layout title={title} description={description}>
-    <CategoryBanner imageUrl={bg} titulo="Igualaciones de colores"/>
+    <CategoryBanner imageUrl={bg} titulo="Tintas para Igualación"/>
     <div class="my-15">
-        <Badge text="Base Agua "/>
+        <Badge text="Igualación"/>
     </div>
-    
     <section>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             {productos.map(producto => (
               <ProductCardList
                 titulo={producto.titulo}
-                badgeType={producto.badgeType}
-                badge={producto.badge}
+                badgeType={1}
+                badge="Igualación"
                 descripcion={producto.descripcion}
-                buttonHref={producto.buttonHref}
+                buttonHref={`/producto/${producto.id}`}
               />
             ))}
-          </div>
-    </section>
-    <div class="my-15">
-        <Badge text="Base Solvente"/>
-    </div>
-    <section>
-      
+        </div>
     </section>
 </Layout>

@@ -4,65 +4,52 @@ import CategoryBanner from "../components/Category_banner.astro";
 import Badge from "../components/Badge.astro";
 import ProductCardList from "../components/ProductCardList.astro";
 import bg from '../assets/index/card1.png';
+import productosData from '../data/productos.js';
 
 const title = "Serigrafia - Industrias Polyvac";
 const description = "Pagina de categoria";
 
-// Simulación de fetch de productos
-const productos = [
-  {
-    titulo: "AQUAFLEX",
-    badgeType: 1,
-    badge: "Base Agua",
-    descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100%, totalmente libres de gas Nafta, metales pesados, PVC y Orto-Ftalatos; lo cual les da una excelente estabilidad en el esténcil, haciendo posible la estampación en el pulpo manual y automático.",
-    buttonHref: "/producto/aquaflex"
-  },
-  {
-    titulo: "PLASTISOL",
-    badgeType: 2,
-    badge: "Plastisol",
-    descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    buttonHref: "/producto/plastisol"
-  },
-  {
-    titulo: "PLASTISOL",
-    badgeType: 1,
-    badge: "Plastisol",
-    descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100% , totalmente libres de gas Nafta, metales pesados , PVC y Orto-Ftalatos; lo cual les da una excelente estabilidad en el esténcil, haciendo posible la estampación en el pulpo manual y automático.",
-    buttonHref: "/producto/plastisol"
-  },
-  {
-    titulo: "PLASTISOL",
-    badgeType: 2,
-    badge: "Plastisol",
-    descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    buttonHref: "/producto/plastisol"
-  }
-  // ...más productos
-];
+// Filtrar productos de la categoría Serigrafía
+const productosSerigrafia = productosData.filter(p => p.categoria && p.categoria.toLowerCase() === "serigrafia");
+
+// Base Agua: productos cuyo título incluye "aqua" (no sensible a mayúsculas)
+const productosBaseAgua = productosSerigrafia.filter(p => p.titulo.toLowerCase().includes("aqua"));
+// Plastisoles: productos cuyo título incluye "plast" (no sensible a mayúsculas)
+const productosPlastisol = productosSerigrafia.filter(p => p.titulo.toLowerCase().includes("plast"));
 ---
 
 <Layout title={title} description={description}>
     <CategoryBanner imageUrl={bg} titulo="Tintas para Serigrafía"/>
     <div class="my-15">
-        <Badge text="Base Agua "/>
+        <Badge text="Base Agua"/>
     </div>
-    
     <section>
         <div class="grid grid-cols-1 lg:grid-cols-2">
-            {productos.map(producto => (
+            {productosBaseAgua.map(producto => (
               <ProductCardList
                 titulo={producto.titulo}
-                badgeType={producto.badgeType}
-                badge={producto.badge}
+                badgeType={1}
+                badge="Base Agua"
                 descripcion={producto.descripcion}
-                buttonHref={producto.buttonHref}
+                buttonHref={`/producto/${producto.id}`}
               />
             ))}
-          </div>
+        </div>
     </section>
-    <Badge text="Plastisoles"/>
+    <div class="my-15">
+        <Badge text="Plastisol"/>
+    </div>
     <section>
-      
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            {productosPlastisol.map(producto => (
+              <ProductCardList
+                titulo={producto.titulo}
+                badgeType={2}
+                badge="Plastisol"
+                descripcion={producto.descripcion}
+                buttonHref={`/producto/${producto.id}`}
+              />
+            ))}
+        </div>
     </section>
 </Layout>
