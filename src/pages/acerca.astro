@@ -1,10 +1,304 @@
 ---
-import Construccion from "../components/Construccion.astro";
 import Layout from "../layouts/Layout.astro"
+import CategoryBanner from "../components/Category_banner.astro";
+import bg from '../assets/acercade/acercabg.png';
+import Badge from "../components/Badge.astro";
+import { Image } from "astro:assets";
+import img1 from '../assets/acercade/img1.jpg';
+
 const title = "Nosotros - Industrias Polyvac";
 const description = "Pagina para descubrir acerca de la empresa.";
 ---
 
 <Layout title={title} description={description}>
-    <Construccion />
+    <CategoryBanner imageUrl={bg} titulo="Acerca de nosotros"/>
+    
+    <!-- Contenido principal -->
+    <div class="font-fuenteprincipal">
+        <Badge text="Historia"/>
+        <!-- Historia -->
+        <section class="bg-grisbg py-16 ">
+            <div class="max-w-7xl mx-auto px-4">
+                
+                <p class="text-center text-gray-700 font-semibold max-w-4xl md:text-2xl mx-auto mb-12 leading-relaxed">
+                    <a class="font-bold text-azulsecundario">INDUSTRIAS POLYVAC S. A. DE C. V.</a> Empresa fundada en el año de 1998 iniciándose en la distribución y fabricación de una amplia gama de productos: químicos, colorantes, pigmentos, resinas, pintura para el estampado, auxiliares para la industria textil, serigrafía y sus derivados.                </p>
+                
+                <!-- Timeline -->
+                <div id="default-carousel" class="relative w-full" data-carousel="slide">
+                <!-- Carousel wrapper -->
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <Image src={img1} class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <Image src={img1} class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Historia empresa">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <Image src={img1} class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Valores empresa">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <Image src={img1} class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Misión empresa">
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <Image src={img1} class="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Visión empresa">
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                </div>
+                <!-- Slider controls -->
+                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+</div>
+            </div>
+        </section>
+
+        <!-- Valores -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-azulprimario mb-16">VALORES</h2>
+                
+                <div class="grid md:grid-cols-4 gap-8">
+                    <!-- Enfoque al cliente -->
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Enfoque al cliente</h3>
+                        <p class="text-gray-600 text-sm">
+                            Entendemos las necesidades de nuestros clientes potenciales y externos con empatía como eje de nuestras acciones diarias.
+                        </p>
+                    </div>
+
+                    <!-- Honestidad -->
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Honestidad</h3>
+                        <p class="text-gray-600 text-sm">
+                            Nos conducimos con rectitud, transparencia y congruencia.
+                        </p>
+                    </div>
+
+                    <!-- Colaboración -->
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Colaboración</h3>
+                        <p class="text-gray-600 text-sm">
+                            Compartimos habilidades, talentos e ideas para alcanzar un objetivo común.
+                        </p>
+                    </div>
+
+                    <!-- Proactividad -->
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Proactividad</h3>
+                        <p class="text-gray-600 text-sm">
+                            Con iniciativa hacemos propias las oportunidades y problemas para que las cosas sucedan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visión y Misión -->
+        <section class="bg-gradient-to-r from-azulsecundario to-azulprimario py-16 text-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Visión -->
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6">VISIÓN</h2>
+                        <p class="text-lg leading-relaxed">
+                            Nuestro objetivo es ser un proveedor líder de soluciones para la Industria Gráfica, pinturas y recubrimientos mediante servicio integrado y de valor agregado.
+                        </p>
+                    </div>
+
+                    <!-- Misión -->
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6">MISIÓN</h2>
+                        <div class="space-y-4 text-lg leading-relaxed">
+                            <p>
+                                Ser una empresa reconocida como proveedor y asesor confiable en la industria gráfica, de empaque, comunicación impresa, y de recubrimientos.
+                            </p>
+                            <p>
+                                Consolidar nuestro liderazgo en México, lograr una participación relevante en El Salvador, Colombia, Costa Rica, Guatemala, Perú y Ecuador.
+                            </p>
+                            <p>
+                                Continuar con la transformación de la organización de manera dinámica fortaleciendo una cultura de trabajo en equipo, responsable y eficiente, contando con una estructura funcional con desarrollo sano y sustentable.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Misión adicional -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-azulsecundario mb-4">MISIÓN</h3>
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        Mejorar de manera continua el valor y confiabilidad de nuestros productos y servicios mediante la innovación, la participación creativa y el compromiso de todos los empleados, ejecutivos y accionistas de nuestra empresa, contando en este proceso con la participación activa de nuestros clientes y proveedores.
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold text-azulsecundario mb-4">OBJETIVO</h3>
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        Ofrecer productos y servicio de óptimo costo-eficiencia, ecológicamente amigables y que se desempeñen consistentemente en forma satisfactoria debido de la eficiente utilización de la tecnología con alta productividad y calidad para apoyar el desarrollo de nuestros clientes.
+                    </p>
+                    
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Al mismo tiempo deseamos reiterarle nuestros deseos de atenderle y servirles con alguno de nuestros productos. Y para poder atenderle con mayor rapidez le dejo mi correo, para que usted pueda estar en contacto con nosotros: <a href="mailto:pedidos@polyvac.mx" class="text-azulprimario font-semibold hover:underline">pedidos@polyvac.mx</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reconocimientos -->
+        <section class="bg-gray-900 py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <!-- Empresa 100% mexicana -->
+                    <div class="text-white">
+                        <div class="mb-4">
+                            <div class="text-6xl mb-2">🦅</div>
+                            <h3 class="text-xl font-bold">Empresa 100%</h3>
+                            <h3 class="text-xl font-bold text-yellow-400">mexicana líder</h3>
+                            <h3 class="text-xl font-bold">en el mercado</h3>
+                        </div>
+                    </div>
+
+                    <!-- Red en América -->
+                    <div class="text-white">
+                        <div class="mb-4">
+                            <div class="text-6xl mb-2">🌎</div>
+                            <h3 class="text-4xl font-bold text-blue-400">RED EN</h3>
+                            <h3 class="text-4xl font-bold text-blue-400">AMÉRICA</h3>
+                        </div>
+                    </div>
+
+                    <!-- Ink World -->
+                    <div class="text-white">
+                        <div class="mb-4">
+                            <div class="text-6xl mb-2">🏆</div>
+                            <h3 class="text-xl font-bold text-orange-400">ink world</h3>
+                            <p class="text-sm">Catalogada como una de las empresas más importantes a nivel internacional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </Layout>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('default-carousel');
+    const items = carousel.querySelectorAll('[data-carousel-item]');
+    const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
+    const prevButton = carousel.querySelector('[data-carousel-prev]');
+    const nextButton = carousel.querySelector('[data-carousel-next]');
+    
+    let currentIndex = 0;
+    
+    // Función para mostrar slide
+    function showSlide(index) {
+        // Ocultar todos los slides
+        items.forEach(item => {
+            item.classList.add('hidden');
+            item.classList.remove('block');
+        });
+        
+        // Mostrar el slide actual
+        if (items[index]) {
+            items[index].classList.remove('hidden');
+            items[index].classList.add('block');
+        }
+        
+        // Actualizar indicadores
+        indicators.forEach((indicator, i) => {
+            if (i === index) {
+                indicator.classList.add('bg-white');
+                indicator.classList.remove('bg-white/50');
+                indicator.setAttribute('aria-current', 'true');
+            } else {
+                indicator.classList.remove('bg-white');
+                indicator.classList.add('bg-white/50');
+                indicator.setAttribute('aria-current', 'false');
+            }
+        });
+        
+        currentIndex = index;
+    }
+    
+    // Función para ir al siguiente slide
+    function nextSlide() {
+        const nextIndex = (currentIndex + 1) % items.length;
+        showSlide(nextIndex);
+    }
+    
+    // Función para ir al slide anterior
+    function prevSlide() {
+        const prevIndex = (currentIndex - 1 + items.length) % items.length;
+        showSlide(prevIndex);
+    }
+    
+    // Event listeners para botones
+    if (nextButton) {
+        nextButton.addEventListener('click', nextSlide);
+    }
+    
+    if (prevButton) {
+        prevButton.addEventListener('click', prevSlide);
+    }
+    
+    // Event listeners para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+    
+    // Auto-play del carrusel (opcional)
+    setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+    
+    // Mostrar el primer slide al cargar
+    showSlide(0);
+});
+</script>

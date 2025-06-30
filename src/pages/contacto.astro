@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import Construccion from '../components/Construccion.astro';
+import CategoryBanner from "../components/Category_banner.astro";
+import bg from '../assets/acercade/contactobg.png';
+
 
 const title = "Contacto - Industrias Polyvac";
-const description = "Pagina donde se muestra informacion de contacto y ubicacion";
+const description = "Pagina donde se muestra Información  de contacto y ubicación";
 ---
 
 <Layout title={title} description={description}>
-    <Construccion />
+    <CategoryBanner imageUrl={bg} titulo="Contacto y nuestra Ubicación"/>
 </Layout>
