@@ -5,7 +5,10 @@ import bg from '../assets/acercade/acercabg.png';
 import Badge from "../components/Badge.astro";
 import { Image } from "astro:assets";
 import img1 from '../assets/acercade/img1.jpg';
-
+import img2 from '../assets/acercade/img2.jpg';
+import img3 from '../assets/acercade/img3.jpg';
+import img4 from '../assets/acercade/img4.jpg';  
+import img5 from '../assets/acercade/img5.jpg';
 const title = "Nosotros - Industrias Polyvac";
 const description = "Pagina para descubrir acerca de la empresa.";
 ---
@@ -21,7 +24,7 @@ const description = "Pagina para descubrir acerca de la empresa.";
             <div class="max-w-7xl mx-auto px-4">
                 
                 <p class="text-center text-gray-700 font-semibold max-w-4xl md:text-2xl mx-auto mb-12 leading-relaxed">
-                    <a class="font-bold text-azulsecundario">INDUSTRIAS POLYVAC S. A. DE C. V.</a> Empresa fundada en el año de 1998 iniciándose en la distribución y fabricación de una amplia gama de productos: químicos, colorantes, pigmentos, resinas, pintura para el estampado, auxiliares para la industria textil, serigrafía y sus derivados.                </p>
+                    <a class="font-bold text-azulsecundario">INDUSTRIAS POLYVAC S. A. DE C. V.</a> Empresa fundada en el año de 1998 iniciándose en la distribución y fabricación de una amplia gama de productos: químicos, colorantes, pigmentos, resinas, pintura para el estampado, auxiliares para la industria textil, serigrafía y sus derivados.</p>
                 
                 <!-- Timeline -->
                 <div id="default-carousel" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
@@ -33,23 +36,23 @@ const description = "Pagina para descubrir acerca de la empresa.";
                     </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img1} class="w-full h-full object-cover" alt="Historia empresa">
+                        <Image src={img2} class="w-full h-full object-cover" alt="Historia empresa">
                     </div>
                     <!-- Item 3 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img1} class="w-full h-full object-cover" alt="Valores empresa">
+                        <Image src={img3} class="w-full h-full object-cover" alt="Valores empresa">
                     </div>
                     <!-- Item 4 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img1} class="w-full h-full object-cover" alt="Misión empresa">
+                        <Image src={img4} class="w-full h-full object-cover" alt="Misión empresa">
                     </div>
                     <!-- Item 5 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img1} class="w-full h-full object-cover" alt="Visión empresa">
+                        <Image src={img5} class="w-full h-full object-cover" alt="Visión empresa">
                     </div>
                 </div>
                 <!-- Slider indicators -->
-                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                <div class="absolute z-10 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
                     <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
                     <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
                     <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
@@ -57,7 +60,7 @@ const description = "Pagina para descubrir acerca de la empresa.";
                     <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
                 </div>
                 <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <button type="button" class="absolute top-0 start-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
@@ -65,7 +68,7 @@ const description = "Pagina para descubrir acerca de la empresa.";
                         <span class="sr-only">Previous</span>
                     </span>
                 </button>
-                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <button type="button" class="absolute top-0 end-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
                     <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                         <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
@@ -83,55 +86,53 @@ const description = "Pagina para descubrir acerca de la empresa.";
                 <h2 class="text-4xl font-bold text-center text-azulprimario mb-16">VALORES</h2>
                 
                 <div class="grid md:grid-cols-4 gap-8">
-                    <!-- Enfoque al cliente -->
+                    <!-- Innovación Tecnológica -->
                     <div class="text-center">
                         <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/>
+                                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-azulprimario text-lg mb-3">Enfoque al cliente</h3>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Innovación Tecnológica</h3>
                         <p class="text-gray-600 text-sm">
-                            Entendemos las necesidades de nuestros clientes potenciales y externos con empatía como eje de nuestras acciones diarias.
+                            Desarrollo constante de nuevas fórmulas y tecnologías en tintas textiles para ofrecer soluciones avanzadas y competitivas.
                         </p>
                     </div>
 
-                    <!-- Honestidad -->
+                    <!-- Sostenibilidad Ambiental -->
                     <div class="text-center">
                         <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
-                            </svg>
+                            <svg class="w-10 h-10" viewBox="0 -960 960 960" fill="white"><path d="M216-176q-45-45-70.5-104T120-402q0-63 24-124.5T222-642q35-35 86.5-60t122-39.5Q501-756 591.5-759t202.5 7q8 106 5 195t-16.5 160.5q-13.5 71.5-38 125T684-182q-53 53-112.5 77.5T450-80q-65 0-127-25.5T216-176Zm112-16q29 17 59.5 24.5T450-160q46 0 91-18.5t86-59.5q18-18 36.5-50.5t32-85Q709-426 716-500.5t2-177.5q-49-2-110.5-1.5T485-670q-61 9-116 29t-90 55q-45 45-62 89t-17 85q0 59 22.5 103.5T262-246q42-80 111-153.5T534-520q-72 63-125.5 142.5T328-192Zm0 0Zm0 0Z"/></svg>
                         </div>
-                        <h3 class="font-bold text-azulprimario text-lg mb-3">Honestidad</h3>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Sostenibilidad Ambiental</h3>
                         <p class="text-gray-600 text-sm">
-                            Nos conducimos con rectitud, transparencia y congruencia.
+                            Compromiso con productos ecológicos para un futuro sustentable.
                         </p>
                     </div>
 
-                    <!-- Colaboración -->
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                            </svg>
-                        </div>
-                        <h3 class="font-bold text-azulprimario text-lg mb-3">Colaboración</h3>
-                        <p class="text-gray-600 text-sm">
-                            Compartimos habilidades, talentos e ideas para alcanzar un objetivo común.
-                        </p>
-                    </div>
-
-                    <!-- Proactividad -->
+                    <!-- Calidad y Excelencia -->
                     <div class="text-center">
                         <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
                             <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                             </svg>
                         </div>
-                        <h3 class="font-bold text-azulprimario text-lg mb-3">Proactividad</h3>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Calidad y Excelencia</h3>
                         <p class="text-gray-600 text-sm">
-                            Con iniciativa hacemos propias las oportunidades y problemas para que las cosas sucedan.
+                            Productos de alta calidad y durabilidad con control riguroso en todos nuestros procesos de fabricación.
+                        </p>
+                    </div>
+
+                    <!-- Confiabilidad y Servicio -->
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-azulprimario rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-azulprimario text-lg mb-3">Confiabilidad y Servicio</h3>
+                        <p class="text-gray-600 text-sm">
+                            25+ años de experiencia brindando soporte técnico especializado y relaciones duraderas con nuestros clientes.
                         </p>
                     </div>
                 </div>
