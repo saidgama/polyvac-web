@@ -36,15 +36,16 @@ const currentPath = url.pathname;
         </svg>
       </div>
       <a
-        href="/catalogo"
-        class="text-white bg-azulprimario hover:bg-blue-800 font-medium text-sm px-3 md:px-4 py-2.5 text-center"
+        href="/cuenta"
+        class="hidden md:inline-flex items-center ml-1 md:ml-3 lg:ml-4 text-sm text-center"
+        title="Mi Cuenta"
       >
-        Catálogo
-        <svg class="inline-flex ml-1 w-5 h-5 fill-white" viewBox="0 0 20 11">
+        <svg
+          class="w-7 h-7 md:w-8 md:h-8 fill-gris hover:fill-azulprimario transition-colors"
+          viewBox="0 0 24 24"
+        >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"
+            d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"
           ></path>
         </svg>
       </a>
@@ -74,16 +75,17 @@ const currentPath = url.pathname;
       <button
         id="menu-toggle"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-azulprimario transition-all duration-300"
+        class="md:hidden flex ml-3 items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-azulprimario hover:bg-blue-700 active:bg-blue-800 focus:outline-none transition-all duration-300"
       >
-        <svg class="w-6 h-6 transition-transform duration-300" fill="none" viewBox="0 0 17 14" id="menu-icon">
+        <svg class="w-5 h-5 transition-transform duration-300" fill="none" viewBox="0 0 17 14" id="menu-icon">
           <path
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
-            stroke-width="2.5"
+            stroke-width="2"
             d="M1 1h15M1 7h15M1 13h15"></path>
         </svg>
+        <span class="font-medium">Menú</span>
       </button>
     </div>
 
@@ -109,55 +111,94 @@ const currentPath = url.pathname;
         />
       </div>
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 bg-[#efefef] font-bold md:space-x-4 lg:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white"
+        class="flex flex-col md:p-0 mt-4 bg-white md:bg-white font-bold md:space-x-4 lg:space-x-8 md:flex-row md:mt-0 md:border-0 border-t border-gray-200 md:border-t-0 shadow-lg md:shadow-none"
       >
-        <li>
+        <li class="border-b border-gray-100 md:border-b-0">
           <a
             href="/"
-            class="group relative block py-2 px-3 md:px-0 lg:px-1 xl:px-3 transition-all"
+            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
             class:list={{
-              "text-azulprimario": currentPath === "/",
-              "text-gris": currentPath !== "/",
+              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/",
+              "text-gray-700 md:text-gris": currentPath !== "/",
             }}
           >
             <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
               class:list={{ "scale-x-100": currentPath === "/" }}
             >
-            </span>Inicio
+            </span>
+            <span
+              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
+              class:list={{ "opacity-100": currentPath === "/", "opacity-0": currentPath !== "/" }}
+            >
+            </span>
+            Inicio
           </a>
         </li>
-        <li>
+        <li class="border-b border-gray-100 md:border-b-0">
           <a
             href="/acerca"
-            class="group relative block py-2 px-3 md:px-0 lg:px-1 xl:px-3transition-all"
+            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
             class:list={{
-              "text-azulprimario": currentPath === "/acerca",
-              "text-gris": currentPath !== "/acerca",
+              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/acerca",
+              "text-gray-700 md:text-gris": currentPath !== "/acerca",
             }}
           >
             <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
               class:list={{ "scale-x-100": currentPath === "/acerca" }}
             >
-            </span>Acerca de Nosotros
+            </span>
+            <span
+              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
+              class:list={{ "opacity-100": currentPath === "/acerca", "opacity-0": currentPath !== "/acerca" }}
+            >
+            </span>
+            Acerca de Nosotros
           </a>
         </li>
-        <li>
+        <li class="border-b border-gray-100 md:border-b-0">
           <a
             href="/contacto"
-            class="group relative block py-2 px-3 md:px-0 lg:px-1 xl:px-3 transition-all"
+            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
             class:list={{
-              "text-azulprimario": currentPath === "/contacto",
-              "text-gris": currentPath !== "/contacto",
+              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/contacto",
+              "text-gray-700 md:text-gris": currentPath !== "/contacto",
             }}
           >
             <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100"
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
               class:list={{ "scale-x-100": currentPath === "/contacto" }}
             >
             </span>
+            <span
+              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
+              class:list={{ "opacity-100": currentPath === "/contacto", "opacity-0": currentPath !== "/contacto" }}
+            >
+            </span>
             Contacto
+          </a>
+        </li>
+        <li class="border-b border-gray-100 md:border-b-0">
+          <a
+            href="/cuenta"
+            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
+            class:list={{
+              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/cuenta",
+              "text-gray-700 md:text-gris": currentPath !== "/cuenta",
+            }}
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
+              class:list={{ "scale-x-100": currentPath === "/cuenta" }}
+            >
+            </span>
+            <span
+              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
+              class:list={{ "opacity-100": currentPath === "/cuenta", "opacity-0": currentPath !== "/cuenta" }}
+            >
+            </span>
+            Mi Cuenta
           </a>
         </li>
       </ul>

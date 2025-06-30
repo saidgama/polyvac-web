@@ -1,0 +1,417 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+
+const title = "Cotizador - Industrias Polyvac";
+const description = "Solicita una cotización personalizada para nuestros productos de serigrafía, sublimación y offset";
+---
+
+<Layout title={title} description={description}>
+  
+  
+  <main class="bg-gray-50 min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-white border-b border-gray-200">
+      <div class="container mx-auto px-4 py-8 md:py-12">
+        <div class="max-w-4xl mx-auto text-center">
+          <Badge text="Cotizador de Productos"/>
+          <p class="text-lg text-gray-600 mb-6">
+            Revisa los productos agregados y solicita una cotización personalizada
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Cart Items Section -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+            <!-- Cart Header -->
+            <div class="p-6 border-b border-gray-200">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <svg class="w-6 h-6 text-azulprimario" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9M7 13l-1.5-9m0 0h15m-2.5 8v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"></path>
+                  </svg>
+                  <h2 class="text-xl font-bold text-gray-900">Productos Seleccionados</h2>
+                </div>
+                <span id="item-count" class="text-sm text-gray-500">0 productos</span>
+              </div>
+            </div>
+
+            <!-- Cart Items List -->
+            <div id="cart-items-list" class="divide-y divide-gray-200">
+              <!-- Empty State -->
+              <div id="empty-cart" class="p-8 text-center">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9M7 13l-1.5-9m0 0h15m-2.5 8v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"></path>
+                </svg>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Tu cotizador está vacío</h3>
+                <p class="text-gray-500 mb-4">Agrega productos desde las páginas individuales para solicitar una cotización</p>
+                <a href="/" class="inline-flex items-center px-4 py-2 bg-azulprimario text-white rounded-lg hover:bg-blue-700 transition-colors">
+                  Ver Productos
+                </a>
+              </div>
+            </div>
+
+            <!-- Add More Products Button -->
+            <div id="add-more-section" class="p-6 border-t border-gray-200 hidden">
+              <a href="/" class="inline-flex items-center gap-2 text-azulprimario hover:text-blue-700 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                </svg>
+                Agregar más productos
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote Form Section -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-8">
+            <div class="flex items-center gap-2 mb-6">
+              <svg class="w-6 h-6 text-azulprimario" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <h2 class="text-xl font-bold text-gray-900">Solicitar Cotización</h2>
+            </div>
+
+            <!-- Summary -->
+            <div id="quote-summary" class="mb-6 p-4 bg-gray-50 rounded-lg">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-600">Total de productos:</span>
+                <span id="summary-count" class="text-lg font-bold text-azulprimario">0</span>
+              </div>
+              <div class="text-xs text-gray-500">
+                Los precios se calcularán según cantidades y especificaciones
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="quote-form" class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo *</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent"
+                  placeholder="Tu nombre completo"
+                >
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent"
+                  placeholder="tu.email@ejemplo.com"
+                >
+              </div>
+              
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent"
+                  placeholder="+52 (555) 123-4567"
+                >
+              </div>
+              
+              <div>
+                <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Empresa</label>
+                <input 
+                  type="text" 
+                  id="company" 
+                  name="company" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent"
+                  placeholder="Nombre de tu empresa"
+                >
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Detalles del proyecto</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="4" 
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent" 
+                  placeholder="Describe tu proyecto: cantidades, fechas de entrega, especificaciones técnicas, etc."
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                id="submit-quote"
+                class="w-full bg-azulprimario text-white py-3 px-4 rounded-md font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled
+              >
+                Enviar Solicitud de Cotización
+              </button>
+
+              <p class="text-xs text-gray-500 text-center">
+                Al enviar esta solicitud, nos pondremos en contacto contigo en un plazo máximo de 24 horas
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</Layout>
+
+<script>
+  class QuoteCart {
+    constructor() {
+      this.storageKey = 'polyvac-quote-cart';
+      this.items = this.loadFromStorage();
+      this.init();
+    }
+
+    init() {
+      this.updateDisplay();
+      this.bindEvents();
+    }
+
+    loadFromStorage() {
+      try {
+        const stored = localStorage.getItem(this.storageKey);
+        return stored ? JSON.parse(stored) : this.getDummyData();
+      } catch {
+        return this.getDummyData();
+      }
+    }
+
+    saveToStorage() {
+      try {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.items));
+      } catch (error) {
+        console.error('Error saving to storage:', error);
+      }
+    }
+
+    getDummyData() {
+      // Dummy data for demonstration
+      return [
+        {
+          id: 'aquaflex',
+          name: 'AQUAFLEX',
+          category: 'Serigrafía',
+          description: 'Tinta base agua para estampación textil directa en algodón 100%',
+          image: '/public/destacados/product.png',
+          addedAt: new Date().toISOString()
+        },
+        {
+          id: 'sublisol',
+          name: 'SUBLISOL HT',
+          category: 'Sublimación',
+          description: 'Tinta de sublimación de alta calidad para transferencia térmica',
+          image: '/public/destacados/product.png',
+          addedAt: new Date().toISOString()
+        },
+        {
+          id: 'polyprint',
+          name: 'POLYPRINT HT',
+          category: 'Offset',
+          description: 'Tinta offset de alta performance para impresión comercial',
+          image: '/public/destacados/product.png',
+          addedAt: new Date().toISOString()
+        }
+      ];
+    }
+
+    addItem(product) {
+      const existingIndex = this.items.findIndex(item => item.id === product.id);
+      
+      if (existingIndex === -1) {
+        this.items.push({
+          ...product,
+          addedAt: new Date().toISOString()
+        });
+        this.saveToStorage();
+        this.updateDisplay();
+        this.showNotification(`${product.name} agregado al cotizador`, 'success');
+      } else {
+        this.showNotification(`${product.name} ya está en el cotizador`, 'info');
+      }
+    }
+
+    removeItem(productId) {
+      const item = this.items.find(item => item.id === productId);
+      this.items = this.items.filter(item => item.id !== productId);
+      this.saveToStorage();
+      this.updateDisplay();
+      
+      if (item) {
+        this.showNotification(`${item.name} eliminado del cotizador`, 'success');
+      }
+    }
+
+    clearCart() {
+      this.items = [];
+      this.saveToStorage();
+      this.updateDisplay();
+      this.showNotification('Cotizador vaciado', 'success');
+    }
+
+    updateDisplay() {
+      const cartItemsList = document.getElementById('cart-items-list');
+      const emptyCart = document.getElementById('empty-cart');
+      const addMoreSection = document.getElementById('add-more-section');
+      const itemCount = document.getElementById('item-count');
+      const summaryCount = document.getElementById('summary-count');
+      const submitButton = document.getElementById('submit-quote');
+
+      // Update counters
+      itemCount.textContent = `${this.items.length} producto${this.items.length !== 1 ? 's' : ''}`;
+      summaryCount.textContent = this.items.length;
+
+      // Enable/disable submit button
+      submitButton.disabled = this.items.length === 0;
+
+      if (this.items.length === 0) {
+        emptyCart.style.display = 'block';
+        addMoreSection.classList.add('hidden');
+      } else {
+        emptyCart.style.display = 'none';
+        addMoreSection.classList.remove('hidden');
+
+        // Generate cart items HTML
+        const itemsHTML = this.items.map(item => `
+          <div class="p-6 flex items-start gap-4">
+            <img 
+              src="${item.image}" 
+              alt="${item.name}"
+              class="w-16 h-16 object-cover rounded-lg flex-shrink-0 bg-gray-100"
+            />
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold text-gray-900 mb-1">${item.name}</h3>
+                  <p class="text-sm text-gray-600 mb-2">${item.description}</p>
+                  <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-azulprimario">
+                    ${item.category}
+                  </span>
+                </div>
+                <button 
+                  onclick="quoteCart.removeItem('${item.id}')" 
+                  class="text-gray-400 hover:text-red-500 transition-colors p-1"
+                  title="Eliminar producto"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        cartItemsList.innerHTML = itemsHTML;
+      }
+    }
+
+    bindEvents() {
+      const form = document.getElementById('quote-form');
+      form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+    }
+
+    handleFormSubmit(e) {
+      e.preventDefault();
+      
+      if (this.items.length === 0) {
+        this.showNotification('Agrega productos antes de solicitar una cotización', 'error');
+        return;
+      }
+
+      const formData = new FormData(e.target);
+      const contactData = Object.fromEntries(formData);
+      
+      // Generate email content
+      const emailBody = this.generateEmailBody(contactData);
+      
+      // Create mailto link
+      const subject = encodeURIComponent('Solicitud de Cotización - Industrias Polyvac');
+      const body = encodeURIComponent(emailBody);
+      const mailtoLink = `mailto:ventas@polyvac.com?subject=${subject}&body=${body}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      this.showNotification('Solicitud de cotización enviada correctamente', 'success');
+    }
+
+    generateEmailBody(contactData) {
+      const currentDate = new Date().toLocaleDateString('es-MX');
+      
+      let body = `SOLICITUD DE COTIZACIÓN\n\n`;
+      body += `Fecha: ${currentDate}\n\n`;
+      
+      body += `DATOS DE CONTACTO:\n`;
+      body += `Nombre: ${contactData.name}\n`;
+      body += `Email: ${contactData.email}\n`;
+      body += `Teléfono: ${contactData.phone || 'No proporcionado'}\n`;
+      body += `Empresa: ${contactData.company || 'No proporcionado'}\n\n`;
+      
+      body += `PRODUCTOS DE INTERÉS:\n`;
+      this.items.forEach((item, index) => {
+        body += `${index + 1}. ${item.name}\n`;
+        body += `   Categoría: ${item.category}\n`;
+        body += `   Descripción: ${item.description}\n\n`;
+      });
+      
+      if (contactData.message) {
+        body += `DETALLES DEL PROYECTO:\n${contactData.message}\n\n`;
+      }
+      
+      body += `---\nEsta solicitud fue generada desde el cotizador web de Industrias Polyvac`;
+      
+      return body;
+    }
+
+    showNotification(message, type = 'info') {
+      const toast = document.createElement('div');
+      const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-azulprimario';
+      
+      toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 max-w-sm transition-all duration-300 transform translate-x-full`;
+      toast.innerHTML = `
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+          </svg>
+          <span class="text-sm">${message}</span>
+        </div>
+      `;
+      
+      document.body.appendChild(toast);
+      
+      // Animate in
+      setTimeout(() => {
+        toast.classList.remove('translate-x-full');
+      }, 100);
+      
+      // Animate out and remove
+      setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+  }
+
+  // Initialize cart
+  const quoteCart = new QuoteCart();
+
+  // Make cart globally available for integration with product pages
+  window.polyvacQuoteCart = quoteCart;
+</script>
+</Layout>
