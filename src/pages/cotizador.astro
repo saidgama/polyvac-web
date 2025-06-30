@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
+import { Image } from "astro:assets";
+import productImage from "../assets/cubeta.png";
 
 const title = "Cotizador - Industrias Polyvac";
 const description = "Solicita una cotización personalizada para nuestros productos de serigrafía, sublimación y offset";
@@ -169,7 +171,9 @@ const description = "Solicita una cotización personalizada para nuestros produc
 
 </Layout>
 
-<script>
+<script define:vars={{ productImage }}>
+  // Global product image variable
+  window.PRODUCT_IMAGE = productImage;
   class QuoteCart {
     constructor() {
       this.storageKey = 'polyvac-quote-cart';
@@ -207,7 +211,7 @@ const description = "Solicita una cotización personalizada para nuestros produc
           name: 'AQUAFLEX',
           category: 'Serigrafía',
           description: 'Tinta base agua para estampación textil directa en algodón 100%',
-          image: '/public/destacados/product.png',
+          image: window.PRODUCT_IMAGE,
           addedAt: new Date().toISOString()
         },
         {
@@ -215,7 +219,7 @@ const description = "Solicita una cotización personalizada para nuestros produc
           name: 'SUBLISOL HT',
           category: 'Sublimación',
           description: 'Tinta de sublimación de alta calidad para transferencia térmica',
-          image: '/public/destacados/product.png',
+          image: window.PRODUCT_IMAGE,
           addedAt: new Date().toISOString()
         },
         {
@@ -223,7 +227,7 @@ const description = "Solicita una cotización personalizada para nuestros produc
           name: 'POLYPRINT HT',
           category: 'Offset',
           description: 'Tinta offset de alta performance para impresión comercial',
-          image: '/public/destacados/product.png',
+          image: window.PRODUCT_IMAGE,
           addedAt: new Date().toISOString()
         }
       ];
@@ -289,8 +293,10 @@ const description = "Solicita una cotización personalizada para nuestros produc
         const itemsHTML = this.items.map(item => `
           <div class="p-6 flex items-start gap-4">
             <img 
-              src="${item.image}" 
+              src="${item.image.src}" 
               alt="${item.name}"
+              width="${item.image.width}"
+              height="${item.image.height}"
               class="w-16 h-16 object-cover rounded-lg flex-shrink-0 bg-gray-100"
             />
             <div class="flex-1 min-w-0">
