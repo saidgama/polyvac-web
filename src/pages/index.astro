@@ -11,7 +11,10 @@ import card3 from "../assets/index/card3.png";
 import card4 from "../assets/index/card4.png";
 import cubeta from "../assets/cubeta.png";
 import Badge from "../components/Badge.astro";
-
+// Logos para certificaciones
+import oekotexLogo from '../assets/acercade/oekotex.png';
+import bluesignLogo from '../assets/acercade/bluesign.png';  
+import bureauVeritasLogo from '../assets/acercade/bureau.png';
 const title = "Industrias Polyvac";
 const description = "Inicio de la pagina.";
 ---
@@ -147,4 +150,63 @@ const description = "Inicio de la pagina.";
             />
         </div>
     </div>
+
+    <!-- Certificaciones -->
+        <section class="bg-gray-900 py-16 mt-15">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-white mb-8">CERTIFICACIONES Y NORMAS</h2>
+                <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+                    Todos nuestros productos cumplen con las normas requeridas por:
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <!-- OEKOTEX 2024 -->
+                    <div class="text-white">
+                        <div class="mb-4">
+                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
+                                <Image 
+                                    src={oekotexLogo} 
+                                    alt="Logo OEKOTEX 2024" 
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            <h3 class="text-xl font-bold text-green-400">OEKOTEX</h3>
+                            <h3 class="text-lg font-bold text-white">2024</h3>
+                            <p class="text-sm text-gray-300 mt-2">Estándar internacional para textiles libres de sustancias nocivas</p>
+                        </div>
+                    </div>
+
+                    <!-- BLUESIGN -->
+                    <div class="text-white">
+                        <div class="mb-4">
+                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
+                                <Image 
+                                    src={bluesignLogo} 
+                                    alt="Logo Bluesign" 
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            <h3 class="text-xl font-bold text-blue-400">BLUESIGN</h3>
+                            <h3 class="text-lg font-bold text-white">APPROVED</h3>
+                            <p class="text-sm text-gray-300 mt-2">Sistema de gestión para una producción textil sostenible</p>
+                        </div>
+                    </div>
+
+                    <!-- BUREAU VERITAS -->
+                    <div class="text-white">
+                        <div class="mb-4">
+                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
+                                <Image 
+                                    src={bureauVeritasLogo} 
+                                    alt="Logo Bureau Veritas" 
+                                    class="w-full h-full object-contain"
+                                />
+                            </div>
+                            <h3 class="text-xl font-bold text-red-400">BUREAU</h3>
+                            <h3 class="text-xl font-bold text-red-400">VERITAS</h3>
+                            <p class="text-sm text-gray-300 mt-2">Líder mundial en servicios de inspección, certificación y ensayos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </Layout>
