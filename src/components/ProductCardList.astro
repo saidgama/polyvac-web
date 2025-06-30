@@ -12,25 +12,25 @@ else if (triangleColor === 3) selectedColor = 'bg-green-600/90';
 else if (triangleColor === 4) selectedColor = 'bg-orange-500/90';
 else if (triangleColor === 5) selectedColor = 'bg-purple-600/90';
 
-const triangleClass = `absolute bottom-0 left-0 h-[70%] md:h-1/2 w-[70%] md:w-full ${selectedColor} z-10`;
+const triangleClass = `absolute bottom-0 left-0 px-6 py-4 ${selectedColor} z-10 flex items-center justify-center min-w-[140px]`;
 ---
   <div class="flex flex-col md:flex-row items-center md:items-stretch bg-[#E5E5E5] m-8 shadow-md font-fuenteprincipal relative">
-    <!-- Imagen -->
+   
     <div class="flex-shrink-0 flex items-center justify-center w-full md:w-auto p-5 relative">
         <div class={triangleClass}
-          style="clip-path: polygon(0 0, 100% 100%, 0 100%);">
+          style="clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);">
+          <div class="text-center px-2">
+            <span class="text-white text-lg md:text-xl font-light block">Linea</span>
+            <span class="text-white text-2xl md:text-xl lg:text-2xl font-bold leading-tight">{titulo}</span>
+          </div>
         </div>
-        <div class="absolute left-6 bottom-8 z-10 flex flex-col justify-end h-[120px] w-[180px]">
-          <span class="text-white text-base md:text-base lg:text-xl font-light mb-1">Linea</span>
-          <span class="text-white text-xl md:text-base lg:text-xl font-bold leading-none">{titulo}</span>
-        </div>
-      <div class="w-48 xl:w-60 flex items-center justify-center relative">
+      <div class="w-full md:w-48 xl:w-60 flex items-center justify-center relative">
         <Image src={cubeta} alt="Imagen de Producto" class="w-full h-full object-contain z-0" />
         <!-- Triángulo con transparencia y título -->
         
       </div>
     </div>
-    <!-- Info -->
+    <!-- Info --> 
     <div class="flex flex-col justify-center p-4 md:p-8 flex-1">
       <div class="flex items-center mb-2">
         <span class="w-10 h-10 bg-azulprimario rounded-md flex items-center justify-center mr-3">
