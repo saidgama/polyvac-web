@@ -8,12 +8,32 @@ const {
   buttonLabel = "Ver Producto",
   buttonHref = "#",
   titleBgColor = "bg-azulprimario",
+  triangleColor = 1
 } = Astro.props;
+
+// Determinar el color del triángulo
+let selectedColor = 'bg-azulprimario/90'; // Color por defecto
+
+if (triangleColor === 1) selectedColor = 'bg-azulprimario/90';
+else if (triangleColor === 2) selectedColor = 'bg-rojo/90';
+else if (triangleColor === 3) selectedColor = 'bg-green-600/90';
+else if (triangleColor === 4) selectedColor = 'bg-orange-500/90';
+else if (triangleColor === 5) selectedColor = 'bg-purple-600/90';
+
+const triangleClass = `absolute bottom-0 left-0 h-[70%] md:h-1/2 w-[70%] md:w-full ${selectedColor} z-10`;
 ---
 
 <div class="bg-white rounded-lg shadow-2xl overflow-hidden max-w-sm mx-auto font-fuenteprincipal">
   <!-- Imagen del producto -->
+   
   <div class="relative">
+    <div class={triangleClass}
+          style="clip-path: polygon(0 0, 100% 100%, 0 100%);">
+        </div>
+        <div class="absolute left-6 bottom-8 z-10 flex flex-col justify-end h-[120px] w-[180px]">
+          <span class="text-white text-base md:text-base lg:text-xl font-light mb-1">LINEA</span>
+          <span class="text-white text-xl md:text-base lg:text-xl font-bold leading-none">{title}</span>
+        </div>
     <Image 
       src={imageUrl} 
       alt={altText} 
@@ -23,10 +43,6 @@ const {
 
   <!-- Contenido -->
   <div class="p-0">
-    <!-- Título con fondo de color -->
-    <div class="p-4">
-      <h3 class={`${titleBgColor} text-white text-xl font-semibold px-3 py-2 inline-block `}>{title}</h3>
-    </div>
     
     <!-- Botón -->
     <div class="p-4">
