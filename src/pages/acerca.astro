@@ -9,6 +9,8 @@ import img2 from '../assets/acercade/img2.jpg';
 import img3 from '../assets/acercade/img3.jpg';
 import img4 from '../assets/acercade/img4.jpg';  
 import img5 from '../assets/acercade/img5.jpg';
+import objetivo from '../assets/acercade/vision.jpg';
+import mision from '../assets/acercade/mision.jpg';
 // Logos para certificaciones
 import oekotexLogo from '../assets/acercade/oekotex.png';
 import bluesignLogo from '../assets/acercade/bluesign.png';  
@@ -149,12 +151,12 @@ const description = "Pagina para descubrir acerca de la empresa.";
             <div class="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden">
                 <!-- Imagen de fondo -->
                 <Image 
-                    src={img1} 
+                    src={objetivo} 
                     alt="Objetivo - Industrias Polyvac" 
                     class="absolute inset-0 w-full h-full object-cover"
                 />
                 <!-- Overlay con gradiente -->
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/70 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-900/95 via-blue-900/80 to-black/50"></div>
                 
                 <!-- Contenido -->
                 <div class="relative z-10 h-full flex items-center">
@@ -164,7 +166,7 @@ const description = "Pagina para descubrir acerca de la empresa.";
                                 OBJETIVO
                                 <div class="w-16 h-1 bg-white mt-2"></div>
                             </h2>
-                            <p class="text-white text-base sm:text-lg lg:text-xl leading-relaxed">
+                            <p class="text-white text-base text-sm lg:text-xl leading-relaxed">
                                 Ofrecer productos y servicio de óptimo costo-eficiencia, ecológicamente amigables y que se desempeñen consistentemente en forma satisfactoria a través de la eficiente utilización de la tecnología con alta productividad y calidad para apoyar el desarrollo de nuestros clientes.
                             </p>
                         </div>
@@ -176,12 +178,12 @@ const description = "Pagina para descubrir acerca de la empresa.";
             <div class="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden mt-4">
                 <!-- Imagen de fondo -->
                 <Image 
-                    src={img2} 
+                    src={mision} 
                     alt="Misión - Industrias Polyvac" 
                     class="absolute inset-0 w-full h-full object-cover"
                 />
                 <!-- Overlay con gradiente -->
-                <div class="absolute inset-0 bg-gradient-to-l from-gray-900/90 via-gray-900/70 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-l from-gray-900/95 via-gray-900/80 to-black/50"></div>
                 
                 <!-- Contenido -->
                 <div class="relative z-10 h-full flex items-center">
@@ -191,7 +193,7 @@ const description = "Pagina para descubrir acerca de la empresa.";
                                 MISIÓN
                                 <div class="w-16 h-1 bg-white mt-2 ml-auto"></div>
                             </h2>
-                            <p class="text-white text-base sm:text-lg lg:text-xl leading-relaxed">
+                            <p class="text-white text-base text-sm lg:text-xl leading-relaxed">
                                 Mejorar de manera continua el valor y confiabilidad de nuestros productos y servicios mediante la innovación, la participación creativa y el compromiso de todos los empleados, ejecutivos y accionistas de nuestra empresa, contando en este proceso con la participación activa de nuestros clientes y proveedores.
                             </p>
                         </div>
