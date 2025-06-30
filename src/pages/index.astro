@@ -1,5 +1,4 @@
 ---
-// Importa el layout que acabas de crear
 import Indexcard from "../components/Indexcard.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
@@ -10,15 +9,14 @@ import card2 from "../assets/index/card2.png";
 import card3 from "../assets/index/card3.png";
 import card4 from "../assets/index/card4.png";
 import Badge from "../components/Badge.astro";
-// Define las props para la página
+
 const title = "Industrias Polyvac";
 const description = "Inicio de la pagina.";
 ---
 
-<!-- Usa el Layout y pasa las props para el título y la descripción -->
 <Layout title={title} description={description}>
-    <!-- hero section -->
     <section class="relative w-full h-[488px]" id="home">
+        <!-- hero section -->
         <div class="absolute inset-0">
             <Image
                 src={bgHero}
@@ -28,10 +26,8 @@ const description = "Inicio de la pagina.";
             />
         </div>
         <div class="absolute inset-0 bg-black opacity-40"></div>
-        <!-- Dark overlay -->
-        <div
-            class="absolute inset-9 flex flex-col md:flex-row font-fuenteprincipal"
-        >
+        
+        <div class="absolute inset-9 flex flex-col md:flex-row font-fuenteprincipal">
             <div class="h-1/2 md:w-1/2 mb-4 md:mb-0">
                 <h1
                     class="text-white font-bold text-2xl md:text-3xl xl:text-5xl p-6 md:p-10 leading-tight"
