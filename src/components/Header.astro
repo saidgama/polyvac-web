@@ -21,12 +21,6 @@ const currentPath = url.pathname;
           ></path>
         </svg>
       </a>
-
-      <svg class="w-5 h-5 fill-gris" viewBox="0 0 16 18">
-        <path
-          d="M15.0794 4.21685C14.1627 4.02461 13.3327 3.55035 12.7102 2.8632C12.0878 2.17606 11.7055 1.31195 11.619 0.396848V0H8.45695V12.3032C8.455 12.8479 8.27902 13.3783 7.95374 13.8198C7.62846 14.2614 7.17024 14.5919 6.64347 14.765C6.1167 14.9381 5.54785 14.945 5.01687 14.7848C4.48588 14.6245 4.01945 14.3052 3.68312 13.8717C3.34156 13.4309 3.15209 12.8949 3.14218 12.3415C3.13228 11.788 3.30245 11.2458 3.62801 10.7936C3.95358 10.3413 4.41763 10.0025 4.95285 9.82619C5.48808 9.64992 6.06666 9.64538 6.60469 9.81322V6.66363C5.4049 6.50102 4.18328 6.71014 3.11069 7.26175C2.0381 7.81336 1.16819 8.67986 0.622646 9.74004C0.0771006 10.8002 -0.116797 12.0011 0.0680739 13.1746C0.252945 14.3482 0.807338 15.4357 1.65371 16.2852C2.46084 17.0948 3.49577 17.6503 4.62637 17.8808C5.75697 18.1112 6.93197 18.0061 8.00137 17.5789C9.07077 17.1516 9.98606 16.4217 10.6304 15.4822C11.2748 14.5427 11.6189 13.4362 11.619 12.3041V6.01751C12.8969 6.9132 14.4291 7.39347 16 7.39073V4.31044C15.6906 4.31081 15.3821 4.27944 15.0794 4.21685Z"
-        ></path>
-      </svg>
     </div>
     <div
       class="hidden lg:inline-flex h-auto w-0.5 self-stretch bg-neutral-100 mx-[1.2%]"
@@ -80,9 +74,9 @@ const currentPath = url.pathname;
       <button
         id="menu-toggle"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-azulprimario"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-azulprimario transition-all duration-300"
       >
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 17 14">
+        <svg class="w-6 h-6 transition-transform duration-300" fill="none" viewBox="0 0 17 14" id="menu-icon">
           <path
             stroke="currentColor"
             stroke-linecap="round"
@@ -174,12 +168,22 @@ const currentPath = url.pathname;
 <script>
   const button = document.getElementById("menu-toggle");
   const menu = document.getElementById("navbar-sticky");
+  const menuIcon = document.getElementById("menu-icon");
 
-  if (button && menu) {
+  if (button && menu && menuIcon) {
     button.addEventListener("click", () => {
       if (menu) {
         const expanded = menu.classList.contains("hidden");
         menu.classList.toggle("hidden");
+        
+        // Agregar animación de giro al ícono
+        if (expanded) {
+          // Menú se está abriendo
+          menuIcon.classList.add("rotate-90");
+        } else {
+          // Menú se está cerrando
+          menuIcon.classList.remove("rotate-90");
+        }
       }
     });
   }

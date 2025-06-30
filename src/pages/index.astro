@@ -1,5 +1,6 @@
 ---
 import Indexcard from "../components/Indexcard.astro";
+import ProductCard from "../components/ProductCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import bgHero from "../assets/hero/test.png";
@@ -8,6 +9,7 @@ import card1 from "../assets/index/card1.png";
 import card2 from "../assets/index/card2.png";
 import card3 from "../assets/index/card3.png";
 import card4 from "../assets/index/card4.png";
+import cubeta from "../assets/cubeta.png";
 import Badge from "../components/Badge.astro";
 
 const title = "Industrias Polyvac";
@@ -71,7 +73,7 @@ const description = "Inicio de la pagina.";
         imageUrl={card1}
         altText="Tinta para serigrafía base agua"
         title="Serigrafía"
-        description="Base Agua / Plastisol"
+        description="Base Agua y Plastisol"
         buttonLabel="Ver tintas para Serigrafía"
         buttonHref="/serigrafia"
         position="right"
@@ -80,7 +82,7 @@ const description = "Inicio de la pagina.";
         imageUrl={card2}
         altText="Tinta para Sublimación base agua"
         title="Sublimación"
-        description="Base Agua / Base solvente"
+        description="Base Agua y Base solvente"
         buttonLabel="Ver tintas para Sublimación"
         buttonHref="/sublimacion"
         position="left"
@@ -89,7 +91,7 @@ const description = "Inicio de la pagina.";
         imageUrl={card3}
         altText="Tinta para Offset"
         title="Offset"
-        description="Texto / Texto"
+        description="Tintas para Offset"
         buttonLabel="Ver tintas para Offset"
         buttonHref="/offset"
         position="right"
@@ -98,7 +100,7 @@ const description = "Inicio de la pagina.";
         imageUrl={card4}
         altText="Igualación de Color"
         title="Igualación de Color"
-        description="Texto / Texto"
+        description="Servicio de igualación de color personalizado"
         buttonLabel="Ver igualación de Color"
         buttonHref="/igualacion"
         position="left"
@@ -106,61 +108,41 @@ const description = "Inicio de la pagina.";
 
     <Badge text="Productos destacados" />
 
-    <div
-        class="flex flex-col lg:flex-row justify-center items-center md:space-x-10 space-y-10 md:space-y-0"
-    >
-        <div class="bg-white border border-gray-200 shadow-sm">
-            <a href="#">
-                <img class="" src="/destacados/product.png" alt="" />
-            </a>
-            <div class="p-5">
-                <a
-                    href="#"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                >
-                    Ver producto
-                </a>
-            </div>
-        </div>
-        <div class="bg-white border border-gray-200 shadow-sm">
-            <a href="#">
-                <img class="" src="/destacados/product.png" alt="" />
-            </a>
-            <div class="p-5">
-                <a
-                    href="#"
-                    class="inline-flex items-start px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                >
-                    Ver producto
-                </a>
-            </div>
-        </div>
-
-        <div class="bg-white border border-gray-200 shadow-sm">
-            <a href="#">
-                <img class="" src="/destacados/product.png" alt="" />
-            </a>
-            <div class="p-5">
-                <a
-                    href="#"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                >
-                    Ver producto
-                </a>
-            </div>
-        </div>
-        <div class="bg-white border border-gray-200 shadow-sm">
-            <a href="#">
-                <img class="" src="/destacados/product.png" alt="" />
-            </a>
-            <div class="p-5">
-                <a
-                    href="#"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-azulprimario hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                >
-                    Ver producto
-                </a>
-            </div>
+    <!-- Sección de productos destacados -->
+    <div class="mx-auto max-w-7xl px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ProductCard
+                imageUrl={cubeta}
+                altText="Línea AQUAFLEX"
+                title="Línea AQUAFLEX"
+                buttonLabel="Ver Producto"
+                buttonHref="/producto/aquaflex"
+                titleBgColor="bg-azulprimario"
+            />
+            <ProductCard
+                imageUrl={cubeta}
+                altText="Línea PLASTISOL"
+                title="Línea PLASTISOL"
+                buttonLabel="Ver Producto"
+                buttonHref="/producto/plastisol"
+                titleBgColor="bg-rojo"
+            />
+            <ProductCard
+                imageUrl={cubeta}
+                altText="Línea SUBLISOL"
+                title="Línea SUBLISOL"
+                buttonLabel="Ver Producto"
+                buttonHref="/producto/sublisol"
+                titleBgColor="bg-azulprimario"
+            />
+            <ProductCard
+                imageUrl={cubeta}
+                altText="Línea POLYPRINT"
+                title="Línea POLYPRINT"
+                buttonLabel="Ver Producto"
+                buttonHref="/producto/polyprint"
+                titleBgColor="bg-rojo"
+            />
         </div>
     </div>
 </Layout>
