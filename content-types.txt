@@ -1,0 +1,10 @@
+Producto.
+
+nombre (string, requerido)
+descripcion (rich text, requerido)
+caracteristica(string, requerido)
+icono_caracteristica(svg, requerido)
+imagen (media, requerido)
+pdf_ficha_tecnica (media, opcional)
+categoria (relación many-to-one con Categoría, requerido)
+destacado (boolean, opcional)

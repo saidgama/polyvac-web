@@ -4,7 +4,6 @@ import CategoryBanner from "../components/Category_banner.astro";
 import bg from '../assets/acercade/acercabg.png';
 import Badge from "../components/Badge.astro";
 import { Image } from "astro:assets";
-import img1 from '../assets/acercade/img1.jpg';
 import img2 from '../assets/acercade/img2.jpg';
 import img3 from '../assets/acercade/img3.jpg';
 import img4 from '../assets/acercade/img4.jpg';  
@@ -36,10 +35,6 @@ const description = "Pagina para descubrir acerca de la empresa.";
                 <div id="default-carousel" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative w-full aspect-video overflow-hidden rounded-lg bg-gray-100">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img1} class="w-full h-full object-cover" alt="...">
-                    </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <Image src={img2} class="w-full h-full object-cover" alt="Historia empresa">
