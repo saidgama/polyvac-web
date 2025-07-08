@@ -1,48 +1,69 @@
 ---
-import { Image } from "astro:assets";
-import cubeta from "../assets/cubeta.png";
-const { titulo, badgeType, badge, descripcion, buttonHref, triangleColor = 1 } = Astro.props;
+import { Image, inferRemoteSize } from "astro:assets";
 
-// Determinar el color del triángulo
-let selectedColor = 'bg-azulprimario/90'; // Color por defecto
+const { titulo, caracteristica, iconoCaracteristica, imagen, descripcion, buttonHref, categoryColor } = Astro.props;
 
-if (triangleColor === 1) selectedColor = 'bg-azulprimario/90';
-else if (triangleColor === 2) selectedColor = 'bg-rojo/90';
-else if (triangleColor === 3) selectedColor = 'bg-green-600/90';
-else if (triangleColor === 4) selectedColor = 'bg-orange-500/90';
-else if (triangleColor === 5) selectedColor = 'bg-purple-600/90';
+// Verificar si la imagen existe antes de intentar obtener dimensiones
+let width = 300, height = 300;
+if (imagen) {
+  try {
+    const dimensions = await inferRemoteSize(imagen);
+    width = dimensions.width;
+    height = dimensions.height;
+  } catch (error) {
+    console.error('Error getting image dimensions:', error);
+  }
+}
 
-const triangleClass = `absolute bottom-0 left-0 px-6 py-4 ${selectedColor} z-10 flex items-center justify-center min-w-[140px]`;
+// Determinar el color del triángulo, se obtiene de la relacion entre producto y su categoría, obtener el color de la categoría a la que pertenece el producto
+const triangleClass = `absolute bottom-0 left-0 px-6 py-4 z-10 flex items-center justify-center min-w-[140px]`;
+const triangleStyle = `background-color: ${categoryColor}; opacity: 0.9; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);`;
 ---
-  <div class="flex flex-col md:flex-row items-center md:items-stretch bg-[#E5E5E5] m-8 shadow-md font-fuenteprincipal relative">
+
+  <div class="flex flex-col md:flex-row items-center md:items-stretch bg-[#E5E5E5] shadow-md font-fuenteprincipal relative">
    
     <div class="flex-shrink-0 flex items-center justify-center w-full md:w-auto p-5 relative">
+       <!-- Triángulo con transparencia y título -->
         <div class={triangleClass}
-          style="clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);">
+          style={triangleStyle}>
           <div class="text-center px-2">
             <span class="text-white text-lg md:text-xl font-light block">Linea</span>
-            <span class="text-white text-2xl md:text-xl lg:text-2xl font-bold leading-tight">{titulo}</span>
+            <span class="text-white text-2xl md:text-xl lg:text-2xl font-bold leading-tight">{titulo || 'Sin título'}</span>
           </div>
         </div>
       <div class="w-full md:w-48 xl:w-60 flex items-center justify-center relative">
-        <Image src={cubeta} alt="Imagen de Producto" class="w-full h-full object-contain z-0" />
-        <!-- Triángulo con transparencia y título -->
-        
+        {imagen ? (
+          <Image 
+            src={imagen} 
+            alt={`Imagen de ${titulo || 'Producto'}`}
+            width={width}
+            height={height}
+            format="webp"
+            class="w-full h-full object-contain z-0" 
+          />
+        ) : (
+          <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+            <span class="text-gray-500">Sin imagen</span>
+          </div>
+        )}
       </div>
     </div>
     <!-- Info --> 
     <div class="flex flex-col justify-center p-4 md:p-8 flex-1">
       <div class="flex items-center mb-2">
         <span class="w-10 h-10 bg-azulprimario rounded-md flex items-center justify-center mr-3">
-            <svg class="w-8 h-8 fill-white" viewBox="0 0 41 42" fill="none">
-            <path d="M20.9698 32.9583C21.3115 32.9298 21.6033 32.7946 21.8454 32.5526C22.0874 32.3106 22.2084 32.0187 22.2084 31.6771C22.2084 31.2785 22.0802 30.9581 21.824 30.7161C21.5677 30.4741 21.2403 30.3673 20.8417 30.3958C19.6743 30.4812 18.4358 30.1609 17.1261 29.4349C15.8164 28.7088 14.9907 27.392 14.649 25.4844C14.5921 25.1712 14.4426 24.9149 14.2006 24.7156C13.9585 24.5163 13.6809 24.4167 13.3677 24.4167C12.9691 24.4167 12.6417 24.5661 12.3855 24.8651C12.1292 25.1641 12.0438 25.5128 12.1292 25.9114C12.6132 28.5024 13.7521 30.3531 15.5459 31.4635C17.3396 32.5739 19.1476 33.0722 20.9698 32.9583ZM20.5 38.0833C16.5993 38.0833 13.3464 36.7451 10.7412 34.0687C8.13598 31.3923 6.83337 28.0611 6.83337 24.075C6.83337 21.2278 7.96514 18.1314 10.2287 14.7859C12.4922 11.4404 15.916 7.81735 20.5 3.91666C25.0841 7.81735 28.5079 11.4404 30.7714 14.7859C33.0349 18.1314 34.1667 21.2278 34.1667 24.075C34.1667 28.0611 32.8641 31.3923 30.2589 34.0687C27.6537 36.7451 24.4007 38.0833 20.5 38.0833ZM20.5 34.6667C23.4612 34.6667 25.9098 33.663 27.8459 31.6557C29.782 29.6484 30.75 27.1215 30.75 24.075C30.75 21.9965 29.8888 19.6476 28.1662 17.0281C26.4436 14.4087 23.8882 11.5472 20.5 8.44374C17.1118 11.5472 14.5565 14.4087 12.8339 17.0281C11.1113 19.6476 10.25 21.9965 10.25 24.075C10.25 27.1215 11.2181 29.6484 13.1542 31.6557C15.0903 33.663 17.5389 34.6667 20.5 34.6667Z" fill="white"/>
-          </svg>
-          </span>
-        <span class="text-xl font-semibold text-azulprimario">{badge}</span>
+          <!-- Icono de badge/caracteristica, aqui va el icono svg de la caracterisica que se fetchea del producto -->
+          {iconoCaracteristica ? (
+            <Fragment set:html={iconoCaracteristica} />
+          ) : (
+            <div class="w-6 h-6 bg-white rounded"></div>
+          )}
+        </span>
+        <span class="text-xl font-semibold text-azulprimario">{caracteristica || 'Sin característica'}</span>
       </div>
-      <p class="text-azulsecundario font-regular mb-6">{descripcion}</p>
+      <p class="text-azulsecundario font-regular mb-6">{descripcion || 'Sin descripción'}</p>
       <a
-        href={buttonHref}
+        href={buttonHref || '#'}
         class="inline-flex items-center bg-azulprimario text-white text-lg lg:text-lg xl:text-xl  px-8 py-4 w-60 lg:w-40 xl:w-60 hover:bg-blue-700 transition"
       >
         Ver Producto

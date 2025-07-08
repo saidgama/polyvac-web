@@ -1,22 +1,28 @@
 ---
-import Indexcard from "../components/Indexcard.astro";
-import ProductCard from "../components/ProductCard.astro";
-import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+const title = "Industrias Polyvac";
+const description = "Inicio de la pagina.";
+
+import CategoryCard from "../components/CategoryCard.astro";
+import ProductCardSmall from "../components/ProductCardSmall.astro";
+
 import bgHero from "../assets/hero/test.png";
 import logoHero from "../assets/hero/logohero.png";
-import card1 from "../assets/index/card1.png";
-import card2 from "../assets/index/card2.png";
-import card3 from "../assets/index/card3.png";
-import card4 from "../assets/index/card4.png";
-import cubeta from "../assets/cubeta.png";
 import Badge from "../components/Badge.astro";
-// Logos para certificaciones
 import oekotexLogo from '../assets/acercade/oekotex.png';
 import bluesignLogo from '../assets/acercade/bluesign.png';  
 import bureauVeritasLogo from '../assets/acercade/bureau.png';
-const title = "Industrias Polyvac";
-const description = "Inicio de la pagina.";
+
+// Importar funciones de Strapi
+import { getCategorias, getProductosDestacados, getStrapiMedia } from '../lib/strapi.js';
+
+// Fetch datos reales de Strapi
+const categoriasResponse = await getCategorias();
+const productosDestacadosResponse = await getProductosDestacados();
+
+const categorias = categoriasResponse.data || [];
+const productosDestacados = productosDestacadosResponse.data || [];
 ---
 
 <Layout title={title} description={description}>
@@ -70,84 +76,36 @@ const description = "Inicio de la pagina.";
         </div>
     </section>
 
+    <!-- Sección de cards de categorias -->
     <Badge text="Nuestros Productos"/>
 
-    <Indexcard
-        imageUrl={card1}
-        altText="Tinta para serigrafía base agua"
-        title="Serigrafía"
-        description="Base Agua y Plastisol"
-        buttonLabel="Ver tintas para Serigrafía"
-        buttonHref="/categoria/serigrafia"
-        position="right"
-    />
-    <Indexcard
-        imageUrl={card2}
-        altText="Tinta para Sublimación base agua"
-        title="Sublimación"
-        description="Base Agua y Base solvente"
-        buttonLabel="Ver tintas para Sublimación"
-        buttonHref="/categoria/sublimacion"
-        position="left"
-    />
-    <Indexcard
-        imageUrl={card3}
-        altText="Tinta para Offset"
-        title="Offset"
-        description="Tintas para Offset"
-        buttonLabel="Ver tintas para Offset"
-        buttonHref="/categoria/offset"
-        position="right"
-    />
-    <Indexcard
-        imageUrl={card4}
-        altText="Igualación de Color"
-        title="Igualación de Color"
-        description="Servicio de igualación de color personalizado"
-        buttonLabel="Ver igualación de Color"
-        buttonHref="/categoria/igualacion"
-        position="left"
-    />
+    {categorias.map((categoria, index) => (
+        <CategoryCard
+            imageUrl={getStrapiMedia(categoria.imagen?.url)}
+            altText={categoria.imagen?.alternativeText || `Imagen de ${categoria.nombre}`}
+            title={categoria.nombre}
+            description={categoria.descripcion}
+            buttonLabel={`Ver tintas para ${categoria.nombre}`}
+            buttonHref={`/categoria/${categoria.slug}`}
+            position={index % 2 === 0 ? "right" : "left"}
+        />
+    ))}
 
     <Badge text="Productos destacados" />
 
     <!-- Sección de productos destacados -->
     <div class="mx-auto max-w-7xl px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ProductCard
-                imageUrl={cubeta}
-                altText="Línea AQUAFLEX"
-                title="AQUAFLEX"
-                buttonLabel="Ver Producto"
-                buttonHref="/producto/aquaflex"
-                titleBgColor="bg-azulprimario"
-                triangleColor={1}
-            />
-            <ProductCard
-                imageUrl={cubeta}
-                altText="Línea PLASTISOL"
-                title="PLASTISOL"
-                buttonLabel="Ver Producto"
-                buttonHref="/producto/plastisol"
-                titleBgColor="bg-rojo"
-                triangleColor={2}
-            />
-            <ProductCard
-                imageUrl={cubeta}
-                altText="Línea SUBLISOL"
-                title="SUBLISOL"
-                buttonLabel="Ver Producto"
-                buttonHref="/producto/sublisol"
-                triangleColor={3}
-            />
-            <ProductCard
-                imageUrl={cubeta}
-                altText="Línea POLYPRINT"
-                title="POLYPRINT"
-                buttonLabel="Ver Producto"
-                buttonHref="/producto/polyprint"
-                triangleColor={4}
-            />
+            {productosDestacados.map(producto => (
+                <ProductCardSmall
+                    imageUrl={getStrapiMedia(producto.imagen?.url)}
+                    altText={producto.imagen?.alternativeText || `Imagen de ${producto.nombre}`}
+                    title={producto.nombre}
+                    buttonLabel="Ver Producto"
+                    buttonHref={`/producto/${producto.slug}`}
+                    categoryColor={producto.categoria?.Color || "#3B82F6"}
+                />
+            ))}
         </div>
     </div>
 

@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 import { Image } from "astro:assets";
-import productImage from "../assets/cubeta.png";
+// import productImage from "../assets/cubeta.png"; // Imagen no encontrada - comentada temporalmente
 
 const title = "Cotizador - Industrias Polyvac";
 const description = "Solicita una cotización personalizada para nuestros productos de serigrafía, sublimación y offset";
@@ -171,9 +171,9 @@ const description = "Solicita una cotización personalizada para nuestros produc
 
 </Layout>
 
-<script define:vars={{ productImage }}>
-  // Global product image variable
-  window.PRODUCT_IMAGE = productImage;
+<script>
+  // Global product image variable - temporalmente sin imagen
+  // window.PRODUCT_IMAGE = productImage;
   class QuoteCart {
     constructor() {
       this.storageKey = 'polyvac-quote-cart';

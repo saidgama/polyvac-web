@@ -1,0 +1,190 @@
+import qs from "qs";
+
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
+const STRAPI_TOKEN = import.meta.env.STRAPI_API_TOKEN;
+
+export async function fetchAPI(path, options = {}) {
+  const { 
+    populate = {},
+    filters = {},
+    sort = [],
+    pagination = {},
+    fields = []
+  } = options;
+
+  // Construir query con qs (como en el ejemplo de Strapi v5)
+  const query = qs.stringify({
+    populate,
+    filters,
+    sort,
+    pagination,
+    fields
+  }, { encodeValuesOnly: true });
+
+  const url = new URL(`/api${path}`, STRAPI_URL);
+  if (query) url.search = query;
+
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  if (STRAPI_TOKEN) {
+    headers.Authorization = `Bearer ${STRAPI_TOKEN}`;
+  }
+
+  try {
+    const response = await fetch(url, { 
+      headers,
+      // Timeout más corto para evitar conexiones colgadas
+      signal: AbortSignal.timeout(10000) // 10 segundos
+    });
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Strapi error response:', {
+        status: response.status,
+        statusText: response.statusText,
+        url: url.toString(),
+        errorText
+      });
+      throw new Error(`Failed to fetch from Strapi: ${response.status} ${response.statusText} - ${errorText}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Strapi fetch error:', error.message);
+    throw error;
+  }
+}
+
+// Helper para construir URLs de imágenes de Strapi
+export function getStrapiMedia(url) {
+  if (!url) return null;
+  if (url.startsWith('http')) return url;
+  return `${STRAPI_URL}${url}`;
+}
+
+// Helper para obtener el SVG del ícono como string
+export async function getStrapiSVG(iconoUrl) {
+  if (!iconoUrl) return '';
+  
+  try {
+    const response = await fetch(getStrapiMedia(iconoUrl));
+    if (!response.ok) return '';
+    const svgContent = await response.text();
+    // Verificar que el contenido sea realmente un SVG
+    if (svgContent && svgContent.trim().includes('<svg')) {
+      return svgContent.trim();
+    }
+    return '';
+  } catch (error) {
+    console.error('Error fetching SVG:', error);
+    return '';
+  }
+}
+
+// Funciones específicas para tu aplicación
+export async function getCategorias() {
+  return await fetchAPI('/categorias', {
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      }
+    },
+    sort: ['createdAt:asc']
+  });
+}
+
+export async function getProductosDestacados() {
+  return await fetchAPI('/productos', {
+    filters: {
+      destacado: { $eq: true }
+    },
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      },
+      categoria: {
+        fields: ['nombre', 'Color', 'slug']
+      },
+      icono_caracteristica: {
+        fields: ['url']
+      }
+    },
+    sort: ['createdAt:asc']
+  });
+}
+
+// Función para obtener una categoría específica por slug
+export async function getCategoriaBySlug(slug) {
+  return await fetchAPI('/categorias', {
+    filters: {
+      slug: { $eq: slug }
+    },
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      }
+    }
+  });
+}
+
+// Función para obtener productos de una categoría específica
+export async function getProductosByCategoria(categoriaSlug) {
+  return await fetchAPI('/productos', {
+    filters: {
+      categoria: {
+        slug: { $eq: categoriaSlug }
+      }
+    },
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      },
+      categoria: {
+        fields: ['nombre', 'Color', 'slug']
+      },
+      icono_caracteristica: {
+        fields: ['url']
+      }
+    },
+    sort: ['createdAt:asc']
+  });
+}
+
+// Función para obtener todas las categorías (para generateStaticPaths)
+export async function getAllCategoriasSlugs() {
+  return await fetchAPI('/categorias', {
+    fields: ['slug']
+  });
+}
+
+// Función para obtener un producto específico por slug
+export async function getProductoBySlug(slug) {
+  return await fetchAPI('/productos', {
+    filters: {
+      slug: { $eq: slug }
+    },
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      },
+      categoria: {
+        fields: ['nombre', 'Color', 'slug']
+      },
+      icono_caracteristica: {
+        fields: ['url']
+      },
+      pdf: {
+        fields: ['url', 'name']
+      }
+    }
+  });
+}
+
+// Función para obtener todos los productos (para generateStaticPaths)
+export async function getAllProductosSlugs() {
+  return await fetchAPI('/productos', {
+    fields: ['slug']
+  });
+}

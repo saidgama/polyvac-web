@@ -1,161 +1,92 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import CategoryBanner from "../../components/Category_banner.astro";
+import PageBanner from "../../components/PageBanner.astro";
 import Badge from "../../components/Badge.astro";
 import ProductCardList from "../../components/ProductCardList.astro";
-import productosData from '../../data/productos.js';
 
-// Importar imágenes de fondo para cada categoría
-import bgSerigrafia from '../../assets/index/card1.png';
-import bgIgualacion from '../../assets/index/card2.png';
-import bgSublimacion from '../../assets/index/card3.png';
-import bgOffset from '../../assets/index/card4.png';
-
-// Datos de categorías con información específica
-const categoriesData = {
-  serigrafia: {
-    title: "Serigrafía - Industrias Polyvac",
-    bannerTitle: "Tintas para Serigrafía",
-    image: bgSerigrafia,
-    subcategories: [
-      {
-        name: "Base Agua",
-        badge: "Base Agua",
-        filter: (p) => p.titulo.toLowerCase().includes("aqua"),
-        triangleColor: 1,
-        badgeType: 1
-      },
-      {
-        name: "Plastisol",
-        badge: "Plastisol", 
-        filter: (p) => p.titulo.toLowerCase().includes("plast"),
-        triangleColor: 2,
-        badgeType: 2
-      }
-    ]
-  },
-  igualacion: {
-    title: "Igualación - Industrias Polyvac",
-    bannerTitle: "Tintas para Igualación",
-    image: bgIgualacion,
-    subcategories: [
-      {
-        name: "Igualación",
-        badge: "Igualación",
-        filter: (p) => true, // Todos los productos de igualación
-        triangleColor: 3,
-        badgeType: 1
-      }
-    ]
-  },
-  sublimacion: {
-    title: "Sublimación - Industrias Polyvac", 
-    bannerTitle: "Tintas para Sublimación",
-    image: bgSublimacion,
-    subcategories: [
-      {
-        name: "Sublimación",
-        badge: "Sublimación",
-        filter: (p) => true, // Todos los productos de sublimación
-        triangleColor: 4,
-        badgeType: 2
-      }
-    ]
-  },
-  offset: {
-    title: "Offset - Industrias Polyvac",
-    bannerTitle: "Tintas para Offset", 
-    image: bgOffset,
-    subcategories: [
-      {
-        name: "Offset",
-        badge: "Offset",
-        filter: (p) => true, // Todos los productos de offset
-        triangleColor: 5,
-        badgeType: 1
-      }
-    ]
-  }
-};
+// Importar funciones de Strapi
+import { getCategoriaBySlug, getProductosByCategoria, getAllCategoriasSlugs, getStrapiMedia, getStrapiSVG } from '../../lib/strapi.js';
 
 // Función para generar rutas estáticas
 export async function getStaticPaths() {
-  return [
-    { params: { slug: 'serigrafia' } },
-    { params: { slug: 'igualacion' } },
-    { params: { slug: 'sublimacion' } },
-    { params: { slug: 'offset' } }
-  ];
+  try {
+    const categoriasResponse = await getAllCategoriasSlugs();
+    const categorias = categoriasResponse.data || [];
+    
+    return categorias.map((categoria) => ({
+      params: { slug: categoria.slug }
+    }));
+  } catch (error) {
+    console.error('Error fetching categories for static paths:', error);
+    return [];
+  }
 }
 
+// Obtener el slug de los parámetros
 const { slug } = Astro.params;
-const categoryData = categoriesData[slug];
 
-if (!categoryData) {
+// Fetch datos de Strapi
+const categoriaResponse = await getCategoriaBySlug(slug);
+const productosResponse = await getProductosByCategoria(slug);
+
+// Verificar que la categoría existe
+if (!categoriaResponse.data || categoriaResponse.data.length === 0) {
   return Astro.redirect('/404');
 }
 
-const title = categoryData.title;
-const description = "Página de categoría";
+const categoria = categoriaResponse.data[0];
+const productosCategoria = productosResponse.data || [];
 
-// Filtrar productos de la categoría actual
-const productosCategoria = productosData.filter(p => p.categoria && p.categoria.toLowerCase() === slug);
+// Obtener contenido SVG para cada producto
+const productosConIconos = await Promise.all(
+  productosCategoria.map(async (producto) => {
+    const iconoSVG = await getStrapiSVG(producto.icono_caracteristica?.url);
+    return {
+      ...producto,
+      iconoSVGContent: iconoSVG
+    };
+  })
+);
 
-// Si no hay productos reales, crear datos dummy basados en la categoría
-let productos = productosCategoria;
-if (productos.length === 0) {
-  // Datos dummy para categorías sin productos
-  productos = [
-    {
-      id: `${slug}-1`,
-      titulo: `${slug.toUpperCase()} 1`,
-      descripcion: `Descripción del primer producto de ${slug}. Ideal para aplicaciones profesionales con alta calidad y durabilidad.`,
-      categoria: slug,
-      imagenes: [],
-      fichaTecnica: '',
-      presentaciones: [],
-      colores: []
-    },
-    {
-      id: `${slug}-2`, 
-      titulo: `${slug.toUpperCase()} 2`,
-      descripcion: `Descripción del segundo producto de ${slug}. Diseñado para uso industrial con tecnología avanzada.`,
-      categoria: slug,
-      imagenes: [],
-      fichaTecnica: '',
-      presentaciones: [],
-      colores: []
-    }
-  ];
-}
+const title = categoria.nombre;
+const description = `Productos de ${categoria.nombre} - ${categoria.descripcion}`;
 ---
 
 <Layout title={title} description={description}>
-    <CategoryBanner imageUrl={categoryData.image} titulo={categoryData.bannerTitle}/>
+    {/* Banner con imagen o solo texto */}
+    {categoria.imagen?.url ? (
+        <PageBanner 
+            imageUrl={getStrapiMedia(categoria.imagen.url)} 
+            titulo={categoria.nombre}
+        />
+    ) : (
+        <section class="bg-azulprimario py-16">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <h1 class="text-white text-3xl md:text-5xl font-bold">
+                    {categoria.nombre}
+                </h1>
+            </div>
+        </section>
+    )}
     
-    {categoryData.subcategories.map(subcategory => {
-        const productosSubcategoria = productos.filter(subcategory.filter);
-        
-        return (
-            <>
-                <div class="my-15">
-                    <Badge text={subcategory.name}/>
-                </div>
-                <section>
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
-                        {productosSubcategoria.map(producto => (
-                          <ProductCardList
-                            titulo={producto.titulo}
-                            badgeType={subcategory.badgeType}
-                            badge={subcategory.badge}
-                            descripcion={producto.descripcion}
-                            buttonHref={`/producto/${producto.id}`}
-                            triangleColor={subcategory.triangleColor}
-                          />
-                        ))}
-                    </div>
-                </section>
-            </>
-        );
-    })}
+    <div class="my-15">
+        <Badge text={categoria.nombre}/>
+    </div>
+    
+    <section class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {productosConIconos.map(producto => (
+                <ProductCardList
+                    titulo={producto.nombre}
+                    caracteristica={producto.caracteristica}
+                    iconoCaracteristica={producto.iconoSVGContent}
+                    imagen={getStrapiMedia(producto.imagen?.url)}
+                    descripcion={producto.descripcion}
+                    buttonHref={`/producto/${producto.slug}`}
+                    categoryColor={producto.categoria?.Color || "#3B82F6"}
+                />
+            ))}
+        </div>
+    </section>
+      
 </Layout>

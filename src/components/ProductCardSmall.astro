@@ -1,0 +1,63 @@
+---
+import { Image, inferRemoteSize } from "astro:assets";
+
+const {
+  imageUrl,
+  altText = "",
+  title,
+  buttonLabel = "Ver Producto",
+  buttonHref = "#",
+  categoryColor = "#3B82F6" // Color por defecto en lugar de triangleColor
+} = Astro.props;
+
+// Obtener dimensiones automáticamente de la imagen remota
+const { width, height } = await inferRemoteSize(imageUrl);
+
+// Determinar el estilo del triángulo con color dinámico y transparencia
+const triangleClass = `absolute bottom-0 left-0 px-6 py-4 z-10 flex items-center justify-center min-w-[140px]`;
+const triangleStyle = `background-color: ${categoryColor}; opacity: 0.9; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);`;
+---
+
+<div class="bg-white rounded-lg shadow-2xl overflow-hidden max-w-sm mx-auto font-fuenteprincipal">
+  <!-- Imagen del producto -->
+  <div class="relative h-64">
+    <Image 
+      src={imageUrl} 
+      alt={altText || `Imagen de ${title || 'Producto'}`}
+      width={width}
+      height={height}
+      format="webp"
+      class="w-full h-64 object-cover"
+    />
+    <div class={triangleClass}
+          style={triangleStyle}>
+          <div class="text-center">
+            <span class="text-white text-sm font-light block">Linea</span>
+            <span class="text-white text-lg font-bold leading-tight">{title}</span>
+          </div>
+    </div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="p-0">
+    
+    <!-- Botón -->
+    <div class="p-4">
+      {buttonHref && (
+        <a
+          href={buttonHref}
+          class="inline-flex items-center justify-center bg-azulprimario text-white text-base font-medium px-6 py-3 w-full hover:bg-blue-700 transition-colors"
+        >
+          {buttonLabel}
+          <svg class="inline-flex ml-3 w-6 h-6 fill-white" viewBox="0 0 20 11">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"
+            ></path>
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+</div>

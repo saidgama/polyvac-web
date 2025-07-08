@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import CategoryBanner from "../components/Category_banner.astro";
+import PageBanner from "../components/PageBanner.astro";
 import bg from '../assets/acercade/acercabg.png';
 import Badge from "../components/Badge.astro";
 import { Image } from "astro:assets";
@@ -19,7 +19,7 @@ const description = "Pagina para descubrir acerca de la empresa.";
 ---
 
 <Layout title={title} description={description}>
-    <CategoryBanner imageUrl={bg} titulo="Acerca de nosotros"/>
+    <PageBanner imageUrl={bg} titulo="Acerca de nosotros"/>
     
     <!-- Contenido principal -->
     <div class="font-fuenteprincipal">
