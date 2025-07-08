@@ -29,26 +29,15 @@ const currentPath = url.pathname;
 
     <div class="flex md:order-2 space-x-3">
       <div class="hidden md:flex items-center">
-        <svg class="w-6 h-6 fill-gris" viewBox="0 0 26 26">
-          <path
-            d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"
-          ></path>
-        </svg>
+        <button id="search-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+          <svg class="w-7 h-7 fill-gris" viewBox="0 0 26 26">
+            <path
+              d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"
+            ></path>
+          </svg>
+        </button>
       </div>
-      <a
-        href="/cuenta"
-        class="hidden md:inline-flex items-center ml-1 md:ml-3 lg:ml-4 text-sm text-center"
-        title="Mi Cuenta"
-      >
-        <svg
-          class="w-7 h-7 md:w-8 md:h-8 fill-gris hover:fill-azulprimario transition-colors"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"
-          ></path>
-        </svg>
-      </a>
+     
       <a
         href="/cotizador"
         class="relative inline-flex items-center ml-1 md:ml-3 lg:ml-6 text-sm text-center text-white"
@@ -103,12 +92,14 @@ const currentPath = url.pathname;
             ></path>
           </svg>
         </div>
-        <input
-          type="text"
-          id="search-navbar"
-          class="block w-full p-2 ps-10 font-bold text-sm text-gray-900 bg-[#efefef]"
-          placeholder="Buscador..."
-        />
+        <form id="mobile-search-form">
+          <input
+            type="text"
+            id="mobile-search-input"
+            class="block w-full p-2 ps-10 font-bold text-sm text-gray-900 bg-[#efefef] rounded-lg"
+            placeholder="Buscador..."
+          />
+        </form>
       </div>
       <ul
         class="flex flex-col md:p-0 mt-4 bg-white md:bg-white font-bold md:space-x-4 lg:space-x-8 md:flex-row md:mt-0 md:border-0 border-t border-gray-200 md:border-t-0 shadow-lg md:shadow-none"
@@ -206,6 +197,38 @@ const currentPath = url.pathname;
   </div>
 </nav>
 
+<!-- Barra de búsqueda desplegable -->
+<div id="search-bar" class="hidden bg-white border-b border-gray-200 shadow-sm">
+  <div class="container mx-auto px-4 py-4">
+    <form id="header-search-form" class="max-w-2xl mx-auto">
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg class="w-5 h-5 text-gray-400" viewBox="0 0 26 26" fill="currentColor">
+            <path d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"></path>
+          </svg>
+        </div>
+        <input 
+          type="text" 
+          id="header-search-input"
+          name="q" 
+          placeholder="Buscar productos..." 
+          class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          autocomplete="off"
+        />
+        <button 
+          type="button"
+          id="search-close"
+          class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
   const button = document.getElementById("menu-toggle");
   const menu = document.getElementById("navbar-sticky");
@@ -224,6 +247,103 @@ const currentPath = url.pathname;
         } else {
           // Menú se está cerrando
           menuIcon.classList.remove("rotate-90");
+        }
+      }
+    });
+  }
+
+  // Funcionalidad de búsqueda en el header
+  const searchToggle = document.getElementById("search-toggle");
+  const searchBar = document.getElementById("search-bar");
+  const searchClose = document.getElementById("search-close");
+  const headerSearchForm = document.getElementById("header-search-form");
+  const headerSearchInput = document.getElementById("header-search-input");
+  const mobileSearchForm = document.getElementById("mobile-search-form");
+  const mobileSearchInput = document.getElementById("mobile-search-input");
+
+  // Mostrar/ocultar barra de búsqueda
+  if (searchToggle && searchBar) {
+    searchToggle.addEventListener("click", () => {
+      searchBar.classList.toggle("hidden");
+      if (!searchBar.classList.contains("hidden")) {
+        headerSearchInput?.focus();
+      }
+    });
+  }
+
+  // Cerrar barra de búsqueda
+  if (searchClose && searchBar) {
+    searchClose.addEventListener("click", () => {
+      searchBar.classList.add("hidden");
+      if (headerSearchInput) {
+        headerSearchInput.value = "";
+      }
+    });
+  }
+
+  // Manejar envío del formulario de búsqueda
+  if (headerSearchForm && headerSearchInput) {
+    headerSearchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const query = headerSearchInput.value.trim();
+      if (query) {
+        // Redirigir a la página de búsqueda con el query
+        window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
+      }
+    });
+
+    // Búsqueda al presionar Enter
+    headerSearchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const query = headerSearchInput.value.trim();
+        if (query) {
+          window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
+        }
+      }
+    });
+  }
+
+  // Cerrar búsqueda al hacer clic fuera
+  document.addEventListener("click", (e) => {
+    if (searchBar && !searchBar.classList.contains("hidden")) {
+      const isClickInsideSearch = searchBar.contains(e.target) || 
+                                 searchToggle?.contains(e.target);
+      if (!isClickInsideSearch) {
+        searchBar.classList.add("hidden");
+        if (headerSearchInput) {
+          headerSearchInput.value = "";
+        }
+      }
+    }
+  });
+
+  // Cerrar búsqueda con tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && searchBar && !searchBar.classList.contains("hidden")) {
+      searchBar.classList.add("hidden");
+      if (headerSearchInput) {
+        headerSearchInput.value = "";
+      }
+    }
+  });
+
+  // Funcionalidad de búsqueda móvil
+  if (mobileSearchForm && mobileSearchInput) {
+    mobileSearchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const query = mobileSearchInput.value.trim();
+      if (query) {
+        window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
+      }
+    });
+
+    mobileSearchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const query = mobileSearchInput.value.trim();
+        if (query) {
+          window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
         }
       }
     });

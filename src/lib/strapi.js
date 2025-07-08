@@ -188,3 +188,57 @@ export async function getAllProductosSlugs() {
     fields: ['slug']
   });
 }
+
+// Función para obtener todos los productos (para búsqueda del lado del cliente)
+export async function getAllProductos() {
+  return await fetchAPI('/productos', {
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      },
+      categoria: {
+        fields: ['nombre', 'Color', 'slug']
+      },
+      icono_caracteristica: {
+        fields: ['url']
+      }
+    },
+    sort: ['nombre:asc']
+  });
+}
+
+// Función para buscar productos por palabras clave
+export async function searchProductos(query) {
+  if (!query || query.trim() === '') {
+    return { data: [] }; // Retorna vacío si no hay consulta
+  }
+
+  return await fetchAPI('/productos', {
+    filters: {
+      $or: [
+        {
+          nombre: {
+            $containsi: query // $containsi = contiene (case insensitive)
+          }
+        },
+        {
+          descripcion: {
+            $containsi: query
+          }
+        }
+      ]
+    },
+    populate: {
+      imagen: {
+        fields: ['url', 'alternativeText', 'name']
+      },
+      categoria: {
+        fields: ['nombre', 'Color', 'slug']
+      },
+      icono_caracteristica: {
+        fields: ['url']
+      }
+    },
+    sort: ['nombre:asc']
+  });
+}
