@@ -85,7 +85,7 @@ const productosDestacados = productosDestacadosResponse.data || [];
             altText={categoria.imagen?.alternativeText || `Imagen de ${categoria.nombre}`}
             title={categoria.nombre}
             description={categoria.descripcion}
-            buttonLabel={`Ver tintas para ${categoria.nombre}`}
+            buttonLabel={`Ver ${categoria.nombre}`}
             buttonHref={`/categoria/${categoria.slug}`}
             position={index % 2 === 0 ? "right" : "left"}
         />
