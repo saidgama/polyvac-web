@@ -154,8 +154,18 @@ const description = producto.descripcion;
                        class="w-20 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-azulprimario focus:border-azulprimario outline-none transition-colors" />
               </div>
               <div class="flex-1">
-                <button class="w-full bg-azulprimario text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-md">
-                  AÑADIR A LA COTIZACIÓN
+                <button 
+                  id="add-to-cart-btn"
+                  data-product-id={producto.id}
+                  data-product-slug={producto.slug}
+                  data-product-name={producto.nombre}
+                  data-product-description={producto.descripcion}
+                  data-product-category={producto.categoria?.nombre || 'Sin categoría'}
+                  data-product-image={producto.imagen?.url ? getStrapiMedia(producto.imagen.url) : '/placeholder-image.jpg'}
+                  class="w-full bg-azulprimario text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <span class="add-text">AÑADIR A LA COTIZACIÓN</span>
+                  <span class="added-text hidden">✓ YA EN EL COTIZADOR</span>
                 </button>
               </div>
             </div>
@@ -188,3 +198,60 @@ const description = producto.descripcion;
     </section>
   )}
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    
+    if (addToCartBtn && window.polyvacCart) {
+      const productId = addToCartBtn.dataset.productId;
+      
+      // Verificar si ya está en el carrito y actualizar UI
+      function updateButtonState() {
+        const isInCart = window.polyvacCart.isInCart(productId);
+        const addText = addToCartBtn.querySelector('.add-text');
+        const addedText = addToCartBtn.querySelector('.added-text');
+        
+        if (isInCart) {
+          addText.classList.add('hidden');
+          addedText.classList.remove('hidden');
+          addToCartBtn.classList.add('bg-gray-500', 'hover:bg-gray-600');
+          addToCartBtn.classList.remove('bg-azulprimario', 'hover:bg-blue-700');
+          addToCartBtn.disabled = true;
+        } else {
+          addText.classList.remove('hidden');
+          addedText.classList.add('hidden');
+          addToCartBtn.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+          addToCartBtn.classList.add('bg-azulprimario', 'hover:bg-blue-700');
+          addToCartBtn.disabled = false;
+        }
+      }
+      
+      // Estado inicial
+      updateButtonState();
+      
+      // Manejar click
+      addToCartBtn.addEventListener('click', () => {
+        if (window.polyvacCart.isInCart(productId)) {
+          return; // Ya está en el carrito
+        }
+
+        const productData = {
+          id: addToCartBtn.dataset.productId,
+          slug: addToCartBtn.dataset.productSlug,
+          name: addToCartBtn.dataset.productName,
+          description: addToCartBtn.dataset.productDescription,
+          category: addToCartBtn.dataset.productCategory,
+          image: addToCartBtn.dataset.productImage
+        };
+        
+        window.polyvacCart.addItem(productData);
+      });
+      
+      // Escuchar cambios globales del carrito
+      window.polyvacCart.onUpdate(() => {
+        updateButtonState();
+      });
+    }
+  });
+</script>

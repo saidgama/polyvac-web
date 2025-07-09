@@ -34,9 +34,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
             <div class="p-6 border-b border-gray-200">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                  <svg class="w-6 h-6 text-azulprimario" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 9M7 13l-1.5-9m0 0h15m-2.5 8v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"></path>
-                  </svg>
                   <h2 class="text-xl font-bold text-gray-900">Productos Seleccionados</h2>
                 </div>
                 <span id="item-count" class="text-sm text-gray-500">0 productos</span>
@@ -85,9 +82,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
               <div class="flex justify-between items-center mb-2">
                 <span class="text-sm font-medium text-gray-600">Total de productos:</span>
                 <span id="summary-count" class="text-lg font-bold text-azulprimario">0</span>
-              </div>
-              <div class="text-xs text-gray-500">
-                Los precios se calcularán según cantidades y especificaciones
               </div>
             </div>
 
@@ -158,10 +152,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
               >
                 Enviar Solicitud de Cotización
               </button>
-
-              <p class="text-xs text-gray-500 text-center">
-                Al enviar esta solicitud, nos pondremos en contacto contigo en un plazo máximo de 24 horas
-              </p>
             </form>
           </div>
         </div>
@@ -172,102 +162,24 @@ const description = "Solicita una cotización personalizada para nuestros produc
 </Layout>
 
 <script>
-  // Global product image variable - temporalmente sin imagen
-  // window.PRODUCT_IMAGE = productImage;
   class QuoteCart {
     constructor() {
-      this.storageKey = 'polyvac-quote-cart';
-      this.items = this.loadFromStorage();
+      this.cart = window.polyvacCart;
       this.init();
     }
 
     init() {
       this.updateDisplay();
       this.bindEvents();
-    }
-
-    loadFromStorage() {
-      try {
-        const stored = localStorage.getItem(this.storageKey);
-        return stored ? JSON.parse(stored) : this.getDummyData();
-      } catch {
-        return this.getDummyData();
-      }
-    }
-
-    saveToStorage() {
-      try {
-        localStorage.setItem(this.storageKey, JSON.stringify(this.items));
-      } catch (error) {
-        console.error('Error saving to storage:', error);
-      }
-    }
-
-    getDummyData() {
-      // Dummy data for demonstration
-      return [
-        {
-          id: 'aquaflex',
-          name: 'AQUAFLEX',
-          category: 'Serigrafía',
-          description: 'Tinta base agua para estampación textil directa en algodón 100%',
-          image: window.PRODUCT_IMAGE,
-          addedAt: new Date().toISOString()
-        },
-        {
-          id: 'sublisol',
-          name: 'SUBLISOL HT',
-          category: 'Sublimación',
-          description: 'Tinta de sublimación de alta calidad para transferencia térmica',
-          image: window.PRODUCT_IMAGE,
-          addedAt: new Date().toISOString()
-        },
-        {
-          id: 'polyprint',
-          name: 'POLYPRINT HT',
-          category: 'Offset',
-          description: 'Tinta offset de alta performance para impresión comercial',
-          image: window.PRODUCT_IMAGE,
-          addedAt: new Date().toISOString()
-        }
-      ];
-    }
-
-    addItem(product) {
-      const existingIndex = this.items.findIndex(item => item.id === product.id);
       
-      if (existingIndex === -1) {
-        this.items.push({
-          ...product,
-          addedAt: new Date().toISOString()
-        });
-        this.saveToStorage();
+      // Escuchar cambios del carrito
+      this.unsubscribe = this.cart.onUpdate(() => {
         this.updateDisplay();
-        this.showNotification(`${product.name} agregado al cotizador`, 'success');
-      } else {
-        this.showNotification(`${product.name} ya está en el cotizador`, 'info');
-      }
-    }
-
-    removeItem(productId) {
-      const item = this.items.find(item => item.id === productId);
-      this.items = this.items.filter(item => item.id !== productId);
-      this.saveToStorage();
-      this.updateDisplay();
-      
-      if (item) {
-        this.showNotification(`${item.name} eliminado del cotizador`, 'success');
-      }
-    }
-
-    clearCart() {
-      this.items = [];
-      this.saveToStorage();
-      this.updateDisplay();
-      this.showNotification('Cotizador vaciado', 'success');
+      });
     }
 
     updateDisplay() {
+      const items = this.cart.getItems();
       const cartItemsList = document.getElementById('cart-items-list');
       const emptyCart = document.getElementById('empty-cart');
       const addMoreSection = document.getElementById('add-more-section');
@@ -276,13 +188,14 @@ const description = "Solicita una cotización personalizada para nuestros produc
       const submitButton = document.getElementById('submit-quote');
 
       // Update counters
-      itemCount.textContent = `${this.items.length} producto${this.items.length !== 1 ? 's' : ''}`;
-      summaryCount.textContent = this.items.length;
+      const count = items.length;
+      itemCount.textContent = `${count} producto${count !== 1 ? 's' : ''}`;
+      summaryCount.textContent = count;
 
       // Enable/disable submit button
-      submitButton.disabled = this.items.length === 0;
+      submitButton.disabled = count === 0;
 
-      if (this.items.length === 0) {
+      if (count === 0) {
         emptyCart.style.display = 'block';
         addMoreSection.classList.add('hidden');
       } else {
@@ -290,14 +203,13 @@ const description = "Solicita una cotización personalizada para nuestros produc
         addMoreSection.classList.remove('hidden');
 
         // Generate cart items HTML
-        const itemsHTML = this.items.map(item => `
+        const itemsHTML = items.map(item => `
           <div class="p-6 flex items-start gap-4">
             <img 
-              src="${item.image.src}" 
+              src="${item.image}" 
               alt="${item.name}"
-              width="${item.image.width}"
-              height="${item.image.height}"
               class="w-16 h-16 object-cover rounded-lg flex-shrink-0 bg-gray-100"
+              loading="lazy"
             />
             <div class="flex-1 min-w-0">
               <div class="flex items-start justify-between">
@@ -326,16 +238,42 @@ const description = "Solicita una cotización personalizada para nuestros produc
       }
     }
 
+    removeItem(productId) {
+      this.cart.removeItem(productId);
+    }
+
+    clearCart() {
+      this.cart.clearCart();
+    }
+
     bindEvents() {
       const form = document.getElementById('quote-form');
       form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+
+      // Agregar botón de limpiar carrito
+      const clearButton = document.createElement('button');
+      clearButton.type = 'button';
+      clearButton.className = 'text-red-500 hover:text-red-700 text-sm font-medium';
+      clearButton.textContent = 'Vaciar cotizador';
+      clearButton.onclick = () => {
+        if (confirm('¿Estás seguro de que quieres vaciar el cotizador?')) {
+          this.clearCart();
+        }
+      };
+      
+      // Agregar el botón al header del carrito
+      const cartHeader = document.querySelector('#cart-items-list').previousElementSibling;
+      if (cartHeader && this.cart.getCount() > 0) {
+        cartHeader.appendChild(clearButton);
+      }
     }
 
     handleFormSubmit(e) {
       e.preventDefault();
       
-      if (this.items.length === 0) {
-        this.showNotification('Agrega productos antes de solicitar una cotización', 'error');
+      const items = this.cart.getItems();
+      if (items.length === 0) {
+        this.cart.showNotification('Agrega productos antes de solicitar una cotización', 'error');
         return;
       }
 
@@ -343,7 +281,7 @@ const description = "Solicita una cotización personalizada para nuestros produc
       const contactData = Object.fromEntries(formData);
       
       // Generate email content
-      const emailBody = this.generateEmailBody(contactData);
+      const emailBody = this.generateEmailBody(contactData, items);
       
       // Create mailto link
       const subject = encodeURIComponent('Solicitud de Cotización - Industrias Polyvac');
@@ -354,10 +292,10 @@ const description = "Solicita una cotización personalizada para nuestros produc
       window.location.href = mailtoLink;
       
       // Show success message
-      this.showNotification('Solicitud de cotización enviada correctamente', 'success');
+      this.cart.showNotification('Solicitud de cotización enviada correctamente', 'success');
     }
 
-    generateEmailBody(contactData) {
+    generateEmailBody(contactData, items) {
       const currentDate = new Date().toLocaleDateString('es-MX');
       
       let body = `SOLICITUD DE COTIZACIÓN\n\n`;
@@ -370,7 +308,7 @@ const description = "Solicita una cotización personalizada para nuestros produc
       body += `Empresa: ${contactData.company || 'No proporcionado'}\n\n`;
       
       body += `PRODUCTOS DE INTERÉS:\n`;
-      this.items.forEach((item, index) => {
+      items.forEach((item, index) => {
         body += `${index + 1}. ${item.name}\n`;
         body += `   Categoría: ${item.category}\n`;
         body += `   Descripción: ${item.description}\n\n`;
@@ -385,39 +323,32 @@ const description = "Solicita una cotización personalizada para nuestros produc
       return body;
     }
 
-    showNotification(message, type = 'info') {
-      const toast = document.createElement('div');
-      const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-azulprimario';
-      
-      toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 max-w-sm transition-all duration-300 transform translate-x-full`;
-      toast.innerHTML = `
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-          </svg>
-          <span class="text-sm">${message}</span>
-        </div>
-      `;
-      
-      document.body.appendChild(toast);
-      
-      // Animate in
-      setTimeout(() => {
-        toast.classList.remove('translate-x-full');
-      }, 100);
-      
-      // Animate out and remove
-      setTimeout(() => {
-        toast.classList.add('translate-x-full');
-        setTimeout(() => toast.remove(), 300);
-      }, 4000);
+    destroy() {
+      if (this.unsubscribe) {
+        this.unsubscribe();
+      }
     }
   }
 
-  // Initialize cart
-  const quoteCart = new QuoteCart();
+  // Initialize cart manager
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.polyvacCart) {
+      window.quoteCart = new QuoteCart();
+    } else {
+      // Si el cart manager no está listo, esperar
+      setTimeout(() => {
+        if (window.polyvacCart) {
+          window.quoteCart = new QuoteCart();
+        }
+      }, 100);
+    }
+  });
 
-  // Make cart globally available for integration with product pages
-  window.polyvacQuoteCart = quoteCart;
+  // Cleanup al salir de la página
+  window.addEventListener('beforeunload', () => {
+    if (window.quoteCart) {
+      window.quoteCart.destroy();
+    }
+  });
 </script>
 </Layout>

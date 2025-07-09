@@ -1,9 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/header/logo3.png";
+import { getCategorias } from "../lib/strapi.js";
 
 const url = new URL(Astro.request.url);
 const currentPath = url.pathname;
+
+// Obtener categorías desde Strapi
+let categorias = [];
+try {
+  const response = await getCategorias();
+  categorias = response.data || [];
+} catch (error) {
+  console.error('Error obteniendo categorías:', error);
+}
 ---
 
 <nav class="bg-white sticky w-full z-20 top-0 start-0 font-fuenteprincipal shadow-sm border-b border-gray-100">
@@ -41,9 +51,11 @@ const currentPath = url.pathname;
       <a
         href="/cotizador"
         class="relative inline-flex items-center ml-1 md:ml-3 lg:ml-6 text-sm text-center text-white"
+        id="cart-link"
       >
         <svg
-          class="w-8 h-8 md:w-10 md:h-10 fill-gris hover:fill-azulprimario"
+          id="cart-icon"
+          class="w-8 h-8 md:w-10 md:h-10 fill-gris hover:fill-azulprimario transition-all duration-300"
           viewBox="0 0 33 36"
         >
           <path
@@ -51,9 +63,12 @@ const currentPath = url.pathname;
           ></path>
         </svg>
         <div
-          class="absolute inline-flex items-center justify-center w-5 h-5 md:w-6 md:h-6 text-xs font-base text-white bg-azulprimario rounded-full -top-1 md:-top-2 -end-3"
+          class="absolute inline-flex items-center justify-center w-5 h-5 md:w-6 md:h-6 text-xs font-base text-white bg-azulprimario rounded-full -top-1 md:-top-2 -end-3 transition-all duration-300"
+          data-cart-counter
+          id="cart-counter"
+          style="display: none;"
         >
-          3
+          0
         </div>
       </a>
       <h1
@@ -148,6 +163,51 @@ const currentPath = url.pathname;
             Acerca de Nosotros
           </a>
         </li>
+        
+        <!-- Dropdown de Categorías -->
+        <li class="border-b border-gray-100 md:border-b-0 relative">
+          <button
+            id="categories-dropdown-button"
+            class="group relative flex items-center w-full py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent text-gray-700 md:text-gris"
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
+            >
+            </span>
+            <span class="mr-2">Categorías</span>
+            <svg 
+              class="w-4 h-4 transition-transform duration-300" 
+              id="categories-dropdown-icon"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <!-- Dropdown Menu -->
+          <div
+            id="categories-dropdown-menu"
+            class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+          >
+            {categorias.length > 0 ? (
+              categorias.map((categoria) => (
+                <a
+                  href={`/categoria/${categoria.slug}`}
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-azulprimario transition-colors"
+                >
+                  {categoria.nombre}
+                </a>
+              ))
+            ) : (
+              <div class="px-4 py-2 text-sm text-gray-500">
+                No hay categorías disponibles
+              </div>
+            )}
+          </div>
+        </li>
+        
         <li class="border-b border-gray-100 md:border-b-0">
           <a
             href="/contacto"
@@ -189,7 +249,7 @@ const currentPath = url.pathname;
               class:list={{ "opacity-100": currentPath === "/cuenta", "opacity-0": currentPath !== "/cuenta" }}
             >
             </span>
-            Mi Cuenta
+            Cuenta
           </a>
         </li>
       </ul>
@@ -348,4 +408,240 @@ const currentPath = url.pathname;
       }
     });
   }
+
+  // Inicializar contador del carrito cuando la página cargue
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.polyvacCart) {
+      window.polyvacCart.updateAllCounters();
+    }
+  });
+
+  // Escuchar eventos de actualización del carrito
+  window.addEventListener('cartUpdated', () => {
+    // El counter se actualiza automáticamente via updateAllCounters()
+    // Agregar animación al icono del carrito
+    animateCartIcon();
+  });
+
+  // Función para animar el icono del carrito
+  function animateCartIcon() {
+    const cartIcon = document.getElementById('cart-icon');
+    const cartCounter = document.getElementById('cart-counter');
+    
+    if (cartIcon && cartCounter) {
+      // Remover clases de animación anteriores
+      cartIcon.classList.remove('cart-bounce', 'cart-pulse', 'cart-wiggle', 'cart-highlight');
+      cartCounter.classList.remove('cart-pulse');
+      
+      // Forzar reflow para asegurar que las clases se remuevan
+      cartIcon.offsetHeight;
+      
+      // Agregar animaciones
+      cartIcon.classList.add('cart-bounce', 'cart-highlight');
+      cartCounter.classList.add('cart-pulse');
+      
+      // Remover las clases después de la animación
+      setTimeout(() => {
+        cartIcon.classList.remove('cart-bounce', 'cart-highlight');
+        cartCounter.classList.remove('cart-pulse');
+      }, 800);
+    }
+  }
+
+  // Funcionalidad del dropdown de categorías
+  const categoriesDropdownButton = document.getElementById('categories-dropdown-button');
+  const categoriesDropdownMenu = document.getElementById('categories-dropdown-menu');
+  const categoriesDropdownIcon = document.getElementById('categories-dropdown-icon');
+
+  if (categoriesDropdownButton && categoriesDropdownMenu && categoriesDropdownIcon) {
+    // Toggle dropdown al hacer clic en el botón
+    categoriesDropdownButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const isHidden = categoriesDropdownMenu.classList.contains('hidden');
+      
+      // Cerrar otros dropdowns si los hay
+      closeAllDropdowns();
+      
+      if (isHidden) {
+        // Mostrar dropdown
+        categoriesDropdownMenu.classList.remove('hidden');
+        categoriesDropdownIcon.classList.add('rotate-180');
+      } else {
+        // Ocultar dropdown
+        categoriesDropdownMenu.classList.add('hidden');
+        categoriesDropdownIcon.classList.remove('rotate-180');
+      }
+    });
+
+    // Cerrar dropdown al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!categoriesDropdownButton.contains(e.target) && !categoriesDropdownMenu.contains(e.target)) {
+        categoriesDropdownMenu.classList.add('hidden');
+        categoriesDropdownIcon.classList.remove('rotate-180');
+      }
+    });
+
+    // Cerrar dropdown al presionar Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        categoriesDropdownMenu.classList.add('hidden');
+        categoriesDropdownIcon.classList.remove('rotate-180');
+      }
+    });
+
+    // Cerrar dropdown en dispositivos móviles al hacer clic en un enlace
+    const categoryLinks = categoriesDropdownMenu.querySelectorAll('a');
+    categoryLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        categoriesDropdownMenu.classList.add('hidden');
+        categoriesDropdownIcon.classList.remove('rotate-180');
+      });
+    });
+  }
+
+  // Función para cerrar todos los dropdowns
+  function closeAllDropdowns() {
+    const allDropdowns = document.querySelectorAll('[id$="-dropdown-menu"]');
+    const allIcons = document.querySelectorAll('[id$="-dropdown-icon"]');
+    
+    allDropdowns.forEach(dropdown => {
+      dropdown.classList.add('hidden');
+    });
+    
+    allIcons.forEach(icon => {
+      icon.classList.remove('rotate-180');
+    });
+  }
 </script>
+
+<style>
+  /* Animaciones para el icono del carrito */
+  @keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+      transform: translate3d(0, -8px, 0);
+    }
+    70% {
+      transform: translate3d(0, -4px, 0);
+    }
+    90% {
+      transform: translate3d(0, -2px, 0);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes wiggle {
+    0%, 7% {
+      transform: rotateZ(0);
+    }
+    15% {
+      transform: rotateZ(-15deg);
+    }
+    20% {
+      transform: rotateZ(10deg);
+    }
+    25% {
+      transform: rotateZ(-10deg);
+    }
+    30% {
+      transform: rotateZ(6deg);
+    }
+    35% {
+      transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+      transform: rotateZ(0);
+    }
+  }
+
+  /* Clases para activar las animaciones */
+  .cart-bounce {
+    animation: bounce 0.6s ease-in-out;
+  }
+
+  .cart-pulse {
+    animation: pulse 0.4s ease-in-out;
+  }
+
+  .cart-wiggle {
+    animation: wiggle 0.8s ease-in-out;
+  }
+
+  .cart-highlight {
+    fill: #3B82F6 !important;
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
+    transition: all 0.3s ease;
+  }
+
+  /* Estilos para el dropdown de categorías */
+  #categories-dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+  }
+
+  #categories-dropdown-menu::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  #categories-dropdown-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+  }
+
+  #categories-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+  }
+
+  #categories-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+
+  /* Animación para el icono del dropdown */
+  #categories-dropdown-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+
+  /* Mejorar la apariencia en móviles */
+  @media (max-width: 768px) {
+    #categories-dropdown-menu {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      border-radius: 0;
+      background: #f9fafb;
+      margin-top: 0;
+    }
+
+    #categories-dropdown-menu a {
+      padding: 12px 24px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    #categories-dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
