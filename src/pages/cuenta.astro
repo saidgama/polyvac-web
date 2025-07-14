@@ -84,7 +84,7 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
                   <input type="checkbox" class="rounded border-gray-300 text-azulprimario focus:ring-azulprimario focus:ring-offset-0">
                   <span class="ml-2 text-sm text-gray-600">Recordarme</span>
                 </label>
-                <a href="#" class="text-sm text-azulprimario hover:text-blue-700">
+                <a href="/recuperar-contrasena" class="text-sm text-azulprimario hover:text-blue-700">
                   ¿Olvidaste tu contraseña?
                 </a>
               </div>
@@ -154,19 +154,6 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
                   name="phone"
                   class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent"
                   placeholder="+52 (555) 123-4567"
-                />
-              </div>
-
-              <div>
-                <label for="register-company" class="block text-sm font-medium text-gray-700 mb-1">
-                  Empresa
-                </label>
-                <input 
-                  type="text" 
-                  id="register-company" 
-                  name="company"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-azulprimario focus:border-transparent"
-                  placeholder="Nombre de tu empresa"
                 />
               </div>
 
@@ -244,15 +231,98 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
 </Layout>
 
 <script>
-  class AuthManager {
+  class AuthPageManager {
     constructor() {
+      this.authManager = window.polyvacAuth;
       this.init();
     }
 
     init() {
+      // Verificar si ya está autenticado
+      if (this.authManager && this.authManager.isLoggedIn()) {
+        this.showUserDashboard();
+        return;
+      }
+
       this.bindTabSwitching();
       this.bindPasswordToggle();
       this.bindFormSubmissions();
+    }
+
+    showUserDashboard() {
+      const user = this.authManager.getCurrentUser();
+      const mainContent = document.querySelector('main .container');
+      
+      if (mainContent) {
+        mainContent.innerHTML = `
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+              <h1 class="text-3xl font-bold text-gray-900 mb-2">Mi Cuenta</h1>
+              <p class="text-gray-600">Bienvenido, ${user.firstname || user.username}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Información del Usuario -->
+              <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-xl font-semibold mb-4">Información Personal</h2>
+                <div class="space-y-3">
+                  <div>
+                    <span class="text-sm font-medium text-gray-700">Nombre:</span>
+                    <span class="block text-gray-900">${user.firstname || ''} ${user.lastname || ''}</span>
+                  </div>
+                  <div>
+                    <span class="text-sm font-medium text-gray-700">Email:</span>
+                    <span class="block text-gray-900">${user.email}</span>
+                  </div>
+                  ${user.phone ? `
+                    <div>
+                      <span class="text-sm font-medium text-gray-700">Teléfono:</span>
+                      <span class="block text-gray-900">${user.phone}</span>
+                    </div>
+                  ` : ''}
+                </div>
+                <button class="mt-4 text-azulprimario hover:text-blue-700 text-sm font-medium">
+                  Editar Información
+                </button>
+              </div>
+
+              <!-- Acciones Rápidas -->
+              <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-xl font-semibold mb-4">Acciones Rápidas</h2>
+                <div class="space-y-3">
+                  <a href="/cotizador" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                    <svg class="w-5 h-5 text-azulprimario mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <div>
+                      <p class="font-medium">Crear Cotización</p>
+                      <p class="text-sm text-gray-600">Solicita una cotización para tus productos</p>
+                    </div>
+                  </a>
+                  <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition-colors" onclick="loadUserQuotes()">
+                    <svg class="w-5 h-5 text-azulprimario mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <div>
+                      <p class="font-medium">Mis Cotizaciones</p>
+                      <p class="text-sm text-gray-600">Ver el historial de tus cotizaciones</p>
+                    </div>
+                  </a>
+                  <button onclick="logout()" class="flex items-center p-3 rounded-lg hover:bg-red-50 transition-colors text-red-600">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    <div>
+                      <p class="font-medium">Cerrar Sesión</p>
+                      <p class="text-sm text-gray-600">Salir de tu cuenta</p>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
     }
 
     bindTabSwitching() {
@@ -295,7 +365,6 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
             const isPassword = targetInput.type === 'password';
             targetInput.type = isPassword ? 'text' : 'password';
             
-            // Update icon (you could switch between eye/eye-slash icons here)
             const icon = button.querySelector('svg');
             if (icon) {
               icon.style.opacity = isPassword ? '0.6' : '1';
@@ -321,38 +390,40 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
       });
     }
 
-    handleLogin(formData) {
+    async handleLogin(formData) {
       const email = formData.get('email');
       const password = formData.get('password');
       
-      // Basic validation
       if (!email || !password) {
         this.showNotification('Por favor completa todos los campos requeridos', 'error');
         return;
       }
 
-      // Simulate login process
-      this.showNotification('Iniciando sesión...', 'info');
-      
-      setTimeout(() => {
-        // In a real app, this would make an API call
-        this.showNotification('¡Bienvenido de vuelta!', 'success');
+      try {
+        this.showNotification('Iniciando sesión...', 'info');
         
-        // Redirect or update UI
-        setTimeout(() => {
-          window.location.href = '/';
-        }, 1500);
-      }, 1000);
+        const result = await this.authManager.login({ email, password });
+        
+        if (result.success) {
+          this.showNotification('¡Bienvenido de vuelta!', 'success');
+          
+          setTimeout(() => {
+            this.authManager.redirectAfterLogin();
+          }, 1500);
+        }
+      } catch (error) {
+        this.showNotification(error.message || 'Error al iniciar sesión', 'error');
+      }
     }
 
-    handleRegister(formData) {
+    async handleRegister(formData) {
       const firstname = formData.get('firstname');
       const lastname = formData.get('lastname');
       const email = formData.get('email');
       const password = formData.get('password');
       const confirmPassword = formData.get('confirmPassword');
+      const phone = formData.get('phone');
       
-      // Basic validation
       if (!firstname || !lastname || !email || !password || !confirmPassword) {
         this.showNotification('Por favor completa todos los campos requeridos', 'error');
         return;
@@ -368,24 +439,33 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
         return;
       }
 
-      // Simulate registration process
-      this.showNotification('Creando tu cuenta...', 'info');
-      
-      setTimeout(() => {
-        // In a real app, this would make an API call
-        this.showNotification('¡Cuenta creada exitosamente!', 'success');
+      try {
+        this.showNotification('Creando tu cuenta...', 'info');
         
-        // Switch to login tab
-        setTimeout(() => {
-          const loginTab = document.getElementById('login-tab');
-          const registerTab = document.getElementById('register-tab');
-          const loginForm = document.getElementById('login-form');
-          const registerForm = document.getElementById('register-form');
+        const result = await this.authManager.register({
+          firstname,
+          lastname,
+          email,
+          password,
+          phone
+        });
+        
+        if (result.success) {
+          this.showNotification('¡Cuenta creada exitosamente!', 'success');
           
-          this.switchTab('login', loginTab, registerTab, loginForm, registerForm);
-          this.showNotification('Ahora puedes iniciar sesión', 'info');
-        }, 1500);
-      }, 1000);
+          setTimeout(() => {
+            const loginTab = document.getElementById('login-tab');
+            const registerTab = document.getElementById('register-tab');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            
+            this.switchTab('login', loginTab, registerTab, loginForm, registerForm);
+            this.showNotification('Ahora puedes iniciar sesión', 'info');
+          }, 1500);
+        }
+      } catch (error) {
+        this.showNotification(error.message || 'Error al crear la cuenta', 'error');
+      }
     }
 
     showNotification(message, type = 'info') {
@@ -393,7 +473,7 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
                      type === 'error' ? 'bg-red-500' : 'bg-azulprimario';
       
       const toast = document.createElement('div');
-      toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 max-w-sm transition-all duration-300 transform translate-x-full`;
+      toast.className = `fixed top-20 right-4 ${bgColor} text-white px-6 py-3 rounded-lg shadow-lg z-50 max-w-sm transition-all duration-300 transform translate-x-full`;
       toast.innerHTML = `
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -405,12 +485,10 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
       
       document.body.appendChild(toast);
       
-      // Animate in
       setTimeout(() => {
         toast.classList.remove('translate-x-full');
       }, 100);
       
-      // Animate out and remove
       setTimeout(() => {
         toast.classList.add('translate-x-full');
         setTimeout(() => toast.remove(), 300);
@@ -418,7 +496,31 @@ const description = "Inicia sesión o regístrate para acceder a tu cuenta de In
     }
   }
 
-  // Initialize auth manager
-  new AuthManager();
+  // Funciones globales para el dashboard
+  function logout() {
+    if (window.polyvacAuth) {
+      window.polyvacAuth.logout();
+      window.location.href = '/cuenta';
+    }
+  }
+
+  async function loadUserQuotes() {
+    if (!window.polyvacAuth || !window.polyvacAuth.isLoggedIn()) {
+      window.location.href = '/cuenta';
+      return;
+    }
+
+    try {
+      const quotes = await window.polyvacAuth.getUserCotizaciones();
+      // Aquí puedes implementar la lógica para mostrar las cotizaciones
+    } catch (error) {
+      console.error('Error obteniendo cotizaciones:', error);
+    }
+  }
+
+  // Inicializar cuando se carga la página
+  document.addEventListener('DOMContentLoaded', () => {
+    new AuthPageManager();
+  });
 </script>
 </Layout>

@@ -11,6 +11,10 @@ export default defineConfig({
         port: "1337",
       },
       {
+        protocol: "http",
+        hostname: "ec2-13-218-128-154.compute-1.amazonaws.com",
+      },
+      {
         protocol: "https",
         hostname: "**.strapiapp.com", // Para Strapi Cloud
       },

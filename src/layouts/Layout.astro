@@ -26,7 +26,9 @@ const { title, description } = Astro.props;
         <slot />
         <Footer />
         
-        <!-- Script global del carrito -->
+        <!-- Scripts globales -->
+        <script src="/js/auth-manager.js" is:inline></script>
+        <script src="/js/route-guard.js" is:inline></script>
         <script src="/js/cart-manager.js" is:inline></script>
     </body>
 </html>

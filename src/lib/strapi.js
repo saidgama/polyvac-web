@@ -1,6 +1,6 @@
 import qs from "qs";
 
-const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || "http://localhost:1337";
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || "http://ec2-13-218-128-154.compute-1.amazonaws.com";
 const STRAPI_TOKEN = import.meta.env.STRAPI_API_TOKEN;
 
 export async function fetchAPI(path, options = {}) {
@@ -241,4 +241,138 @@ export async function searchProductos(query) {
     },
     sort: ['nombre:asc']
   });
+}
+
+// ====== FUNCIONES DE AUTENTICACIÓN ======
+
+// Función para registrar usuario
+export async function registerUser(userData) {
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/auth/local/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: userData.email, // Strapi usa username, pero podemos usar email
+        email: userData.email,
+        password: userData.password,
+        firstname: userData.firstname,
+        lastname: userData.lastname,
+        phone: userData.phone,
+        company: userData.company,
+      }),
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Error en el registro');
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error en registro:', error);
+    throw error;
+  }
+}
+
+// Función para iniciar sesión
+export async function loginUser(credentials) {
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/auth/local`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier: credentials.email,
+        password: credentials.password,
+      }),
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Error en el inicio de sesión');
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error en login:', error);
+    throw error;
+  }
+}
+
+// Función para obtener datos del usuario actual
+export async function getCurrentUser(token) {
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/users/me`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Error al obtener usuario');
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error obteniendo usuario:', error);
+    throw error;
+  }
+}
+
+// Función para crear una cotización
+export async function createCotizacion(cotizacionData, token) {
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/cotizaciones`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: cotizacionData
+      }),
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Error al crear cotización');
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error creando cotización:', error);
+    throw error;
+  }
+}
+
+// Función para obtener cotizaciones del usuario
+export async function getUserCotizaciones(token) {
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/cotizaciones?populate=*`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.error?.message || 'Error al obtener cotizaciones');
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error obteniendo cotizaciones:', error);
+    throw error;
+  }
 }
