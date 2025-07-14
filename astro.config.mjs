@@ -13,6 +13,7 @@ export default defineConfig({
       {
         protocol: "http",
         hostname: "ec2-13-218-128-154.compute-1.amazonaws.com",
+        pathname: "/panel/uploads/**",
       },
       {
         protocol: "https",

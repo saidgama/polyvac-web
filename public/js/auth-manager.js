@@ -71,9 +71,8 @@ class AuthManager {
 
   // Obtener URL de Strapi
   getStrapiUrl() {
-    return window.location.hostname === 'localhost' 
-      ? 'http://localhost:1337' 
-      : 'http://ec2-13-218-128-154.compute-1.amazonaws.com';
+    // Para producción
+    return 'http://ec2-13-218-128-154.compute-1.amazonaws.com/panel';
   }
 
   // Verificar conexión con Strapi
@@ -99,7 +98,7 @@ class AuthManager {
       // Verificar conexión con Strapi
       const isConnected = await this.checkStrapiConnection();
       if (!isConnected) {
-        throw new Error('No se puede conectar con el servidor. Asegúrate de que Strapi esté ejecutándose en http://localhost:1337');
+        throw new Error('No se puede conectar con el servidor. Verifica tu conexión a internet.');
       }
 
       const response = await fetch(`${this.getStrapiUrl()}/api/auth/local`, {
@@ -157,7 +156,7 @@ class AuthManager {
       // Verificar conexión con Strapi
       const isConnected = await this.checkStrapiConnection();
       if (!isConnected) {
-        throw new Error('No se puede conectar con el servidor. Asegúrate de que Strapi esté ejecutándose en http://localhost:1337');
+        throw new Error('No se puede conectar con el servidor. Verifica tu conexión a internet.');
       }
 
       // Preparar datos de registro completos

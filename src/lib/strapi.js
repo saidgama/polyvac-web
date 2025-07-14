@@ -1,6 +1,6 @@
 import qs from "qs";
 
-const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || "http://ec2-13-218-128-154.compute-1.amazonaws.com";
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL || "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel";
 const STRAPI_TOKEN = import.meta.env.STRAPI_API_TOKEN;
 
 export async function fetchAPI(path, options = {}) {
@@ -21,7 +21,7 @@ export async function fetchAPI(path, options = {}) {
     fields
   }, { encodeValuesOnly: true });
 
-  const url = new URL(`/api${path}`, STRAPI_URL);
+  const url = new URL(`${STRAPI_URL}/api${path}`);
   if (query) url.search = query;
 
   const headers = {

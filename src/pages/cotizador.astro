@@ -214,6 +214,12 @@ const description = "Solicita una cotización personalizada para nuestros produc
       const summaryCount = document.getElementById('summary-count');
       const submitButton = document.getElementById('submit-quote');
 
+      // Validar que todos los elementos existan
+      if (!cartItemsList || !emptyCart || !addMoreSection || !itemCount || !summaryCount || !submitButton) {
+        console.warn('Algunos elementos DOM no están disponibles para actualizar');
+        return;
+      }
+
       // Update counters
       const count = items.length;
       itemCount.textContent = `${count} producto${count !== 1 ? 's' : ''}`;
@@ -275,7 +281,9 @@ const description = "Solicita una cotización personalizada para nuestros produc
 
     bindEvents() {
       const form = document.getElementById('quote-form');
-      form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+      if (form) {
+        form.addEventListener('submit', (e) => this.handleFormSubmit(e));
+      }
 
       // Agregar botón de limpiar carrito
       const clearButton = document.createElement('button');
@@ -289,9 +297,12 @@ const description = "Solicita una cotización personalizada para nuestros produc
       };
       
       // Agregar el botón al header del carrito
-      const cartHeader = document.querySelector('#cart-items-list').previousElementSibling;
-      if (cartHeader && this.cart.getCount() > 0) {
-        cartHeader.appendChild(clearButton);
+      const cartItemsList = document.getElementById('cart-items-list');
+      if (cartItemsList) {
+        const cartHeader = cartItemsList.previousElementSibling;
+        if (cartHeader && this.cart.getCount() > 0) {
+          cartHeader.appendChild(clearButton);
+        }
       }
     }
 
