@@ -1,0 +1,250 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import tablacolores from "../assets/tabla-colores/tabla-colores-original.jpg";
+import colorStrip from "../assets/tabla-colores/color-strip.jpg";
+const title = "Tabla de Colores - Industrias Polyvac";
+const description = "Tabla de colores y especificaciones técnicas de productos Polyvac";
+
+// Datos de la tabla
+const productos = [
+  { nombre: "AMARILLO VACADIR EE DIRECT YELLOW 44", color1: "#fcea0a", color3: "#fee203", colorRow: 0, solidez: 50, clasificacion: "A", temp: "40-60" },
+  { nombre: "AMARILLO VACADIR BEC DIRECT YELLOW 142", color1: "#fdf218", color3: "#fee806", colorRow: 0, solidez: null, clasificacion: null, temp: null },
+  { nombre: "AMARILLO VACADIR FA DIRECT YELLOW 5O", color1: "#fceb22", color3: "#fbd303", colorRow: 1, solidez: 50, clasificacion: "B", temp: "40-60" },
+  { nombre: "AMARILLO VACADIR IG DIRECT YELLOW 86", color1: "#fbd402", color3: "#f9c001", colorRow: 1, solidez: null, clasificacion: null, temp: null },
+  { nombre: "NARANJA VACDIR CG DIREC ORANGE 26 150%", color1: "#fa722a", color3: "#fa722a", colorRow: 2, solidez: 80, clasificacion: "A", temp: "90" },
+  { nombre: "NARANJA VACDIR DE DIREC ORANGE 34", color1: "#fb9e0a", color3: "#f67517", colorRow: 2, solidez: null, clasificacion: null, temp: null },
+  { nombre: "NARANJA VACDIR DJ DIREC ORANGE 39", color1: "#f79808", color3: "#f57c14", colorRow: 3, solidez: 80, clasificacion: "B", temp: "90" },
+  { nombre: "ROJO VACDIR CCI DIRECT RED 227", color1: "#eb559c", color3: "#d62774", colorRow: 3, solidez: null, clasificacion: null, temp: null },
+  { nombre: "ROJO VACDIR CD DIRECT RED 23", color1: "#e1444b", color3: "#cf2d39", colorRow: 4, solidez: 50, clasificacion: "C", temp: "40-100" },
+  { nombre: "ROJO VACDIR CI DIRECT RED 28", color1: "#cf2d39", color3: "#cc463d", colorRow: 4, solidez: null, clasificacion: null, temp: null },
+  { nombre: "ROJO VACDIR DB DIRECT RED 31 150%", color1: "#bc1b53", color3: "#7e0f2a", colorRow: 5, solidez: 100, clasificacion: "B", temp: "60-80" },
+  { nombre: "ROJO VACDIR IB DIRECT RED 81 100%", color1: "#c1264a", color3: "#b11139", colorRow: 5, solidez: null, clasificacion: null, temp: null },
+  { nombre: "ROJO VACDIR CED DIRECT RED 243", color1: "#c63060", color3: "#8b1430", colorRow: 6, solidez: 100, clasificacion: "B", temp: "60-80" },
+  { nombre: "VIOLETA VACDIR FB DIRECT VIOLET 51", color1: "#74317e", color3: "#531655", colorRow: 14, solidez: null, clasificacion: null, temp: null },
+  { nombre: "VIOLETA VACDIR J DIRECT VIOLET 9 180%", color1: "#4b1f50", color3: "#3e113b", colorRow: 15, solidez: 60, clasificacion: "A", temp: "100" },
+  { nombre: "AZUL VACDIR CAA DIRECT BLUE200 200%", color1: "#1d3f6a", color3: "#0d2046", colorRow: 15, solidez: null, clasificacion: null, temp: null },
+];
+---
+
+<Layout title={title} description={description}>
+  <main class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+    <!-- Versión en Imagen -->
+      <div class="mt-5 bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 max-w-xl mx-auto">
+        
+        <!-- Header de la versión imagen -->
+        <div class="bg-azulprimario text-white p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="text-xl font-bold mr-4">Tabla de Colores version escaneada</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen de la tabla -->
+        <div class="p-6">
+          <div class="text-center">
+            <Image 
+              src={tablacolores}
+              alt="Tabla de colores original de Industrias Polyvac" 
+              width={800} 
+              height={600}
+              class="w-full h-auto rounded-lg border border-gray-200 shadow-sm"
+            />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Tabla implementada con HTML/Tailwind -->
+      <div class="bg-white rounded-lg mt-20 shadow-lg overflow-hidden border border-gray-200 max-w-3xl mx-auto">
+        
+        <!-- Header de la tabla con logo -->
+        <div class="bg-azulprimario text-white p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="text-2xl font-bold mr-4">Tabla de colores extraidos digitalmente</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla -->
+        <div class="overflow-x-auto">
+          <table class="w-full table-fixed">
+            <!-- Header de la tabla -->
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-2 py-2 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-15">
+                  Nombre
+                </th>
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-15">
+                  1%
+                </th>
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-15">
+                  3%
+                </th>
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-10">
+                  <div class="text-xs leading-tight">Solubilidad</div>
+                  <div class="text-xs font-normal leading-tight">g/la 80°C</div>
+                </th>
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-10">
+                  <div class="text-xs leading-tight">Clasificacion.</div>
+                  <div class="text-xs font-normal leading-tight">SCD</div>
+                </th>
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider w-10">
+                  <div class="text-xs leading-tight">Temp Máx</div>
+                  <div class="text-xs font-normal leading-tight">°C</div>
+                </th>
+              </tr>
+            </thead>
+            
+            <!-- Cuerpo de la tabla -->
+            <tbody class="bg-white divide-y divide-gray-200">
+              {productos.map((producto, index) => (
+                <tr class={`hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'}`}>
+                  <!-- Nombre del producto -->
+                  <td class="px-2 py-2 text-xs font-medium text-gray-900 border-r border-gray-200">
+                    <div class="leading-tight">
+                      {producto.nombre}
+                    </div>
+                  </td>
+                  
+                  <!-- Color 1% -->
+                  <td class="px-1 py-2 text-center border-r border-gray-200">
+                    <div 
+                      class="w-full h-10 mx-auto border border-gray-300 rounded-sm"
+                      style={`background-color: ${producto.color1 || '#f3f4f6'};`}
+                    ></div>
+                  </td>
+                  
+                  <!-- Color 3% -->
+                  <td class="px-1 py-2 text-center border-r border-gray-200">
+                    <div 
+                      class="w-full h-10 mx-auto border border-gray-300 rounded-sm"
+                      style={`background-color: ${producto.color3 || '#f3f4f6'};`}
+                    ></div>
+                  </td>
+                  
+                  <!-- Solidez -->
+                  <td class="px-1 py-2 text-center text-xs text-gray-900 border-r border-gray-200">
+                    {producto.solidez || '-'}
+                  </td>
+                  
+                  <!-- Clasificación -->
+                  <td class="px-1 py-2 text-center text-xs font-semibold text-gray-900 border-r border-gray-200">
+                    {producto.clasificacion || '-'}
+                  </td>
+                  
+                  <!-- Temperatura -->
+                  <td class="px-1 py-2 text-center text-xs text-gray-900">
+                    {producto.temp || '-'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      
+
+      
+      
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Estilos adicionales para mejorar la apariencia */
+  .bg-gray-25 {
+    background-color: #fafafa;
+  }
+  
+  /* Hover effects para las filas */
+  tbody tr:hover {
+    background-color: #f8fafc;
+  }
+  
+  /* Asegurar que los colores se muestren correctamente */
+  table td div[style*="background-color"] {
+    min-height: 1.5rem;
+    border-radius: 2px;
+  }
+  
+  /* Texto multilinea para nombres */
+  .leading-tight {
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Responsive para móvil */
+  @media (max-width: 640px) {
+    .max-w-3xl {
+      max-width: 100%;
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      margin-top: 5rem; /* Mantener el margen top en móvil */
+    }
+    
+    table {
+      font-size: 0.7rem;
+    }
+    
+    th, td {
+      padding: 0.25rem 0.125rem;
+    }
+    
+    .w-32 {
+      width: 7rem;
+    }
+    
+    table td div[style*="background-color"] {
+      min-height: 1.25rem;
+    }
+  }
+  
+  /* Estilos para la imagen de la tabla */
+  .tabla-imagen {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Responsive para la imagen */
+  @media (max-width: 768px) {
+    .max-w-4xl {
+      max-width: 100%;
+      margin: 0 0.5rem;
+    }
+  }
+  
+  /* Estilos para las imágenes de color híbridas */
+  .color-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  
+  .color-image-container img {
+    transition: transform 0.2s ease;
+  }
+  
+  .color-image-container:hover img {
+    transform: scale(1.3) !important;
+  }
+  
+  /* Responsive para móvil en tabla híbrida */
+  @media (max-width: 640px) {
+    .color-image-container img {
+      transform: scale(1.1) !important;
+    }
+    
+    .color-image-container:hover img {
+      transform: scale(1.2) !important;
+    }
+  }
+</style>

@@ -3,7 +3,7 @@
   'use strict';
   
   // Rutas que requieren autenticación
-  const protectedRoutes = ['/cotizador'];
+  const protectedRoutes = [];
   
   // Función para verificar si la ruta actual está protegida
   function isProtectedRoute() {

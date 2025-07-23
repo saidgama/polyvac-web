@@ -160,7 +160,7 @@ try {
               class:list={{ "opacity-100": currentPath === "/acerca", "opacity-0": currentPath !== "/acerca" }}
             >
             </span>
-            Acerca de Nosotros
+            Nosotros
           </a>
         </li>
         
@@ -253,7 +253,7 @@ try {
                 class:list={{ "opacity-100": currentPath === "/cuenta", "opacity-0": currentPath !== "/cuenta" }}
               >
               </span>
-              Iniciar Sesión
+              Registro
             </a>
             
             <!-- Mostrar cuando SÍ está autenticado -->
@@ -267,9 +267,6 @@ try {
                 >
                 </span>
                 <div class="flex items-center">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                  </svg>
                   <span id="user-nav-name">Mi Cuenta</span>
                   <svg 
                     class="w-4 h-4 ml-2 transition-transform duration-300" 
@@ -297,12 +294,6 @@ try {
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-azulprimario transition-colors"
                 >
                   Mi Perfil
-                </a>
-                <a
-                  href="/cotizador"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-azulprimario transition-colors"
-                >
-                  Mis Cotizaciones
                 </a>
                 <div class="border-t border-gray-200 my-1"></div>
                 <button
@@ -653,13 +644,13 @@ try {
       
       // Actualizar nombre del usuario
       const displayName = user.firstname ? `${user.firstname} ${user.lastname || ''}`.trim() : user.username;
-      userNavName.textContent = displayName;
-      userDropdownName.textContent = displayName;
-      userDropdownEmail.textContent = user.email;
+      if (userNavName) userNavName.textContent = "Mi Cuenta";
+      if (userDropdownName) userDropdownName.textContent = displayName;
+      if (userDropdownEmail) userDropdownEmail.textContent = user.email;
     } else {
       // Mostrar enlace de login
-      loginNavLink.classList.remove('hidden');
-      userNavDropdown.classList.add('hidden');
+      if (loginNavLink) loginNavLink.classList.remove('hidden');
+      if (userNavDropdown) userNavDropdown.classList.add('hidden');
     }
   }
 
@@ -671,19 +662,6 @@ try {
       // Escuchar cambios en el estado de autenticación
       window.polyvacAuth.on('login', updateAuthUI);
       window.polyvacAuth.on('logout', updateAuthUI);
-    }
-  });
-
-  // Proteger rutas
-  document.addEventListener('DOMContentLoaded', () => {
-    const protectedRoutes = ['/cotizador'];
-    const currentPath = window.location.pathname;
-    
-    if (protectedRoutes.includes(currentPath)) {
-      if (!window.polyvacAuth || !window.polyvacAuth.isLoggedIn()) {
-        const redirectUrl = encodeURIComponent(currentPath);
-        window.location.href = `/cuenta?redirect=${redirectUrl}`;
-      }
     }
   });
 </script>

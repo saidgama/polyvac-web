@@ -9,35 +9,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
 
 <Layout title={title} description={description}>
   
-  <!-- Auth Gate -->
-  <div id="auth-gate" class="hidden fixed inset-0 bg-gray-50 z-50 flex items-center justify-center">
-    <div class="bg-white rounded-lg shadow-lg p-8 max-w-md w-full mx-4">
-      <div class="text-center mb-6">
-        <svg class="w-16 h-16 text-azulprimario mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-        </svg>
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">Iniciar Sesión Requerido</h2>
-        <p class="text-gray-600">
-          Para acceder al cotizador y gestionar tus productos, necesitas iniciar sesión.
-        </p>
-      </div>
-      <div class="space-y-4">
-        <a 
-          href="/cuenta" 
-          class="w-full bg-azulprimario text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center block"
-        >
-          Iniciar Sesión
-        </a>
-        <a 
-          href="/" 
-          class="w-full bg-gray-200 text-gray-700 py-3 px-6 rounded-lg font-medium hover:bg-gray-300 transition-colors text-center block"
-        >
-          Volver al Inicio
-        </a>
-      </div>
-    </div>
-  </div>
-  
   <main class="bg-gray-50 min-h-screen">
     <!-- Hero Section -->
     <section class="bg-white border-b border-gray-200">
@@ -109,6 +80,35 @@ const description = "Solicita una cotización personalizada para nuestros produc
               <div class="flex justify-between items-center mb-2">
                 <span class="text-sm font-medium text-gray-600">Total de productos:</span>
                 <span id="summary-count" class="text-lg font-bold text-azulprimario">0</span>
+              </div>
+            </div>
+
+            <!-- Auth Required Message -->
+            <div id="auth-required-message" class="hidden">
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                  <svg class="w-8 h-8 text-azulprimario flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                  </svg>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Iniciar Sesión Requerido</h3>
+                    <p class="text-sm text-gray-600">Para enviar una cotización necesitas iniciar sesión</p>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <a 
+                    href="/cuenta" 
+                    class="w-full bg-azulprimario text-white py-2.5 px-4 rounded-md font-medium hover:bg-blue-700 transition-colors text-center block"
+                  >
+                    Iniciar Sesión
+                  </a>
+                  <a 
+                    href="/cuenta" 
+                    class="w-full bg-gray-200 text-gray-700 py-2.5 px-4 rounded-md font-medium hover:bg-gray-300 transition-colors text-center block"
+                  >
+                    Crear Cuenta
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -198,6 +198,7 @@ const description = "Solicita una cotización personalizada para nuestros produc
     init() {
       this.updateDisplay();
       this.bindEvents();
+      this.updateAuthUI();
       
       // Escuchar cambios del carrito
       this.unsubscribe = this.cart.onUpdate(() => {
@@ -225,8 +226,9 @@ const description = "Solicita una cotización personalizada para nuestros produc
       itemCount.textContent = `${count} producto${count !== 1 ? 's' : ''}`;
       summaryCount.textContent = count;
 
-      // Enable/disable submit button
-      submitButton.disabled = count === 0;
+      // Enable/disable submit button based on cart items and auth status
+      const isAuthenticated = window.polyvacAuth && window.polyvacAuth.isLoggedIn();
+      submitButton.disabled = count === 0 || !isAuthenticated;
 
       if (count === 0) {
         emptyCart.style.display = 'block';
@@ -268,6 +270,41 @@ const description = "Solicita una cotización personalizada para nuestros produc
         `).join('');
 
         cartItemsList.innerHTML = itemsHTML;
+      }
+    }
+
+    updateAuthUI() {
+      const isAuthenticated = window.polyvacAuth && window.polyvacAuth.isLoggedIn();
+      const authRequiredMessage = document.getElementById('auth-required-message');
+      const quoteForm = document.getElementById('quote-form');
+      const submitButton = document.getElementById('submit-quote');
+
+      if (!authRequiredMessage || !quoteForm || !submitButton) {
+        return;
+      }
+
+      if (isAuthenticated) {
+        // Usuario autenticado: mostrar formulario, ocultar mensaje de auth
+        authRequiredMessage.classList.add('hidden');
+        quoteForm.classList.remove('hidden');
+        
+        // Prellenar formulario con datos del usuario
+        const user = window.polyvacAuth.getCurrentUser();
+        if (user) {
+          const nameField = document.getElementById('name');
+          const emailField = document.getElementById('email');
+          
+          if (nameField && !nameField.value) {
+            nameField.value = `${user.firstname || ''} ${user.lastname || ''}`.trim();
+          }
+          if (emailField && !emailField.value) {
+            emailField.value = user.email || '';
+          }
+        }
+      } else {
+        // Usuario no autenticado: ocultar formulario, mostrar mensaje de auth
+        authRequiredMessage.classList.remove('hidden');
+        quoteForm.classList.add('hidden');
       }
     }
 
@@ -318,7 +355,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
       // Verificar que el usuario esté autenticado
       if (!window.polyvacAuth || !window.polyvacAuth.isLoggedIn()) {
         this.cart.showNotification('Debes iniciar sesión para enviar una cotización', 'error');
-        showAuthGate();
         return;
       }
 
@@ -421,45 +457,34 @@ const description = "Solicita una cotización personalizada para nuestros produc
 
   // Initialize cart manager
   document.addEventListener('DOMContentLoaded', () => {
-    // Verificar autenticación antes de inicializar
-    if (!window.polyvacAuth || !window.polyvacAuth.isLoggedIn()) {
-      showAuthGate();
-      return;
-    }
+    console.log('Cotizador cargado - acceso libre habilitado');
+    
+    // Dar tiempo a que el auth manager se inicialice
+    setTimeout(() => {
+      // Inicializar siempre, independientemente del estado de autenticación
+      if (window.polyvacCart) {
+        window.quoteCart = new QuoteCart();
+      } else {
+        // Si el cart manager no está listo, esperar un poco más
+        setTimeout(() => {
+          if (window.polyvacCart) {
+            window.quoteCart = new QuoteCart();
+          }
+        }, 100);
+      }
+    }, 200);
+  });
 
-    if (window.polyvacCart) {
-      window.quoteCart = new QuoteCart();
-    } else {
-      // Si el cart manager no está listo, esperar
-      setTimeout(() => {
-        if (window.polyvacCart) {
-          window.quoteCart = new QuoteCart();
-        }
-      }, 100);
+  // Escuchar eventos de autenticación para actualizar la UI
+  window.addEventListener('authLogin', () => {
+    if (window.quoteCart) {
+      window.quoteCart.updateAuthUI();
     }
   });
 
-  // Función para mostrar el auth gate
-  function showAuthGate() {
-    const authGate = document.getElementById('auth-gate');
-    if (authGate) {
-      authGate.classList.remove('hidden');
-    }
-  }
-
-  // Función para ocultar el auth gate
-  function hideAuthGate() {
-    const authGate = document.getElementById('auth-gate');
-    if (authGate) {
-      authGate.classList.add('hidden');
-    }
-  }
-
-  // Escuchar eventos de autenticación
-  window.addEventListener('authLogin', () => {
-    hideAuthGate();
-    if (window.polyvacCart && !window.quoteCart) {
-      window.quoteCart = new QuoteCart();
+  window.addEventListener('authLogout', () => {
+    if (window.quoteCart) {
+      window.quoteCart.updateAuthUI();
     }
   });
 

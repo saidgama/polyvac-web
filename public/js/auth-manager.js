@@ -323,13 +323,13 @@ class AuthManager {
 
   // Configurar interceptores
   setupInterceptors() {
-    // Interceptar navegación a páginas protegidas
-    this.interceptProtectedRoutes();
+    // Ya no necesitamos interceptar rutas protegidas
+    // Mantenemos el método por compatibilidad pero sin funcionalidad
   }
 
   // Interceptar rutas protegidas
   interceptProtectedRoutes() {
-    const protectedRoutes = ['/cotizador'];
+    const protectedRoutes = []; // Removido '/cotizador' ya que ahora es de acceso libre
     
     // Verificar ruta actual
     if (protectedRoutes.includes(window.location.pathname)) {
@@ -386,6 +386,12 @@ class AuthManager {
           console.error('Error en callback:', error);
         }
       });
+    }
+    
+    // Emitir eventos globales para que otros componentes puedan escuchar
+    if (typeof window !== 'undefined') {
+      const eventName = event === 'login' ? 'authLogin' : event === 'logout' ? 'authLogout' : `auth${event}`;
+      window.dispatchEvent(new CustomEvent(eventName, { detail: data }));
     }
   }
 
