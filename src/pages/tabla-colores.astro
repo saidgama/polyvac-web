@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import tablacolores from "../assets/tabla-colores/tabla-colores-original.jpg";
-import colorStrip from "../assets/tabla-colores/color-strip.jpg";
 const title = "Tabla de Colores - Industrias Polyvac";
 const description = "Tabla de colores y especificaciones técnicas de productos Polyvac";
 
@@ -30,33 +28,7 @@ const productos = [
 <Layout title={title} description={description}>
   <main class="bg-gray-50 min-h-screen py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-    <!-- Versión en Imagen -->
-      <div class="mt-5 bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 max-w-xl mx-auto">
-        
-        <!-- Header de la versión imagen -->
-        <div class="bg-azulprimario text-white p-6">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <div class="text-xl font-bold mr-4">Tabla de Colores version escaneada</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Imagen de la tabla -->
-        <div class="p-6">
-          <div class="text-center">
-            <Image 
-              src={tablacolores}
-              alt="Tabla de colores original de Industrias Polyvac" 
-              width={800} 
-              height={600}
-              class="w-full h-auto rounded-lg border border-gray-200 shadow-sm"
-            />
-          </div>
-        </div>
-      </div>
-
+    
 
       <!-- Tabla implementada con HTML/Tailwind -->
       <div class="bg-white rounded-lg mt-20 shadow-lg overflow-hidden border border-gray-200 max-w-3xl mx-auto">
@@ -76,26 +48,14 @@ const productos = [
             <!-- Header de la tabla -->
             <thead class="bg-gray-100">
               <tr>
-                <th class="px-2 py-2 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-15">
+                <th class="px-2 py-2 text-left text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-1/2">
                   Nombre
                 </th>
-                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-15">
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-1/4">
                   1%
                 </th>
-                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-15">
+                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider w-1/4">
                   3%
-                </th>
-                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-10">
-                  <div class="text-xs leading-tight">Solubilidad</div>
-                  <div class="text-xs font-normal leading-tight">g/la 80°C</div>
-                </th>
-                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider border-r border-gray-300 w-10">
-                  <div class="text-xs leading-tight">Clasificacion.</div>
-                  <div class="text-xs font-normal leading-tight">SCD</div>
-                </th>
-                <th class="px-1 py-2 text-center text-xs font-medium text-gray-700 uppercase tracking-wider w-10">
-                  <div class="text-xs leading-tight">Temp Máx</div>
-                  <div class="text-xs font-normal leading-tight">°C</div>
                 </th>
               </tr>
             </thead>
@@ -120,26 +80,11 @@ const productos = [
                   </td>
                   
                   <!-- Color 3% -->
-                  <td class="px-1 py-2 text-center border-r border-gray-200">
+                  <td class="px-1 py-2 text-center">
                     <div 
                       class="w-full h-10 mx-auto border border-gray-300 rounded-sm"
                       style={`background-color: ${producto.color3 || '#f3f4f6'};`}
                     ></div>
-                  </td>
-                  
-                  <!-- Solidez -->
-                  <td class="px-1 py-2 text-center text-xs text-gray-900 border-r border-gray-200">
-                    {producto.solidez || '-'}
-                  </td>
-                  
-                  <!-- Clasificación -->
-                  <td class="px-1 py-2 text-center text-xs font-semibold text-gray-900 border-r border-gray-200">
-                    {producto.clasificacion || '-'}
-                  </td>
-                  
-                  <!-- Temperatura -->
-                  <td class="px-1 py-2 text-center text-xs text-gray-900">
-                    {producto.temp || '-'}
                   </td>
                 </tr>
               ))}

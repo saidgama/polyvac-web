@@ -1,0 +1,86 @@
+---
+export interface ColoranteData {
+  nombre: string;
+  color1: string;
+  color2: string;
+}
+
+export interface PorcentajesData {
+  porcentaje1: string;
+  porcentaje2: string;
+}
+
+export interface Props {
+  colorantes: ColoranteData[];
+  porcentajes: PorcentajesData;
+  titulo?: string;
+}
+
+const { colorantes, porcentajes, titulo = "Tabla de colores extraidos digitalmente" } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 max-w-4xl mx-auto">
+  <!-- Header de la tabla -->
+  <div class="bg-azulprimario text-white p-6">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <div class="text-2xl font-bold">{titulo}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <!-- Header de la tabla -->
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-6 py-4 text-left text-base font-semibold text-gray-700 border-b">Nombre del Colorante</th>
+          <th class="px-6 py-4 text-center text-base font-semibold text-gray-700 border-b">{porcentajes.porcentaje1}</th>
+          <th class="px-6 py-4 text-center text-base font-semibold text-gray-700 border-b">{porcentajes.porcentaje2}</th>
+        </tr>
+      </thead>
+      
+      <!-- Cuerpo de la tabla -->
+      <tbody class="divide-y divide-gray-200">
+        {colorantes.map((colorante, index) => (
+          <tr class={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 transition-colors`}>
+            <!-- Nombre -->
+            <td class="px-6 py-4 text-sm text-gray-900 font-medium">
+              {colorante.nombre}
+            </td>
+            
+            <!-- Color al porcentaje 1 -->
+            <td class="px-6 py-4 text-center">
+              <div class="flex justify-center">
+                <div 
+                  class="w-20 h-12 rounded-lg border-2 border-gray-300 shadow-sm"
+                  style={`background-color: ${colorante.color1}`}
+                  title={`${colorante.nombre} - ${porcentajes.porcentaje1}: ${colorante.color1}`}
+                ></div>
+              </div>
+            </td>
+            
+            <!-- Color al porcentaje 2 -->
+            <td class="px-6 py-4 text-center">
+              <div class="flex justify-center">
+                <div 
+                  class="w-20 h-12 rounded-lg border-2 border-gray-300 shadow-sm"
+                  style={`background-color: ${colorante.color2}`}
+                  title={`${colorante.nombre} - ${porcentajes.porcentaje2}: ${colorante.color2}`}
+                ></div>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Nota al pie -->
+  <div class="bg-gray-50 px-6 py-4 border-t">
+    <p class="text-sm text-gray-600">
+      <strong>Nota:</strong> Los colores mostrados son aproximaciones digitales. Para referencia exacta, solicite muestras físicas.
+    </p>
+  </div>
+</div>

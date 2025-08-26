@@ -14,15 +14,16 @@ import oekotexLogo from '../assets/acercade/oekotex.png';
 import bluesignLogo from '../assets/acercade/bluesign.png';  
 import bureauVeritasLogo from '../assets/acercade/bureau.png';
 
-// Importar funciones de Strapi
-import { getCategorias, getProductosDestacados, getStrapiMedia } from '../lib/strapi.js';
+// Importar productos locales
+import productos from '../data/productos.js';
 
-// Fetch datos reales de Strapi
-const categoriasResponse = await getCategorias();
-const productosDestacadosResponse = await getProductosDestacados();
+// Obtener los primeros 4 productos como destacados
+const productosDestacados = productos.slice(0, 4);
 
-const categorias = categoriasResponse.data || [];
-const productosDestacados = productosDestacadosResponse.data || [];
+// Imagen para la categoría de estampado
+import estampadoImage from '../assets/card1.png';
+// Imagen de cubeta para productos
+import cubetaImage from '../assets/cubeta.png';
 ---
 
 <Layout title={title} description={description}>
@@ -76,19 +77,17 @@ const productosDestacados = productosDestacadosResponse.data || [];
     </section>
 
     <!-- Sección de cards de categorias -->
-    <Badge text="Nuestros Productos"/>
+    <Badge text="Nuestras Líneas de Productos"/>
 
-    {categorias.map((categoria, index) => (
-        <CategoryCard
-            imageUrl={getStrapiMedia(categoria.imagen?.url)}
-            altText={categoria.imagen?.alternativeText || `Imagen de ${categoria.nombre}`}
-            title={categoria.nombre}
-            description={categoria.descripcion}
-            buttonLabel={`Ver ${categoria.nombre}`}
-            buttonHref={`/categoria/${categoria.slug}`}
-            position={index % 2 === 0 ? "right" : "left"}
-        />
-    ))}
+     <CategoryCard
+        imageUrl={estampadoImage}
+        altText="Línea de productos para estampación textil"
+        title="Línea de Estampado"
+        description="Tintas, pigmentos, colorantes, auxiliares y accesorios para estampado."
+        buttonLabel="Ver Catalogo"
+        buttonHref="/estampado"
+        position="right"
+    />
 
     <Badge text="Productos destacados" />
 
@@ -96,14 +95,35 @@ const productosDestacados = productosDestacadosResponse.data || [];
     <div class="mx-auto max-w-7xl px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {productosDestacados.map(producto => (
-                <ProductCardSmall
-                    imageUrl={getStrapiMedia(producto.imagen?.url)}
-                    altText={producto.imagen?.alternativeText || `Imagen de ${producto.nombre}`}
-                    title={producto.nombre}
-                    buttonLabel="Ver Producto"
-                    buttonHref={`/producto/${producto.slug}`}
-                    categoryColor={producto.categoria?.Color || "#3B82F6"}
-                />
+                <div class="bg-white rounded-lg shadow-2xl overflow-hidden max-w-sm mx-auto font-fuenteprincipal">
+                    <!-- Imagen del producto -->
+                    <div class="relative h-64">
+                        <Image 
+                            src={cubetaImage} 
+                            alt={`Imagen de ${producto.titulo}`}
+                            class="w-full h-64 object-cover"
+                        />
+                        <div 
+                            class="absolute bottom-0 left-0 px-6 py-4 z-10 flex items-center justify-center min-w-[140px]"
+                            style={`background-color: ${producto.colorPrincipal}; opacity: 0.9; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);`}
+                        >
+                            <div class="text-center">
+                                <span class="text-white text-sm font-light block">Linea</span>
+                                <span class="text-white text-lg font-bold leading-tight">{producto.titulo}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contenido -->
+                    <div class="p-4">
+                        <a
+                            href={`/producto/${producto.id}`}
+                            class="inline-flex items-center justify-center bg-azulprimario text-white text-base font-medium px-6 py-3 w-full hover:bg-blue-700 transition-colors"
+                        >
+                            Ver Producto
+                        </a>
+                    </div>
+                </div>
             ))}
         </div>
     </div>
