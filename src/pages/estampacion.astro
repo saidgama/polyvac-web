@@ -1,0 +1,323 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import ProductCardLocal from "../components/ProductCardLocal.astro";
+import Badge from "../components/Badge.astro";
+
+// Importar imágenes existentes para usar como dummy data
+import img1 from '../assets/acercade/img2.jpg';
+import img2 from '../assets/acercade/img3.jpg';
+import img3 from '../assets/acercade/img4.jpg';
+import img4 from '../assets/acercade/img5.jpg';
+import img5 from '../assets/acercade/mision.jpg';
+import img6 from '../assets/acercade/vision.jpg';
+import testImg from '../assets/hero/test.png';
+
+const title = "Estampación - Industrias Polyvac";
+const description = "Tintas, pigmentos, colorantes y todo lo relacionado con la industria de la estampación textil";
+
+// Dummy data para productos
+const dummyProducts = [
+    {
+        id: 1,
+        nombre: "Tinta Plastisol Roja",
+        slug: "tinta-plastisol-roja",
+        imagen: { url: img1 },
+        categoria: { Color: "#DC2626" }
+    },
+    {
+        id: 2,
+        nombre: "Tinta Base Agua Azul",
+        slug: "tinta-base-agua-azul",
+        imagen: { url: img2 },
+        categoria: { Color: "#2563EB" }
+    },
+    {
+        id: 3,
+        nombre: "Pigmento Amarillo",
+        slug: "pigmento-amarillo",
+        imagen: { url: img3 },
+        categoria: { Color: "#FBBF24" }
+    },
+    {
+        id: 4,
+        nombre: "Colorante Verde",
+        slug: "colorante-verde",
+        imagen: { url: img4 },
+        categoria: { Color: "#10B981" }
+    },
+    {
+        id: 5,
+        nombre: "Tinta Sublimación",
+        slug: "tinta-sublimacion",
+        imagen: { url: img5 },
+        categoria: { Color: "#8B5CF6" }
+    },
+    {
+        id: 6,
+        nombre: "Auxiliar Textil",
+        slug: "auxiliar-textil",
+        imagen: { url: img6 },
+        categoria: { Color: "#6B7280" }
+    }
+];
+
+// Definir las secciones de estampación
+const secciones = {
+    aplicacion: {
+        titulo: "Por tipo de aplicación",
+        subsecciones: [
+            { 
+                nombre: "Para algodón", 
+                etiqueta: "algodon", 
+                descripcion: "Productos especializados para textiles de algodón",
+                productos: [dummyProducts[0], dummyProducts[1]]
+            },
+            { 
+                nombre: "Para poliéster", 
+                etiqueta: "poliester", 
+                descripcion: "Soluciones para fibras sintéticas",
+                productos: [dummyProducts[4], dummyProducts[1]]
+            },
+            { 
+                nombre: "Para fondos claros", 
+                etiqueta: "fondos-claros", 
+                descripcion: "Tintas optimizadas para bases claras",
+                productos: [dummyProducts[1], dummyProducts[3]]
+            },
+            { 
+                nombre: "Para fondos oscuros", 
+                etiqueta: "fondos-oscuros", 
+                descripcion: "Productos de alta cobertura",
+                productos: [dummyProducts[0], dummyProducts[2]]
+            },
+            { 
+                nombre: "Para sublimación", 
+                etiqueta: "sublimacion", 
+                descripcion: "Tintas y papel para sublimación",
+                productos: [dummyProducts[4]]
+            },
+            { 
+                nombre: "Efectos especiales", 
+                etiqueta: "efectos-especiales", 
+                descripcion: "Acabados únicos y llamativos",
+                productos: [dummyProducts[5], dummyProducts[2]]
+            }
+        ]
+    },
+    formulacion: {
+        titulo: "Por tipo de formulación",
+        subsecciones: [
+            { 
+                nombre: "Tintas plastisol", 
+                etiqueta: "plastisol", 
+                descripcion: "Tintas de PVC de alta calidad",
+                productos: [dummyProducts[0], dummyProducts[2]]
+            },
+            { 
+                nombre: "Tintas base agua", 
+                etiqueta: "base-agua", 
+                descripcion: "Tintas ecológicas base agua",
+                productos: [dummyProducts[1], dummyProducts[3]]
+            },
+            { 
+                nombre: "Tintas de sublimación", 
+                etiqueta: "tintas-sublimacion", 
+                descripcion: "Para transferencia por calor",
+                productos: [dummyProducts[4], dummyProducts[5]]
+            },
+            { 
+                nombre: "Tintas DTF", 
+                etiqueta: "dtf", 
+                descripcion: "Direct to Film printing",
+                productos: [dummyProducts[0], dummyProducts[4]]
+            }
+        ]
+    },
+    materias: {
+        titulo: "Materias primas y auxiliares",
+        subsecciones: [
+            { 
+                nombre: "Pigmentos", 
+                etiqueta: "pigmentos", 
+                descripcion: "Pigmentos de alta calidad para coloración",
+                productos: [dummyProducts[2], dummyProducts[3]]
+            },
+            { 
+                nombre: "Colorantes", 
+                etiqueta: "colorantes", 
+                descripcion: "Colorantes especializados",
+                productos: [dummyProducts[3], dummyProducts[4]]
+            },
+            { 
+                nombre: "Auxiliares textiles", 
+                etiqueta: "auxiliares", 
+                descripcion: "Productos de apoyo y acabado",
+                productos: [dummyProducts[5], dummyProducts[1]]
+            },
+            { 
+                nombre: "Acabados especiales", 
+                etiqueta: "acabados", 
+                descripcion: "Para efectos únicos y durables",
+                productos: [dummyProducts[5], dummyProducts[2]]
+            }
+        ]
+    },
+    accesorios: {
+        titulo: "Accesorios de serigrafía",
+        subsecciones: [
+            { 
+                nombre: "Equipos y herramientas", 
+                etiqueta: "equipos", 
+                descripcion: "Todo lo necesario para serigrafía",
+                productos: [dummyProducts[0], dummyProducts[1], dummyProducts[5]]
+            }
+        ]
+    }
+};
+---
+
+<Layout title={title} description={description}>
+    <PageBanner 
+        title="Estampación"
+        subtitle="Tintas, pigmentos, colorantes y todo lo relacionado con la industria de la estampación textil"
+        backgroundImage={testImg}
+    />
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- Sección: Por tipo de aplicación -->
+        <section class="mb-16">
+            <Badge text={secciones.aplicacion.titulo} />
+            
+            {secciones.aplicacion.subsecciones.map(subseccion => (
+                <div class="mb-12">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">{subseccion.nombre}</h3>
+                        <p class="text-gray-600">{subseccion.descripcion}</p>
+                    </div>
+                    
+                    {subseccion.productos && subseccion.productos.length > 0 ? (
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {subseccion.productos.map((producto: any) => (
+                                <ProductCardLocal
+                                    imageUrl={producto.imagen?.url}
+                                    altText={`Imagen de ${producto.nombre}`}
+                                    title={producto.nombre}
+                                    buttonLabel="Ver Producto"
+                                    buttonHref={`/producto/${producto.slug}`}
+                                    categoryColor={producto.categoria?.Color || "#3B82F6"}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div class="text-center py-8">
+                            <p class="text-gray-500">No hay productos disponibles en esta categoría.</p>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </section>
+
+        <!-- Sección: Por tipo de formulación -->
+        <section class="mb-16">
+            <Badge text={secciones.formulacion.titulo} />
+            
+            {secciones.formulacion.subsecciones.map(subseccion => (
+                <div class="mb-12">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">{subseccion.nombre}</h3>
+                        <p class="text-gray-600">{subseccion.descripcion}</p>
+                    </div>
+                    
+                    {subseccion.productos && subseccion.productos.length > 0 ? (
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {subseccion.productos.map((producto: any) => (
+                                <ProductCardLocal
+                                    imageUrl={producto.imagen?.url}
+                                    altText={`Imagen de ${producto.nombre}`}
+                                    title={producto.nombre}
+                                    buttonLabel="Ver Producto"
+                                    buttonHref={`/producto/${producto.slug}`}
+                                    categoryColor={producto.categoria?.Color || "#3B82F6"}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div class="text-center py-8">
+                            <p class="text-gray-500">No hay productos disponibles en esta categoría.</p>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </section>
+
+        <!-- Sección: Materias primas y auxiliares -->
+        <section class="mb-16">
+            <Badge text={secciones.materias.titulo} />
+            
+            {secciones.materias.subsecciones.map(subseccion => (
+                <div class="mb-12">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">{subseccion.nombre}</h3>
+                        <p class="text-gray-600">{subseccion.descripcion}</p>
+                    </div>
+                    
+                    {subseccion.productos && subseccion.productos.length > 0 ? (
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {subseccion.productos.map((producto: any) => (
+                                <ProductCardLocal
+                                    imageUrl={producto.imagen?.url}
+                                    altText={`Imagen de ${producto.nombre}`}
+                                    title={producto.nombre}
+                                    buttonLabel="Ver Producto"
+                                    buttonHref={`/producto/${producto.slug}`}
+                                    categoryColor={producto.categoria?.Color || "#3B82F6"}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div class="text-center py-8">
+                            <p class="text-gray-500">No hay productos disponibles en esta categoría.</p>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </section>
+
+        <!-- Sección: Accesorios de serigrafía -->
+        <section class="mb-16">
+            <Badge text={secciones.accesorios.titulo} />
+            
+            {secciones.accesorios.subsecciones.map(subseccion => (
+                <div class="mb-12">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">{subseccion.nombre}</h3>
+                        <p class="text-gray-600">{subseccion.descripcion}</p>
+                    </div>
+                    
+                    {subseccion.productos && subseccion.productos.length > 0 ? (
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {subseccion.productos.map((producto: any) => (
+                                <ProductCardLocal
+                                    imageUrl={producto.imagen?.url}
+                                    altText={`Imagen de ${producto.nombre}`}
+                                    title={producto.nombre}
+                                    buttonLabel="Ver Producto"
+                                    buttonHref={`/producto/${producto.slug}`}
+                                    categoryColor={producto.categoria?.Color || "#3B82F6"}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div class="text-center py-8">
+                            <p class="text-gray-500">No hay productos disponibles en esta categoría.</p>
+                        </div>
+                    )}
+                </div>
+            ))}
+        </section>
+
+    </div>
+</Layout>

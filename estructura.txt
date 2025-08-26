@@ -1,0 +1,4 @@
+Tarjetas de producto:
+    Imagen de efecto, o aplicacion
+    Descripción de uso "No tecnica" del producto 
+    
