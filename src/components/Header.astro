@@ -1,19 +1,47 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/header/logo3.png";
-import { getCategorias } from "../lib/strapi.js";
 
 const url = new URL(Astro.request.url);
 const currentPath = url.pathname;
 
-// Obtener categorías desde Strapi
-let categorias = [];
-try {
-  const response = await getCategorias();
-  categorias = response.data || [];
-} catch (error) {
-  console.error('Error obteniendo categorías:', error);
-}
+// Definir categorías de estampado localmente
+const categoriasEstampado = [
+  {
+    id: 1,
+    nombre: "Por tipo de aplicación",
+    slug: "tipo-aplicacion",
+    subcategorias: [
+      { nombre: "Para algodón", slug: "para-algodon" },
+      { nombre: "Para poliéster", slug: "para-poliester" },
+      { nombre: "Para fondos claros", slug: "para-fondos-claros" },
+      { nombre: "Para fondos oscuros", slug: "para-fondos-oscuros" },
+      { nombre: "Efectos especiales", slug: "efectos-especiales" }
+    ]
+  },
+  {
+    id: 2,
+    nombre: "Por tipo de formulación",
+    slug: "tipo-formulacion",
+    subcategorias: [
+      { nombre: "Tintas plastisol", slug: "tintas-plastisol" },
+      { nombre: "Tintas base agua", slug: "tintas-base-agua" },
+      { nombre: "Tintas de sublimación", slug: "tintas-sublimacion" },
+      { nombre: "Tintas DTF", slug: "tintas-dtf" }
+    ]
+  },
+  {
+    id: 3,
+    nombre: "Materias primas y auxiliares",
+    slug: "materias-primas",
+    subcategorias: [
+      { nombre: "Pigmentos", slug: "pigmentos" },
+      { nombre: "Colorantes", slug: "colorantes" },
+      { nombre: "Auxiliares textiles", slug: "auxiliares-textiles" },
+      { nombre: "Acabados especiales", slug: "acabados-especiales" }
+    ]
+  }
+];
 ---
 
 <nav class="bg-white sticky w-full z-20 top-0 start-0 font-fuenteprincipal shadow-sm border-b border-gray-100">
@@ -180,22 +208,28 @@ try {
           <!-- Dropdown Menu -->
           <div
             id="categories-dropdown-menu"
-            class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+            class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-1 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
           >
-            {categorias.length > 0 ? (
-              categorias.map((categoria) => (
+            {categoriasEstampado.map((categoria) => (
+              <div class="border-b border-gray-100 last:border-b-0">
                 <a
-                  href={`/categoria/${categoria.slug}`}
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-azulprimario transition-colors"
+                  href={`/estampado#categoria-${categoria.slug}`}
+                  class="block px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-azulprimario transition-colors"
                 >
                   {categoria.nombre}
                 </a>
-              ))
-            ) : (
-              <div class="px-4 py-2 text-sm text-gray-500">
-                No hay categorías disponibles
+                <div class="px-4 pb-2">
+                  {categoria.subcategorias.map((subcategoria) => (
+                    <a
+                      href={`/estampado#categoria-${categoria.slug}`}
+                      class="block px-2 py-1 text-xs text-gray-600 hover:text-azulprimario transition-colors"
+                    >
+                      {subcategoria.nombre}
+                    </a>
+                  ))}
+                </div>
               </div>
-            )}
+            ))}
           </div>
         </li>
         
@@ -793,3 +827,44 @@ try {
     }
   }
 </style>
+
+<script>
+  // Mejorar el scroll a anclas
+  document.addEventListener('DOMContentLoaded', function() {
+    // Función para manejar scroll suave a anclas
+    function handleAnchorClick(event) {
+      const href = event.currentTarget.getAttribute('href');
+      if (href && href.includes('#categoria-')) {
+        event.preventDefault();
+        
+        // Extraer el ID del ancla
+        const anchorId = href.split('#')[1];
+        const targetElement = document.getElementById(anchorId);
+        
+        if (targetElement) {
+          // Calcular la posición con offset para el header
+          const headerHeight = document.querySelector('nav').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 30; // 30px extra de padding
+          
+          // Scroll suave
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Cerrar dropdown si está abierto
+          const dropdown = document.getElementById('categories-dropdown-menu');
+          if (dropdown && !dropdown.classList.contains('hidden')) {
+            dropdown.classList.add('hidden');
+          }
+        }
+      }
+    }
+    
+    // Agregar event listeners a todos los enlaces del dropdown que tengan anclas
+    const anchorLinks = document.querySelectorAll('#categories-dropdown-menu a[href*="#categoria-"]');
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', handleAnchorClick);
+    });
+  });
+</script>

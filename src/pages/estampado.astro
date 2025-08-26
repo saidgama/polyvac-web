@@ -22,6 +22,7 @@ const subcategorias = [
     {
         id: 1,
         nombre: "Por tipo de aplicación",
+        slug: "tipo-aplicacion",
         descripcion: "Productos específicos según el tipo de tela y aplicación",
         taxonomias: [
             { id: 1, nombre: "Para algodón", slug: "para-algodon" },
@@ -34,6 +35,7 @@ const subcategorias = [
     {
         id: 2,
         nombre: "Por tipo de formulación",
+        slug: "tipo-formulacion",
         descripcion: "Diferentes tipos de tintas según su composición",
         taxonomias: [
             { id: 7, nombre: "Tintas plastisol", slug: "tintas-plastisol" },
@@ -45,6 +47,7 @@ const subcategorias = [
     {
         id: 3,
         nombre: "Materias primas y auxiliares",
+        slug: "materias-primas",
         descripcion: "Componentes esenciales para la preparación de tintas",
         taxonomias: [
             { id: 11, nombre: "Pigmentos", slug: "pigmentos" },
@@ -56,6 +59,7 @@ const subcategorias = [
     {
         id: 4,
         nombre: "Accesorios de serigrafía",
+        slug: "accesorios-serigrafia",
         descripcion: "Herramientas y accesorios para el proceso de estampación",
         taxonomias: [
             { id: 15, nombre: "Marcos", slug: "marcos" },
@@ -77,7 +81,7 @@ const subcategorias = [
     <!-- Contenido principal -->
     <main class="font-fuenteprincipal">
         {subcategorias.map((subcategoria) => (
-            <section class="py-12">
+            <section id={`categoria-${subcategoria.slug}`} class="py-16 scroll-mt-32">
                 <!-- Badge de subcategoría -->
                 <Badge text={subcategoria.nombre} />
                 
