@@ -5,8 +5,9 @@ import PageBanner from "../components/PageBanner.astro";
 import Badge from "../components/Badge.astro";
 import productos from "../data/productos.js";
 
-// Importar imagen temporal
+// Importar imágenes
 import estampadoBanner from '../assets/hero/test.png';
+import cubetaImage from '../assets/cubeta.png';
 
 const title = "Línea de Estampado - Industrias Polyvac";
 const description = "Tintas, pigmentos, colorantes, auxiliares y accesorios para estampación textil";
@@ -103,10 +104,10 @@ const subcategorias = [
                                         const productosAccesorios = productos.filter(producto => producto.subcategorias.includes(4));
                                         const productosAMostrar = productosAccesorios.length > 0 ? productosAccesorios : [
                                             {
-                                                id: "placeholder-accesorios-1",
+                                                id: "placeholder-accesorios-1"  ,
                                                 titulo: "Accesorio de ejemplo",
                                                 descripcion: "Este es un accesorio de ejemplo para mostrar el diseño y estructura de la página.",
-                                                imagenes: ["/src/assets/cubeta.png"],
+                                                imagenes: [cubetaImage],
                                                 fichaTecnica: null,
                                                 placeholder: true,
                                                 colorPrincipal: "#95a5a6"
@@ -115,7 +116,7 @@ const subcategorias = [
                                                 id: "placeholder-accesorios-2",
                                                 titulo: "Accesorio de ejemplo",
                                                 descripcion: "Este es un accesorio de ejemplo para mostrar el diseño y estructura de la página.",
-                                                imagenes: ["/src/assets/cubeta.png"],
+                                                imagenes: [cubetaImage],
                                                 fichaTecnica: null,
                                                 placeholder: true,
                                                 colorPrincipal: "#7f8c8d"
@@ -125,10 +126,12 @@ const subcategorias = [
                                         return productosAMostrar.map((producto: any) => (
                                             <div class={`carousel-card p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow ${producto.placeholder ? 'bg-gray-50' : 'bg-white'}`}>
                                                 <div class="relative h-48 bg-gray-100 rounded mb-4 flex items-center justify-center overflow-hidden">
-                                                    <img 
-                                                        src={producto.imagenes[0]} 
+                                                    <Image 
+                                                        src={cubetaImage} 
                                                         alt={producto.titulo}
                                                         class={`w-full h-full object-cover ${producto.placeholder ? 'opacity-50 grayscale' : ''}`}
+                                                        width={533}
+                                                        height={492}
                                                         loading="lazy"
                                                     />
                                                     {/* Polígo  no con el título del producto */}
@@ -218,7 +221,7 @@ const subcategorias = [
                                                     id: `placeholder-${taxonomia.id}-1`,
                                                     titulo: "Producto de ejemplo",
                                                     descripcion: "Este es un producto de ejemplo para mostrar el diseño y estructura de la página.",
-                                                    imagenes: ["/src/assets/cubeta.png"],
+                                                    imagenes: [cubetaImage],
                                                     fichaTecnica: null,
                                                     placeholder: true,
                                                     colorPrincipal: "#bdc3c7"
@@ -227,7 +230,7 @@ const subcategorias = [
                                                     id: `placeholder-${taxonomia.id}-2`,
                                                     titulo: "Producto de ejemplo",
                                                     descripcion: "Este es un producto de ejemplo para mostrar el diseño y estructura de la página.",
-                                                    imagenes: ["/src/assets/cubeta.png"],
+                                                    imagenes: [cubetaImage],
                                                     fichaTecnica: null,
                                                     placeholder: true,
                                                     colorPrincipal: "#95a5a6"
@@ -237,10 +240,12 @@ const subcategorias = [
                                             return productosAMostrar.map((producto: any) => (
                                                 <div class={`carousel-card p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow ${producto.placeholder ? 'bg-gray-50' : 'bg-white'}`}>
                                                     <div class="relative h-48 bg-gray-100 rounded mb-4 flex items-center justify-center overflow-hidden">
-                                                        <img 
-                                                            src={producto.imagenes[0]} 
+                                                        <Image 
+                                                            src={cubetaImage} 
                                                             alt={producto.titulo}
                                                             class={`w-full h-full object-cover ${producto.placeholder ? 'opacity-50 grayscale' : ''}`}
+                                                            width={533}
+                                                            height={492}
                                                             loading="lazy"
                                                         />
                                                         {/* Polígono con el título del producto */}

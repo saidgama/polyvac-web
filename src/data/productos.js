@@ -1,6 +1,9 @@
 // Archivo de datos de productos para la tienda Polyvac
 // Estructura actualizada para integrar con las taxonomías de estampado
 
+// Importar imágenes para que funcionen en producción
+import cubetaImage from '../assets/cubeta.png';
+
 export default [
   {
     id: "aquaflex",
@@ -10,7 +13,7 @@ export default [
     taxonomias: [1, 8], // IDs de taxonomías: "Para algodón", "Tintas base agua"
     descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100% , totalmente libres de gas Nafta, metales pesados , PVC y Orto- Ftalatos; lo cual les da una excelente estabilidad en el esténcil , haciendo posible la estampación en el pulpo manual y automático.",
     imagenes: [
-      "/src/assets/cubeta.png"
+      cubetaImage
     ],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_aquaflex_e3a4e88af9.pdf",
     colores: [
@@ -28,7 +31,7 @@ export default [
     taxonomias: [1, 3, 7], // "Para algodón", "Para fondos claros", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas para fondos claros y campañas políticas , utilizadas para realizar estampados en tela de algodón 100 % de terminado ahulado, con acabado semi-mate.",
     imagenes: [
-      "/src/assets/cubeta.png"
+      cubetaImage
     ],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_plastisol_vm_ht_c9c2f5cd42.pdf",
     colores: [
@@ -45,7 +48,7 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [1, 4, 7], // "Para algodón", "Para fondos oscuros", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y fabricadas con materias primas de importación, con un alto contenido de solidos y buen poder cubriente, utilizadas para realizar estampados en fondos obscuros de algodón 100%.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_ahulado_ao_ht_ed3af4a320.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
@@ -60,7 +63,7 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [1, 7], // "Para algodón", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y ftalatos, fabricadas con materias primas de importación, utilizadas para realizar estampaciones en tela de algodón 100% en terminado ahulado , con acabado semi-mate.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_plastivac_vs_ht_e3fff37047.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
@@ -75,7 +78,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [11], // "Pigmentos"
     descripcion: "Son pigmentos tanto orgánicos como inorgánicos dispersados en base agua que deben se fijados por medio de Binders.Debe ser termofijado para tener buena solidez al frote tanto en húmedo como en seco.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_polyprint_ht_58cdef145b.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
@@ -90,7 +93,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares" (porque es un colorante concentrado)
     taxonomias: [12, 9], // "Colorantes", "Tintas de sublimación"
     descripcion: "Gama de colorantes líquidos concentrados para sublimación, desarrollados para integrarse fácilmente a pastas de sublimación tanto en base agua 'SUBLIVAC', como base solvente 'SUBLISOL'.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_polytransfer_ht_8b9a5dc463.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
@@ -105,7 +108,7 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [2, 9], // "Para poliéster", "Tintas de sublimación"
     descripcion: "Tintas de sublimación base solvente, diseñadas para impresiones en papel por serigrafia y termo-transferir a tela poliéster 100%, logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel//uploads/ficha_sublisol_ht_65ea8375e2.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
@@ -120,7 +123,7 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [2, 8, 9], // "Para poliéster", "Tintas base agua", "Tintas de sublimación"
     descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel//uploads/ficha_sublivac_ht_dbc9f8d1ec.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
@@ -137,7 +140,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
     descripcion: "Línea completa de colorantes directos.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
     porcentajes: { porcentaje1: "1%", porcentaje2: "3%" }, // Porcentajes dinámicos
@@ -184,7 +187,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
     descripcion: "Línea completa de colorantes basicos.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
     porcentajes: { porcentaje1: "0.5%", porcentaje2: "1%" }, // Porcentajes dinámicos
@@ -220,7 +223,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
     descripcion: "Línea completa de colorantes acidos.",
-    imagenes: ["/src/assets/cubeta.png"],
+    imagenes: [cubetaImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
     porcentajes: { porcentaje1: "1%", porcentaje2: "3%" }, // Porcentajes dinámicos
