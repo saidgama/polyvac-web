@@ -221,7 +221,7 @@ const categoriasEstampado = [
                 <div class="px-4 pb-2">
                   {categoria.subcategorias.map((subcategoria) => (
                     <a
-                      href={`/estampado#categoria-${categoria.slug}`}
+                      href={`/estampado#categoria-${subcategoria.slug}`}
                       class="block px-2 py-1 text-xs text-gray-600 hover:text-azulprimario transition-colors"
                     >
                       {subcategoria.nombre}
@@ -835,28 +835,34 @@ const categoriasEstampado = [
     function handleAnchorClick(event) {
       const href = event.currentTarget.getAttribute('href');
       if (href && href.includes('#categoria-')) {
-        event.preventDefault();
+        // Verificar si estamos en la página de estampado
+        const currentPath = window.location.pathname;
         
-        // Extraer el ID del ancla
-        const anchorId = href.split('#')[1];
-        const targetElement = document.getElementById(anchorId);
-        
-        if (targetElement) {
-          // Calcular la posición con offset para el header
-          const headerHeight = document.querySelector('nav').offsetHeight;
-          const targetPosition = targetElement.offsetTop - headerHeight - 30; // 30px extra de padding
+        if (currentPath === '/estampado' || currentPath === '/estampado/') {
+          // Si ya estamos en estampado, hacer scroll suave
+          event.preventDefault();
           
-          // Scroll suave
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
+          const anchorId = href.split('#')[1];
+          const targetElement = document.getElementById(anchorId);
           
-          // Cerrar dropdown si está abierto
-          const dropdown = document.getElementById('categories-dropdown-menu');
-          if (dropdown && !dropdown.classList.contains('hidden')) {
-            dropdown.classList.add('hidden');
+          if (targetElement) {
+            const headerHeight = document.querySelector('nav').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight - 30;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Cerrar dropdown
+            const dropdown = document.getElementById('categories-dropdown-menu');
+            if (dropdown && !dropdown.classList.contains('hidden')) {
+              dropdown.classList.add('hidden');
+            }
           }
+        } else {
+          // Si no estamos en estampado, navegar normalmente (el navegador manejará el scroll al ancla)
+          // No prevenir default, dejar que navegue a la página con el hash
         }
       }
     }
@@ -866,5 +872,23 @@ const categoriasEstampado = [
     anchorLinks.forEach(link => {
       link.addEventListener('click', handleAnchorClick);
     });
+    
+    // Manejar el scroll al cargar la página si hay un hash en la URL
+    if (window.location.hash && window.location.hash.includes('categoria-')) {
+      setTimeout(() => {
+        const anchorId = window.location.hash.substring(1);
+        const targetElement = document.getElementById(anchorId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('nav').offsetHeight;
+          const targetPosition = targetElement.offsetTop - headerHeight - 30;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100); // Pequeño delay para asegurar que la página esté completamente cargada
+    }
   });
 </script>

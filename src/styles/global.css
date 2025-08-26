@@ -10,6 +10,12 @@
     --breakpoint-xl: 70rem;
 }
 
+/* Scroll suave y offset para anclas */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+}
+
 /* Utilidades adicionales para la búsqueda */
 .line-clamp-2 {
     display: -webkit-box;
