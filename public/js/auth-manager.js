@@ -72,7 +72,7 @@ class AuthManager {
   // Obtener URL de Strapi
   getStrapiUrl() {
     // Para producción
-    return 'http://ec2-13-218-128-154.compute-1.amazonaws.com/panel';
+    return 'http://ec2-34-205-157-80.compute-1.amazonaws.com/panel';
   }
 
   // Verificar conexión con Strapi

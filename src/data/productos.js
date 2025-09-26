@@ -15,7 +15,7 @@ export default [
     imagenes: [
       cubetaImage
     ],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_aquaflex_e3a4e88af9.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_aquaflex_e3a4e88af9.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" },
@@ -33,7 +33,7 @@ export default [
     imagenes: [
       cubetaImage
     ],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_plastisol_vm_ht_c9c2f5cd42.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_plastisol_vm_ht_c9c2f5cd42.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" },
@@ -49,7 +49,7 @@ export default [
     taxonomias: [1, 4, 7], // "Para algodón", "Para fondos oscuros", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y fabricadas con materias primas de importación, con un alto contenido de solidos y buen poder cubriente, utilizadas para realizar estampados en fondos obscuros de algodón 100%.",
     imagenes: [cubetaImage],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_ahulado_ao_ht_ed3af4a320.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_ahulado_ao_ht_ed3af4a320.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" }
@@ -64,7 +64,7 @@ export default [
     taxonomias: [1, 7], // "Para algodón", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y ftalatos, fabricadas con materias primas de importación, utilizadas para realizar estampaciones en tela de algodón 100% en terminado ahulado , con acabado semi-mate.",
     imagenes: [cubetaImage],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_plastivac_vs_ht_e3fff37047.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_plastivac_vs_ht_e3fff37047.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" }
@@ -79,7 +79,7 @@ export default [
     taxonomias: [11], // "Pigmentos"
     descripcion: "Son pigmentos tanto orgánicos como inorgánicos dispersados en base agua que deben se fijados por medio de Binders.Debe ser termofijado para tener buena solidez al frote tanto en húmedo como en seco.",
     imagenes: [cubetaImage],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_polyprint_ht_58cdef145b.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_polyprint_ht_58cdef145b.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" }
@@ -94,7 +94,7 @@ export default [
     taxonomias: [12, 9], // "Colorantes", "Tintas de sublimación"
     descripcion: "Gama de colorantes líquidos concentrados para sublimación, desarrollados para integrarse fácilmente a pastas de sublimación tanto en base agua 'SUBLIVAC', como base solvente 'SUBLISOL'.",
     imagenes: [cubetaImage],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel/uploads/ficha_polytransfer_ht_8b9a5dc463.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_polytransfer_ht_8b9a5dc463.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" }
@@ -109,7 +109,7 @@ export default [
     taxonomias: [2, 9], // "Para poliéster", "Tintas de sublimación"
     descripcion: "Tintas de sublimación base solvente, diseñadas para impresiones en papel por serigrafia y termo-transferir a tela poliéster 100%, logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
     imagenes: [cubetaImage],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel//uploads/ficha_sublisol_ht_65ea8375e2.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel//uploads/ficha_sublisol_ht_65ea8375e2.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" }
@@ -124,7 +124,7 @@ export default [
     taxonomias: [2, 8, 9], // "Para poliéster", "Tintas base agua", "Tintas de sublimación"
     descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
     imagenes: [cubetaImage],
-    fichaTecnica: "http://ec2-13-218-128-154.compute-1.amazonaws.com/panel//uploads/ficha_sublivac_ht_dbc9f8d1ec.pdf",
+    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel//uploads/ficha_sublivac_ht_dbc9f8d1ec.pdf",
     colores: [
       { nombre: "Blanco", hex: "#fff" },
       { nombre: "Negro", hex: "#222" }
