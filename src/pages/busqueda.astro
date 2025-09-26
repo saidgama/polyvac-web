@@ -8,8 +8,10 @@ const title = "Búsqueda - Industrias Polyvac";
 const description = "Página para búsqueda";
 
 // Obtener TODOS los productos en build time para búsqueda del lado del cliente
-const allProductsResponse = await getAllProductos();
-const allProducts = allProductsResponse.data || [];
+// TEMPORALMENTE DESACTIVADO - fetch comentado por cambios en backend
+// const allProductsResponse = await getAllProductos();
+// const allProducts = allProductsResponse.data || [];
+const allProducts = [];
 
 // Obtener URL de Strapi para pasarla al cliente
 const strapiUrl = import.meta.env.PUBLIC_STRAPI_URL || 'http://localhost:1337';
@@ -17,9 +19,11 @@ const strapiUrl = import.meta.env.PUBLIC_STRAPI_URL || 'http://localhost:1337';
 // Obtener query de la URL para SEO fallback
 const url = Astro.url;
 const query = url.searchParams.get('q') || '';
-
+ 
 // Búsqueda SSR para SEO (opcional, solo si hay query)
+// TEMPORALMENTE DESACTIVADO - fetch comentado por cambios en backend
 let serverProducts = [];
+/*
 if (query.trim()) {
   try {
     const response = await searchProductos(query);
@@ -28,6 +32,7 @@ if (query.trim()) {
     console.error('Error en búsqueda SSR:', error);
   }
 }
+*/
 ---
 
 <Layout title={title} description={description}>
