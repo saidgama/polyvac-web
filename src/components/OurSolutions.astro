@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+---
+
+<style>
+    .our-solutions {
+        padding: 4rem 2rem;
+    }
+    .os-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .os-header h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2d3748;
+    }
+    .os-header p {
+        font-size: 1.125rem;
+        color: #4a5568;
+        max-width: 700px;
+        margin: 0.5rem auto 0;
+    }
+    .os-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .os-card {
+        background-color: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+    .os-card:hover {
+        transform: translateY(-5px);
+    }
+    .os-card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .os-card-content {
+        padding: 1.5rem;
+    }
+    .os-card-content h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .os-card-content p {
+        color: #4a5568;
+    }
+</style>
+
+<section class="our-solutions">
+    <div class="os-header">
+        <h2>Nuestras Soluciones</h2>
+        <p>Ofrecemos una gama completa de productos para diversas aplicaciones, garantizando siempre el mejor rendimiento y color.</p>
+    </div>
+    <div class="os-grid">
+        <div class="os-card">
+            <Image src={import('../assets/acercade/img3.jpg')} alt="Textiles" class="os-card-image" />
+            <div class="os-card-content">
+                <h3>Textiles</h3>
+                <p>Colorantes y pigmentos para todo tipo de fibras, desde algodón hasta sintéticos.</p>
+            </div>
+        </div>
+        <div class="os-card">
+            <Image src={import('../assets/acercade/img4.jpg')} alt="Plásticos" class="os-card-image" />
+            <div class="os-card-content">
+                <h3>Plásticos</h3>
+                <p>Masterbatches y pigmentos de alta concentración para una coloración intensa y uniforme.</p>
+            </div>
+        </div>
+        <div class="os-card">
+            <Image src={import('../assets/acercade/img5.jpg')} alt="Pinturas" class="os-card-image" />
+            <div class="os-card-content">
+                <h3>Pinturas y Recubrimientos</h3>
+                <p>Dispersiones pigmentarias y colorantes para sistemas base agua y solvente.</p>
+            </div>
+        </div>
+    </div>
+</section>

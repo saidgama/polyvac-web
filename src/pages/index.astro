@@ -7,8 +7,8 @@ const description = "Inicio de la pagina.";
 import CategoryCard from "../components/CategoryCard.astro";
 import ProductCardSmall from "../components/ProductCardSmall.astro";
 
-import bgHero from "../assets/hero/test.png";
-import logoHero from "../assets/hero/logohero.png";
+import bgHero from "../assets/hero/color-explosion.jpg";
+import logoHero from "../assets/hero/HeroImage.png";
 import Badge from "../components/Badge.astro";
 import oekotexLogo from '../assets/acercade/oekotex.png';
 import bluesignLogo from '../assets/acercade/bluesign.png';  
@@ -27,56 +27,41 @@ import cubetaImage from '../assets/cubeta.png';
 ---
 
 <Layout title={title} description={description}>
-    <section class="relative w-full h-[488px]" id="home">
-        <!-- hero section -->
-        <div class="absolute inset-0">
-            <Image
-                src={bgHero}
-                alt="Background Image"
-                class="object-cover object-center w-full h-full"
-                style="z-index: -1;"
-            />
-        </div>
-        <div class="absolute inset-0 bg-black opacity-40"></div>
-        
-        <div class="absolute inset-9 flex flex-col md:flex-row font-fuenteprincipal">
-            <div class="h-1/2 md:w-1/2 mb-4 md:mb-0">
-                <h1
-                    class="text-white font-bold text-1xl md:text-2xl xl:text-4xl p-6 md:p-10 leading-tight"
-                >
-                    Empresa dedicada a la fabricación y distribución de productos químicos, resinas, pigmentos, colorantes y todo lo relacionado con la industria del color.
-                </h1>
-                <a
-                    href="/acerca"
-                    class="m-6 md:m-10 px-7 py-3 bg-azulprimario text-white text-lg md:text-xl font-medium
-                hover:bg-blue-800
-                transition duration-200"
-                    >Conócenos
-                    <svg
-                        class="inline-flex ml-3 w-7 h-7 fill-white"
-                        viewBox="0 0 20 11"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M0.628662 5.5C0.628662 5.16249 0.925718 4.88889 1.29215 4.88889H16.9411L12.7659 1.04323C12.5067 0.80458 12.5067 0.417645 12.7659 0.178991C13.0249 -0.0596635 13.4451 -0.0596635 13.7041 0.178991L19.0121 5.06788C19.2712 5.30653 19.2712 5.69347 19.0121 5.93212L13.7041 10.821C13.4451 11.0597 13.0249 11.0597 12.7659 10.821C12.5067 10.5824 12.5067 10.1954 12.7659 9.9568L16.9411 6.11111H1.29215C0.925718 6.11111 0.628662 5.83751 0.628662 5.5Z"
-                        ></path>
+    <section class="hero-section" id="home">
+        <canvas id="lava-lamp-canvas"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 3.5a1.5 1.5 0 011.06.44l5.25 5.25a1.5 1.5 0 010 2.12l-5.25 5.25a1.5 1.5 0 01-2.12 0L3.94 11.31a1.5 1.5 0 010-2.12l5.25-5.25A1.5 1.5 0 0110 3.5zm0 2.12L6.12 9.5h7.76L10 5.62z" />
+                </svg>
+                <span>Soluciones Químicas Profesionales</span>
+            </div>
+            <h1>Expertos en Color: <br> <span class="text-yellow-400">Químicos para la Industria</span></h1>
+            <p>Fabricamos y distribuimos una amplia gama de productos químicos, resinas, pigmentos y colorantes, ofreciendo soluciones integrales para la industria del color.</p>
+            <div class="hero-buttons">
+                <a href="/estampado" class="btn btn-primary">
+                    Explorar Catalogo
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                 </a>
+                <a href="/contacto" class="btn btn-secondary">Contacto</a>
             </div>
-            <div
-                class="flex justify-center items-center h-full md:h-auto md:w-1/2"
-            >
-                <Image
-                    src={logoHero}
-                    alt="Logo"
-                    class="h-auto md:h-auto w-auto"
-                />
+            <div class="hero-stats">
+                <div>
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Productos</span>
+                </div>
+                <div>
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">Años de Experiencia</span>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Sección de cards de categorias -->
+    <section>
+        <!-- Sección de cards de categorias -->
     <Badge text="Nuestras Líneas de Productos"/>
 
      <CategoryCard
@@ -89,6 +74,8 @@ import cubetaImage from '../assets/cubeta.png';
         position="right"
     />
 
+    </section>
+    
     <Badge text="Productos destacados" />
 
     <!-- Sección de productos destacados -->
@@ -129,61 +116,83 @@ import cubetaImage from '../assets/cubeta.png';
     </div>
 
     <!-- Certificaciones -->
-        <section class="bg-gray-900 py-16 mt-15">
-            <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center text-white mb-8">CERTIFICACIONES Y NORMAS</h2>
-                <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
-                    Todos nuestros productos cumplen con las normas requeridas por:
-                </p>
-                <div class="grid md:grid-cols-3 gap-8 text-center">
-                    <!-- OEKOTEX 2024 -->
-                    <div class="text-white">
-                        <div class="mb-4">
-                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
-                                <Image 
-                                    src={oekotexLogo} 
-                                    alt="Logo OEKOTEX 2024" 
-                                    class="w-full h-full object-contain"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold text-green-400">OEKOTEX</h3>
-                            <h3 class="text-lg font-bold text-white">2024</h3>
-                            <p class="text-sm text-gray-300 mt-2">Estándar internacional para textiles libres de sustancias nocivas</p>
-                        </div>
+    <section class="py-16 mt-15 overflow-hidden">
+        <div class="mb-12 px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-500 via-blue-500 to-red-500 bg-clip-text text-transparent">
+                CERTIFICACIONES Y NORMAS
+            </h2>
+            <p class="text-center text-lg md:text-xl font-medium max-w-3xl mx-auto bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent">
+                Todos nuestros productos cumplen con las normas requeridas por:
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-0">
+            <!-- OEKOTEX 2024 - Verde -->
+            <div class="relative py-16 px-8 text-center min-h-[450px] flex flex-col justify-center items-center transition-all duration-300 hover:scale-105">
+                <!-- Fondo con gradiente verde -->
+                <div class="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-emerald-600 opacity-85"></div>
+                
+                <!-- Contenido -->
+                <div class="relative z-10">
+                    <div class="w-40 h-40 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 p-6 shadow-2xl transform transition-transform hover:rotate-3">
+                        <Image 
+                            src={oekotexLogo} 
+                            alt="Logo OEKOTEX 2024" 
+                            class="w-full h-full object-contain"
+                        />
                     </div>
-
-                    <!-- BLUESIGN -->
-                    <div class="text-white">
-                        <div class="mb-4">
-                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
-                                <Image 
-                                    src={bluesignLogo} 
-                                    alt="Logo Bluesign" 
-                                    class="w-full h-full object-contain"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold text-blue-400">BLUESIGN</h3>
-                            <h3 class="text-lg font-bold text-white">APPROVED</h3>
-                            <p class="text-sm text-gray-300 mt-2">Sistema de gestión para una producción textil sostenible</p>
-                        </div>
-                    </div>
-
-                    <!-- BUREAU VERITAS -->
-                    <div class="text-white">
-                        <div class="mb-4">
-                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
-                                <Image 
-                                    src={bureauVeritasLogo} 
-                                    alt="Logo Bureau Veritas" 
-                                    class="w-full h-full object-contain"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold text-red-400">BUREAU</h3>
-                            <h3 class="text-xl font-bold text-red-400">VERITAS</h3>
-                            <p class="text-sm text-gray-300 mt-2">Líder mundial en servicios de inspección, certificación y ensayos</p>
-                        </div>
-                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">OEKOTEX</h3>
+                    <h4 class="text-2xl font-bold text-green-100 mb-4">2024</h4>
+                    <p class="text-base text-white max-w-xs mx-auto drop-shadow-md">
+                        Estándar internacional para textiles libres de sustancias nocivas
+                    </p>
                 </div>
             </div>
-        </section>
+
+            <!-- BLUESIGN - Azul -->
+            <div class="relative py-16 px-8 text-center min-h-[450px] flex flex-col justify-center items-center transition-all duration-300 hover:scale-105">
+                <!-- Fondo con gradiente azul -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-700 opacity-85"></div>
+                
+                <!-- Contenido -->
+                <div class="relative z-10">
+                    <div class="w-40 h-40 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 p-6 shadow-2xl transform transition-transform hover:rotate-3">
+                        <Image 
+                            src={bluesignLogo} 
+                            alt="Logo Bluesign" 
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">BLUESIGN</h3>
+                    <h4 class="text-2xl font-bold text-blue-100 mb-4">APPROVED</h4>
+                    <p class="text-base text-white max-w-xs mx-auto drop-shadow-md">
+                        Sistema de gestión para una producción textil sostenible
+                    </p>
+                </div>
+            </div>
+
+            <!-- BUREAU VERITAS - Rojo -->
+            <div class="relative py-16 px-8 text-center min-h-[450px] flex flex-col justify-center items-center transition-all duration-300 hover:scale-105">
+                <!-- Fondo con gradiente rojo -->
+                <div class="absolute inset-0 bg-gradient-to-br from-red-400 via-red-600 to-rose-700 opacity-85"></div>
+                
+                <!-- Contenido -->
+                <div class="relative z-10">
+                    <div class="w-40 h-40 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 p-6 shadow-2xl transform transition-transform hover:rotate-3">
+                        <Image 
+                            src={bureauVeritasLogo} 
+                            alt="Logo Bureau Veritas" 
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">BUREAU</h3>
+                    <h4 class="text-3xl font-bold text-red-100 mb-4">VERITAS</h4>
+                    <p class="text-base text-white max-w-xs mx-auto drop-shadow-md">
+                        Líder mundial en servicios de inspección, certificación y ensayos
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script is:inline src="/js/lava-lamp.js"></script>
 </Layout>
