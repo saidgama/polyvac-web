@@ -25,6 +25,9 @@ if (!producto) {
 const title = producto.titulo;
 const description = producto.descripcion;
 
+// Flag para ocultar todo lo relacionado a Ficha Técnica
+const ocultarFichaTecnica = true;
+
 // Mapeo de subcategorías para mostrar breadcrumbs
 const subcategoriasNombres = {
   1: "Aplicación",
@@ -122,7 +125,7 @@ const taxonomiasNombres = {
 
           <!-- Botones de acción -->
           <div class="flex justify-start pt-6">
-            {producto.fichaTecnica && (
+            {!ocultarFichaTecnica && producto.fichaTecnica && (
               <a 
                 href={producto.fichaTecnica} 
                 target="_blank"
@@ -168,8 +171,8 @@ const taxonomiasNombres = {
                       <div class="flex items-center gap-2">
                         <div 
                           class="w-24 h-12 rounded-lg border-2 border-gray-300 shadow-sm"
-                          style={`background-color: ${color.hex}`}
-                          title={`${color.nombre} - ${color.hex}`}
+                          style={`background-color: ${(color as any).hex}`}
+                          title={`${color.nombre} - ${(color as any).hex}`}
                         ></div> 
                       </div>
                     </td>
@@ -203,7 +206,7 @@ const taxonomiasNombres = {
   )}
 
   <!-- Sección de visualización del PDF -->
-  {producto.fichaTecnica && (
+  {!ocultarFichaTecnica && producto.fichaTecnica && (
     <section class="bg-gray-200 py-16">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
