@@ -35,9 +35,21 @@ html {
     text-align: center;
     color: white;
     overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('/src/assets/hero/color-explosion.jpg');
     background-size: cover;
     background-position: center;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    transform: scale(1.05); /* Evita bordes borrosos */
+    z-index: 0;
 }
 
 .hero-overlay {
