@@ -44,9 +44,9 @@ const categoriasEstampado = [
 ];
 ---
 
-<nav class="bg-white sticky w-full z-20 top-0 start-0 font-fuenteprincipal shadow-sm border-b border-gray-100">
+<nav class="bg-white sticky w-full z-20 top-0 start-0 font-fuenteprincipal p-4 sm:p-0 shadow-sm overflow-x-hidden">
   <div
-    class="flex flex-wrap items-center justify-between mx-auto p-4 md:px-[3%]"
+    class="flex flex-wrap items-center justify-between mx-auto w-full md:px-[3%]"
   >
     <a href="/" class="flex items-center space-x-3">
       <Image src={logo} alt="Polyvac Logo" class="h-10 md:h-12 w-auto" />
@@ -56,45 +56,7 @@ const categoriasEstampado = [
     >
     </div>
 
-    <div class="flex md:order-2 space-x-3">
-      <div class="hidden md:flex items-center">
-        <button id="search-toggle" type="button" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-          <svg class="w-7 h-7 fill-gris" viewBox="0 0 26 26">
-            <path
-              d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"
-            ></path>
-          </svg>
-        </button>
-      </div>
-     
-      <a
-        href="/cotizador"
-        class="relative inline-flex items-center ml-1 md:ml-3 lg:ml-6 text-sm text-center text-white"
-        id="cart-link"
-      >
-        <svg
-          id="cart-icon"
-          class="w-8 h-8 md:w-10 md:h-10 fill-gris hover:fill-azulprimario transition-all duration-300"
-          viewBox="0 0 33 36"
-        >
-          <path
-            d="M5.375 35.8333C3.88194 35.8333 2.61285 35.3108 1.56771 34.2656C0.522569 33.2205 0 31.9514 0 30.4583V25.0833H5.375V0L8.0625 2.6875L10.75 0L13.4375 2.6875L16.125 0L18.8125 2.6875L21.5 0L24.1875 2.6875L26.875 0L29.5625 2.6875L32.25 0V30.4583C32.25 31.9514 31.7274 33.2205 30.6823 34.2656C29.6372 35.3108 28.3681 35.8333 26.875 35.8333H5.375ZM26.875 32.25C27.3826 32.25 27.8082 32.0783 28.1516 31.7349C28.495 31.3915 28.6667 30.966 28.6667 30.4583V5.375H8.95833V25.0833H25.0833V30.4583C25.0833 30.966 25.255 31.3915 25.5984 31.7349C25.9418 32.0783 26.3674 32.25 26.875 32.25ZM10.75 12.5417V8.95833H21.5V12.5417H10.75ZM10.75 17.9167V14.3333H21.5V17.9167H10.75ZM25.0833 12.5417C24.5757 12.5417 24.1502 12.37 23.8068 12.0266C23.4634 11.6832 23.2917 11.2576 23.2917 10.75C23.2917 10.2424 23.4634 9.81684 23.8068 9.47344C24.1502 9.13003 24.5757 8.95833 25.0833 8.95833C25.591 8.95833 26.0165 9.13003 26.3599 9.47344C26.7033 9.81684 26.875 10.2424 26.875 10.75C26.875 11.2576 26.7033 11.6832 26.3599 12.0266C26.0165 12.37 25.591 12.5417 25.0833 12.5417ZM25.0833 17.9167C24.5757 17.9167 24.1502 17.745 23.8068 17.4016C23.4634 17.0582 23.2917 16.6326 23.2917 16.125C23.2917 15.6174 23.4634 15.1918 23.8068 14.8484C24.1502 14.505 24.5757 14.3333 25.0833 14.3333C25.591 14.3333 26.0165 14.505 26.3599 14.8484C26.7033 15.1918 26.875 15.6174 26.875 16.125C26.875 16.6326 26.7033 17.0582 26.3599 17.4016C26.0165 17.745 25.591 17.9167 25.0833 17.9167ZM5.375 32.25H21.5V28.6667H3.58333V30.4583C3.58333 30.966 3.75503 31.3915 4.09844 31.7349C4.44184 32.0783 4.86736 32.25 5.375 32.25Z"
-          ></path>
-        </svg>
-        <div
-          class="absolute inline-flex items-center justify-center w-5 h-5 md:w-6 md:h-6 text-xs font-base text-white bg-azulprimario rounded-full -top-1 md:-top-2 -end-3 transition-all duration-300"
-          data-cart-counter
-          id="cart-counter"
-          style="display: none;"
-        >
-          0
-        </div>
-      </a>
-      <h1
-        class="hidden lg:inline-flex items-center font-bold text-lg text-gris"
-      >
-        Cotizador
-      </h1>
+    <div class="flex md:order-2">
       <button
         id="menu-toggle"
         type="button"
@@ -113,7 +75,7 @@ const categoriasEstampado = [
     </div>
 
     <div
-      class="md:ml-[3%] lg:ml-0 items-center md:flex-grow justify-between hidden w-full md:flex md:w-auto md:order-1"
+      class="md:ml-[2%] lg:ml-0 items-center md:flex md:flex-grow-0 justify-center hidden w-full md:w-auto md:order-1"
       id="navbar-sticky"
     >
       <div class="relative mt-3 md:hidden">
@@ -136,64 +98,55 @@ const categoriasEstampado = [
         </form>
       </div>
       <ul
-        class="flex flex-col md:p-0 mt-4 bg-white md:bg-white font-bold md:space-x-4 lg:space-x-8 md:flex-row md:mt-0 md:border-0 border-t border-gray-200 md:border-t-0 shadow-lg md:shadow-none"
+        class="nav-tab-list flex flex-col md:flex-row md:mt-0 font-bold text-sm tracking-wide uppercase bg-white shadow-lg md:shadow-none"
       >
-        <li class="border-b border-gray-100 md:border-b-0">
+        <li class="nav-tab-item">
           <a
             href="/"
-            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
-            class:list={{
-              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/",
-              "text-gray-700 md:text-gris": currentPath !== "/",
-            }}
+            class="nav-tab nav-tab--cobalt"
+            class:list={{ "is-active": currentPath === "/" }}
           >
-            <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
-              class:list={{ "scale-x-100": currentPath === "/" }}
-            >
-            </span>
-            <span
-              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
-              class:list={{ "opacity-100": currentPath === "/", "opacity-0": currentPath !== "/" }}
-            >
-            </span>
-            Inicio
+            <span>Inicio</span>
           </a>
         </li>
-        <li class="border-b border-gray-100 md:border-b-0">
+        <li class="nav-tab-item">
           <a
             href="/acerca"
-            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
-            class:list={{
-              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/acerca",
-              "text-gray-700 md:text-gris": currentPath !== "/acerca",
-            }}
+            class="nav-tab nav-tab--crimson"
+            class:list={{ "is-active": currentPath === "/acerca" }}
           >
-            <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
-              class:list={{ "scale-x-100": currentPath === "/acerca" }}
-            >
-            </span>
-            <span
-              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
-              class:list={{ "opacity-100": currentPath === "/acerca", "opacity-0": currentPath !== "/acerca" }}
-            >
-            </span>
-            Nosotros
+            <span>Nosotros</span>
           </a>
+        </li>
+        <li class="nav-tab-item nav-tab-item--search hidden md:flex">
+          <form id="nav-search-form" class="nav-tab nav-tab--search" role="search" aria-label="Buscador principal">
+            <div class="nav-search-field">
+              <svg class="nav-search-icon" viewBox="0 0 26 26" aria-hidden="true">
+                <path
+                  d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"
+                ></path>
+              </svg>
+              <input
+                id="nav-search-input"
+                name="q"
+                type="search"
+                placeholder="Buscar productos"
+                class="nav-search-input"
+                aria-label="Buscar productos"
+                autocomplete="off"
+              />
+            </div>
+          </form>
         </li>
         
         <!-- Dropdown de Categorías -->
-        <li class="border-b border-gray-100 md:border-b-0 relative">
+        <li class="nav-tab-item nav-tab-item--dropdown relative">
           <button
             id="categories-dropdown-button"
-            class="group relative flex items-center w-full py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent text-gray-700 md:text-gris"
+            type="button"
+            class="nav-tab nav-tab--emerald nav-tab--dropdown"
           >
-            <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
-            >
-            </span>
-            <span class="mr-2">Categorías</span>
+            <span>Categorías</span>
             <svg 
               class="w-4 h-4 transition-transform duration-300" 
               id="categories-dropdown-icon"
@@ -208,7 +161,7 @@ const categoriasEstampado = [
           <!-- Dropdown Menu -->
           <div
             id="categories-dropdown-menu"
-            class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-1 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+            class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
           >
             {categoriasEstampado.map((categoria) => (
               <div class="border-b border-gray-100 last:border-b-0">
@@ -233,140 +186,19 @@ const categoriasEstampado = [
           </div>
         </li>
         
-        <li class="border-b border-gray-100 md:border-b-0 hidden xl:block">
+        <li class="nav-tab-item hidden xl:block">
           <a
             href="/contacto"
-            class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
-            class:list={{
-              "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/contacto",
-              "text-gray-700 md:text-gris": currentPath !== "/contacto",
-            }}
+            class="nav-tab nav-tab--amber"
+            class:list={{ "is-active": currentPath === "/contacto" }}
           >
-            <span
-              class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
-              class:list={{ "scale-x-100": currentPath === "/contacto" }}
-            >
-            </span>
-            <span
-              class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
-              class:list={{ "opacity-100": currentPath === "/contacto", "opacity-0": currentPath !== "/contacto" }}
-            >
-            </span>
-            Contacto
+            <span>Contacto</span>
           </a>
-        </li>
-        <li class="border-b border-gray-100 md:border-b-0 hidden xl:block">
-          <!-- Enlace dinámico basado en autenticación -->
-          <div id="auth-nav-item">
-            <!-- Mostrar cuando NO está autenticado -->
-            <a
-              href="/cuenta"
-              id="login-nav-link"
-              class="group relative block py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent"
-              class:list={{
-                "text-azulprimario bg-blue-50 md:bg-transparent": currentPath === "/cuenta",
-                "text-gray-700 md:text-gris": currentPath !== "/cuenta",
-              }}
-            >
-              <span
-                class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
-                class:list={{ "scale-x-100": currentPath === "/cuenta" }}
-              >
-              </span>
-              <span
-                class="absolute left-0 top-0 bottom-0 w-1 bg-azulprimario transition-all duration-300 md:hidden"
-                class:list={{ "opacity-100": currentPath === "/cuenta", "opacity-0": currentPath !== "/cuenta" }}
-              >
-              </span>
-              Registro
-            </a>
-            
-            <!-- Mostrar cuando SÍ está autenticado -->
-            <div id="user-nav-dropdown" class="hidden relative">
-              <button
-                id="user-nav-button"
-                class="group relative flex items-center w-full py-4 px-6 md:py-2 md:px-0 lg:px-1 xl:px-3 transition-all hover:bg-gray-50 md:hover:bg-transparent text-gray-700 md:text-gris"
-              >
-                <span
-                  class="absolute inset-x-0 top-0 h-0.5 bg-azulprimario transition-transform duration-300 transform scale-x-0 group-hover:scale-x-100 hidden md:block"
-                >
-                </span>
-                <div class="flex items-center">
-                  <span id="user-nav-name">Mi Cuenta</span>
-                  <svg 
-                    class="w-4 h-4 ml-2 transition-transform duration-300" 
-                    id="user-nav-icon"
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </div>
-              </button>
-              
-              <!-- Dropdown Menu Usuario -->
-              <div
-                id="user-nav-menu"
-                class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
-              >
-                <div class="px-4 py-2 border-b border-gray-200">
-                  <p class="text-sm font-medium text-gray-900" id="user-dropdown-name">Usuario</p>
-                  <p class="text-xs text-gray-500" id="user-dropdown-email">email@example.com</p>
-                </div>
-                <a
-                  href="/cuenta"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-azulprimario transition-colors"
-                >
-                  Mi Perfil
-                </a>
-                <div class="border-t border-gray-200 my-1"></div>
-                <button
-                  id="logout-button"
-                  class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                >
-                  Cerrar Sesión
-                </button>
-              </div>
-            </div>
-          </div>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
-<!-- Barra de búsqueda desplegable -->
-<div id="search-bar" class="hidden bg-white border-b border-gray-200 shadow-sm">
-  <div class="container mx-auto px-4 py-4">
-    <form id="header-search-form" class="max-w-2xl mx-auto">
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <svg class="w-5 h-5 text-gray-400" viewBox="0 0 26 26" fill="currentColor">
-            <path d="M23.9778 26L14.8778 16.9C14.1556 17.4778 13.325 17.9352 12.3861 18.2722C11.4472 18.6093 10.4481 18.7778 9.38889 18.7778C6.76481 18.7778 4.54398 17.869 2.72639 16.0514C0.908796 14.2338 0 12.013 0 9.38889C0 6.76481 0.908796 4.54398 2.72639 2.72639C4.54398 0.908796 6.76481 0 9.38889 0C12.013 0 14.2338 0.908796 16.0514 2.72639C17.869 4.54398 18.7778 6.76481 18.7778 9.38889C18.7778 10.4481 18.6093 11.4472 18.2722 12.3861C17.9352 13.325 17.4778 14.1556 16.9 14.8778L26 23.9778L23.9778 26ZM9.38889 15.8889C11.1944 15.8889 12.7292 15.2569 13.9931 13.9931C15.2569 12.7292 15.8889 11.1944 15.8889 9.38889C15.8889 7.58333 15.2569 6.04861 13.9931 4.78472C12.7292 3.52083 11.1944 2.88889 9.38889 2.88889C7.58333 2.88889 6.04861 3.52083 4.78472 4.78472C3.52083 6.04861 2.88889 7.58333 2.88889 9.38889C2.88889 11.1944 3.52083 12.7292 4.78472 13.9931C6.04861 15.2569 7.58333 15.8889 9.38889 15.8889Z"></path>
-          </svg>
-        </div>
-        <input 
-          type="text" 
-          id="header-search-input"
-          name="q" 
-          placeholder="Buscar productos..." 
-          class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          autocomplete="off"
-        />
-        <button 
-          type="button"
-          id="search-close"
-          class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
 
 <script>
   const button = document.getElementById("menu-toggle");
@@ -391,81 +223,20 @@ const categoriasEstampado = [
     });
   }
 
-  // Funcionalidad de búsqueda en el header
-  const searchToggle = document.getElementById("search-toggle");
-  const searchBar = document.getElementById("search-bar");
-  const searchClose = document.getElementById("search-close");
-  const headerSearchForm = document.getElementById("header-search-form");
-  const headerSearchInput = document.getElementById("header-search-input");
+  const navSearchForm = document.getElementById('nav-search-form');
+  const navSearchInput = document.getElementById('nav-search-input');
   const mobileSearchForm = document.getElementById("mobile-search-form");
   const mobileSearchInput = document.getElementById("mobile-search-input");
 
-  // Mostrar/ocultar barra de búsqueda
-  if (searchToggle && searchBar) {
-    searchToggle.addEventListener("click", () => {
-      searchBar.classList.toggle("hidden");
-      if (!searchBar.classList.contains("hidden")) {
-        headerSearchInput?.focus();
-      }
-    });
-  }
-
-  // Cerrar barra de búsqueda
-  if (searchClose && searchBar) {
-    searchClose.addEventListener("click", () => {
-      searchBar.classList.add("hidden");
-      if (headerSearchInput) {
-        headerSearchInput.value = "";
-      }
-    });
-  }
-
-  // Manejar envío del formulario de búsqueda
-  if (headerSearchForm && headerSearchInput) {
-    headerSearchForm.addEventListener("submit", (e) => {
+  if (navSearchForm && navSearchInput) {
+    navSearchForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const query = headerSearchInput.value.trim();
+      const query = navSearchInput.value.trim();
       if (query) {
-        // Redirigir a la página de búsqueda con el query
         window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
       }
     });
-
-    // Búsqueda al presionar Enter
-    headerSearchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const query = headerSearchInput.value.trim();
-        if (query) {
-          window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
-        }
-      }
-    });
   }
-
-  // Cerrar búsqueda al hacer clic fuera
-  document.addEventListener("click", (e) => {
-    if (searchBar && !searchBar.classList.contains("hidden")) {
-      const isClickInsideSearch = searchBar.contains(e.target) || 
-                                 searchToggle?.contains(e.target);
-      if (!isClickInsideSearch) {
-        searchBar.classList.add("hidden");
-        if (headerSearchInput) {
-          headerSearchInput.value = "";
-        }
-      }
-    }
-  });
-
-  // Cerrar búsqueda con tecla Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && searchBar && !searchBar.classList.contains("hidden")) {
-      searchBar.classList.add("hidden");
-      if (headerSearchInput) {
-        headerSearchInput.value = "";
-      }
-    }
-  });
 
   // Funcionalidad de búsqueda móvil
   if (mobileSearchForm && mobileSearchInput) {

@@ -5,15 +5,21 @@ const title = "Industrias Polyvac";
 const description = "Inicio de la pagina.";
 
 import CategoryCard from "../components/CategoryCard.astro";
-import ProductCardSmall from "../components/ProductCardSmall.astro";
 
 import bgHero from "../assets/hero/color-explosion.jpg";
-import logoHero from "../assets/hero/HeroImage.png";
 import Badge from "../components/Badge.astro";
 import oekotexLogo from '../assets/acercade/oekotex.png';
 import bluesignLogo from '../assets/acercade/bluesign.png';  
 import bureauVeritasLogo from '../assets/acercade/bureau.png';
 import productBanner from '../assets/index/productbanner.png';
+import productSplashBg from '../assets/hero/test.png';
+import contactoBg from '../assets/contacto/contactobg.png';
+import maquina from '../assets/index/maquina.jpeg';
+import textil from '../assets/index/textil.jpeg';
+import colores from '../assets/index/colores.jpeg';
+import catalogo from '../assets/index/catalogo.png';  
+import color from '../assets/index/color.jpeg'; 
+import maquinaria from '../assets/index/maquinaria.jpeg';
 
 // Importar productos locales
 import productos from '../data/productos.js';
@@ -25,6 +31,70 @@ const productosDestacados = productos.slice(0, 4);
 import estampadoImage from '../assets/card1.png';
 // Imagen de cubeta para productos
 import cubetaImage from '../assets/cubeta.png';
+
+const industriasCards = [
+    {
+        id: "01.",
+        title: "Textil",
+        subtitle: "Procesos continuos de teñido",
+        overlayTitle: "Laboratorios textiles",
+        description: "Pigmentos de alta solidez y auxiliares que mantienen la precisión del color en cada lote productivo.",
+        ctaLabel: "Ver línea textil",
+        href: "/estampado",
+        background: textil
+    },
+    {
+        id: "02.",
+        title: "Maquinaria",
+        subtitle: "La mejor maquinaria",
+        overlayTitle: "Nuestra maquinaria",
+        description: "Contamos con la mejor maquinaria para la fabricación de productos químicos industriales.",
+        background: maquina
+    },
+    {
+        id: "03.",
+        title: "Colores",
+        subtitle: "La mejor gama de colores",
+        overlayTitle: "Pigmentos y colorantes",
+        description: "Contamos con una amplia variedad de pigmentos y colorantes para satisfacer todas sus necesidades industriales.",
+        href: "/contacto",
+        background: colores
+    },
+    {
+        id: "04.",
+        title: "Ubicaciones",
+        subtitle: "Multiples ubicaciones",
+        overlayTitle: "Plantas industriales",
+        description: "Tenemos múltiples ubicaciones para atender sus necesidades industriales.",
+        href: "/busqueda",
+        background: contactoBg
+    }
+];
+
+const industryCarouselSlides = [
+    {
+        id: "01",
+        title: "Industria del color",
+        description: "Las mejores soluciones químicas para la industria del color, desde pigmentos hasta resinas especializadas.",
+        href: "/contacto",
+        image: color
+    },
+    {
+        id: "02",
+        eyebrow: "Infraestructura",
+        title: "Nuestra infraestructura",
+        description: "Contamos con multiples instalaciones y la mejor maquinaria para garantizar la calidad en cada etapa de producción.",
+        href: "/busqueda",
+        image: maquinaria
+    },
+    {
+        id: "03",
+        title: "Amplio catalogo",
+        description: "Tenemos un amplio catalogo de productos quimicos industriales para diversas aplicaciones.",
+        href: "/cotizador",
+        image: catalogo
+    }
+];
 ---
 
 <Layout title={title} description={description}>
@@ -80,11 +150,11 @@ import cubetaImage from '../assets/cubeta.png';
 
     <!-- Banner intermedio bajo la línea de productos -->
     <section id="product-splash-banner" class="relative overflow-hidden">
-        <!-- Fondo con gradiente azul y blur -->
-        <div class="absolute inset-0 -z-10">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-800 via-blue-700 to-blue-900"></div>
-            <div class="absolute -inset-16 bg-gradient-to-tr from-blue-400/40 via-cyan-400/30 to-indigo-400/40 blur-3xl opacity-80"></div>
-        </div>
+        <!-- Fondo con imagen -->
+        <div
+            class="product-splash-bg absolute inset-0 -z-10"
+            style={`background-image: url(${productSplashBg.src});`}
+        ></div>
         <div class="relative mx-auto max-w-7xl px-0 sm:px-6 lg:px-8">
             <div class="relative h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem]">
                 <div id="banner-content" class="absolute inset-0 w-full h-full">
@@ -95,6 +165,73 @@ import cubetaImage from '../assets/cubeta.png';
                         draggable="false"
                     />
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-carousel">
+        <div class="carousel-wrapper">
+            <div class="carousel-track" data-carousel>
+                {industryCarouselSlides.map((slide, index) => (
+                    <article class={`carousel-slide${index === 0 ? ' is-active' : ''}`} data-slide-index={index}>
+                        <div class="carousel-media">
+                            <Image
+                                src={slide.image}
+                                alt={slide.title}
+                                class="carousel-image"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="carousel-gradient"></div>
+                        <div class="carousel-content">
+                            <span class="carousel-eyebrow">{slide.eyebrow}</span>
+                            <div class="carousel-title-row">
+                                <span class="carousel-index">{slide.id}.</span>
+                                <h3>{slide.title}</h3>
+                            </div>
+                            <p>{slide.description}</p>
+                            <a class="carousel-cta" href={slide.href}>{slide.ctaLabel}</a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+            <div class="carousel-dots" aria-live="polite">
+                {industryCarouselSlides.map((slide, index) => (
+                    <button
+                        type="button"
+                        class={`carousel-dot${index === 0 ? ' is-active' : ''}`}
+                        data-carousel-dot={index}
+                        aria-label={`Mostrar ${slide.title}`}
+                    ></button>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class="industry-showcase">
+        <div class="mx-auto max-w-7xl px-4">
+            <Badge text="Una empresa de calidad" />
+        </div>
+        <div class="industry-grid-wrap">
+            <div class="industry-grid industry-grid--flush">
+                {industriasCards.map((card) => (
+                    <article
+                        class="industry-card"
+                        style={`background-image: linear-gradient(140deg, rgba(5, 8, 20, 0.85), rgba(5, 8, 20, 0.4)), url(${card.background ? card.background.src : bgHero.src});`}
+                        tabindex="0"
+                    >
+                        <div class="industry-card__static">
+                            <span class="industry-card__number">{card.id}</span>
+                            <p class="industry-card__title">{card.title}</p>
+                            <p class="industry-card__subtitle">{card.subtitle}</p>
+                        </div>
+                        <div class="industry-card__overlay">
+                            <p class="industry-card__overlay-label">{card.overlayTitle}</p>
+                            <p class="industry-card__overlay-text">{card.description}</p>
+                            <a class="industry-card__cta" href={card.href}>{card.ctaLabel}</a>
+                        </div>
+                    </article>
+                ))}
             </div>
         </div>
     </section>
@@ -247,6 +384,60 @@ import cubetaImage from '../assets/cubeta.png';
                     
                     observer.observe(bannerSection);
                 }
+            });
+        }
+    </script>
+    <script>
+        if (typeof window !== 'undefined') {
+            window.addEventListener('load', function () {
+                const carousel = document.querySelector('[data-carousel]');
+                if (!carousel) return;
+
+                const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+                const dots = Array.from(document.querySelectorAll('[data-carousel-dot]'));
+                let currentIndex = 0;
+                let timerId;
+
+                const activate = (index) => {
+                    slides.forEach((slide, idx) => {
+                        slide.classList.toggle('is-active', idx === index);
+                    });
+                    dots.forEach((dot, idx) => {
+                        dot.classList.toggle('is-active', idx === index);
+                    });
+                    currentIndex = index;
+                };
+
+                const nextSlide = () => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    activate(nextIndex);
+                };
+
+                const startAutoplay = () => {
+                    stopAutoplay();
+                    timerId = setInterval(nextSlide, 4500);
+                };
+
+                const stopAutoplay = () => {
+                    if (timerId) {
+                        clearInterval(timerId);
+                        timerId = null;
+                    }
+                };
+
+                dots.forEach((dot) => {
+                    dot.addEventListener('click', () => {
+                        const targetIndex = Number(dot.dataset.carouselDot);
+                        activate(targetIndex);
+                        startAutoplay();
+                    });
+                });
+
+                activate(0);
+                startAutoplay();
+
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
             });
         }
     </script>
