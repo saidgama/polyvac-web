@@ -369,12 +369,10 @@ html {
         flex-wrap: nowrap;
         align-items: stretch;
     }
-    .nav-tab-item--search {
-        flex: 0 1 300px;
-    }
 }
 
-@media (max-width: 768px) {
+/* Mobile (0 - 767px) */
+@media (max-width: 767px) {
     .nav-tab {
         clip-path: none;
         border-radius: 0;
@@ -395,6 +393,51 @@ html {
     }
 }
 
+/* Tablet / Small Desktop (768px - 1439px) */
+@media (min-width: 768px) and (max-width: 1439px) {
+    .nav-tab {
+        padding: 0.95rem 1.5rem 0.95rem 1rem; /* Reduced padding */
+        min-width: auto; /* Allow shrinking */
+        font-size: 0.75rem; /* Smaller font */
+    }
+    
+    .nav-tab-item--search {
+        flex: 0 0 auto; /* Don't expand */
+        min-width: auto;
+    }
+
+    .nav-tab--search {
+        padding-right: 1rem;
+    }
+
+    .nav-search-field {
+        width: auto;
+        padding: 0.4rem;
+    }
+
+    .nav-search-input {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+        transition: width 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Expand search on hover/focus */
+    .nav-tab--search:hover .nav-search-input,
+    .nav-tab--search:focus-within .nav-search-input {
+        width: 140px;
+        opacity: 1;
+        padding-left: 0.5rem;
+    }
+}
+
+/* Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+    .nav-tab-item--search {
+        flex: 0 1 300px;
+    }
+}
+
 /* Industry showcase section */
 
 .product-splash-bg {
@@ -409,8 +452,7 @@ html {
 }
 
 .carousel-wrapper {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -549,8 +591,7 @@ html {
 }
 
 .industry-grid-wrap {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
     margin-top: 2rem;
 }
 

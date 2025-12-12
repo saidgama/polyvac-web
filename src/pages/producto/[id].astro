@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Layout from '../../layouts/Layout.astro';
 import TablaColores from '../../components/TablaColores.astro';
+import TablaEspecificaciones from '../../components/TablaEspecificaciones.astro';
 import productos from '../../data/productos.js';
 
 // Función para generar rutas estáticas usando nuestra base de datos dummy
@@ -198,8 +199,25 @@ const taxonomiasNombres = {
         
         <TablaColores 
           colorantes={producto.colores} 
-          porcentajes={producto.porcentajes}
           titulo={`Tabla de colores - ${producto.titulo}`}
+        />
+      </div>
+    </section>
+  )}
+
+  <!-- Sección de tabla de especificaciones (para mallas y productos técnicos) -->
+  {producto.esTablaEspecificaciones && producto.items && producto.items.length > 0 && (
+    <section class="bg-gray-50 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-azulsecundario mb-4">Especificaciones Técnicas</h2>
+          <div class="w-20 h-1 bg-azulprimario mx-auto"></div>
+          <p class="text-gray-600 mt-4">Detalles técnicos y características del producto</p>
+        </div>
+        
+        <TablaEspecificaciones 
+          items={producto.items} 
+          titulo={`Especificaciones - ${producto.titulo}`}
         />
       </div>
     </section>

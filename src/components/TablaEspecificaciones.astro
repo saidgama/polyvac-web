@@ -1,0 +1,80 @@
+---
+export interface ItemEspecificacion {
+  nombre: string;
+  imagen?: string; // URL de la imagen o textura
+  especificaciones: string[]; // Lista de características técnicas
+}
+
+export interface Props {
+  items: ItemEspecificacion[];
+  titulo?: string;
+}
+
+const { items, titulo = "Especificaciones Técnicas" } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 max-w-5xl mx-auto">
+  <!-- Header -->
+  <div class="bg-azulprimario text-white p-6">
+    <h2 class="text-2xl font-bold">{titulo}</h2>
+  </div>
+
+  <!-- Tabla -->
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-6 py-4 text-left text-lg font-semibold text-gray-700 border-b w-1/4">Nombre</th>
+          <th class="px-6 py-4 text-center text-lg font-semibold text-gray-700 border-b w-3/4">Especificaciones</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        {items.map((item, index) => (
+          <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+            <!-- Columna Nombre -->
+            <td class="px-6 py-8 text-lg font-bold text-gray-900 align-middle">
+              {item.nombre}
+            </td>
+            
+            <!-- Columna Especificaciones + Imagen -->
+            <td class="px-6 py-8">
+              <div class="flex flex-col md:flex-row items-center gap-8 justify-center md:justify-start">
+                {/* Imagen circular de la malla/textura */}
+                {item.imagen ? (
+                  <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-200 shadow-sm bg-white flex items-center justify-center">
+                        <img 
+                        src={item.imagen.src || item.imagen} 
+                        alt={`Muestra de ${item.nombre}`}
+                        class="w-full h-full object-cover"
+                        />
+                    </div>
+                  </div>
+                ) : (
+                   /* Placeholder si no hay imagen */
+                   <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full bg-gray-200 border-4 border-gray-300 flex items-center justify-center text-gray-400">
+                        <span class="text-xs">Sin imagen</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Lista de especificaciones */}
+                <div class="flex-grow text-left">
+                  <ul class="space-y-1 text-sm text-gray-600">
+                    {item.especificaciones.map(spec => (
+                      <li class="flex items-start">
+                        <span class="mr-2 text-azulprimario">•</span>
+                        <span>{spec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

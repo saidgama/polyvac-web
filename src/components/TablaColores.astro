@@ -1,22 +1,16 @@
 ---
 export interface ColoranteData {
   nombre: string;
-  color1: string;
-  color2: string;
-}
-
-export interface PorcentajesData {
-  porcentaje1: string;
-  porcentaje2: string;
+  color1?: string;
+  imagen?: string;
 }
 
 export interface Props {
   colorantes: ColoranteData[];
-  porcentajes: PorcentajesData;
   titulo?: string;
 }
 
-const { colorantes, porcentajes, titulo = "Tabla de colores extraidos digitalmente" } = Astro.props;
+const { colorantes, titulo = "Tabla de colores extraidos digitalmente" } = Astro.props;
 ---
 
 <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 max-w-4xl mx-auto">
@@ -35,9 +29,8 @@ const { colorantes, porcentajes, titulo = "Tabla de colores extraidos digitalmen
       <!-- Header de la tabla -->
       <thead class="bg-gray-100">
         <tr>
-          <th class="px-6 py-4 text-left text-base font-semibold text-gray-700 border-b">Nombre del Colorante</th>
-          <th class="px-6 py-4 text-center text-base font-semibold text-gray-700 border-b">{porcentajes.porcentaje1}</th>
-          <th class="px-6 py-4 text-center text-base font-semibold text-gray-700 border-b">{porcentajes.porcentaje2}</th>
+          <th class="px-6 py-4 text-left text-base md:text-lg lg:text-xl font-semibold text-gray-700 border-b">Nombre del Colorante</th>
+          <th class="px-6 py-4 text-center text-base md:text-lg lg:text-xl font-semibold text-gray-700 border-b">Color</th>
         </tr>
       </thead>
       
@@ -46,28 +39,17 @@ const { colorantes, porcentajes, titulo = "Tabla de colores extraidos digitalmen
         {colorantes.map((colorante, index) => (
           <tr class={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 transition-colors`}>
             <!-- Nombre -->
-            <td class="px-6 py-4 text-sm text-gray-900 font-medium">
+            <td class="px-6 py-4 text-sm md:text-base lg:text-lg text-gray-900 font-medium">
               {colorante.nombre}
             </td>
             
-            <!-- Color al porcentaje 1 -->
+            <!-- Color -->
             <td class="px-6 py-4 text-center">
               <div class="flex justify-center">
                 <div 
-                  class="w-20 h-12 rounded-lg border-2 border-gray-300 shadow-sm"
-                  style={`background-color: ${colorante.color1}`}
-                  title={`${colorante.nombre} - ${porcentajes.porcentaje1}: ${colorante.color1}`}
-                ></div>
-              </div>
-            </td>
-            
-            <!-- Color al porcentaje 2 -->
-            <td class="px-6 py-4 text-center">
-              <div class="flex justify-center">
-                <div 
-                  class="w-20 h-12 rounded-lg border-2 border-gray-300 shadow-sm"
-                  style={`background-color: ${colorante.color2}`}
-                  title={`${colorante.nombre} - ${porcentajes.porcentaje2}: ${colorante.color2}`}
+                  class="w-40 h-24 rounded-lg border-2 border-gray-300 shadow-sm bg-cover bg-center"
+                  style={colorante.imagen ? `background-image: url('${colorante.imagen.src}');` : `background-color: ${colorante.color1};`}
+                  title={`${colorante.nombre}`}
                 ></div>
               </div>
             </td>

@@ -102,7 +102,7 @@ const subcategorias = [
                                 class="carousel-container overflow-hidden"
                                 data-carousel="carousel-accesorios"
                             >
-                                <div class="carousel-track flex transition-transform duration-300 ease-in-out">
+                                <div class="carousel-track flex items-start transition-transform duration-300 ease-in-out">
                                     {/* Productos de accesorios de serigrafía - subcategoría 4 o placeholders */}
                                     {(() => {
                                         const productosAccesorios = productos.filter(producto => producto.subcategorias.includes(4));
@@ -128,8 +128,11 @@ const subcategorias = [
                                         ];
                                         
                                         return productosAMostrar.map((producto: any) => (
-                                            <div class={`carousel-card p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow ${producto.placeholder ? 'bg-gray-50' : 'bg-white'}`}>
-                                                <div class="relative h-48 bg-gray-100 rounded mb-4 flex items-center justify-center overflow-hidden">
+                                            <a 
+                                                href={producto.placeholder ? '#' : `/producto/${producto.id}`}
+                                                class={`carousel-card block p-3 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow ${producto.placeholder ? 'bg-gray-50 cursor-default' : 'bg-white cursor-pointer'}`}
+                                            >
+                                                <div class="relative h-48 bg-gray-100 rounded mb-2 flex items-center justify-center overflow-hidden">
                                                     <Image 
                                                         src={cubetaImage} 
                                                         alt={producto.titulo}
@@ -138,7 +141,7 @@ const subcategorias = [
                                                         height={492}
                                                         loading="lazy"
                                                     />
-                                                    {/* Polígo  no con el título del producto */}
+                                                    {/* Polígono con el título del producto */}
                                                     {producto.colorPrincipal && (
                                                         <div 
                                                             class="absolute bottom-0 left-0 px-4 py-2 z-10 flex items-center justify-center min-w-[120px]"
@@ -150,28 +153,13 @@ const subcategorias = [
                                                         </div>
                                                     )}
                                                 </div>
-                                                <p class={`text-sm mb-4 line-clamp-3 ${producto.placeholder ? 'text-gray-400' : 'text-gray-600'}`}>
+                                                <p class={`text-sm mb-3 line-clamp-6 ${producto.placeholder ? 'text-gray-400' : 'text-gray-600'}`}>
                                                     {producto.descripcion}
                                                 </p>
-                                                <div class="flex gap-2">
-                                                    <a 
-                                                        href={`/producto/${producto.id}`}
-                                                        class={`flex-1 py-2 px-3 rounded text-sm transition text-center ${producto.placeholder ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-azulprimario text-white hover:bg-blue-700'}`}
-                                                    >
-                                                        {producto.placeholder ? 'Ejemplo' : 'Ver detalles'}
-                                                    </a>
-                                                    {producto.fichaTecnica && !producto.placeholder && (
-                                                        <a 
-                                                            href={producto.fichaTecnica} 
-                                                            target="_blank"
-                                                            class="bg-gray-200 text-gray-700 py-2 px-3 rounded text-sm hover:bg-gray-300 transition"
-                                                            title="Ficha técnica"
-                                                        >
-                                                            📄
-                                                        </a>
-                                                    )}
+                                                <div class={`w-full py-2 rounded text-center text-sm font-medium transition-colors ${producto.placeholder ? 'bg-gray-200 text-gray-500' : 'bg-azulprimario text-white hover:bg-blue-700'}`}>
+                                                    {producto.placeholder ? 'Ejemplo' : 'Ver detalles'}
                                                 </div>
-                                            </div>
+                                            </a>
                                         ));
                                     })()}
                                 </div>
@@ -216,7 +204,7 @@ const subcategorias = [
                                     class="carousel-container overflow-hidden"
                                     data-carousel={`carousel-${taxonomia.id}`}
                                 >
-                                    <div class="carousel-track flex transition-transform duration-300 ease-in-out">
+                                    <div class="carousel-track flex items-start transition-transform duration-300 ease-in-out">
                                         {/* Productos reales o placeholders */}
                                         {(() => {
                                             const productosEnTaxonomia = getProductosPorTaxonomia(taxonomia.id);
@@ -242,8 +230,11 @@ const subcategorias = [
                                             ];
                                             
                                             return productosAMostrar.map((producto: any) => (
-                                                <div class={`carousel-card p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow ${producto.placeholder ? 'bg-gray-50' : 'bg-white'}`}>
-                                                    <div class="relative h-48 bg-gray-100 rounded mb-4 flex items-center justify-center overflow-hidden">
+                                                <a 
+                                                    href={producto.placeholder ? '#' : `/producto/${producto.id}`}
+                                                    class={`carousel-card block p-3 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow ${producto.placeholder ? 'bg-gray-50 cursor-default' : 'bg-white cursor-pointer'}`}
+                                                >
+                                                    <div class="relative h-48 bg-gray-100 rounded mb-2 flex items-center justify-center overflow-hidden">
                                                         <Image 
                                                             src={cubetaImage} 
                                                             alt={producto.titulo}
@@ -264,28 +255,13 @@ const subcategorias = [
                                                             </div>
                                                         )}
                                                     </div>
-                                                    <p class={`text-sm mb-4 line-clamp-3 ${producto.placeholder ? 'text-gray-400' : 'text-gray-600'}`}>
+                                                    <p class={`text-sm mb-3 line-clamp-6 ${producto.placeholder ? 'text-gray-400' : 'text-gray-600'}`}>
                                                         {producto.descripcion}
                                                     </p>
-                                                    <div class="flex gap-2">
-                                                        <a 
-                                                            href={`/producto/${producto.id}`}
-                                                            class={`flex-1 py-2 px-3 rounded text-sm transition text-center ${producto.placeholder ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-azulprimario text-white hover:bg-blue-700'}`}
-                                                        >
-                                                            {producto.placeholder ? 'Ejemplo' : 'Ver detalles'}
-                                                        </a>
-                                                        {producto.fichaTecnica && !producto.placeholder && (
-                                                            <a 
-                                                                href={producto.fichaTecnica} 
-                                                                target="_blank"
-                                                                class="bg-gray-200 text-gray-700 py-2 px-3 rounded text-sm hover:bg-gray-300 transition"
-                                                                title="Ficha técnica"
-                                                            >
-                                                                📄
-                                                            </a>
-                                                        )}
+                                                    <div class={`w-full py-2 rounded text-center text-sm font-medium transition-colors ${producto.placeholder ? 'bg-gray-200 text-gray-500' : 'bg-azulprimario text-white hover:bg-blue-700'}`}>
+                                                        {producto.placeholder ? 'Ejemplo' : 'Ver detalles'}
                                                     </div>
-                                                </div>
+                                                </a>
                                             ));
                                         })()}
                                     </div>
@@ -436,6 +412,8 @@ const subcategorias = [
         .carousel-track {
             display: flex !important;
             transition: transform 0.3s ease-in-out !important;
+            height: auto !important; /* Override global style */
+            padding-bottom: 20px; /* Espacio para sombras */
         }
 
         /* Estilos para los botones del carrusel */
@@ -456,6 +434,13 @@ const subcategorias = [
         .line-clamp-3 {
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .line-clamp-6 {
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }

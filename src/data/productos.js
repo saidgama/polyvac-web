@@ -1,8 +1,43 @@
 // Archivo de datos de productos para la tienda Polyvac
 // Estructura actualizada para integrar con las taxonomías de estampado
 
-// Importar imágenes para que funcionen en producción
+// ============================================
+// IMPORTACIÓN DE IMÁGENES
+// ============================================
+
+// Imagen general de productos
 import cubetaImage from '../assets/cubeta.png';
+
+// --- Colores Flock ---
+import flockBlack from '../assets/productos/colores-flock/black.png';
+import flockGray from '../assets/productos/colores-flock/gray.png';
+import flockNavy from '../assets/productos/colores-flock/navy.png';
+import flockWhite from '../assets/productos/colores-flock/white.png';
+
+// --- Colores Glitters ---
+import glitterOroBrillante008 from '../assets/productos/colores-glitters/oro-brillante-008.png';
+import glitterOro04 from '../assets/productos/colores-glitters/oro-04.png';
+import glitterRojo008 from '../assets/productos/colores-glitters/rojo-008.png';
+import glitterRosa008 from '../assets/productos/colores-glitters/rosa-008.png';
+import glitterVioleta008 from '../assets/productos/colores-glitters/violeta-008.png';
+import glitterAzul from '../assets/productos/colores-glitters/azul.png';
+import glitterVerde from '../assets/productos/colores-glitters/verde.png';
+import glitterPlata08 from '../assets/productos/colores-glitters/plata-08.png';
+import glitterPlata04 from '../assets/productos/colores-glitters/plata-04.png';
+import glitterRainbow from '../assets/productos/colores-glitters/rainbow-1-128-08.png';
+import glitterSugar from '../assets/productos/colores-glitters/sugar-1-128-08.png';
+import glitterBlanco from '../assets/productos/colores-glitters/blanco.png';
+import glitterNegro008 from '../assets/productos/colores-glitters/negro-008.png';
+
+// --- Colores Micas ---
+import micaPearl1000 from '../assets/productos/colores-micas/magna-pearl-1000.png';
+import micaPlatino205 from '../assets/productos/colores-micas/magna-pearl-205-platino.png';
+import micaInterferenceAzul225 from '../assets/productos/colores-micas/magna-pearl-225-interference-azul.png';
+import micaVino504 from '../assets/productos/colores-micas/magna-pearl-504-vino.png';
+
+// ============================================
+// DATOS DE PRODUCTOS
+// ============================================
 
 export default [
   {
@@ -291,39 +326,39 @@ export default [
     imagenes: [cubetaImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
-    porcentajes: { porcentaje1: "1%", porcentaje2: "3%" }, // Porcentajes dinámicos
+    porcentajes: null, // Porcentajes eliminados
     colores: [
-      { nombre: "AMARILLO VACDIR EE DIRECT YELLOW 44", color1: "#fcea0a", color2: "#fee203" },
-      { nombre: "AMARILLO VACDIR BEC DIRECT YELLOW 142", color1: "#fdf218", color2: "#fee806" },
-      { nombre: "AMARILLO VACDIR FA DIRECT YELLOW 5O", color1: "#fceb22", color2: "#fbd303" },
-      { nombre: "AMARILLO VACDIR IG DIRECT YELLOW 86", color1: "#fbd402", color2: "#f9c001" },
-      { nombre: "NARANJA VACDIR CG DIREC ORANGE 26 150%", color1: "#fa722a", color2: "#fa722a" },
-      { nombre: "NARANJA VACDIR DE DIREC ORANGE 34", color1: "#fb9e0a", color2: "#f67517" },
-      { nombre: "NARANJA VACDIR DJ DIREC ORANGE 39", color1: "#f79808", color2: "#f57c14" },
-      { nombre: "ROJO VACDIR CCI DIRECT RED 227", color1: "#eb559c", color2: "#d62774" },
-      { nombre: "ROJO VACDIR CD DIRECT RED 23", color1: "#e1444b", color2: "#cf2d39" },
-      { nombre: "ROJO VACDIR CI DIRECT RED 28", color1: "#cf2d39", color2: "#cc463d" },
-      { nombre: "ROJO VACDIR DB DIRECT RED 31 150%", color1: "#bc1b53", color2: "#7e0f2a" },
-      { nombre: "ROJO VACDIR IB DIRECT RED 81 100%", color1: "#c1264a", color2: "#b11139" },
-      { nombre: "ROJO VACDIR CED DIRECT RED 243", color1: "#c63060", color2: "#8b1430" },
-      { nombre: "VIOLETA VACDIR FB DIRECT VIOLET 51", color1: "#74317e", color2: "#531655" },
-      { nombre: "VIOLETA VACDIR J DIRECT VIOLET 9 180%", color1: "#4b1f50", color2: "#3e113b" },
-      { nombre: "AZUL VACDIR CAA DIRECT BLUE 200 200%", color1: "#1d3f6a", color2: "#0d2046" },
+      { nombre: "AMARILLO VACDIR EE DIRECT YELLOW 44", color1: "#fcea0a" },
+      { nombre: "AMARILLO VACDIR BEC DIRECT YELLOW 142", color1: "#fdf218" },
+      { nombre: "AMARILLO VACDIR FA DIRECT YELLOW 5O", color1: "#fceb22" },
+      { nombre: "AMARILLO VACDIR IG DIRECT YELLOW 86", color1: "#fbd402" },
+      { nombre: "NARANJA VACDIR CG DIREC ORANGE 26 150%", color1: "#fa722a" },
+      { nombre: "NARANJA VACDIR DE DIREC ORANGE 34", color1: "#fb9e0a" },
+      { nombre: "NARANJA VACDIR DJ DIREC ORANGE 39", color1: "#f79808" },
+      { nombre: "ROJO VACDIR CCI DIRECT RED 227", color1: "#eb559c" },
+      { nombre: "ROJO VACDIR CD DIRECT RED 23", color1: "#e1444b" },
+      { nombre: "ROJO VACDIR CI DIRECT RED 28", color1: "#cf2d39" },
+      { nombre: "ROJO VACDIR DB DIRECT RED 31 150%", color1: "#bc1b53" },
+      { nombre: "ROJO VACDIR IB DIRECT RED 81 100%", color1: "#c1264a" },
+      { nombre: "ROJO VACDIR CED DIRECT RED 243", color1: "#c63060" },
+      { nombre: "VIOLETA VACDIR FB DIRECT VIOLET 51", color1: "#74317e" },
+      { nombre: "VIOLETA VACDIR J DIRECT VIOLET 9 180%", color1: "#4b1f50" },
+      { nombre: "AZUL VACDIR CAA DIRECT BLUE 200 200%", color1: "#1d3f6a" },
 
-      { nombre: "AZUL VACDIR C DIRECT BLUE 2 ", color1: "#3a5075", color2: "#142135" }, 
-      { nombre: "AZUL VACDIR CAB DIRECT BLUE 201 200%", color1: "#314376", color2: "#191f42" },
-      { nombre: "AZUL VACDIR BFB DIRECT BLUE 151", color1: "#282a56", color2: "#110e2a" },
-      { nombre: "AZUL VACDIR BF DIRECT BLUE 15", color1: "#123a6a", color2: "#0b3264" },
+      { nombre: "AZUL VACDIR C DIRECT BLUE 2 ", color1: "#3a5075" }, 
+      { nombre: "AZUL VACDIR CAB DIRECT BLUE 201 200%", color1: "#314376" },
+      { nombre: "AZUL VACDIR BFB DIRECT BLUE 151", color1: "#282a56" },
+      { nombre: "AZUL VACDIR BF DIRECT BLUE 15", color1: "#123a6a" },
 
-      { nombre: "AZUL VACDIR HB DIRECT BLUE 71", color1: "#183254", color2: "#061130" },
-      { nombre: "AZUL VACDIR BAI DIRECT BLUE 108", color1: "#608ccb", color2: "#425fab" },
-      { nombre: "AZUL VACDIR IG DIRECT BLUE 86", color1: "#00c1e0", color2: "#0faad5" },
-      { nombre: "VERDE VACDIR B DIRECT GREEN 1", color1: "#354645", color2: "#232b2b" },
-      { nombre: "CAFE VACDIR C DIRECT BROWN 2", color1: "#694437", color2: "#2d211c" },
-      { nombre: "CAFE VACDIR JF DIRECT BROWN 95", color1: "#a16f47", color2: "#75452a" },
-      { nombre: "NEGRO VACDIR CC DIRECT BLACK 1600%", color1: "#272d32", color2: "#12181b" },
-      { nombre: "NEGRO VACDIR CC DIRECT BLACK 1200%", color1: "#253334", color2: "#1b2124" },
-      { nombre: "NEGRO VACDIR DI DIRECT BLACK 38", color1: "#1e1f23", color2: "#131514" },
+      { nombre: "AZUL VACDIR HB DIRECT BLUE 71", color1: "#183254" },
+      { nombre: "AZUL VACDIR BAI DIRECT BLUE 108", color1: "#608ccb" },
+      { nombre: "AZUL VACDIR IG DIRECT BLUE 86", color1: "#00c1e0" },
+      { nombre: "VERDE VACDIR B DIRECT GREEN 1", color1: "#354645" },
+      { nombre: "CAFE VACDIR C DIRECT BROWN 2", color1: "#694437" },
+      { nombre: "CAFE VACDIR JF DIRECT BROWN 95", color1: "#a16f47" },
+      { nombre: "NEGRO VACDIR CC DIRECT BLACK 1600%", color1: "#272d32" },
+      { nombre: "NEGRO VACDIR CC DIRECT BLACK 1200%", color1: "#253334" },
+      { nombre: "NEGRO VACDIR DI DIRECT BLACK 38", color1: "#1e1f23" },
 
     ],
     colorPrincipal: "#d6ca1cff" // Color para el polígono
@@ -338,29 +373,29 @@ export default [
     imagenes: [cubetaImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
-    porcentajes: { porcentaje1: "0.5%", porcentaje2: "1%" }, // Porcentajes dinámicos
+    porcentajes: null, // Porcentajes eliminados
     colores: [
-      { nombre: "AURAMINA VACRYL C BASIC YELLOW 2", color1: "#fdf901", color2: "#fae900" },
-      { nombre: "AMARILLO DORADO VACRYL MGL BASIC YELLOW 28 400%", color1: "#fac100", color2: "#faa500" },
-      { nombre: "AMARILLO VACRYL M-8GL BASIC YELLOW 13", color1: "#fce811", color2: "#fcd000" },
-      { nombre: "CRISODINA VACRYL C BASIC ORANGE 2 ", color1: "#f47509", color2: "#dd4b0a" },
+      { nombre: "AURAMINA VACRYL C BASIC YELLOW 2", color1: "#fdf901" },
+      { nombre: "AMARILLO DORADO VACRYL MGL BASIC YELLOW 28 400%", color1: "#fac100" },
+      { nombre: "AMARILLO VACRYL M-8GL BASIC YELLOW 13", color1: "#fce811" },
+      { nombre: "CRISODINA VACRYL C BASIC ORANGE 2 ", color1: "#f47509" },
 
-      { nombre: "RODAMINA VACRYL BA RHODAMINE 10 ", color1: "#fc21b8", color2: "#fd008d" },
-      { nombre: "ROJO VACRYL M4G BASIC RED 14 ", color1: "#fa5c79", color2: "#fc274d" },
-      { nombre: "ROJO VACRYL EV BASIC RED 27", color1: "#fe2474", color2: "#fd0662" },
-      { nombre: "ROJO VACRYL MGRL BASIC RED 46 400% ", color1: "#e9215a", color2: "#c5043c" },
-      { nombre: "ROJO VACRYL MGTL BASIC RED 18 290%", color1: "#be3832", color2: "#a20e21" },
-      { nombre: "VIOLETA VACRYL 2B BASIC VIOLET 1 METHIL", color1: "#510063", color2: "#37004d" },
-      { nombre: "VIOLETA VACRYL BE BASIC VIOLET 14", color1: "#a6005d", color2: "#7c0032" },
-      { nombre: "VIOLETA VACRYL M3RM BASIC VIOLET 16", color1: "#fe008a", color2: "#ca0061" },
-      { nombre: "TURQUESA VACRYL M5G BASIC BLUE 3 200%", color1: "#437aa4", color2: "#0b4e7c" },
-      { nombre: "AZUL VACRYL H BASIC BLUE 7 100%", color1: "#0d1f87", color2: "#060473" },
-      { nombre: "AZUL VACRYL CG BASIC BLUE 26 100%", color1: "#031379", color2: "#000363" },
-      { nombre: "AZUL VACRYL MGRRL BASIC BLUE 41 300%", color1: "#104793", color2: "#021055" },
-      { nombre: "AZUL VACRYL LS BASIC BLUE 159 540%", color1: "#0a125e", color2: "#03013e" },
-      { nombre: "VERDE VACRYL MQT BASIC GREEN 4", color1: "#086064", color2: "#06454c" },
-      { nombre: "NEGRO VACRYL HC MIX", color1: "#251c24", color2: "#11070b" },
-      { nombre: "NEGRO VACRYL SW MIX", color1: "#2d2220", color2: "#190d0b" },
+      { nombre: "RODAMINA VACRYL BA RHODAMINE 10 ", color1: "#fc21b8" },
+      { nombre: "ROJO VACRYL M4G BASIC RED 14 ", color1: "#fa5c79" },
+      { nombre: "ROJO VACRYL EV BASIC RED 27", color1: "#fe2474" },
+      { nombre: "ROJO VACRYL MGRL BASIC RED 46 400% ", color1: "#e9215a" },
+      { nombre: "ROJO VACRYL MGTL BASIC RED 18 290%", color1: "#be3832" },
+      { nombre: "VIOLETA VACRYL 2B BASIC VIOLET 1 METHIL", color1: "#510063" },
+      { nombre: "VIOLETA VACRYL BE BASIC VIOLET 14", color1: "#a6005d" },
+      { nombre: "VIOLETA VACRYL M3RM BASIC VIOLET 16", color1: "#fe008a" },
+      { nombre: "TURQUESA VACRYL M5G BASIC BLUE 3 200%", color1: "#437aa4" },
+      { nombre: "AZUL VACRYL H BASIC BLUE 7 100%", color1: "#0d1f87" },
+      { nombre: "AZUL VACRYL CG BASIC BLUE 26 100%", color1: "#031379" },
+      { nombre: "AZUL VACRYL MGRRL BASIC BLUE 41 300%", color1: "#104793" },
+      { nombre: "AZUL VACRYL LS BASIC BLUE 159 540%", color1: "#0a125e" },
+      { nombre: "VERDE VACRYL MQT BASIC GREEN 4", color1: "#086064" },
+      { nombre: "NEGRO VACRYL HC MIX", color1: "#251c24" },
+      { nombre: "NEGRO VACRYL SW MIX", color1: "#2d2220" },
     ],
     colorPrincipal: "#3ba940ff" // Color para el polígono
   },
@@ -374,39 +409,229 @@ export default [
     imagenes: [cubetaImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
-    porcentajes: { porcentaje1: "1%", porcentaje2: "3%" }, // Porcentajes dinámicos
+    porcentajes: null, // Porcentajes eliminados
     colores: [
-      { nombre: "AMARILLO VACID CD ACID YELLOW 23", color1: "#fded00    ", color2: " #faed00  " },
-      { nombre: "AMARILLO VACID 2RL ACID YELLOW 49 200%", color1: "#f9ea00    ", color2: "#f9e600   " },
-      { nombre: "AMARILLO VACID HD ACID YELLOW 73", color1: "  #fdef16  ", color2: " #fce500  " },
-      { nombre: "AMARILLO VACID E2LS ACID YELLOW 219 250%", color1: "#f58501    ", color2: " #f58501  " },
-      { nombre: "ROJO VACID 3GP ACID RED 131 150%", color1: "#c40266    ", color2: "#bc0057  " }, 
-      { nombre: "ROJO VACID ERN ACID RED 114", color1: "  #d42335  ", color2: " #cd1629  " },
-      { nombre: "ROJO VACID RVB ACID RED 151", color1: "#ce142c    ", color2: "  #c0041f " },
-      { nombre: "ROJO VACID EG4L ACID RED 337 225%", color1: " #cd284a   ", color2: "#cc1836   " },
-      { nombre: "ROJO VACID EG4L CONC. ACID RED 337 450%", color1: "  #c91f3a  ", color2: "#ba142e   " },
-      { nombre: "ROJO VACID V6N ACID RED 299 200%", color1: "  #731c38  ", color2: " #642035 " }, 
-      { nombre: "ROJO VACID FH ACID RED 57", color1: " #ba1e56  ", color2: " #aa1742  " },
-      { nombre: "ROJO VACID FB ACID RED 52", color1: "#fc3999    ", color2: "  #fd107a " },
-      { nombre: "ROJO VACID FB ACID RED 52 400%", color1: " #fc187a   ", color2: "#ef0463   " },
-      { nombre: "NARANJA VACID H ACID ORANGE 7 100%", color1: "#fc7a00", color2: " #fa6900  " },
-      { nombre: "TURQUESA VACID BGF ACID BLUE 185 100%", color1: " #008cc7   ", color2: "#007ab8   " },
-      { nombre: "TRUQUESA VACID AG ACID BLUE 9", color1: " #3d5ec0   ", color2: "#2d4daf   " }, 
-      { nombre: "AZUL VACID CG ACID BLUE62 200%", color1: " #4d2ec0  ", color2: "#4319a1   " },
-      { nombre: "AZULBTE VACID R ACID BLUE 260", color1: " #4245a9   ", color2: " #281c83  " },
-      { nombre: "AZULBTE VACID CONC. ACID BLUE 260", color1: "#2c218b    ", color2: "#1c0b71   " },
-      { nombre: "AZUL VACID EGLS ACID BLUE 324", color1: " #04337e   ", color2: " #031868  " },
-      { nombre: "AZUL VACID EGLS CONC. ACID BLUE 324 200%", color1: " #03256e   ", color2: "#00074f   " },  
-      { nombre: "VIOLETA VACID BL", color1: " #8a179a   ", color2: " #7c007e  " },
-      { nombre: "MARINO VACID V4FS ACID BLUE 113", color1: "  #041239  ", color2: "#010215   " },
-      { nombre: "MARINO VACID 2SRL ACID BLUE 193", color1: "  #14122b  ", color2: "  #090615 " },
-      { nombre: "NEGRO VACID VT ACID BLACK 194", color1: "  #211b22  ", color2: "  #19131a " }, 
-      { nombre: "NEGRO VACID VET ACID BLACK 1 100%", color1: " #1f2435  ", color2: "#110b13   " },
-      { nombre: "NEGRO VACID FC ACID BLACK 52 ", color1: "#2a1e22    ", color2: "#130c0c   " },
-      { nombre: "CAFE VACID BE ACID BROWN 14", color1: " #963427   ", color2: " #7e2019  " },
-      { nombre: "CAFE VACID HF ACID BROWN 75", color1: " #58282a   ", color2: " #371719  " },  
+      { nombre: "AMARILLO VACID CD ACID YELLOW 23", color1: "#fded00    " },
+      { nombre: "AMARILLO VACID 2RL ACID YELLOW 49 200%", color1: "#f9ea00    " },
+      { nombre: "AMARILLO VACID HD ACID YELLOW 73", color1: "  #fdef16  " },
+      { nombre: "AMARILLO VACID E2LS ACID YELLOW 219 250%", color1: "#f58501    " },
+      { nombre: "ROJO VACID 3GP ACID RED 131 150%", color1: "#c40266    " }, 
+      { nombre: "ROJO VACID ERN ACID RED 114", color1: "  #d42335  " },
+      { nombre: "ROJO VACID RVB ACID RED 151", color1: "#ce142c    " },
+      { nombre: "ROJO VACID EG4L ACID RED 337 225%", color1: " #cd284a   " },
+      { nombre: "ROJO VACID EG4L CONC. ACID RED 337 450%", color1: "  #c91f3a  " },
+      { nombre: "ROJO VACID V6N ACID RED 299 200%", color1: "  #731c38  " }, 
+      { nombre: "ROJO VACID FH ACID RED 57", color1: " #ba1e56  " },
+      { nombre: "ROJO VACID FB ACID RED 52", color1: "#fc3999    " },
+      { nombre: "ROJO VACID FB ACID RED 52 400%", color1: " #fc187a   " },
+      { nombre: "NARANJA VACID H ACID ORANGE 7 100%", color1: "#fc7a00" },
+      { nombre: "TURQUESA VACID BGF ACID BLUE 185 100%", color1: " #008cc7   " },
+      { nombre: "TRUQUESA VACID AG ACID BLUE 9", color1: " #3d5ec0   " }, 
+      { nombre: "AZUL VACID CG ACID BLUE62 200%", color1: " #4d2ec0  " },
+      { nombre: "AZULBTE VACID R ACID BLUE 260", color1: " #4245a9   " },
+      { nombre: "AZULBTE VACID CONC. ACID BLUE 260", color1: "#2c218b    " },
+      { nombre: "AZUL VACID EGLS ACID BLUE 324", color1: " #04337e   " },
+      { nombre: "AZUL VACID EGLS CONC. ACID BLUE 324 200%", color1: " #03256e   " },  
+      { nombre: "VIOLETA VACID BL", color1: " #8a179a   " },
+      { nombre: "MARINO VACID V4FS ACID BLUE 113", color1: "  #041239  " },
+      { nombre: "MARINO VACID 2SRL ACID BLUE 193", color1: "  #14122b  " },
+      { nombre: "NEGRO VACID VT ACID BLACK 194", color1: "  #211b22  " }, 
+      { nombre: "NEGRO VACID VET ACID BLACK 1 100%", color1: " #1f2435  " },
+      { nombre: "NEGRO VACID FC ACID BLACK 52 ", color1: "#2a1e22    " },
+      { nombre: "CAFE VACID BE ACID BROWN 14", color1: " #963427   " },
+      { nombre: "CAFE VACID HF ACID BROWN 75", color1: " #58282a   " },  
     ],
     colorPrincipal: "#c12aa5ff" // Color para el polígono
   },
-
+  {
+      id: "colores-flock",
+      titulo: "Colores Flock",
+      categoria: "estampado",
+      subcategorias: [1], // "Materias primas y auxiliares"
+      taxonomias: [5], // "Colorantes"
+      descripcion: "Gama de Colores Flock",
+      imagenes: [cubetaImage],
+      fichaTecnica: null, // No tiene PDF, solo tabla de colores
+      esTablaColores: true, // Bandera para identificar productos de tabla de colores
+      porcentajes: null, // Porcentajes eliminados
+      colores: [
+        { nombre: "Flock Gray", imagen: flockGray },
+        { nombre: "Flock Black 02", imagen: flockBlack },
+        { nombre: "Flock Navy 6143", imagen: flockNavy },
+        { nombre: "Flock White 01", imagen: flockWhite },
+      ],
+      colorPrincipal: "#d4c56eff" // Color para el polígono
+    },
+    {
+      id: "colores-micas",
+      titulo: "Colores Micas",
+      categoria: "estampado",
+      subcategorias: [1], // "Materias primas y auxiliares"
+      taxonomias: [5], // "Colorantes"
+      descripcion: "Gama de Colores Micas",
+      imagenes: [cubetaImage],
+      fichaTecnica: null, // No tiene PDF, solo tabla de colores
+      esTablaColores: true, // Bandera para identificar productos de tabla de colores
+      porcentajes: null, // Porcentajes eliminados
+      colores: [
+        { nombre: "Magna Pearl 1000", imagen: micaPearl1000 },
+        { nombre: "Magna Pearl 205 Platino", imagen: micaPlatino205 },
+        { nombre: "Magna Pearl 225 Interference Azul", imagen: micaInterferenceAzul225 },
+        { nombre: "Magna Pearl 504 Vino", imagen: micaVino504 },
+      ],
+      colorPrincipal: "#2bd76aff" // Color para el polígono
+    },
+    {
+        id: "colores-glitters",
+        titulo: "Colores Glitters",
+        categoria: "estampado",
+        subcategorias: [1], // "Materias primas y auxiliares"
+        taxonomias: [5], // "Colorantes"
+        descripcion: "Gama de Colores Glitters",
+        imagenes: [cubetaImage],
+        fichaTecnica: null, // No tiene PDF, solo tabla de colores
+        esTablaColores: true, // Bandera para identificar productos de tabla de colores
+        porcentajes: null, // Porcentajes eliminados
+        colores: [
+          { nombre: "Glitter Oro Brillante .008", imagen: glitterOroBrillante008 },
+          { nombre: "Glitter Oro .04", imagen: glitterOro04 },
+          { nombre: "Glitter Rojo .008", imagen: glitterRojo008 },
+          { nombre: "Glitter Rosa .008", imagen: glitterRosa008 },
+          { nombre: "Glitter Violeta 0.008", imagen: glitterVioleta008 },
+          { nombre: "Glitter Azul", imagen: glitterAzul },
+          { nombre: "Glitter Verde", imagen: glitterVerde },
+          { nombre: "Glitter Plata .08", imagen: glitterPlata08 },
+          { nombre: "Glitter Plata 0.04", imagen: glitterPlata04 },
+          { nombre: "Glitter Rainbow 1/128 .08", imagen: glitterRainbow },
+          { nombre: "Glitter Sugar 1/128 .08", imagen: glitterSugar },
+          { nombre: "Glitter Blanco", imagen: glitterBlanco },
+          { nombre: "Glitter Negro 008", imagen: glitterNegro008 },
+        ],
+        colorPrincipal: "#d64b1dff" // Color para el polígono
+      },
+      {
+        id: "gama-mallas",
+        titulo: "Gama de Mallas",
+        categoria: "estampado",
+        subcategorias: [4], // "Accesorios de serigrafía"
+        taxonomias: [16], // "Mallas"
+        descripcion: "Mallas de alta tensión y precisión para serigrafía, disponibles en diferentes numeraciones para todo tipo de trabajos.",
+        imagenes: [cubetaImage], // Placeholder
+        fichaTecnica: null,
+        esTablaEspecificaciones: true, // Bandera para usar el nuevo componente
+        items: [
+          {
+            nombre: "Malla 11",
+            imagen: cubetaImage, // Usando placeholder por ahora
+            especificaciones: [
+              "Número de hilos: 11 h/cm 28 h/pulg",
+              "Apertura de la malla: 750 micras - µm",
+              "Diámetro del hilo: 250 micras - µm",
+              "Superficie abierta: 56%",
+              "Grosor de seda: 500 micras - µm",
+              "Peso: 165 g/m²",
+              "Deposito teórico de tinta: 280 cm³/m²",
+              "Tensión: 66 N/cm"
+            ]
+          },
+          {
+            nombre: "Malla 24",
+            imagen: cubetaImage, // Usando placeholder por ahora
+            especificaciones: [
+              "Número de hilos: 24 h/cm 60 h/pulg",
+              "Apertura de la malla: 297 micras - µm",
+              "Diámetro del hilo: 120 micras - µm",
+              "Superficie abierta: 51%",
+              "Grosor de seda: 204 micras - µm",
+              "Peso: 97 g/m²",
+              "Deposito teórico de tinta: 104 cm³/m²",
+              "Tensión: 52 N/cm"
+            ]
+          }
+        ],
+        colorPrincipal: "#27cfe8ff"
+      },
+      {
+        id: "pigmentos-en-polvo",
+        titulo: "Pigmentos en Polvo",
+        categoria: "estampado",
+        subcategorias: [3], // "Materias primas y auxiliares"
+        taxonomias: [11], // "Pigmentos"
+        descripcion: "Gama completa de pigmentos en polvo para diversas aplicaciones.",
+        imagenes: [cubetaImage],
+        fichaTecnica: null,
+        esTablaColores: true,
+        porcentajes: null,
+        colores: [
+          { nombre: "Pig Amarillo Limon Fluo P-FT", color1: "#ebe200" },
+          { nombre: "Pigmento Flourescente Amarillo limón FB", color1: "#ebe200" },
+          { nombre: "Yellow Fluo SHT-17", color1: "#ebe200" },
+          { nombre: "Pigmento Amarillo Fluo", color1: "#ffff01" },
+          { nombre: "Amarillo Fluo EG", color1: "#ffff01" },
+          { nombre: "Pigmento Amarillo 12", color1: "#ffe401" },
+          { nombre: "Pigmento Amarillo 14", color1: "#ffe603" },
+          { nombre: "Pigmento Amarillo 34 Limon", color1: "#ffdb01" },
+          { nombre: "Pigmento Amarillo 62", color1: "#f3d304" },
+          { nombre: "Pigmento Amarillo 65", color1: "#ffd002" },
+          { nombre: "Pigmento Amarillo 34 rojizo", color1: "#ffcc00" },
+          { nombre: "Pigmento Amarillo 55", color1: "#ffb301" },
+          { nombre: "Pigmento Amarillo 83", color1: "#ea9713" },
+          { nombre: "Pigmento Naranja 13", color1: "#fc7712" },
+          { nombre: "Pig Naranja Fluo P-FT", color1: "#fe7815" },
+          { nombre: "Pig Naranja Amarillento Fluo P-FT", color1: "#fe7815" },
+          { nombre: "Pigmento Naranja Fluo FB", color1: "#fe7914" },
+          { nombre: "Orange Fluo SHT-15", color1: "#ff7714" },
+          { nombre: "Orange Yellow Fluo SHT-16", color1: "#ff7613" },
+          { nombre: "Pigmento Naranja 34", color1: "#ff7010" },
+          { nombre: "Pigmento Naranja 36 (Base solvente)", color1: "#ec3f17" },
+          { nombre: "Red Orange Fluo SHT-14", color1: "#ee401c" },
+          { nombre: "Naranja Molibdato MM - 33", color1: "#ec3e1e" },
+          { nombre: "Pigmento Durazno Fluo", color1: "#ef3b1d" },
+          { nombre: "Rojo Pig 104 207", color1: "#ef3c1c" },
+          { nombre: "Rojo Pig 104 307 A", color1: "#f03e20" },
+          { nombre: "Rojo Fluo SHT-13", color1: "#f02d2b" },
+          { nombre: "Rojo Fluo Polvo EG", color1: "#f22f2e" },
+          { nombre: "Pigmento Rojo 170", color1: "#f12e2c" },
+          { nombre: "Pigmento Rojo 254", color1: "#cd0108" },
+          { nombre: "Pigmento Rojo 48:1", color1: "#d02622" },
+          { nombre: "Pigmento Rojo 48:2", color1: "#d61d25" },
+          { nombre: "Pigmento Rojo 53:1", color1: "#d42228" },
+          { nombre: "Pigmento Rojo 57:1 (Base solvente)", color1: "#b92123" },
+          { nombre: "Pigment Red 57:1 (Plástico)", color1: "#b81b24" },
+          { nombre: "Pigmento Rojo 146", color1: "#8d0209" },
+          { nombre: "Pigmento Rojo 122", color1: "#850317" },
+          { nombre: "Pigmento Rojo 31", color1: "#85031a" },
+          { nombre: "Cereza Fluo SHT-12", color1: "#ce5b96" },
+          { nombre: "Pigmento Magenta Fluo FT", color1: "#ca0186" },
+          { nombre: "Magenta Fluo Polvo EG", color1: "#ca0186" },
+          { nombre: "Magenta SHT-21", color1: "#ca0186CC" },
+          { nombre: "Pigmento Magenta Fluo FB", color1: "#ca0186" },
+          { nombre: "Pigmento Rosa Fluorescente", color1: "#f380bb" },
+          { nombre: "Pigmento Rosa Fluo FB", color1: "#f47fbb" },
+          { nombre: "Pig Rosa Fluo P-FT", color1: "#f47fbd" },
+          { nombre: "Rosa Fluo SHT-11", color1: "#f47fbd" },
+          { nombre: "Pigmento Violeta 1", color1: "#41156e" },
+          { nombre: "Pigmento Violeta Fluo FB", color1: "#2a155f" },
+          { nombre: "Violet Fluo SHT-20", color1: "#2a155f" },
+          { nombre: "Pigmento Violeta 23", color1: "#170a35" },
+          { nombre: "Pigmento Violeta 3", color1: "#000120" },
+          { nombre: "Pigmento Violeta 3(Base Solvente)", color1: "#000120" },
+          { nombre: "Pigmento Azul 15:0", color1: "#0e123e" },
+          { nombre: "Pigmento Azul 15:1", color1: "#0f103e" },
+          { nombre: "Pigmento Azul 15:3 (FTALO)", color1: "#041145" },
+          { nombre: "Pigmento Azul 15:4", color1: "#233973" },
+          { nombre: "Pigmento Azul 29 Ultramar", color1: "#0035b5" },
+          { nombre: "Pigmento Azul Fluo FB", color1: "#00a8ff" },
+          { nombre: "Pig Azul Fluo P-FT", color1: "#00a8ff" },
+          { nombre: "Blue Fluo SHT-19", color1: "#00a8ff" },
+          { nombre: "Pigmento Verde 7 (Verde ftalo)", color1: "#01301c" },
+          { nombre: "Pigmento Verde 8", color1: "#01301c" },
+          { nombre: "Pigmento Verde Fluo FB", color1: "#01ff01" },
+          { nombre: "Pig Verde Fluo P- FT", color1: "#01ff01" },
+          { nombre: "Verde Fosforescente M-500", color1: "#01ff01" },
+          { nombre: "Pigmento Blanco FT", color1: "#fefefe" },
+          { nombre: "Pigmento Negro 7", color1: "#000000" },
+        ],
+        colorPrincipal: "#d58606ff" // Color para el polígono
+      }
 ];
