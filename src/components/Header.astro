@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../assets/header/logo3.png";
+import logo from "../assets/header/logohero2.png";
 
 const url = new URL(Astro.request.url);
 const currentPath = url.pathname;
@@ -44,18 +44,19 @@ const categoriasEstampado = [
 ];
 ---
 
-<nav class="bg-white sticky w-full z-20 top-0 start-0 font-fuenteprincipal p-4 md:p-0 shadow-sm">
+<nav
+  id="main-nav"
+  class:list={[
+    "w-full z-20 top-0 start-0 font-fuenteprincipal p-4 md:p-0 transition-all duration-300",
+    currentPath === "/" ? "fixed bg-transparent" : "sticky bg-azulprimario shadow-sm"
+  ]}
+>
   <div
     class="flex flex-wrap items-center justify-between mx-auto w-full md:px-[3%]"
   >
     <a href="/" class="flex items-center space-x-3">
-      <Image src={logo} alt="Polyvac Logo" class="h-10 md:h-12 w-auto" />
+      <Image src={logo} alt="Polyvac Logo" class="h-12 md:h-14 w-auto" />
     </a>
-    <div
-      class="hidden lg:inline-flex h-auto w-0.5 self-stretch bg-neutral-100 mx-[1.2%]"
-    >
-    </div>
-
     <div class="flex md:order-2">
       <button
         id="menu-toggle"
@@ -98,7 +99,10 @@ const categoriasEstampado = [
         </form>
       </div>
       <ul
-        class="nav-tab-list flex flex-col md:flex-row md:mt-0 font-bold text-sm tracking-wide uppercase bg-white shadow-lg md:shadow-none"
+        class:list={[
+          "nav-tab-list flex flex-col md:flex-row md:mt-0 font-bold text-sm tracking-wide uppercase shadow-lg md:shadow-none",
+          currentPath === "/" ? "bg-white md:!bg-transparent md:border-none" : "bg-white"
+        ]}
       >
         <li class="nav-tab-item">
           <a
@@ -662,4 +666,24 @@ const categoriasEstampado = [
       }, 100); // Pequeño delay para asegurar que la página esté completamente cargada
     }
   });
+</script>
+
+<script define:vars={{ isHome: currentPath === "/" }}>
+  const nav = document.getElementById("main-nav");
+  
+  if (isHome && nav) {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        nav.classList.remove("bg-transparent");
+        nav.classList.add("bg-azulprimario", "shadow-sm");
+      } else {
+        nav.classList.add("bg-transparent");
+        nav.classList.remove("bg-azulprimario", "shadow-sm");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Check initial state
+    handleScroll();
+  }
 </script>

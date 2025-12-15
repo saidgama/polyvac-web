@@ -8,6 +8,9 @@
 // Imagen general de productos
 import cubetaImage from '../assets/cubeta.png';
 
+
+
+
 // --- Colores Flock ---
 import flockBlack from '../assets/productos/colores-flock/black.png';
 import flockGray from '../assets/productos/colores-flock/gray.png';
@@ -36,6 +39,7 @@ import micaInterferenceAzul225 from '../assets/productos/colores-micas/magna-pea
 import micaVino504 from '../assets/productos/colores-micas/magna-pearl-504-vino.png';
 
 // --- Gama de Mallas ---
+
 import mallaBlanca from '../assets/productos/gama-mallas/malla-blanca.png';
 import mallaAmarilla from '../assets/productos/gama-mallas/malla-amarilla.png';
 
