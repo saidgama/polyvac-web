@@ -202,8 +202,8 @@ html {
 
 /* Header nav trapezoids */
 .nav-tab-list {
-    border-top: 1px solid #e5e7eb;
-    background-color: #fff;
+    border-top: 1px solid #2E3A62;
+    background-color: #2E3A62;
     min-height: var(--header-tab-height);
     align-items: stretch;
     justify-content: center;
