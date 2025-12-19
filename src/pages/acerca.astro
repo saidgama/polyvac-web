@@ -5,9 +5,6 @@ import bg from '../assets/acercade/acercabg.png';
 import Badge from "../components/Badge.astro";
 import { Image } from "astro:assets";
 import img2 from '../assets/acercade/img2.jpg';
-import img3 from '../assets/acercade/img3.jpg';
-import img4 from '../assets/acercade/img4.jpg';  
-import img5 from '../assets/acercade/img5.jpg';
 import objetivo from '../assets/acercade/vision.jpg';
 import mision from '../assets/acercade/mision.jpg';
 // Logos para certificaciones
@@ -24,60 +21,115 @@ const description = "Pagina para descubrir acerca de la empresa.";
     <!-- Contenido principal -->
     <div class="font-fuenteprincipal">
         
-        <!-- Historia -->
-        <section class="bg-grisbg py-16 ">
+        <!-- Historia (hero de la sección) -->
+        <section class="py-16 rainbow-bg">
             <div class="max-w-7xl mx-auto px-4">
-                
-                <p class="text-center text-gray-700 font-semibold max-w-4xl md:text-2xl mx-auto mb-12 leading-relaxed">
-                    <a class="font-bold text-azulsecundario">INDUSTRIAS POLYVAC S. A. DE C. V.</a> Empresa fundada en el año de 1998 iniciándose en la distribución y fabricación de una amplia gama de productos: químicos, colorantes, pigmentos, resinas, pintura para el estampado, auxiliares para la industria textil, serigrafía y sus derivados.</p>
-                
-                <!-- Timeline -->
-                <div id="default-carousel" class="relative w-full max-w-4xl mx-auto" data-carousel="slide">
-                <!-- Carousel wrapper -->
-                <div class="relative w-full aspect-video overflow-hidden rounded-lg bg-gray-100">
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img2} class="w-full h-full object-cover" alt="Historia empresa">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    <!-- Video (lado izquierdo) -->
+                    <div class="relative">
+                        <div class="w-full h-72 sm:h-96 lg:h-[560px] overflow-hidden rounded-xl bg-gray-100 ring-4 ring-white/20">
+                            <video
+                                class="w-full h-full object-cover"
+                                src="/videos/video_aboutus.mp4"
+                                autoplay
+                                muted
+                                loop
+                                preload="metadata"
+                                playsinline
+                            ></video>
+                        </div>
+
+                        <!-- Experiencia (badge flotante) -->
+                        <div class="absolute -top-6 left-6 bg-rojo text-white px-6 py-4 rounded-xl border border-white/20">
+                            <div class="flex items-end gap-3">
+                                <div class="text-4xl md:text-5xl font-extrabold leading-none">25+</div>
+                                <div class="text-sm md:text-base leading-tight">
+                                    <div class="font-semibold">Años</div>
+                                    <div>de experiencia</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Acento decorativo (color) -->
                     </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img3} class="w-full h-full object-cover" alt="Valores empresa">
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img4} class="w-full h-full object-cover" alt="Misión empresa">
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <Image src={img5} class="w-full h-full object-cover" alt="Visión empresa">
+
+                    <!-- Contenido (lado derecho) -->
+                    <div class="bg-white/95 backdrop-blur rounded-2xl p-6 md:p-10 border border-white/30">
+                        <div class="inline-flex items-center px-4 py-2 bg-azulprimario text-white font-semibold rounded">
+                            ACERCA DE NOSOTROS
+                        </div>
+
+                        <h2 class="mt-5 text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                            Industrias Polyvac: color, calidad y soporte técnico
+                        </h2>
+
+                        <p class="mt-5 text-gray-700 md:text-lg leading-relaxed">
+                            <span class="font-bold text-azulsecundario">INDUSTRIAS POLYVAC S. A. DE C. V.</span> desarrolla y distribuye soluciones para la industria textil y la serigrafía, con enfoque en innovación, confiabilidad y atención técnica.
+                        </p>
+
+                        <!-- "Tab" / sección destacada -->
+                        <div class="mt-8">
+                            <div class="inline-flex items-center justify-center px-6 py-3 bg-white rounded border border-azulprimario/20">
+                                <span class="font-semibold text-azulprimario">Nuestra Historia</span>
+                            </div>
+                            <div class="h-1 w-40 bg-rojo mt-3"></div>
+                        </div>
+
+                        <p class="mt-6 text-gray-600 leading-relaxed">
+                            Empresa fundada en el año de 1998, iniciándose en la distribución y fabricación de una amplia gama de productos: químicos, colorantes, pigmentos, resinas, pintura para el estampado, auxiliares para la industria textil, serigrafía y sus derivados.
+                        </p>
+
+                        <p class="mt-4 text-gray-600 leading-relaxed">
+                            Nos enfocamos en aportar valor a nuestros clientes con soporte técnico, innovación y un control de calidad riguroso en cada etapa.
+                        </p>
+
+                        <div class="mt-8 grid sm:grid-cols-2 gap-4 text-gray-800">
+                            <div class="flex items-start gap-3">
+                                <span class="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full border border-rojo text-rojo">
+                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.415l-7.5 7.5a1 1 0 01-1.415 0l-3.5-3.5a1 1 0 011.415-1.415l2.793 2.793 6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span class="font-semibold">Sistema de control de calidad</span>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full border border-azulsecundario text-azulsecundario">
+                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.415l-7.5 7.5a1 1 0 01-1.415 0l-3.5-3.5a1 1 0 011.415-1.415l2.793 2.793 6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span class="font-semibold">Soporte técnico especializado</span>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full border border-azulprimario text-azulprimario">
+                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.415l-7.5 7.5a1 1 0 01-1.415 0l-3.5-3.5a1 1 0 011.415-1.415l2.793 2.793 6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span class="font-semibold">Innovación en tintas y auxiliares</span>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full border border-rojo text-rojo">
+                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.415l-7.5 7.5a1 1 0 01-1.415 0l-3.5-3.5a1 1 0 011.415-1.415l2.793 2.793 6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </span>
+                                <span class="font-semibold">Compromiso con soluciones más sustentables</span>
+                            </div>
+                        </div>
+
+                        <!-- Chips (acentos de color) -->
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <span class="px-4 py-2 rounded-full bg-rojo/10 text-rojo font-semibold">Químicos</span>
+                            <span class="px-4 py-2 rounded-full bg-azulprimario/10 text-azulprimario font-semibold">Colorantes</span>
+                            <span class="px-4 py-2 rounded-full bg-azulsecundario/10 text-azulsecundario font-semibold">Pigmentos</span>
+                            <span class="px-4 py-2 rounded-full bg-grisbg text-azulprimario font-semibold">Serigrafía</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Slider indicators -->
-                <div class="absolute z-10 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-colors" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-                </div>
-                <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button" class="absolute top-0 end-0 z-10 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button>
-</div>
             </div>
         </section>
 
@@ -197,139 +249,78 @@ const description = "Pagina para descubrir acerca de la empresa.";
             </div>
         </section>
 
-        <!-- Reconocimientos -->
-        <section class="bg-gray-900 py-16 mt-15">
-            <div class="max-w-7xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center text-white mb-8">CERTIFICACIONES Y NORMAS</h2>
-                <p class="text-center text-gray-300 mb-12 max-w-3xl mx-auto">
+        <!-- Certificaciones -->
+        <section class="py-16 mt-15 overflow-hidden">
+            <div class="mb-12 px-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-500 via-blue-500 to-red-500 bg-clip-text text-transparent">
+                    CERTIFICACIONES Y NORMAS
+                </h2>
+                <p class="text-center text-lg md:text-xl font-medium max-w-3xl mx-auto bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent">
                     Todos nuestros productos cumplen con las normas requeridas por:
                 </p>
-                <div class="grid md:grid-cols-3 gap-8 text-center">
-                    <!-- OEKOTEX 2024 -->
-                    <div class="text-white">
-                        <div class="mb-4">
-                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
-                                <Image 
-                                    src={oekotexLogo} 
-                                    alt="Logo OEKOTEX 2024" 
-                                    class="w-full h-full object-contain"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold text-green-400">OEKOTEX</h3>
-                            <h3 class="text-lg font-bold text-white">2024</h3>
-                            <p class="text-sm text-gray-300 mt-2">Estándar internacional para textiles libres de sustancias nocivas</p>
-                        </div>
-                    </div>
+            </div>
 
-                    <!-- BLUESIGN -->
-                    <div class="text-white">
-                        <div class="mb-4">
-                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
-                                <Image 
-                                    src={bluesignLogo} 
-                                    alt="Logo Bluesign" 
-                                    class="w-full h-full object-contain"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold text-blue-400">BLUESIGN</h3>
-                            <h3 class="text-lg font-bold text-white">APPROVED</h3>
-                            <p class="text-sm text-gray-300 mt-2">Sistema de gestión para una producción textil sostenible</p>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-3 gap-0">
+                <!-- OEKOTEX 2024 - Verde -->
+                <div class="relative py-16 px-8 text-center min-h-[450px] flex flex-col justify-center items-center transition-all duration-300 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-400 via-green-500 to-emerald-600 opacity-85"></div>
 
-                    <!-- BUREAU VERITAS -->
-                    <div class="text-white">
-                        <div class="mb-4">
-                            <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 p-4">
-                                <Image 
-                                    src={bureauVeritasLogo} 
-                                    alt="Logo Bureau Veritas" 
-                                    class="w-full h-full object-contain"
-                                />
-                            </div>
-                            <h3 class="text-xl font-bold text-red-400">BUREAU</h3>
-                            <h3 class="text-xl font-bold text-red-400">VERITAS</h3>
-                            <p class="text-sm text-gray-300 mt-2">Líder mundial en servicios de inspección, certificación y ensayos</p>
+                    <div class="relative z-10">
+                        <div class="w-40 h-40 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 p-6 shadow-2xl transform transition-transform hover:rotate-3">
+                            <Image
+                                src={oekotexLogo}
+                                alt="Logo OEKOTEX 2024"
+                                class="w-full h-full object-contain"
+                            />
                         </div>
+                        <h3 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">OEKOTEX</h3>
+                        <h4 class="text-2xl font-bold text-green-100 mb-4">2024</h4>
+                        <p class="text-base text-white max-w-xs mx-auto drop-shadow-md">
+                            Estándar internacional para textiles libres de sustancias nocivas
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BLUESIGN - Azul -->
+                <div class="relative py-16 px-8 text-center min-h-[450px] flex flex-col justify-center items-center transition-all duration-300 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-blue-600 to-indigo-700 opacity-85"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-40 h-40 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 p-6 shadow-2xl transform transition-transform hover:rotate-3">
+                            <Image
+                                src={bluesignLogo}
+                                alt="Logo Bluesign"
+                                class="w-full h-full object-contain"
+                            />
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">BLUESIGN</h3>
+                        <h4 class="text-2xl font-bold text-blue-100 mb-4">APPROVED</h4>
+                        <p class="text-base text-white max-w-xs mx-auto drop-shadow-md">
+                            Sistema de gestión para una producción textil sostenible
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BUREAU VERITAS - Rojo -->
+                <div class="relative py-16 px-8 text-center min-h-[450px] flex flex-col justify-center items-center transition-all duration-300 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-br from-red-400 via-red-600 to-rose-700 opacity-85"></div>
+
+                    <div class="relative z-10">
+                        <div class="w-40 h-40 bg-white rounded-2xl flex items-center justify-center mx-auto mb-6 p-6 shadow-2xl transform transition-transform hover:rotate-3">
+                            <Image
+                                src={bureauVeritasLogo}
+                                alt="Logo Bureau Veritas"
+                                class="w-full h-full object-contain"
+                            />
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-2 drop-shadow-lg">BUREAU</h3>
+                        <h4 class="text-3xl font-bold text-red-100 mb-4">VERITAS</h4>
+                        <p class="text-base text-white max-w-xs mx-auto drop-shadow-md">
+                            Líder mundial en servicios de inspección, certificación y ensayos
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 </Layout>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('default-carousel');
-    const items = carousel.querySelectorAll('[data-carousel-item]');
-    const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
-    const prevButton = carousel.querySelector('[data-carousel-prev]');
-    const nextButton = carousel.querySelector('[data-carousel-next]');
-    
-    let currentIndex = 0;
-    
-    // Función para mostrar slide
-    function showSlide(index) {
-        // Ocultar todos los slides
-        items.forEach(item => {
-            item.classList.add('hidden');
-            item.classList.remove('block');
-        });
-        
-        // Mostrar el slide actual
-        if (items[index]) {
-            items[index].classList.remove('hidden');
-            items[index].classList.add('block');
-        }
-        
-        // Actualizar indicadores
-        indicators.forEach((indicator, i) => {
-            if (i === index) {
-                indicator.classList.add('bg-white');
-                indicator.classList.remove('bg-white/50');
-                indicator.setAttribute('aria-current', 'true');
-            } else {
-                indicator.classList.remove('bg-white');
-                indicator.classList.add('bg-white/50');
-                indicator.setAttribute('aria-current', 'false');
-            }
-        });
-        
-        currentIndex = index;
-    }
-    
-    // Función para ir al siguiente slide
-    function nextSlide() {
-        const nextIndex = (currentIndex + 1) % items.length;
-        showSlide(nextIndex);
-    }
-    
-    // Función para ir al slide anterior
-    function prevSlide() {
-        const prevIndex = (currentIndex - 1 + items.length) % items.length;
-        showSlide(prevIndex);
-    }
-    
-    // Event listeners para botones
-    if (nextButton) {
-        nextButton.addEventListener('click', nextSlide);
-    }
-    
-    if (prevButton) {
-        prevButton.addEventListener('click', prevSlide);
-    }
-    
-    // Event listeners para indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            showSlide(index);
-        });
-    });
-    
-    // Auto-play del carrusel (opcional)
-    setInterval(nextSlide, 5000); // Cambia cada 5 segundos
-    
-    // Mostrar el primer slide al cargar
-    showSlide(0);
-});
-</script>

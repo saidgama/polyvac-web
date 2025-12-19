@@ -40,8 +40,7 @@ const subcategorias = [
         taxonomias: [
             { id: 7, nombre: "Tintas plastisol", slug: "tintas-plastisol" },
             { id: 8, nombre: "Tintas base agua", slug: "tintas-base-agua" },
-            { id: 9, nombre: "Tintas de sublimación", slug: "tintas-sublimacion" },
-            { id: 10, nombre: "Tintas DTF", slug: "tintas-dtf" }
+            { id: 9, nombre: "Tintas de sublimación", slug: "tintas-sublimacion" }
         ]
     },
     {
@@ -51,9 +50,7 @@ const subcategorias = [
         descripcion: "Componentes esenciales para la preparación de tintas",
         taxonomias: [
             { id: 11, nombre: "Pigmentos", slug: "pigmentos" },
-            { id: 12, nombre: "Colorantes", slug: "colorantes" },
-            { id: 13, nombre: "Auxiliares textiles", slug: "auxiliares-textiles" },
-            { id: 14, nombre: "Acabados especiales", slug: "acabados-especiales" }
+            { id: 12, nombre: "Colorantes", slug: "colorantes" }
         ]
     },
     {
@@ -103,29 +100,10 @@ const subcategorias = [
                                 data-carousel="carousel-accesorios"
                             >
                                 <div class="carousel-track flex items-start transition-transform duration-300 ease-in-out">
-                                    {/* Productos de accesorios de serigrafía - subcategoría 4 o placeholders */}
+                                    {/* Solo productos de accesorios de serigrafía reales */}
                                     {(() => {
                                         const productosAccesorios = productos.filter(producto => producto.subcategorias.includes(4));
-                                        const productosAMostrar = productosAccesorios.length > 0 ? productosAccesorios : [
-                                            {
-                                                id: "placeholder-accesorios-1"  ,
-                                                titulo: "Accesorio de ejemplo",
-                                                descripcion: "Este es un accesorio de ejemplo para mostrar el diseño y estructura de la página.",
-                                                imagenes: [cubetaImage],
-                                                fichaTecnica: null,
-                                                placeholder: true,
-                                                colorPrincipal: "#95a5a6"
-                                            },
-                                            {
-                                                id: "placeholder-accesorios-2",
-                                                titulo: "Accesorio de ejemplo",
-                                                descripcion: "Este es un accesorio de ejemplo para mostrar el diseño y estructura de la página.",
-                                                imagenes: [cubetaImage],
-                                                fichaTecnica: null,
-                                                placeholder: true,
-                                                colorPrincipal: "#7f8c8d"
-                                            }
-                                        ];
+                                        const productosAMostrar = productosAccesorios;
                                         
                                         return productosAMostrar.map((producto: any) => (
                                             <a 
@@ -134,7 +112,7 @@ const subcategorias = [
                                             >
                                                 <div class="relative h-48 bg-gray-100 rounded mb-2 flex items-center justify-center overflow-hidden">
                                                     <Image 
-                                                        src={cubetaImage} 
+                                                        src={producto.imagenes[0]} 
                                                         alt={producto.titulo}
                                                         class={`w-full h-full object-cover ${producto.placeholder ? 'opacity-50 grayscale' : ''}`}
                                                         width={533}
@@ -205,29 +183,10 @@ const subcategorias = [
                                     data-carousel={`carousel-${taxonomia.id}`}
                                 >
                                     <div class="carousel-track flex items-start transition-transform duration-300 ease-in-out">
-                                        {/* Productos reales o placeholders */}
+                                        {/* Solo productos reales */}
                                         {(() => {
                                             const productosEnTaxonomia = getProductosPorTaxonomia(taxonomia.id);
-                                            const productosAMostrar = productosEnTaxonomia.length > 0 ? productosEnTaxonomia : [
-                                                {
-                                                    id: `placeholder-${taxonomia.id}-1`,
-                                                    titulo: "Producto de ejemplo",
-                                                    descripcion: "Este es un producto de ejemplo para mostrar el diseño y estructura de la página.",
-                                                    imagenes: [cubetaImage],
-                                                    fichaTecnica: null,
-                                                    placeholder: true,
-                                                    colorPrincipal: "#bdc3c7"
-                                                },
-                                                {
-                                                    id: `placeholder-${taxonomia.id}-2`,
-                                                    titulo: "Producto de ejemplo",
-                                                    descripcion: "Este es un producto de ejemplo para mostrar el diseño y estructura de la página.",
-                                                    imagenes: [cubetaImage],
-                                                    fichaTecnica: null,
-                                                    placeholder: true,
-                                                    colorPrincipal: "#95a5a6"
-                                                }
-                                            ];
+                                            const productosAMostrar = productosEnTaxonomia;
                                             
                                             return productosAMostrar.map((producto: any) => (
                                                 <a 
@@ -236,7 +195,7 @@ const subcategorias = [
                                                 >
                                                     <div class="relative h-48 bg-gray-100 rounded mb-2 flex items-center justify-center overflow-hidden">
                                                         <Image 
-                                                            src={cubetaImage} 
+                                                            src={producto.imagenes[0]} 
                                                             alt={producto.titulo}
                                                             class={`w-full h-full object-cover ${producto.placeholder ? 'opacity-50 grayscale' : ''}`}
                                                             width={533}

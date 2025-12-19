@@ -1,38 +1,23 @@
 ---
 import Badge from "../components/Badge.astro";
 import Layout from "../layouts/Layout.astro";
-import ProductCardSmall from "../components/ProductCardSmall.astro";
-import { getAllProductos, searchProductos } from "../lib/strapi.js";
+import productos from "../data/productos.js";
 
 const title = "Búsqueda - Industrias Polyvac";
 const description = "Página para búsqueda";
 
-// Obtener TODOS los productos en build time para búsqueda del lado del cliente
-// TEMPORALMENTE DESACTIVADO - fetch comentado por cambios en backend
-// const allProductsResponse = await getAllProductos();
-// const allProducts = allProductsResponse.data || [];
-const allProducts = [];
-
-// Obtener URL de Strapi para pasarla al cliente
-const strapiUrl = import.meta.env.PUBLIC_STRAPI_URL || 'http://localhost:1337';
+// Preparar productos para el cliente (sin imágenes que son objetos)
+const productosParaCliente = productos.map(p => ({
+  id: p.id,
+  titulo: p.titulo,
+  descripcion: p.descripcion,
+  categoria: p.categoria,
+  colorPrincipal: p.colorPrincipal
+}));
 
 // Obtener query de la URL para SEO fallback
 const url = Astro.url;
 const query = url.searchParams.get('q') || '';
- 
-// Búsqueda SSR para SEO (opcional, solo si hay query)
-// TEMPORALMENTE DESACTIVADO - fetch comentado por cambios en backend
-let serverProducts = [];
-/*
-if (query.trim()) {
-  try {
-    const response = await searchProductos(query);
-    serverProducts = response.data || [];
-  } catch (error) {
-    console.error('Error en búsqueda SSR:', error);
-  }
-}
-*/
 ---
 
 <Layout title={title} description={description}>
@@ -63,23 +48,6 @@ if (query.trim()) {
 
     <!-- Resultados -->
     <div id="search-results">
-      <!-- Contenido inicial del servidor para SEO -->
-      {serverProducts.length > 0 && (
-        <div id="server-results">
-          <h2 class="text-2xl font-bold mb-6">
-            Resultados para: "{query}" ({serverProducts.length} productos encontrados)
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {serverProducts.map((producto) => (
-              <ProductCardSmall 
-                key={producto.id}
-                producto={producto}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-      
       <!-- Placeholder para búsqueda del cliente -->
       <div id="client-results" class="hidden">
         <h2 id="results-title" class="text-2xl font-bold mb-6"></h2>
@@ -91,47 +59,68 @@ if (query.trim()) {
       </div>
 
       <!-- Estado inicial -->
-      {!query && (
-        <div id="initial-state" class="text-center py-12">
-          <p class="text-gray-600 text-lg">
-            Ingresa un término de búsqueda para encontrar productos
-          </p>
-        </div>
-      )}
+      <div id="initial-state" class="text-center py-12" style={query ? "display: none;" : ""}>
+        <p class="text-gray-600 text-lg">
+          Ingresa un término de búsqueda para encontrar productos
+        </p>
+      </div>
     </div>
   </div>
 
   <!-- Pasar datos al cliente -->
-  <script type="module" define:vars={{ allProducts, strapiUrl }}>
-    // Importar Fuse.js desde CDN
-    import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.mjs';
+  <script type="module" define:vars={{ productosParaCliente, query }}>
+    // Productos locales para búsqueda
+    const productos = productosParaCliente;
     
-    // Configuración de Fuse.js para búsqueda avanzada
-    const fuseOptions = {
-      keys: [
-        {
-          name: 'nombre',
-          weight: 0.7
-        },
-        {
-          name: 'descripcion',
-          weight: 0.2
-        },
-        {
-          name: 'categoria.nombre',
-          weight: 0.1
-        }
-      ],
-      threshold: 0.4,
-      includeScore: true,
-      includeMatches: true,
-      minMatchCharLength: 2,
-      ignoreLocation: true,
-      findAllMatches: true
-    };
+    // Función para normalizar texto (quitar acentos, minúsculas)
+    function normalizeString(str) {
+      return str
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, '');
+    }
     
-    // Inicializar Fuse.js
-    const fuse = new Fuse(allProducts, fuseOptions);
+    // Función de búsqueda local
+    function searchProductos(queryText) {
+      const normalizedQuery = normalizeString(queryText);
+      const queryWords = normalizedQuery.split(/\s+/).filter(w => w.length > 1);
+      
+      return productos
+        .map(producto => {
+          let score = 0;
+          const normalizedTitle = normalizeString(producto.titulo);
+          const normalizedDesc = normalizeString(producto.descripcion || '');
+
+          // Coincidencia exacta en título (mayor peso)
+          if (normalizedTitle.includes(normalizedQuery)) {
+            score += 100;
+          }
+
+          // Coincidencia por palabras en título
+          queryWords.forEach(word => {
+            if (normalizedTitle.includes(word)) {
+              score += 50;
+            }
+          });
+
+          // Coincidencia en descripción
+          if (normalizedDesc.includes(normalizedQuery)) {
+            score += 30;
+          }
+
+          // Coincidencia por palabras en descripción
+          queryWords.forEach(word => {
+            if (normalizedDesc.includes(word)) {
+              score += 15;
+            }
+          });
+
+          return { ...producto, score };
+        })
+        .filter(producto => producto.score > 0)
+        .sort((a, b) => b.score - a.score);
+    }
     
     // Función de inicialización
     function initializeSearch() {
@@ -145,76 +134,63 @@ if (query.trim()) {
       // Event listener para el formulario
       searchForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        const queryValue = searchInput.value.trim();
         
-        const query = searchInput.value.trim();
-        
-        if (query && query.length >= 2) {
-          performAdvancedSearch(query);
-        } else if (query.length === 0) {
+        if (queryValue && queryValue.length >= 2) {
+          performSearch(queryValue);
+        } else if (queryValue.length === 0) {
           showInitialState();
         }
       });
       
       // Event listener para búsqueda en tiempo real
       searchInput.addEventListener('input', function(e) {
-        const query = e.target.value.trim();
+        const queryValue = e.target.value.trim();
         
-        if (query.length >= 3) {
-          performAdvancedSearch(query);
-        } else if (query.length === 0) {
+        if (queryValue.length >= 2) {
+          performSearch(queryValue);
+        } else if (queryValue.length === 0) {
           showInitialState();
         }
       });
       
       // Si hay query inicial, hacer búsqueda
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialQuery = urlParams.get('q');
-      if (initialQuery && initialQuery.trim().length >= 2) {
-        performAdvancedSearch(initialQuery.trim());
+      if (query && query.trim().length >= 2) {
+        performSearch(query.trim());
       }
     }
     
-    function performAdvancedSearch(query) {
-      // Ocultar elementos
-      const serverResults = document.getElementById('server-results');
+    function performSearch(queryText) {
       const initialState = document.getElementById('initial-state');
       const clientResults = document.getElementById('client-results');
       
-      if (serverResults) serverResults.style.display = 'none';
       if (initialState) initialState.style.display = 'none';
       if (clientResults) clientResults.classList.remove('hidden');
       
-      // Buscar con Fuse.js
-      const fuseResults = fuse.search(query);
-      
-      // Extraer los items de los resultados de Fuse
-      const products = fuseResults.map(result => ({
-        ...result.item,
-        score: result.score,
-        matches: result.matches
-      }));
+      // Buscar en productos locales
+      const results = searchProductos(queryText);
       
       // Mostrar resultados
-      displayAdvancedResults(query, products);
+      displayResults(queryText, results);
       
       // Actualizar URL
       const newUrl = new URL(window.location);
-      newUrl.searchParams.set('q', query);
+      newUrl.searchParams.set('q', queryText);
       window.history.replaceState({}, '', newUrl);
     }
     
-    function displayAdvancedResults(query, results) {
+    function displayResults(queryText, results) {
       const resultsTitle = document.getElementById('results-title');
       const resultsGrid = document.getElementById('results-grid');
       const noResults = document.getElementById('no-results');
       
       if (resultsTitle) {
-        resultsTitle.textContent = `Resultados para: "${query}" (${results.length} productos encontrados)`;
+        resultsTitle.textContent = `Resultados para: "${queryText}" (${results.length} productos encontrados)`;
       }
       
       if (results.length > 0) {
         if (resultsGrid) {
-          resultsGrid.innerHTML = renderAdvancedProductCards(results);
+          resultsGrid.innerHTML = renderProductCards(results);
           resultsGrid.classList.remove('hidden');
         }
         if (noResults) noResults.classList.add('hidden');
@@ -223,12 +199,12 @@ if (query.trim()) {
         if (noResults) {
           noResults.innerHTML = `
             <div class="text-center py-12">
-              <p class="text-gray-600 text-lg">No se encontraron productos para "${query}"</p>
+              <p class="text-gray-600 text-lg">No se encontraron productos para "${queryText}"</p>
               <div class="text-gray-500 mt-4 space-y-2">
                 <p class="text-sm">💡 Consejos para mejorar tu búsqueda:</p>
                 <ul class="text-xs space-y-1">
                   <li>• Verifica la ortografía</li>
-                  <li>• Usa términos más generales (ej: "bolsa" en lugar de "bolsas")</li>
+                  <li>• Usa términos más generales</li>
                   <li>• Prueba con sinónimos</li>
                 </ul>
               </div>
@@ -239,43 +215,45 @@ if (query.trim()) {
       }
     }
     
-    function renderAdvancedProductCards(results) {
-      return results.map((result) => {
-        const product = result;
-        
-        const imageUrl = product.imagen?.url ? 
-          (product.imagen.url.startsWith('http') ? product.imagen.url : `${strapiUrl}${product.imagen.url}`) : 
-          '/placeholder-image.jpg';
+    function renderProductCards(results) {
+      return results.map((product) => {
+        const colorStyle = product.colorPrincipal ? `background-color: ${product.colorPrincipal};` : 'background-color: #3b82f6;';
         
         return `
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-            <div class="aspect-square bg-gray-100">
-              <img src="${imageUrl}" alt="${product.nombre}" class="w-full h-full object-cover" loading="lazy">
+          <a href="/producto/${product.id}" class="block bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <div class="aspect-square bg-gray-100 relative overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-32 h-32 rounded-full opacity-20" style="${colorStyle}"></div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-3" style="${colorStyle} opacity: 0.9;">
+                <h3 class="font-bold text-white text-sm line-clamp-2">${product.titulo}</h3>
+              </div>
             </div>
             <div class="p-4">
-              <h3 class="font-semibold text-gray-900 mb-2">${product.nombre}</h3>
-              ${product.descripcion ? `<p class="text-sm text-gray-600 mb-3">${product.descripcion}</p>` : ''}
-              ${product.categoria?.nombre ? `<span class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full mb-3">${product.categoria.nombre}</span>` : ''}
-              <a href="/producto/${product.slug}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition-colors">
-                Ver Detalles
-              </a>
+              <p class="text-sm text-gray-600 mb-3 line-clamp-3">${product.descripcion || ''}</p>
+              <div class="flex items-center justify-between">
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">${product.categoria}</span>
+                <span class="text-azulprimario text-sm font-medium">Ver detalles →</span>
+              </div>
             </div>
-          </div>
+          </a>
         `;
       }).join('');
     }
     
     function showInitialState() {
       const clientResults = document.getElementById('client-results');
-      const serverResults = document.getElementById('server-results');
       const initialState = document.getElementById('initial-state');
       
       if (clientResults) clientResults.classList.add('hidden');
-      if (serverResults) serverResults.style.display = 'none';
       if (initialState) initialState.style.display = 'block';
     }
     
     // Inicializar cuando el script se cargue
-    setTimeout(initializeSearch, 100);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeSearch);
+    } else {
+      initializeSearch();
+    }
   </script>
 </Layout>

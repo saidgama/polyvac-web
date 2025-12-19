@@ -7,7 +7,22 @@
 
 // Imagen general de productos
 import cubetaImage from '../assets/cubeta.png';
-
+import aquaflex from '../assets/productos/aquaflex.png'
+import plastisolImage from '../assets/productos/plastisol.png';
+import ahuladaImage from '../assets/productos/ahulada.png';
+import plastivacImage from '../assets/productos/plastivac.png';
+import polyprintImage from '../assets/productos/polyprint.png';
+import polytransferImage from '../assets/productos/polytransfer.png';
+import sublisolImage from '../assets/productos/sublisol.png';
+import sublivacImage from '../assets/productos/sublivac.png';
+import colorantesDirectosImage from '../assets/cubeta.png';
+import colorantesBasicosImage from '../assets/cubeta.png';
+import colorantesAcidosImage from '../assets/cubeta.png';
+import coloresFlockImage from '../assets/productos/colores-flock.png';
+import coloresMicasImage from '../assets/productos/colores-micas.png';
+import coloresGlittersImage from '../assets/productos/colores-glitters.png';
+import gamaMallasImage from '../assets/productos/mallas.png';
+import pigmentosEnPolvoImage from '../assets/productos/pigmentos-en-polvo.png';
 
 
 
@@ -56,31 +71,31 @@ export default [
     taxonomias: [1, 8], // IDs de taxonomías: "Para algodón", "Tintas base agua"
     descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100% , totalmente libres de gas Nafta, metales pesados , PVC y Orto- Ftalatos; lo cual les da una excelente estabilidad en el esténcil , haciendo posible la estampación en el pulpo manual y automático.",
     imagenes: [
-      cubetaImage
+      aquaflex
     ],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_aquaflex_e3a4e88af9.pdf",
     colores: [
-      { nombre: "Amarillo", hex: "#ffff00" },
-      { nombre: "Naranja", hex: "#ff6600" },
-      { nombre: "Rosa Brillante", hex: "#ff2213" },
-      { nombre: "Rojo escarlata", hex: "#ff0000" },
-      { nombre: "Rojo Carmín", hex: "#c90019 " },
-      { nombre: "Azul", hex: " #0000fd" },
-      { nombre: "Marino", hex: " #000081" },
-      { nombre: "Turquesa", hex: "#003660 " },
-      { nombre: "Violeta", hex: " #810081" },
-      { nombre: "Verde", hex: " #008100" },
-      { nombre: "Negro", hex: "#000000 " },
-      { nombre: "Café", hex: " #622c00" },
-      { nombre: "Blanco", hex: "#ffffff " },
-      { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#ffff66 " },
-      { nombre: "Naranja (FLUORESCENTE)", hex: "#ff9a00 " },
-      { nombre: "Rosa (FLUORESCENTE)", hex: "#ff9acd " },
-      { nombre: "Magenta (FLUORESCENTE)", hex: "#ff00ff " }, 
-      { nombre: "Azul (FLUORESCENTE)", hex: " #009cf9" },
-      { nombre: "Purpura (FLUORESCENTE)", hex: " #d250f8" },
-      { nombre: "Verde (FLUORESCENTE)", hex: "#00ff00 " },
-      { nombre: "Rojo (FLUORESCENTE)", hex: " #ff0000" },
+      { nombre: "Amarillo AQUAFLEX V-196", hex: "#ffff00" },
+      { nombre: "Naranja AQUAFLEX V-191", hex: "#ff6600" },
+      { nombre: "Rosa Brillante AQUAFLEX", hex: "#ff2213" },
+      { nombre: "Rojo escarlata AQUAFLEX", hex: "#ff0000" },
+      { nombre: "Rojo Carmín AQUAFLEX", hex: "#c90019 " },
+      { nombre: "Azul AQUAFLEX V-197", hex: " #0000fd" },
+      { nombre: "Marino AQUAFLEX V-198", hex: " #000081" },
+      { nombre: "Turquesa AQUAFLEX V-206", hex: "#003660 " },
+      { nombre: "Violeta AQUAFLEX", hex: " #810081" },
+      { nombre: "Verde AQUAFLEX V-192", hex: " #008100" },
+      { nombre: "Negro AQUAFLEX V-190", hex: "#000000 " },
+      { nombre: "Café AQUAFLEX", hex: " #622c00" },
+      { nombre: "Blanco AQUAFLEX", hex: "#ffffff " },
+      { nombre: "Amarillo limon (FLUORESCENTE) AQUAFLEX Fluorescente", hex: "#ffff66 " },
+      { nombre: "Naranja (FLUORESCENTE) AQUAFLEX Fluorescente", hex: "#ff9a00 " },
+      { nombre: "Rosa (FLUORESCENTE) AQUAFLEX Fluorescente V-185", hex: "#ff9acd " },
+      { nombre: "Magenta (FLUORESCENTE) AQUAFLEX Fluorescente V-185", hex: "#ff00ff " }, 
+      { nombre: "Azul (FLUORESCENTE) AQUAFLEX Fluorescente V-183", hex: " #009cf9" },
+      { nombre: "Purpura (FLUORESCENTE) AQUAFLEX Fluorescente V-184", hex: " #d250f8" },
+      { nombre: "Verde (FLUORESCENTE) AQUAFLEX Fluorescente V-188", hex: "#00ff00 " },
+      { nombre: "Rojo (FLUORESCENTE) AQUAFLEX Fluorescente V-188", hex: " #ff0000" },
     ],
     colorPrincipal: "#10a3e8ff" // Color para el polígono
   },
@@ -92,7 +107,7 @@ export default [
     taxonomias: [1, 3, 7], // "Para algodón", "Para fondos claros", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas para fondos claros y campañas políticas , utilizadas para realizar estampados en tela de algodón 100 % de terminado ahulado, con acabado semi-mate.",
     imagenes: [
-      cubetaImage
+      plastisolImage
     ],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_plastisol_vm_ht_c9c2f5cd42.pdf",
     colores: [
@@ -127,7 +142,7 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [1, 4, 7], // "Para algodón", "Para fondos oscuros", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y fabricadas con materias primas de importación, con un alto contenido de solidos y buen poder cubriente, utilizadas para realizar estampados en fondos obscuros de algodón 100%.",
-    imagenes: [cubetaImage],
+    imagenes: [ahuladaImage],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_ahulado_ao_ht_ed3af4a320.pdf",
     colores: [
       { nombre: "Amarillo Limón", hex: "#ffcd00" },
@@ -161,7 +176,7 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [1, 7], // "Para algodón", "Tintas plastisol"
     descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y ftalatos, fabricadas con materias primas de importación, utilizadas para realizar estampaciones en tela de algodón 100% en terminado ahulado , con acabado semi-mate.",
-    imagenes: [cubetaImage],
+    imagenes: [plastivacImage],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_plastivac_vs_ht_e3fff37047.pdf",
     colores: [
       { nombre: "Amarillo Limón", hex: "#ffcd00" },
@@ -195,34 +210,34 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [11], // "Pigmentos"
     descripcion: "Son pigmentos tanto orgánicos como inorgánicos dispersados en base agua que deben se fijados por medio de Binders.Debe ser termofijado para tener buena solidez al frote tanto en húmedo como en seco.",
-    imagenes: [cubetaImage],
+    imagenes: [polyprintImage],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_polyprint_ht_58cdef145b.pdf",
     colores: [
-      { nombre: "Amarillo", hex: "#ffff00" },
-      { nombre: "Amarillo Oro", hex: "#ffcd00" },
-      { nombre: "Amarillo ", hex: "#fffe00" },
-      { nombre: "Naranja", hex: "#ff6600" },
-      { nombre: "Naranja", hex: "#fe8935" },
-      { nombre: "Rojo", hex: "#ff2213" },
-      { nombre: "Rojo", hex: "#fe2113" },
-      { nombre: "Rojo", hex: "#c90019" },
-      { nombre: "Rosa", hex: "#ff309a " },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Azul", hex: " #003066" },
-      { nombre: "Marino", hex: " #000081" },
-      { nombre: "Marino", hex: " #2f66ff" },
-      { nombre: "Marino", hex: " #39638a" },
-      { nombre: "Violeta", hex: "#810081 " },
-      { nombre: "Verde", hex: " #008100" },
-      { nombre: "Negro", hex: " #000000" },
-      { nombre: "Blanco", hex: "#ffffff " },
-      { nombre: "Amarillo  (FLUORESCENTE)", hex: "#fefe65 " },
-      { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
-      { nombre: "Magenta (FLUORESCENTE)", hex: "#fe00fe " },
-      { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
-      { nombre: "Azul (FLUORESCENTE)", hex: " #009bf9" },
-      { nombre: "Púrpura (FLUORESCENTE)", hex: "#d14ff8 " },
-      { nombre: "Verde (FLUORESCENTE)", hex: " #00fe00" },
+      { nombre: "Amarillo POLYPRINT EG", hex: "#ffff00" },
+      { nombre: "Amarillo Oro POLYPRINT EGO", hex: "#ffcd00" },
+      { nombre: "Amarillo POLYPRINT E4C", hex: "#fffe00" },
+      { nombre: "Naranja POLYPRINT EG", hex: "#ff6600" },
+      { nombre: "Naranja POLYPRINT EOL", hex: "#fe8935" },
+      { nombre: "Rojo POLYPRINT E2BT", hex: "#ff2213" },
+      { nombre: "Rojo POLYPRINT EGRL", hex: "#fe2113" },
+      { nombre: "Rojo POLYPRINT VB", hex: "#c90019" },
+      { nombre: "Rosa POLYPRINT E3B", hex: "#ff309a " },
+      { nombre: "Azul POLYPRINT ER", hex: " #0000ff" },
+      { nombre: "Azul POLYPRINT EB", hex: " #003066" },
+      { nombre: "Marino POLYPRINT E5RF", hex: " #000081" },
+      { nombre: "Marino POLYPRINT E4R", hex: " #2f66ff" },
+      { nombre: "Marino POLYPRINT E5M", hex: " #39638a" },
+      { nombre: "Violeta POLYPRINT E2B", hex: "#810081 " },
+      { nombre: "Verde POLYPRINT EG", hex: " #008100" },
+      { nombre: "Negro POLYPRINT EGF", hex: " #000000" },
+      { nombre: "Blanco POLYPRINT L", hex: "#ffffff " },
+      { nombre: "Amarillo (FLUORESCENTE) FLUO POLYPRINT", hex: "#fefe65 " },
+      { nombre: "Naranja (FLUORESCENTE) FLUO POLYPRINT", hex: "#fe9900 " },
+      { nombre: "Magenta (FLUORESCENTE) FLUO POLYPRINT", hex: "#fe00fe " },
+      { nombre: "Rosa (FLUORESCENTE) FLUO POLYPRINT", hex: "#fe99cc " }, 
+      { nombre: "Azul (FLUORESCENTE) FLUO POLYPRINT", hex: " #009bf9" },
+      { nombre: "Púrpura (FLUORESCENTE) FLUO POLYPRINT", hex: "#d14ff8 " },
+      { nombre: "Verde (FLUORESCENTE) FLUO POLYPRINT", hex: " #00fe00" },
     ],
     colorPrincipal: "#e67e22" // Color para el polígono
   },
@@ -233,24 +248,24 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares" (porque es un colorante concentrado)
     taxonomias: [12, 9], // "Colorantes", "Tintas de sublimación"
     descripcion: "Gama de colorantes líquidos concentrados para sublimación, desarrollados para integrarse fácilmente a pastas de sublimación tanto en base agua 'SUBLIVAC', como base solvente 'SUBLISOL'.",
-    imagenes: [cubetaImage],
+    imagenes: [polytransferImage],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_polytransfer_ht_8b9a5dc463.pdf",
     colores: [
-      { nombre: "Amarillo", hex: "#ffff00" },
-      { nombre: "Naranja", hex: "#ffcd00" },
-      { nombre: "Rojo ", hex: "#ff6600" },
-      { nombre: "Rojo escarlata", hex: "#fe2112 " },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Azul", hex: " #0000f9" },
-      { nombre: "Turquesa", hex: " #003066" },
-      { nombre: "Violeta", hex: " #800080" },
-      { nombre: "Verde", hex: "#008100 " },
-      { nombre: "Negro", hex: " #000000" },
-      { nombre: "Blanco", hex: "#ffffff " },
-      { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#fefe65 " },
-      { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
-      { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
-      { nombre: "Verde (FLUORESCENTE)", hex: " #00fe00" },
+      { nombre: "Amarillo POLYTRANSFER R4", hex: "#ffff00" },
+      { nombre: "Naranja POLYTRANSFER 2R", hex: "#ffcd00" },
+      { nombre: "Rojo POLYTRANSFER FB", hex: "#ff6600" },
+      { nombre: "Rojo Escarlata POLYTRANSFER B", hex: "#fe2112 " },
+      { nombre: "Azul POLYTRANSFER B2R", hex: " #0000ff" },
+      { nombre: "Azul POLYTRANSFER 3R", hex: " #0000f9" },
+      { nombre: "Turquesa POLYTRANSFER BN", hex: " #003066" },
+      { nombre: "Violeta POLYTRANSFER GD", hex: " #800080" },
+      { nombre: "Verde POLYTRANSFER STD", hex: "#008100 " },
+      { nombre: "Negro POLYTRANSFER MBG", hex: " #000000" },
+      { nombre: "Blanco POLYTRANSFER", hex: "#ffffff " },
+      { nombre: "Amarillo Limón POLYTRANSFER Fluorescente", hex: "#fefe65 " },
+      { nombre: "Naranja POLYTRANSFER Fluorescente", hex: "#fe9900 " },
+      { nombre: "Rosa POLYTRANSFER Fluorescente", hex: "#fe99cc " }, 
+      { nombre: "Verde POLYTRANSFER Fluorescente", hex: " #00fe00" },
     ],
     colorPrincipal: "#1abc9c" // Color para el polígono
   },
@@ -261,30 +276,30 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [2, 9], // "Para poliéster", "Tintas de sublimación"
     descripcion: "Tintas de sublimación base solvente, diseñadas para impresiones en papel por serigrafia y termo-transferir a tela poliéster 100%, logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    imagenes: [cubetaImage],
+    imagenes: [sublisolImage],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel//uploads/ficha_sublisol_ht_65ea8375e2.pdf",
     colores: [
-      { nombre: "Amarillo", hex: "#ffff00" },
-      { nombre: "Amarillo", hex: "#ffcd00" },
-      { nombre: "Amarillo", hex: "#ffcd00" },
-      { nombre: "Amarillo oro", hex: "#ffcd00" },
-      { nombre: "Naranja", hex: "#ff0000" },
-      { nombre: "Rojo vivo", hex: "#cb0119" },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Marino", hex: " #003066" },
-      { nombre: "Marino", hex: " #003662" },
-      { nombre: "Morado", hex: " #800080" },
-      { nombre: "Violeta", hex: " #800081" },
-      { nombre: "Verde", hex: "#008101 " },
-      { nombre: "Verde", hex: "#008100 " },
-      { nombre: "Negro", hex: " #000000" },
-      { nombre: "Blanco", hex: "#ffffff " },
-      { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#fefe65 " },
-      { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
-      { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
-      { nombre: "Verde (FLUORESCENTE)", hex: " #00fe00" },
+      { nombre: "Amarillo SUBLISOL V1", hex: "#ffff00" },
+      { nombre: "Amarillo SUBLISOL V2", hex: "#ffcd00" },
+      { nombre: "Amarillo SUBLISOL V3", hex: "#ffcd00" },
+      { nombre: "Amarillo oro SUBLISOL V1", hex: "#ffcd00" },
+      { nombre: "Naranja SUBLISOL V4", hex: "#ff0000" },
+      { nombre: "Rojo vivo SUBLISOL V1", hex: "#cb0119" },
+      { nombre: "Azul SUBLISOL V1", hex: " #0000ff" },
+      { nombre: "Azul SUBLISOL V2", hex: " #0000ff" },
+      { nombre: "Azul SUBLISOL V3", hex: " #0000ff" },
+      { nombre: "Marino SUBLISOL V1", hex: " #003066" },
+      { nombre: "Marino SUBLISOL V2", hex: " #003662" },
+      { nombre: "Morado SUBLISOL V2", hex: " #800080" },
+      { nombre: "Violeta SUBLISOL V1", hex: " #800081" },
+      { nombre: "Verde SUBLISOL V1", hex: "#008101 " },
+      { nombre: "Verde SUBLISOL V2", hex: "#008100 " },
+      { nombre: "Negro SUBLISOL V6", hex: " #000000" },
+      { nombre: "Blanco SUBLISOL", hex: "#ffffff " },
+      { nombre: "Amarillo Limón SUBLISOL Fluorescente", hex: "#fefe65 " },
+      { nombre: "Naranja SUBLISOL Fluorescente", hex: "#fe9900 " },
+      { nombre: "Rosa SUBLISOL Fluorescente", hex: "#fe99cc " }, 
+      { nombre: "Verde SUBLISOL Fluorescente", hex: " #00fe00" },
     ],
     colorPrincipal: "#e74c3c" // Color para el polígono
   },
@@ -295,30 +310,30 @@ export default [
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [2, 8, 9], // "Para poliéster", "Tintas base agua", "Tintas de sublimación"
     descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
-    imagenes: [cubetaImage],
+    imagenes: [sublivacImage],
     fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel//uploads/ficha_sublivac_ht_dbc9f8d1ec.pdf",
     colores: [
-      { nombre: "Amarillo", hex: "#ffff00" },
-      { nombre: "Amarillo", hex: "#ffcd00" },
-      { nombre: "Amarillo", hex: "#ffcd00" },
-      { nombre: "Amarillo oro", hex: "#ffcd00" },
-      { nombre: "Naranja", hex: "#ff0000" },
-      { nombre: "Rojo vivo", hex: "#cb0119" },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Azul", hex: " #0000ff" },
-      { nombre: "Marino", hex: " #003066" },
-      { nombre: "Marino", hex: " #003662" },
-      { nombre: "Morado", hex: " #800080" },
-      { nombre: "Violeta", hex: " #800081" },
-      { nombre: "Verde", hex: "#008101 " },
-      { nombre: "Verde", hex: "#008100 " },
-      { nombre: "Negro", hex: " #000000" },
-      { nombre: "Blanco", hex: "#ffffff " },
-      { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#fefe65 " },
-      { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
-      { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
-      { nombre: "Verde (FLUORESCENTE)", hex: " #00fe00" },
+      { nombre: "Amarillo SUBLIVAC V1", hex: "#ffff00" },
+      { nombre: "Amarillo SUBLIVAC V2", hex: "#ffcd00" },
+      { nombre: "Amarillo SUBLIVAC V3", hex: "#ffcd00" },
+      { nombre: "Amarillo oro SUBLIVAC V1", hex: "#ffcd00" },
+      { nombre: "Naranja SUBLIVAC V4", hex: "#ff0000" },
+      { nombre: "Rojo vivo SUBLIVAC V1", hex: "#cb0119" },
+      { nombre: "Azul SUBLIVAC V1", hex: " #0000ff" },
+      { nombre: "Azul SUBLIVAC V2", hex: " #0000ff" },
+      { nombre: "Azul SUBLIVAC V3", hex: " #0000ff" },
+      { nombre: "Marino SUBLIVAC V1", hex: " #003066" },
+      { nombre: "Marino SUBLIVAC V2", hex: " #003662" },
+      { nombre: "Morado SUBLIVAC V2", hex: " #800080" },
+      { nombre: "Violeta SUBLIVAC V1", hex: " #800081" },
+      { nombre: "Verde SUBLIVAC V1", hex: "#008101 " },
+      { nombre: "Verde SUBLIVAC V2", hex: "#008100 " },
+      { nombre: "Negro SUBLIVAC V6", hex: " #000000" },
+      { nombre: "Blanco SUBLIVAC", hex: "#ffffff " },
+      { nombre: "Amarillo Limón SUBLIVAC Fluorescente", hex: "#fefe65 " },
+      { nombre: "Naranja SUBLIVAC Fluorescente", hex: "#fe9900 " },
+      { nombre: "Rosa SUBLIVAC Fluorescente", hex: "#fe99cc " }, 
+      { nombre: "Verde SUBLIVAC Fluorescente", hex: " #00fe00" },
     ],
     colorPrincipal: "#6b35e0ff" // Color para el polígono
   },
@@ -331,7 +346,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
     descripcion: "Línea completa de colorantes directos.",
-    imagenes: [cubetaImage],
+    imagenes: [colorantesDirectosImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
     porcentajes: null, // Porcentajes eliminados
@@ -378,7 +393,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
     descripcion: "Línea completa de colorantes basicos.",
-    imagenes: [cubetaImage],
+    imagenes: [colorantesBasicosImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
     porcentajes: null, // Porcentajes eliminados
@@ -414,7 +429,7 @@ export default [
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
     descripcion: "Línea completa de colorantes acidos.",
-    imagenes: [cubetaImage],
+    imagenes: [colorantesAcidosImage],
     fichaTecnica: null, // No tiene PDF, solo tabla de colores
     esTablaColores: true, // Bandera para identificar productos de tabla de colores
     porcentajes: null, // Porcentajes eliminados
@@ -458,7 +473,7 @@ export default [
       subcategorias: [1], // "Materias primas y auxiliares"
       taxonomias: [5], // "Colorantes"
       descripcion: "Gama de Colores Flock",
-      imagenes: [cubetaImage],
+      imagenes: [coloresFlockImage],
       fichaTecnica: null, // No tiene PDF, solo tabla de colores
       esTablaColores: true, // Bandera para identificar productos de tabla de colores
       porcentajes: null, // Porcentajes eliminados
@@ -477,7 +492,7 @@ export default [
       subcategorias: [1], // "Materias primas y auxiliares"
       taxonomias: [5], // "Colorantes"
       descripcion: "Gama de Colores Micas",
-      imagenes: [cubetaImage],
+      imagenes: [coloresMicasImage],
       fichaTecnica: null, // No tiene PDF, solo tabla de colores
       esTablaColores: true, // Bandera para identificar productos de tabla de colores
       porcentajes: null, // Porcentajes eliminados
@@ -496,7 +511,7 @@ export default [
         subcategorias: [1], // "Materias primas y auxiliares"
         taxonomias: [5], // "Colorantes"
         descripcion: "Gama de Colores Glitters",
-        imagenes: [cubetaImage],
+        imagenes: [coloresGlittersImage],
         fichaTecnica: null, // No tiene PDF, solo tabla de colores
         esTablaColores: true, // Bandera para identificar productos de tabla de colores
         porcentajes: null, // Porcentajes eliminados
@@ -524,7 +539,7 @@ export default [
         subcategorias: [4], // "Accesorios de serigrafía"
         taxonomias: [16], // "Mallas"
         descripcion: "Mallas de alta tensión y precisión para serigrafía, disponibles en diferentes numeraciones para todo tipo de trabajos.",
-        imagenes: [cubetaImage], // Placeholder
+        imagenes: [gamaMallasImage],
         fichaTecnica: null,
         esTablaEspecificaciones: true, // Bandera para usar el nuevo componente
         items: [
@@ -762,7 +777,7 @@ export default [
         subcategorias: [3], // "Materias primas y auxiliares"
         taxonomias: [11], // "Pigmentos"
         descripcion: "Gama completa de pigmentos en polvo para diversas aplicaciones.",
-        imagenes: [cubetaImage],
+        imagenes: [pigmentosEnPolvoImage],
         fichaTecnica: null,
         esTablaColores: true,
         porcentajes: null,
