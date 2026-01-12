@@ -15,9 +15,9 @@ import polyprintImage from '../assets/productos/polyprint.png';
 import polytransferImage from '../assets/productos/polytransfer.png';
 import sublisolImage from '../assets/productos/sublisol.png';
 import sublivacImage from '../assets/productos/sublivac.png';
-import colorantesDirectosImage from '../assets/cubeta.png';
-import colorantesBasicosImage from '../assets/cubeta.png';
-import colorantesAcidosImage from '../assets/cubeta.png';
+import colorantesDirectosImage from '../assets/productos/colorantes.png';
+import colorantesBasicosImage from '../assets/productos/colorantes.png';
+import colorantesAcidosImage from '../assets/productos/colorantes.png';
 import coloresFlockImage from '../assets/productos/colores-flock.png';
 import coloresMicasImage from '../assets/productos/colores-micas.png';
 import coloresGlittersImage from '../assets/productos/colores-glitters.png';
@@ -137,7 +137,7 @@ export default [
   },
   {
     id: "ahulada",
-    titulo: "Ahulada A.O.",
+    titulo: "AHULADA A.O.",
     categoria: "estampado",
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [1, 4, 7], // "Para algodón", "Para fondos oscuros", "Tintas plastisol"
@@ -171,7 +171,7 @@ export default [
   },
   {
     id: "plastivac",
-    titulo: "Plastivac VS",
+    titulo: "PLASTIVAC VS",
     categoria: "estampado",
     subcategorias: [1, 2], // "Por tipo de aplicación", "Por tipo de formulación"
     taxonomias: [1, 7], // "Para algodón", "Tintas plastisol"
@@ -341,7 +341,7 @@ export default [
   // Productos de colorantes - solo con tabla de colores
   {
     id: "colorantes-directos",
-    titulo: "Colorantes Directos",
+    titulo: "COLORANTES DIRECTOS",
     categoria: "estampado",
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
@@ -388,7 +388,7 @@ export default [
   },
   {
     id: "colorantes-basicos",
-    titulo: "Colorantes Basicos",
+    titulo: "COLORANTES BASICOS",
     categoria: "estampado",
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
@@ -424,7 +424,7 @@ export default [
   },
   {
     id: "colorantes-acidos",
-    titulo: "Colorantes Acidos",
+    titulo: "COLORANTES ACIDOS",
     categoria: "estampado",
     subcategorias: [3], // "Materias primas y auxiliares"
     taxonomias: [12], // "Colorantes"
@@ -468,7 +468,7 @@ export default [
   },
   {
       id: "colores-flock",
-      titulo: "Colores Flock",
+      titulo: "COLORES FLOCK",
       categoria: "estampado",
       subcategorias: [1], // "Materias primas y auxiliares"
       taxonomias: [5], // "Colorantes"
@@ -487,7 +487,7 @@ export default [
     },
     {
       id: "colores-micas",
-      titulo: "Colores Micas",
+      titulo: "COLORES MICAS",
       categoria: "estampado",
       subcategorias: [1], // "Materias primas y auxiliares"
       taxonomias: [5], // "Colorantes"
@@ -506,7 +506,7 @@ export default [
     },
     {
         id: "colores-glitters",
-        titulo: "Colores Glitters",
+        titulo: "COLORES GLITTERS",
         categoria: "estampado",
         subcategorias: [1], // "Materias primas y auxiliares"
         taxonomias: [5], // "Colorantes"
@@ -534,7 +534,7 @@ export default [
       },
       {
         id: "gama-mallas",
-        titulo: "Gama de Mallas",
+        titulo: "GAMA DE MALLAS",
         categoria: "estampado",
         subcategorias: [4], // "Accesorios de serigrafía"
         taxonomias: [16], // "Mallas"
@@ -772,7 +772,7 @@ export default [
       },
       {
         id: "pigmentos-en-polvo",
-        titulo: "Pigmentos en Polvo",
+        titulo: "PIGMENTOS EN POLVO",
         categoria: "estampado",
         subcategorias: [3], // "Materias primas y auxiliares"
         taxonomias: [11], // "Pigmentos"

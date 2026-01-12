@@ -82,11 +82,11 @@ html {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.338);
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.875rem;
+    font-size: 1rem;
     margin-bottom: 1.5rem;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);

@@ -363,3 +363,32 @@ class PolyvacSearch {
 
 // Inicializar el buscador
 window.polyvacSearch = new PolyvacSearch();
+
+// Manejar submit de formularios de búsqueda para redirigir a /busqueda
+document.addEventListener('DOMContentLoaded', function() {
+  // Formulario del navbar (desktop)
+  const navSearchForm = document.getElementById('nav-search-form');
+  if (navSearchForm) {
+    navSearchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = document.getElementById('nav-search-input');
+      const query = input.value.trim();
+      if (query) {
+        window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
+      }
+    });
+  }
+
+  // Formulario móvil
+  const mobileSearchForm = document.getElementById('mobile-search-form');
+  if (mobileSearchForm) {
+    mobileSearchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = document.getElementById('mobile-search-input');
+      const query = input.value.trim();
+      if (query) {
+        window.location.href = `/busqueda?q=${encodeURIComponent(query)}`;
+      }
+    });
+  }
+});

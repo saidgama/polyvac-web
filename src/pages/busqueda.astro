@@ -33,9 +33,10 @@ const query = url.searchParams.get('q') || '';
           type="text" 
           id="search-input"
           name="q" 
-          value={query}
+          value={query || ''}
           placeholder="Buscar productos..." 
           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          autocomplete="off"
         />
         <button 
           type="submit"
@@ -71,6 +72,7 @@ const query = url.searchParams.get('q') || '';
   <script type="module" define:vars={{ productosParaCliente, query }}>
     // Productos locales para búsqueda
     const productos = productosParaCliente;
+    const initialQuery = query || '';
     
     // Función para normalizar texto (quitar acentos, minúsculas)
     function normalizeString(str) {
@@ -130,6 +132,16 @@ const query = url.searchParams.get('q') || '';
       if (!searchForm || !searchInput) {
         return;
       }
+
+      // Obtener query de la URL como respaldo
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlQuery = urlParams.get('q') || '';
+      const searchQuery = initialQuery || urlQuery;
+      
+      // Forzar el valor en el input
+      if (searchQuery) {
+        searchInput.value = searchQuery;
+      }
       
       // Event listener para el formulario
       searchForm.addEventListener('submit', function(e) {
@@ -154,9 +166,9 @@ const query = url.searchParams.get('q') || '';
         }
       });
       
-      // Si hay query inicial, hacer búsqueda
-      if (query && query.trim().length >= 2) {
-        performSearch(query.trim());
+      // Si hay query, hacer búsqueda inmediatamente
+      if (searchQuery && searchQuery.trim().length >= 2) {
+        performSearch(searchQuery.trim());
       }
     }
     

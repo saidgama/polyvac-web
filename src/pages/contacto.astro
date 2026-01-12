@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import PageBanner from "../components/PageBanner.astro";
-import bg from '../assets/contacto/contactobg.png';
+import bg from '../assets/contacto/contactobg.jpg';
+import { contactInfo } from '../data/contacto.js';
 
 const title = "Contacto - Industrias Polyvac";
 const description = "Pagina donde se muestra Información de contacto y ubicación";
@@ -31,10 +32,10 @@ const description = "Pagina donde se muestra Información de contacto y ubicaci�
                                     </svg>
                                     <div>
                                         <h4 class="font-semibold mb-1">Dirección</h4>
-                                        <p class="text-blue-100">Luis Pasteur No. 60</p>
-                                        <p class="text-blue-100">Complejo Industrial Cuamatla</p>
-                                        <p class="text-blue-100">Cuautitlán Izcalli, Estado de México</p>
-                                        <p class="text-blue-100">C.P. 54730</p>
+                                        <p class="text-blue-100">{contactInfo.direccion.calle}</p>
+                                        <p class="text-blue-100">{contactInfo.direccion.complejo}</p>
+                                        <p class="text-blue-100">{contactInfo.direccion.ciudad}</p>
+                                        <p class="text-blue-100">{contactInfo.direccion.codigoPostal}</p>
                                     </div>
                                 </div>
                                 
@@ -45,15 +46,11 @@ const description = "Pagina donde se muestra Información de contacto y ubicaci�
                                     </svg>
                                     <div>
                                         <h4 class="font-semibold mb-1">Teléfonos</h4>
-                                        <a href="tel:+525559543369" class="text-blue-100 hover:text-white transition-colors block">
-                                            +52 (55) 5954-3369
-                                        </a>
-                                        <a href="tel:+525530161549" class="text-blue-100 hover:text-white transition-colors block">
-                                            +52 (55) 3016-1549
-                                        </a>
-                                        <a href="tel:+525552961504" class="text-blue-100 hover:text-white transition-colors block">
-                                            +52 (55) 5296-1504
-                                        </a>
+                                        {contactInfo.telefonos.map((telefono) => (
+                                            <a href={telefono.href} class="text-blue-100 hover:text-white transition-colors block">
+                                                {telefono.numero}
+                                            </a>
+                                        ))}
                                     </div>
                                 </div>
                                 
@@ -65,8 +62,8 @@ const description = "Pagina donde se muestra Información de contacto y ubicaci�
                                     </svg>
                                     <div>
                                         <h4 class="font-semibold mb-1">Email</h4>
-                                        <a href="mailto:pedidos@polyvac.com" class="text-blue-100 hover:text-white transition-colors">
-                                            pedidos@polyvac.com
+                                        <a href={contactInfo.email.href} class="text-blue-100 hover:text-white transition-colors">
+                                            {contactInfo.email.direccion}
                                         </a>
                                     </div>
                                 </div>

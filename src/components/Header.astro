@@ -5,38 +5,55 @@ import logo from "../assets/header/logohero2.png";
 const url = new URL(Astro.request.url);
 const currentPath = url.pathname;
 
-// Definir categorías de estampado localmente
-const categoriasEstampado = [
+// Definir categorías principales
+const categoriasPrincipales = [
   {
     id: 1,
-    nombre: "Por tipo de aplicación",
-    slug: "tipo-aplicacion",
-    subcategorias: [
-      { nombre: "Para algodón", slug: "para-algodon" },
-      { nombre: "Para poliéster", slug: "para-poliester" },
-      { nombre: "Para fondos claros", slug: "para-fondos-claros" },
-      { nombre: "Para fondos oscuros", slug: "para-fondos-oscuros" },
-      { nombre: "Efectos especiales", slug: "efectos-especiales" }
-    ]
+    nombre: "Tintorería",
+    slug: "tintoreria",
+    descripcion: "Productos químicos para procesos de teñido industrial"
   },
   {
     id: 2,
-    nombre: "Por tipo de formulación",
-    slug: "tipo-formulacion",
-    subcategorias: [
-      { nombre: "Tintas plastisol", slug: "tintas-plastisol" },
-      { nombre: "Tintas base agua", slug: "tintas-base-agua" },
-      { nombre: "Tintas de sublimación", slug: "tintas-sublimacion" }
-    ]
+    nombre: "Colorantes",
+    slug: "colorantes",
+    descripcion: "Colorantes para diversas aplicaciones industriales"
   },
   {
     id: 3,
-    nombre: "Materias primas y auxiliares",
-    slug: "materias-primas",
-    subcategorias: [
-      { nombre: "Pigmentos", slug: "pigmentos" },
-      { nombre: "Colorantes", slug: "colorantes" }
-    ]
+    nombre: "Estampado",
+    slug: "estampado",
+    descripcion: "Tintas y auxiliares para estampación textil"
+  },
+  {
+    id: 4,
+    nombre: "Efectos Especiales",
+    slug: "efectos-especiales",
+    descripcion: "Productos para efectos decorativos únicos"
+  },
+  {
+    id: 5,
+    nombre: "Tintas Digitales",
+    slug: "tintas-digitales",
+    descripcion: "Tintas para impresión digital textil"
+  },
+  {
+    id: 6,
+    nombre: "Pigmentos",
+    slug: "pigmentos",
+    descripcion: "Pigmentos de alta calidad para múltiples usos"
+  },
+  {
+    id: 7,
+    nombre: "Masterbatch",
+    slug: "masterbatch",
+    descripcion: "Concentrados de color para plásticos"
+  },
+  {
+    id: 8,
+    nombre: "Accesorios y Consumibles",
+    slug: "accesorios-consumibles",
+    descripcion: "Herramientas y materiales complementarios"
   }
 ];
 ---
@@ -58,7 +75,7 @@ const categoriasEstampado = [
       <button
         id="menu-toggle"
         type="button"
-        class="md:hidden flex ml-3 items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-azulprimario hover:bg-blue-700 active:bg-blue-800 focus:outline-none transition-all duration-300"
+        class="md:hidden flex ml-3 items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-blue-700 active:bg-blue-800 focus:outline-none transition-all duration-300"
       >
         <svg class="w-5 h-5 transition-transform duration-300" fill="none" viewBox="0 0 17 14" id="menu-icon">
           <path
@@ -73,7 +90,7 @@ const categoriasEstampado = [
     </div>
 
     <div
-      class="md:ml-[2%] lg:ml-0 items-center md:flex md:flex-grow-0 justify-center hidden w-full md:w-auto md:order-1"
+      class="md:ml-[2%] lg:ml-0 items-center md:flex md:flex-grow-0 justify-center hidden w-full md:w-auto md:order-1 max-h-[70vh] md:max-h-none overflow-y-auto md:overflow-visible"
       id="navbar-sticky"
     >
       <div class="relative mt-3 md:hidden">
@@ -162,27 +179,19 @@ const categoriasEstampado = [
           <!-- Dropdown Menu -->
           <div
             id="categories-dropdown-menu"
-            class="hidden absolute left-0 md:left-auto md:right-0 top-full mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+            class="hidden md:absolute relative left-0 md:left-auto md:right-0 md:top-full md:mt-2 w-full md:w-72 bg-white md:rounded-lg md:shadow-lg md:border md:border-gray-200 md:py-2 z-50"
           >
-            {categoriasEstampado.map((categoria) => (
-              <div class="border-b border-gray-100 last:border-b-0">
-                <a
-                  href={`/estampado#categoria-${categoria.slug}`}
-                  class="block px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-azulprimario transition-colors"
-                >
-                  {categoria.nombre}
-                </a>
-                <div class="px-4 pb-2">
-                  {categoria.subcategorias.map((subcategoria) => (
-                    <a
-                      href={`/estampado#categoria-${subcategoria.slug}`}
-                      class="block px-2 py-1 text-xs text-gray-600 hover:text-azulprimario transition-colors"
-                    >
-                      {subcategoria.nombre}
-                    </a>
-                  ))}
+            {categoriasPrincipales.map((categoria) => (
+              <a
+                href={`/${categoria.slug}`}
+                class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:text-azulprimario transition-colors border-b border-gray-100 last:border-b-0"
+              >
+                <span class="w-2 h-2 rounded-full bg-azulprimario"></span>
+                <div>
+                  <span class="block">{categoria.nombre}</span>
+                  <span class="block text-xs font-normal text-gray-500">{categoria.descripcion}</span>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </li>
@@ -304,31 +313,51 @@ const categoriasEstampado = [
   const categoriesDropdownMenu = document.getElementById('categories-dropdown-menu');
   const categoriesDropdownIcon = document.getElementById('categories-dropdown-icon');
 
+  // Función para detectar si estamos en móvil
+  function isMobileView() {
+    return window.innerWidth < 768;
+  }
+
   if (categoriesDropdownButton && categoriesDropdownMenu && categoriesDropdownIcon) {
     // Toggle dropdown al hacer clic en el botón
     categoriesDropdownButton.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       
-      const isHidden = categoriesDropdownMenu.classList.contains('hidden');
-      
-      // Cerrar otros dropdowns si los hay
-      closeAllDropdowns();
-      
-      if (isHidden) {
-        // Mostrar dropdown
-        categoriesDropdownMenu.classList.remove('hidden');
-        categoriesDropdownIcon.classList.add('rotate-180');
+      if (isMobileView()) {
+        // En móvil, usar la clase mobile-open para animación
+        const isOpen = categoriesDropdownMenu.classList.contains('mobile-open');
+        
+        if (isOpen) {
+          categoriesDropdownMenu.classList.remove('mobile-open');
+          categoriesDropdownMenu.classList.add('hidden');
+          categoriesDropdownIcon.classList.remove('rotate-180');
+        } else {
+          categoriesDropdownMenu.classList.remove('hidden');
+          categoriesDropdownMenu.classList.add('mobile-open');
+          categoriesDropdownIcon.classList.add('rotate-180');
+        }
       } else {
-        // Ocultar dropdown
-        categoriesDropdownMenu.classList.add('hidden');
-        categoriesDropdownIcon.classList.remove('rotate-180');
+        // En desktop, usar hidden/visible
+        const isHidden = categoriesDropdownMenu.classList.contains('hidden');
+        
+        // Cerrar otros dropdowns si los hay
+        closeAllDropdowns();
+        
+        if (isHidden) {
+          categoriesDropdownMenu.classList.remove('hidden');
+          categoriesDropdownIcon.classList.add('rotate-180');
+        } else {
+          categoriesDropdownMenu.classList.add('hidden');
+          categoriesDropdownIcon.classList.remove('rotate-180');
+        }
       }
     });
 
     // Cerrar dropdown al hacer clic fuera
     document.addEventListener('click', (e) => {
       if (!categoriesDropdownButton.contains(e.target) && !categoriesDropdownMenu.contains(e.target)) {
+        categoriesDropdownMenu.classList.remove('mobile-open');
         categoriesDropdownMenu.classList.add('hidden');
         categoriesDropdownIcon.classList.remove('rotate-180');
       }
@@ -337,15 +366,17 @@ const categoriasEstampado = [
     // Cerrar dropdown al presionar Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        categoriesDropdownMenu.classList.remove('mobile-open');
         categoriesDropdownMenu.classList.add('hidden');
         categoriesDropdownIcon.classList.remove('rotate-180');
       }
     });
 
-    // Cerrar dropdown en dispositivos móviles al hacer clic en un enlace
+    // Cerrar dropdown al hacer clic en un enlace
     const categoryLinks = categoriesDropdownMenu.querySelectorAll('a');
     categoryLinks.forEach(link => {
       link.addEventListener('click', () => {
+        categoriesDropdownMenu.classList.remove('mobile-open');
         categoriesDropdownMenu.classList.add('hidden');
         categoriesDropdownIcon.classList.remove('rotate-180');
       });
@@ -572,14 +603,23 @@ const categoriasEstampado = [
   /* Mejorar la apariencia en móviles */
   @media (max-width: 768px) {
     #categories-dropdown-menu {
-      position: static;
-      width: 100%;
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
       box-shadow: none;
       border: none;
-      border-top: 1px solid #e5e7eb;
       border-radius: 0;
-      background: #f9fafb;
-      margin-top: 0;
+      background: #f3f4f6;
+      padding: 0;
+    }
+
+    #categories-dropdown-menu.mobile-open {
+      display: block !important;
+      max-height: none;
+      overflow-y: visible;
+      padding: 8px 0;
+      border-top: 1px solid #e5e7eb;
     }
 
     #categories-dropdown-menu a {
@@ -589,6 +629,10 @@ const categoriasEstampado = [
 
     #categories-dropdown-menu a:last-child {
       border-bottom: none;
+    }
+
+    .nav-tab-item--dropdown {
+      flex-direction: column;
     }
   }
 
