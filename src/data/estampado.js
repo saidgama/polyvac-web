@@ -46,7 +46,7 @@ const products = [
     },
     {
         id: "plastisol",
-        titulo: "LINEA PLASTIVAC VM",
+        titulo: "LINEA-PLASTISOL VM",
         subcategoria: "tintas-plastisol",
         descripcion: "Tintas tipo plastisol formuladas para fondos claros y campañas políticas , utilizadas para realizar estampados en tela de algodón 100 % de terminado ahulado, con acabado semi-mate.",
         imagenes: [plastisolImage],

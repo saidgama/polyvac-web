@@ -1,284 +1,32 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageBanner from "../components/PageBanner.astro";
-import Badge from "../components/Badge.astro";
-import productos from "../data/productos.js";
 
 // Importar imágenes
-import categoryBanner from '../assets/hero/test.png';
-import cubetaImage from '../assets/cubeta.png';
+import bannerImage from '../assets/hero/test.png';
 
 const title = "Pigmentos - Industrias Polyvac";
-const description = "Pigmentos de alta solidez y calidad para múltiples aplicaciones industriales";
-
-// Función para filtrar productos por taxonomía
-function getProductosPorTaxonomia(taxonomiaId: number) {
-    return productos.filter(producto => producto.taxonomias?.includes(taxonomiaId));
-}
-
-// Datos hardcodeados para las subcategorías y taxonomías de Pigmentos
-const subcategorias = [
-    {
-        id: 1,
-        nombre: "Pigmentos orgánicos",
-        slug: "pigmentos-organicos",
-        descripcion: "Pigmentos de origen orgánico con alta pureza de color",
-        taxonomias: [
-            { id: 501, nombre: "Pigmentos azoicos", slug: "pigmentos-azoicos" },
-            { id: 502, nombre: "Pigmentos ftalocianina", slug: "pigmentos-ftalocianina" },
-            { id: 503, nombre: "Pigmentos quinacridona", slug: "pigmentos-quinacridona" }
-        ]
-    },
-    {
-        id: 2,
-        nombre: "Pigmentos inorgánicos",
-        slug: "pigmentos-inorganicos",
-        descripcion: "Pigmentos minerales con excelente resistencia",
-        taxonomias: [
-            { id: 504, nombre: "Óxidos de hierro", slug: "oxidos-hierro" },
-            { id: 505, nombre: "Dióxido de titanio", slug: "dioxido-titanio" },
-            { id: 506, nombre: "Negro de humo", slug: "negro-humo" }
-        ]
-    },
-    {
-        id: 3,
-        nombre: "Pigmentos especiales",
-        slug: "pigmentos-especiales",
-        descripcion: "Pigmentos con propiedades únicas y efectos especiales",
-        taxonomias: [
-            { id: 507, nombre: "Pigmentos perlados", slug: "pigmentos-perlados" },
-            { id: 508, nombre: "Pigmentos fluorescentes", slug: "pigmentos-fluorescentes" },
-            { id: 509, nombre: "Pigmentos termocrómicos", slug: "pigmentos-termocromicos" }
-        ]
-    }
-];
 ---
 
-<Layout title={title} description={description}>
-    <!-- Banner de página -->
+<Layout title={title} description="En construcción">
     <PageBanner 
-        imageUrl={categoryBanner}
+        imageUrl={bannerImage}
         titulo="Pigmentos"
     />
-
-    <!-- Contenido principal -->
-    <main class="font-fuenteprincipal">
-        {subcategorias.map((subcategoria) => (
-            <section id={`categoria-${subcategoria.slug}`} class="py-20 scroll-mt-32">
-                <!-- Badge de subcategoría -->
-                <Badge text={subcategoria.nombre} />
-                
-                <!-- Descripción de subcategoría -->
-                <div class="mx-auto max-w-7xl px-4 py-6">
-                    <p class="text-center text-lg md:text-xl text-azulsecundario max-w-4xl mx-auto">
-                        {subcategoria.descripcion}
-                    </p>
-                </div>
-
-                <!-- Taxonomías -->
-                {subcategoria.taxonomias.map((taxonomia) => (
-                    <div id={`categoria-${taxonomia.slug}`} class="mx-auto max-w-7xl px-4 py-8 scroll-mt-32">
-                        <!-- Título de taxonomía -->
-                        <div class="mb-6">
-                            <h3 class="text-2xl md:text-3xl font-bold text-azulsecundario mb-2">
-                                {taxonomia.nombre}
-                            </h3>
-                            <div class="w-20 h-1 bg-azulprimario"></div>
-                        </div>
-
-                        <!-- Carrusel de productos -->
-                        <div class="relative">
-                            <div 
-                                class="carousel-container overflow-hidden"
-                                data-carousel={`carousel-${taxonomia.id}`}
-                            >
-                                <div class="carousel-track flex items-start transition-transform duration-300 ease-in-out">
-                                    {(() => {
-                                        const productosEnTaxonomia = getProductosPorTaxonomia(taxonomia.id);
-                                        
-                                        if (productosEnTaxonomia.length === 0) {
-                                            return (
-                                                <div class="w-full text-center py-8">
-                                                    <p class="text-gray-500">Próximamente productos disponibles</p>
-                                                </div>
-                                            );
-                                        }
-                                        
-                                        return productosEnTaxonomia.map((producto: any) => (
-                                            <a 
-                                                href={`/producto/${producto.id}`}
-                                                class="carousel-card block p-3 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow bg-white cursor-pointer"
-                                            >
-                                                <div class="relative h-48 bg-gray-100 rounded mb-2 flex items-center justify-center overflow-hidden">
-                                                    <Image 
-                                                        src={producto.imagenes?.[0] ?? cubetaImage} 
-                                                        alt={producto.titulo}
-                                                        class="w-full h-full object-cover"
-                                                        width={533}
-                                                        height={492}
-                                                        loading="lazy"
-                                                    />
-                                                    {producto.colorPrincipal && (
-                                                        <div 
-                                                            class="absolute bottom-0 left-0 px-4 py-2 z-10 flex items-center justify-center min-w-[120px]"
-                                                            style={`background-color: ${producto.colorPrincipal}; opacity: 0.9; clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%);`}
-                                                        >
-                                                            <div class="text-center">
-                                                                <span class="text-white text-sm font-bold leading-tight">{producto.titulo}</span>
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                                <p class="text-sm mb-3 line-clamp-6 text-gray-600">
-                                                    {producto.descripcion}
-                                                </p>
-                                                <div class="w-full py-2 rounded text-center text-sm font-medium transition-colors bg-azulprimario text-white hover:bg-blue-700">
-                                                    Ver detalles
-                                                </div>
-                                            </a>
-                                        ));
-                                    })()}
-                                </div>
-                            </div>
-
-                            <!-- Botones de navegación del carrusel -->
-                            <button 
-                                class="carousel-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-azulprimario text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-                                onclick={`moveCarousel('carousel-${taxonomia.id}', -1)`}
-                            >
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                            </button>
-                            
-                            <button 
-                                class="carousel-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-azulprimario text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-                                onclick={`moveCarousel('carousel-${taxonomia.id}', 1)`}
-                            >
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                ))}
-            </section>
-        ))}
-    </main>
-
-    <!-- JavaScript para el carrusel -->
-    <script is:inline>
-        function moveCarousel(carouselId, direction) {
-            const container = document.querySelector(`[data-carousel="${carouselId}"]`);
-            if (!container) return;
-            
-            const track = container.querySelector('.carousel-track');
-            if (!track) return;
-            
-            const cardWidth = 280;
-            const totalCards = track.children.length;
-            
-            const currentTransform = track.style.transform || 'translateX(0px)';
-            const currentTranslate = parseInt(currentTransform.replace('translateX(', '').replace('px)', '')) || 0;
-            
-            let newTranslate = currentTranslate + (direction * cardWidth * -1);
-            
-            const maxTranslate = 0;
-            const minTranslate = -(totalCards - 1) * cardWidth;
-            
-            if (newTranslate > maxTranslate) {
-                newTranslate = maxTranslate;
-            } else if (newTranslate < minTranslate) {
-                newTranslate = minTranslate;
-            }
-            
-            track.style.transform = `translateX(${newTranslate}px)`;
-            updateCarouselButtons(carouselId, newTranslate, maxTranslate, minTranslate);
-        }
-
-        function updateCarouselButtons(carouselId, currentTranslate, maxTranslate, minTranslate) {
-            const container = document.querySelector(`[data-carousel="${carouselId}"]`);
-            if (!container) return;
-            
-            const prevButton = container.parentElement.querySelector('.carousel-prev');
-            const nextButton = container.parentElement.querySelector('.carousel-next');
-            
-            if (prevButton) {
-                prevButton.style.opacity = currentTranslate >= maxTranslate ? '0.5' : '1';
-                prevButton.style.cursor = currentTranslate >= maxTranslate ? 'not-allowed' : 'pointer';
-            }
-            
-            if (nextButton) {
-                nextButton.style.opacity = currentTranslate <= minTranslate ? '0.5' : '1';
-                nextButton.style.cursor = currentTranslate <= minTranslate ? 'not-allowed' : 'pointer';
-            }
-        }
-
-        function initializeCarousels() {
-            const carousels = document.querySelectorAll('.carousel-container');
-            carousels.forEach(carousel => {
-                const carouselId = carousel.getAttribute('data-carousel');
-                if (carouselId) {
-                    updateCarouselButtons(carouselId, 0, 0, 0);
-                }
-            });
-        }
-
-        function resetCarousels() {
-            const carousels = document.querySelectorAll('.carousel-container');
-            carousels.forEach(carousel => {
-                const track = carousel.querySelector('.carousel-track');
-                if (track) {
-                    track.style.transform = 'translateX(0px)';
-                }
-                const carouselId = carousel.getAttribute('data-carousel');
-                if (carouselId) {
-                    updateCarouselButtons(carouselId, 0, 0, 0);
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', initializeCarousels);
-        window.addEventListener('resize', resetCarousels);
-    </script>
-
-    <!-- Estilos adicionales -->
-    <style>
-        .carousel-container {
-            margin: 0 3rem;
-        }
-        
-        @media (max-width: 768px) {
-            .carousel-container {
-                margin: 0 2rem;
-            }
-        }
-
-        .carousel-card {
-            width: 256px !important;
-            margin-right: 24px !important;
-            flex-shrink: 0;
-        }
-
-        .carousel-track {
-            display: flex !important;
-            transition: transform 0.3s ease-in-out !important;
-            height: auto !important;
-            padding-bottom: 20px;
-        }
-
-        .carousel-prev,
-        .carousel-next {
-            transition: opacity 0.3s ease, background-color 0.3s ease;
-            z-index: 10;
-        }
-
-        .line-clamp-6 {
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
+    
+    <div class="flex flex-col items-center justify-center py-20 px-4 min-h-[50vh]">
+        <div class="bg-gray-100 p-8 rounded-lg shadow-md text-center max-w-2xl">
+            <svg class="w-20 h-20 text-azulprimario mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 font-fuenteprincipal">Sección en Construcción</h2>
+            <p class="text-gray-600 text-lg mb-6">
+                Estamos trabajando para traerte el catálogo completo de esta categoría. 
+                Vuelve pronto para ver nuestros productos.
+            </p>
+            <a href="/" class="inline-block bg-azulprimario text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-semibold">
+                Volver al Inicio
+            </a>
+        </div>
+    </div>
 </Layout>
