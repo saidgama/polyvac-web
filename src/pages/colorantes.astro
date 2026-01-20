@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageBanner from "../components/PageBanner.astro";
+import TablaColores from "../components/TablaColores.astro";
+import products from "../data/colorantes";
 
 // Importar imágenes
 import bannerImage from '../assets/hero/test.png';
@@ -8,25 +10,88 @@ import bannerImage from '../assets/hero/test.png';
 const title = "Colorantes - Industrias Polyvac";
 ---
 
-<Layout title={title} description="En construcción">
+<Layout title={title} description="Catálogo de colorantes básicos, ácidos y directos">
     <PageBanner 
         imageUrl={bannerImage}
         titulo="Colorantes"
     />
     
-    <div class="flex flex-col items-center justify-center py-20 px-4 min-h-[50vh]">
-        <div class="bg-gray-100 p-8 rounded-lg shadow-md text-center max-w-2xl">
-            <svg class="w-20 h-20 text-azulprimario mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-            </svg>
-            <h2 class="text-3xl font-bold text-gray-800 mb-4 font-fuenteprincipal">Sección en Construcción</h2>
-            <p class="text-gray-600 text-lg mb-6">
-                Estamos trabajando para traerte el catálogo completo de esta categoría. 
-                Vuelve pronto para ver nuestros productos.
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto space-y-16">
+            <p class="text-lg text-gray-700 text-center mb-10">
+                Ofrecemos una amplia gama de colorantes de alta calidad para diversas aplicaciones textiles e industriales.
             </p>
-            <a href="/" class="inline-block bg-azulprimario text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-semibold">
-                Volver al Inicio
-            </a>
+
+            {products.map((producto) => (
+                <section id={producto.id} class="bg-white rounded-xl shadow-md p-6">
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                         {/* Imagen */}
+                         <div class="w-full md:w-1/3 flex justify-center">
+                            <img 
+                                src={producto.imagenes[0].src} 
+                                alt={producto.titulo}
+                                class="w-48 h-48 object-contain"
+                            />
+                         </div>
+
+                         {/* Contenido */}
+                         <div class="w-full md:w-2/3">
+                            <h2 class="text-3xl font-bold text-gray-800 mb-4">{producto.titulo}</h2>
+                            <p class="text-gray-600 mb-6 text-lg">{producto.descripcion}</p>
+                            
+                            <button 
+                                id={`btn-${producto.id}`}
+                                class="toggle-table-btn group flex items-center gap-2 bg-azulprimario text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+                                data-target={`table-${producto.id}`}
+                            >
+                                <span>Ver Tabla de Colores</span>
+                                <svg class="w-5 h-5 transform group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Tabla Colores (Oculta por defecto) */}
+                    {producto.colores && producto.colores.length > 0 && (
+                        <div id={`table-${producto.id}`} class="hidden mt-8 border-t pt-8 transition-all duration-300">
+                             <TablaColores 
+                                titulo={`Tabla de ${producto.titulo}`} 
+                                colorantes={producto.colores.map(c => ({
+                                    nombre: c.nombre,
+                                    color1: c.hex
+                                }))} 
+                             />
+                        </div>
+                    )}
+                </section>
+            ))}
         </div>
     </div>
 </Layout>
+
+<script>
+    // Logic for toggling buttons
+    const buttons = document.querySelectorAll('.toggle-table-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+             const targetId = btn.getAttribute('data-target');
+             const targetContent = document.getElementById(targetId);
+             
+             if(targetContent) {
+                 targetContent.classList.toggle('hidden');
+                 const isHidden = targetContent.classList.contains('hidden');
+                 const span = btn.querySelector('span');
+                 span.textContent = isHidden ? 'Ver Tabla de Colores' : 'Ocultar Tabla de Colores';
+                 
+                 // Rotate arrow logic
+                 const svg = btn.querySelector('svg');
+                 if(svg) {
+                    if (!isHidden) {
+                        svg.classList.add('rotate-90');
+                    } else {
+                        svg.classList.remove('rotate-90');
+                    }
+                 }
+             }
+        });
+    });
+</script>

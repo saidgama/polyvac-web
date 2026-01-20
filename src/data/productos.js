@@ -15,9 +15,10 @@ import polyprintImage from '../assets/productos/polyprint.png';
 import polytransferImage from '../assets/productos/polytransfer.png';
 import sublisolImage from '../assets/productos/sublisol.png';
 import sublivacImage from '../assets/productos/sublivac.png';
-import colorantesDirectosImage from '../assets/productos/colorantes.png';
-import colorantesBasicosImage from '../assets/productos/colorantes.png';
-import colorantesAcidosImage from '../assets/productos/colorantes.png';
+// Imágenes actualizadas de colorantes
+import colorantesDirectosImage from '../assets/productos/colorantes/colorantes-directos.png';
+import colorantesBasicosImage from '../assets/productos/colorantes/colorantes-basicos.png';
+import colorantesAcidosImage from '../assets/productos/colorantes/colorantes-acidos.png';
 import coloresFlockImage from '../assets/productos/colores-flock.png';
 import coloresMicasImage from '../assets/productos/colores-micas.png';
 import coloresGlittersImage from '../assets/productos/colores-glitters.png';
