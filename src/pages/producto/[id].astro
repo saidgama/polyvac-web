@@ -114,7 +114,8 @@ const taxonomiasNombres = {
             <p class="text-gray-600 text-lg leading-relaxed">{producto.descripcion}</p>
           </div>
 
-          <!-- Etiquetas de taxonomías -->
+          {/* Etiquetas de taxonomías */}
+          {producto.taxonomias && producto.taxonomias.length > 0 && (
           <div class="space-y-3">
             <h3 class="text-lg font-semibold text-azulsecundario">Características:</h3>
             <div class="flex flex-wrap gap-2">
@@ -125,8 +126,10 @@ const taxonomiasNombres = {
               ))}
             </div>
           </div>
+          )}
 
-          <!-- Subcategorías -->
+          {/* Subcategorías */}
+          {producto.subcategorias && producto.subcategorias.length > 0 && (
           <div class="space-y-3">
             <h3 class="text-lg font-semibold text-azulsecundario">Categorías:</h3>
             <div class="flex flex-wrap gap-2">
@@ -137,6 +140,7 @@ const taxonomiasNombres = {
               ))}
             </div>
           </div>
+          )}
 
           <!-- Botones de acción -->
           <div class="flex justify-start pt-6">
