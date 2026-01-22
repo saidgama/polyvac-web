@@ -3,7 +3,12 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageBanner from "../components/PageBanner.astro";
 import Badge from "../components/Badge.astro";
-import productos from "../data/productos.js";
+import productosData from "../data/productos.js";
+import productosEstampado from "../data/estampado.js";
+import productosColorantes from "../data/colorantes.js";
+import productosEfectos from "../data/efectos-especiales.js";
+
+const productos = [...productosData, ...productosEstampado, ...productosColorantes, ...productosEfectos];
 
 // Importar imágenes
 import categoryBanner from '../assets/hero/test.png';

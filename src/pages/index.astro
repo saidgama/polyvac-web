@@ -22,13 +22,20 @@ import color from '../assets/index/color.jpeg';
 import maquinaria from '../assets/index/maquinaria.jpeg';
 
 // Importar productos locales
-import productos from '../data/productos.js';
+import productosData from '../data/productos.js';
+import productosEstampado from '../data/estampado.js';
+import productosColorantes from '../data/colorantes.js';
+import productosEfectos from '../data/efectos-especiales.js';
+
+const productos = [...productosData, ...productosEstampado, ...productosColorantes, ...productosEfectos];
 
 // Obtener los primeros 4 productos como destacados
 const productosDestacados = productos.slice(0, 4);
 
 // Imagen para la categoría de estampado
 import estampadoImage from '../assets/card1.png';
+import colorantesImage from '../assets/cardColorantes.png';
+import efectosespeciales from '../assets/cardEspeciales.png';
 // Imagen de cubeta para productos
 import cubetaImage from '../assets/cubeta.png';
 
@@ -167,7 +174,7 @@ const industryCarouselSlides = [
 
     <!-- Colorantes -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={colorantesImage}
         altText="Colorantes industriales"
         title="Colorantes"
         description="Amplia gama de colorantes para diversas aplicaciones industriales y textiles."
@@ -178,10 +185,10 @@ const industryCarouselSlides = [
 
     <!-- Efectos Especiales -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={efectosespeciales}
         altText="Efectos especiales para textiles"
         title="Efectos Especiales"
-        description="Productos innovadores para crear efectos decorativos únicos en textiles."
+        description="Productos innovadores para crear efectos únicos en textiles."
         buttonLabel="Ver Productos"
         buttonHref="/efectos-especiales"
         position="left"
