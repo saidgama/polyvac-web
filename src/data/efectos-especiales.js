@@ -33,13 +33,13 @@ import micaVino504 from '../assets/productos/colores-micas/magna-pearl-504-vino.
 const products = [
     {
       id: "colores-flock",
-      titulo: "COLORES FLOCK",
+      titulo: "EFECTO FLOCK",
       categoria: "estampado",
       subcategorias: [1], // "Materias primas y auxiliares"
       taxonomias: [5], // "Efectos especiales" (Note: Was "Colorantes" [5] in productos.js but should be "Efectos especiales" [5] based on id? Wait, taxonomy 5 IS "Efectos especiales" in [id].astro map, but comment in productos.js said "Colorantes". Let's check taxonomy map below)
       // taxonomy map in [id].astro: 5: "Efectos especiales", 12: "Colorantes". 
       // So products.js had tax:5 but comment said "Colorantes", which was likely a copy paste error in comments. It IS Efectos Especiales.
-      descripcion: "Gama de Colores Flock",
+      descripcion: "Gama de Efecto Flock",
       imagenes: [coloresFlockImage],
       fichaTecnica: null, 
       esTablaColores: true, 
@@ -54,11 +54,11 @@ const products = [
     },
     {
       id: "colores-micas",
-      titulo: "COLORES MICAS",
+      titulo: "EFECTO MICAS",
       categoria: "estampado",
       subcategorias: [1], 
       taxonomias: [5], // "Efectos especiales"
-      descripcion: "Gama de Colores Micas",
+      descripcion: "Gama de Efecto Micas",
       imagenes: [coloresMicasImage],
       fichaTecnica: null, 
       esTablaColores: true, 
@@ -73,11 +73,11 @@ const products = [
     },
     {
         id: "colores-glitters",
-        titulo: "COLORES GLITTERS",
+        titulo: "EFECTO GLITTERS",
         categoria: "estampado",
         subcategorias: [1], 
         taxonomias: [5], // "Efectos especiales"
-        descripcion: "Gama de Colores Glitters",
+        descripcion: "Gama de Efecto Glitters",
         imagenes: [coloresGlittersImage],
         fichaTecnica: null, 
         esTablaColores: true, 
