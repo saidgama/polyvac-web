@@ -10,6 +10,8 @@ import cubetaImage from '../assets/cubeta.png';
 import acidosImage from '../assets/productos/colorantes/colorantes-acidos.png';
 import basicosImage from '../assets/productos/colorantes/colorantes-basicos.png';
 import directosImage from '../assets/productos/colorantes/colorantes-directos.png';
+import dispersos from '../assets/productos/colorantes/colorantes-dispersos.png';
+import reactivos from '../assets/productos/colorantes/colorantes-reactivos.png';
 
 const products = [
   {
@@ -123,6 +125,90 @@ const products = [
       { nombre: "NEGRO VACDIR DI DIRECT BLACK 38", hex: "#1e1f23" },
     ],
     colorPrincipal: "#d6ca1cff"
+  },
+  {
+    id: "colorantes-dispersos",
+    titulo: "COLORANTES DISPERSOS",
+    tipo: "dispersos",
+    descripcion: "Línea completa de colorantes dispersos.",
+    imagenes: [dispersos],
+    fichaTecnica: null,
+    esTablaColores: true,
+    colores: [
+      { nombre: "AMARILLO NEON DISVAC EG DISPERSE YELLOW 82 100%", hex: "#c3da17" },
+      { nombre: "AMARILLO DISVAC VAY DISPERSE YELLOW 54 200%", hex: "#d2b408" },
+      { nombre: "AMARILLO DISVAC MF DISPERSE YELLOW 3 100%", hex: "#d0b617" },
+      { nombre: "AMARILLO DISVAC VAG DISPERSE YELLOW 211 200%", hex: "#d8bc03" },
+      { nombre: "AMARILLO DISVAC VA8G DISPERSE YELLOW 114", hex: "#cfbc08" },
+      { nombre: "NARANJA NEON DISVAC EG", hex: "#f27a5f" },
+      { nombre: "NARANJA DISVAC VA2G DISPERSE ORANGE 25 200%", hex: "#d35815" },
+      { nombre: "NARANJA DISVAC VAR DISPERSE ORANGE 30 150%", hex: "#d16d1f" },
+      { nombre: "ESCARLATA DISVAC CC DISPERSE RED 153", hex: "#c92523" },
+      { nombre: "ESCARLATA DISVAC 1 DISPERSE RED 1 200%", hex: "#dd5f51" },
+      { nombre: "ROSA NEON DISVAC EG DISPERSE PINK 364 100%", hex: "#f858a0" },
+      { nombre: "ROSA NEON DISVAC GC DISPERSE PINK 374 100%", hex: "#e65b92" },
+      { nombre: "ROJO DISVAC VA 34 DISPERSE RED 343 165%", hex: "#b60931" },
+      { nombre: "ROJO DISVAC VA 5G DISPERSE RED 50 200%", hex: "#b11d11" },
+      { nombre: "ROJO DISVAC VAR-560 DISPERSE RED 60", hex: "#ca1e66" },
+      { nombre: "ROJO DISVAC VAR 560 220% DISPERSE RED 60 220%", hex: "#d21d64" },
+      { nombre: "ROJO DISVAC R DISPERSE RED 152", hex: "#b10a1c" },
+      { nombre: "ROJO DISVAC VA 53 DISPERSE RED 167 200%", hex: "#a60d2c" },
+      { nombre: "ROJO FLUOR DISVAC EG DISPERSE RED 277 100%", hex: "#fd447d" },
+      { nombre: "RUBINA DISVAC VAL DISPERSE RED 73 200%", hex: "#a30c2f" },
+      { nombre: "VIOLETA DISVAC MD DISPERSE VIOLET 26 150%", hex: "#a717ad" },
+      { nombre: "VIOLETA DISVAC RL DISPERSE VIOLET 63 200%", hex: "#4f078f" },
+      { nombre: "TURQUESA DISVAC VAT 60 DISPERSE BLUE 60 200%", hex: "#2998e7" },
+      { nombre: "TURQUESA DISVAC CNB DISPERSE BLUE CNB", hex: "#29a2f8" },
+      { nombre: "AZUL DISVAC 3V DISPERSE BLUE 3 100%", hex: "#0848a9" },
+      { nombre: "AZUL DISVAC VA2 DISPERSE BLUE 183 200%", hex: "#3850d6" },
+      { nombre: "AZUL DISVAC VAR 56 DISPERSE BLUE 56 100%", hex: "#284bc3" },
+      { nombre: "AZUL DISVAC SR 2G DISPERSE BLUE 165:1 200%", hex: "#212aa9" },
+      { nombre: "VERDE DISVAC HWT DISPERSE GREEN 9 100%", hex: "#218eab" },
+      { nombre: "MARINODISVAC VA2G DISPERSE BLUE 79 220%", hex: "#1e3793" },
+      { nombre: "MARINODISVAC VA-GX 300% DISPERSE NAVY 300%", hex: "#1f2877" },
+      { nombre: "NEGRO DISVAC VA-GX DISPERSE BLACK 300%", hex: "#121a27" },
+      { nombre: "NEGRO DISPERSET CA DISPERSE BLACK FOR ACETATE", hex: "#4d5756" },
+      { nombre: "NEGRO DISVAC GR MIX", hex: "#4b494c" },
+    ],
+    colorPrincipal: "#d61a1cff"
+  },
+  {
+    id: "colorantes-reactivos",
+    titulo: "COLORANTES REACTIVOS",
+    tipo: "reactivos",
+    descripcion: "Línea completa de colorantes reactivos.",
+    imagenes: [reactivos],
+    fichaTecnica: null,
+    esTablaColores: true,
+    colores: [
+      { nombre: "AMARILLO REACTIVAC SHF 2GR REACTIVE YELLOW 145", hex: "#dd8903" },
+      { nombre: "AMARILLO REACTIVAC SHF 2GR CONC REACTIVE YELLOW 145 100%", hex: "#e09005" },
+      { nombre: "AMARILLO REACTIVAC SHF 4GL REACTIVE YELLOW 160", hex: "#d6c70a" },
+      { nombre: "NARANJA REACTIVAC SHF-RR REACTIVE ORANGE 122", hex: "#df6414" },
+      { nombre: "ROJO REACTIVAC SHF 6BN REACTIVE RED 195", hex: "#bd0b5f" },
+      { nombre: "ROJO REACTIVAC SHF 6BN CONC REACTIVE RED 195 100%", hex: "#c9156d" },
+      { nombre: "AZUL REACTIVAC SHF-BRR REACTIVE BLUE 222", hex: "#163973" },
+      { nombre: "AZUL REACTIVAC SHF-BRR CONC REACTIVE BLUE 222", hex: "#903ea0" },
+      { nombre: "VIOLETA REACTIVAC SHF-RR REACTIVE VIOLET 5", hex: "#8f3e9c" },
+      { nombre: "NEGRO REACTIVAC GR", hex: "#2d2c3a" },
+      { nombre: "NEGRO REACTIVAC R", hex: "#31364a" },
+      { nombre: "NARANJA REACTIVAC 3R REACTIVE ORANGE 16", hex: "#dc6815" },
+      { nombre: "TURQUESA REACTIVAC SHF-G REACTIVE TURQUOISE 21 100%", hex: "#0085d0" },
+      { nombre: "AZUL REACTIVAC SHF-BR REACTIVE BLUE 19", hex: "#5175c1" },
+      { nombre: "AZUL BRILLANTE REACTIVAC RGS", hex: "#1978d6" },
+      { nombre: "NEGRO REACTIVAC 5 REACTIVE BLACK 5 150%", hex: "#5c769b" },
+      { nombre: "AMARILLO REACTIVAC HE-3G REACTIVE YELLOW 105", hex: "#cdbf44" },
+      { nombre: "AMARILLO REACTIVAC HE-4R REACTIVE YELLOW 84", hex: "#d99a11" },
+      { nombre: "NARANJA REACTIVAC HE-R REACTIVE ORANGE 84", hex: "#d77836" },
+      { nombre: "ROJO REACTIVAC HE-3B REACTIVE RED 120", hex: "#d23383" },
+      { nombre: "ROJO REACTIVAC HE-7B REACTIVE RED 141", hex: "#cf1f84" },
+      { nombre: "AZUL REACTIVAC HE-GN REACTIVE BLUE 198", hex: "#1a73d7" },
+      { nombre: "TURQUESA REACTIVAC HA REACTIVE TURQUOISE 71", hex: "#54b3d1" },
+      { nombre: "AZUL REACTIVAC HE-RD REACTIVE BLUE 160", hex: "#4976ba" },
+      { nombre: "AZUL REACTIVAC HE-R REACTIVE BLUE 171", hex: "#2a5c99" },
+      { nombre: "VERDE REACTIVAC HE-4B REACTIVE GREEN 19A", hex: "#061e20" },
+    ],
+    colorPrincipal: "#1e3793"
   }
 ];
 

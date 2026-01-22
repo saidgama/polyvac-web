@@ -44,7 +44,7 @@ const title = "Colorantes - Industrias Polyvac";
                                 class="toggle-table-btn group flex items-center gap-2 bg-azulprimario text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                                 data-target={`table-${producto.id}`}
                             >
-                                <span>Ver Tabla de Colores</span>
+                                <span>Ver Línea de Colorantes</span>
                                 <svg class="w-5 h-5 transform group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                         </div>
@@ -80,7 +80,7 @@ const title = "Colorantes - Industrias Polyvac";
                  targetContent.classList.toggle('hidden');
                  const isHidden = targetContent.classList.contains('hidden');
                  const span = btn.querySelector('span');
-                 span.textContent = isHidden ? 'Ver Tabla de Colores' : 'Ocultar Tabla de Colores';
+                 span.textContent = isHidden ? 'Ver Línea de Colorantes' : 'Ocultar Tabla';
                  
                  // Rotate arrow logic
                  const svg = btn.querySelector('svg');

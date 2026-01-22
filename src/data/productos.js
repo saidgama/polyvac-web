@@ -683,7 +683,7 @@ export default [
               "Deposito teórico de tinta: 24 cm³/m²",
               "Tensión: 33 N/cm"
             ]
-          },
+          }, 
           {
             nombre: "Malla Blanca 90",
             imagen: mallaBlanca,
