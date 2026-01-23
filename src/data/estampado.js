@@ -1,14 +1,77 @@
 // Archivo de datos específico para la categoría de Estampado
 
 import cubetaImage from '../assets/cubeta.png';
-import aquaflexImage from '../assets/productos/aquaflex.png'
-import plastisolImage from '../assets/productos/plastisol.png';
-import ahuladaImage from '../assets/productos/ahulada.png';
-import plastivacImage from '../assets/productos/plastivac.png';
-import polyprintImage from '../assets/productos/polyprint.png';
 import polytransferImage from '../assets/productos/polytransfer.png';
-import sublisolImage from '../assets/productos/sublisol.png';
-import sublivacImage from '../assets/productos/sublivac.png';
+
+
+//tintas plastisol 
+import plastivacImage from '../assets/productos/estampado/tintasplastisol/plastivac.png';
+import plastisolImage from '../assets/productos/estampado/tintasplastisol/plastisol.png';
+import ahuladaImage from '../assets/productos/estampado/tintasplastisol/ahulada.png';
+import multitoneImage from '../assets/productos/estampado/tintasplastisol/multitone.png';
+import polyvacHCImage from '../assets/productos/estampado/tintasplastisol/polyvac-hc.png';
+import inflablePuffImage from '../assets/productos/estampado/tintasplastisol/inflable-puff.png';
+import basesAdhesivosImage from '../assets/productos/estampado/tintasplastisol/bases-adhesivos.png';
+import quimicosAuxiliaresImage from '../assets/productos/estampado/tintasplastisol/auxiliares.png';
+
+//tintas base agua
+import aquaflexImage from '../assets/productos/estampado/tintasbaseagua/aquaflex.png';
+import aquaflexAOImage from '../assets/productos/estampado/tintasbaseagua/aquaflex-ao.png';
+import astrolakE5HBImage from '../assets/productos/estampado/tintasbaseagua/astrolak-e5hb.png';
+import astrolakEcoImage from '../assets/productos/estampado/tintasbaseagua/astrolak-eco.png';
+import dischargeImage from '../assets/productos/estampado/tintasbaseagua/discharge.png';
+import metalicosImage from '../assets/productos/estampado/tintasbaseagua/metalicos.png';
+import basesAdhesivosAguaImage from '../assets/productos/estampado/tintasbaseagua/bases-adhesivos.png';
+import quimicosAuxiliaresAguaImage from '../assets/productos/estampado/tintasbaseagua/auxiliares.png';
+
+// tintas sublimacion
+import sublivacImage from '../assets/productos/estampado/tintassublimacion/sublivac.png';
+import sublisolImage from '../assets/productos/estampado/tintassublimacion/sublisol.png';
+import vactransImage from '../assets/productos/estampado/tintassublimacion/vactrans.png';
+import resinasAditivosImage from '../assets/productos/estampado/tintassublimacion/resinas-aditivos.png';
+import quimicosAuxiliaresSublimacionImage from '../assets/productos/estampado/tintassublimacion/auxiliares.png';
+
+/*
+//fotoemulsiones
+import txdischargeImage from '../assets/productos/estampado/fotoemulsiones/txdischarge.png';
+import emulsionhdImage from '../assets/productos/estampado/fotoemulsiones/emulsion-hd.png';
+import prochemgtxredImage from '../assets/productos/estampado/fotoemulsiones/prochem-gtx-red.png';
+import fotoemulsion750Image from '../assets/productos/estampado/fotoemulsiones/fotoemulsion-750.png';
+
+//pantallas serigraficas
+import gemzymeImage from '../assets/productos/estampado/pantallas-serigraficas/gemzyme.png';
+import hc100Image from '../assets/productos/estampado/pantallas-serigraficas/hc100.png';
+import chembondImage from '../assets/productos/estampado/pantallas-serigraficas/chembond.png';
+import seracleanImage from '../assets/productos/estampado/pantallas-serigraficas/seraclean.png';
+import serasolImage from '../assets/productos/estampado/pantallas-serigraficas/serasol.png';
+import serapastaImage from '../assets/productos/estampado/pantallas-serigraficas/serapasta.png';
+import seracurImage from '../assets/productos/estampado/pantallas-serigraficas/seracur.png';
+
+//resinas y auxiliares rotativas
+import polycrilPMImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-pm.png';
+import polycrilEPFImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-epf.png';
+import polycrilIBLImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-ibl.png';
+import polycrilACImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-ac.png';
+import bindervacImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/bindervac.png';
+import polysoftImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polysoft.png';
+import polyfoamImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyfoam.png';
+import polyfixImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyfix.png';
+import polyclearEPGImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyclear-epg.png';
+import polyclearEPGACImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyclear-epg-ac.png';
+import polyprintEPGImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyprint-epg.png';
+import polycatImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycat.png';
+import uniprintImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/uniprint.png';
+import altomaImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/altoma.png';
+import adhevacImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/adhevac.png';
+import desmanchadorv4000Image from '../assets/productos/estampado/resinas-auxiliares-rotativas/desmanchador-v4000.png';
+import ecowashv8000Image from '../assets/productos/estampado/resinas-auxiliares-rotativas/ecowash-v8000.png';
+import cremalimpiamanosImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/crema-limpiamanos.png';
+*/
+
+//pigmentos en dispersion
+import polyprintImage from '../assets/productos/estampado/pigmentosdispersion/polyprint.png';
+import vacprintImage from '../assets/productos/estampado/pigmentosdispersion/vacprint.png';
+
 
 const products = [
     // TINTAS TIPO PLASTISOL PARA SERIGRAFIA - subcategoria: 'tintas-plastisol'
@@ -108,11 +171,11 @@ const products = [
         ],
         colorPrincipal: "#f39c12"
     },
-    { id: "multitone", titulo: "LINEA MULTITONE L.F.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polyvac-hc", titulo: "LINEA POLYVAC HC", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "puff", titulo: "LINEA INFLABLE PUFF", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "bases-plastisol", titulo: "BASES, ADHESIVOS Y ADITIVOS.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "quimicos-plastisol", titulo: "QUIMICOS Y AUXILIARES", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
+    { id: "multitone", titulo: "LINEA MULTITONE L.F.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [multitoneImage], placeholder: true },
+    { id: "polyvac-hc", titulo: "LINEA POLYVAC HC", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [polyvacHCImage], placeholder: true },
+    { id: "puff", titulo: "LINEA INFLABLE PUFF", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [inflablePuffImage], placeholder: true },
+    { id: "bases-plastisol", titulo: "BASES, ADHESIVOS Y ADITIVOS.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [basesAdhesivosImage], placeholder: true },
+    { id: "quimicos-plastisol", titulo: "QUIMICOS Y AUXILIARES", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [quimicosAuxiliaresImage], placeholder: true },
 
     // TINTAS TEXTILES BASE AGUA PARA SERIGRAFIA - subcategoria: 'tintas-base-agua'
     {
@@ -147,13 +210,13 @@ const products = [
         ],
         colorPrincipal: "#10a3e8ff"
     },
-    { id: "aquaflex-ao", titulo: "LINEA AQUAFLEX AO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "astrolak", titulo: "LINEA ASTROLAK E-5HB", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "astrolak-eco", titulo: "LINEA ASTROLAK ECO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "discharge", titulo: "LINEA DISCHARGE", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "metalicos", titulo: "LINEA DE EFECTOS METALICOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "bases-agua", titulo: "BASES, ADHESIVOS Y ADITIVOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "quimicos-agua", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
+    { id: "aquaflex-ao", titulo: "LINEA AQUAFLEX AO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [aquaflexAOImage], placeholder: true },
+    { id: "astrolak", titulo: "LINEA ASTROLAK E-5HB", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakE5HBImage], placeholder: true },
+    { id: "astrolak-eco", titulo: "LINEA ASTROLAK ECO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakEcoImage], placeholder: true },
+    { id: "discharge", titulo: "LINEA DISCHARGE", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [dischargeImage], placeholder: true },
+    { id: "metalicos", titulo: "LINEA DE EFECTOS METALICOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [metalicosImage], placeholder: true },
+    { id: "bases-agua", titulo: "BASES, ADHESIVOS Y ADITIVOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [basesAdhesivosAguaImage], placeholder: true },
+    { id: "quimicos-agua", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [quimicosAuxiliaresAguaImage], placeholder: true },
 
     // TINTAS PARA SUBLIMADO POR SERIGRAFIA - subcategoria: 'tintas-sublimacion'
     {
@@ -220,9 +283,9 @@ const products = [
         ],
         colorPrincipal: "#e74c3c"
     },
-    { id: "vactrans", titulo: "LINEA VACTRANS", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "resinas-sublimado", titulo: "RESINAS Y ADITIVOS PARA SUBLIMADO", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "quimicos-sublimado", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
+    { id: "vactrans", titulo: "LINEA VACTRANS", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [vactransImage], placeholder: true },
+    { id: "resinas-sublimado", titulo: "RESINAS Y ADITIVOS PARA SUBLIMADO", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [resinasAditivosImage], placeholder: true },
+    { id: "quimicos-sublimado", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [quimicosAuxiliaresSublimacionImage], placeholder: true },
 
     // FOTOEMULSIONES PARA REVELADO DE PLANTALLAS SERIGRAFICAS - subcategoria: 'fotoemulsiones'
     { id: "tx-discharge-blue", titulo: "TX DISCHARGE BLUE", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
@@ -297,7 +360,7 @@ const products = [
         ],
         colorPrincipal: "#e67e22"
     },
-    { id: "vacprint", titulo: "LINEA VACPRINT", subtitulo: "(FABRICACION NACIONAL)", subcategoria: "pigmentos-dispersion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true }
+    { id: "vacprint", titulo: "LINEA VACPRINT", subtitulo: "(FABRICACION NACIONAL)", subcategoria: "pigmentos-dispersion", descripcion: "por agregar", imagenes: [vacprintImage], placeholder: true }
 ];
 
 export default products;

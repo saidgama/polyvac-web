@@ -1,32 +1,99 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import PageBanner from "../components/PageBanner.astro";
+import products from "../data/accesorios-consumibles.js";
+import cubetaImage from '../assets/cubeta.png';
 
 // Importar imágenes
 import bannerImage from '../assets/hero/test.png';
 
 const title = "Accesorios y Consumibles - Industrias Polyvac";
+
+const sections = [
+  { id: 'mallas', title: 'Mallas de Poliéster 100%', familia: 'mallas' },
+  { id: 'marcos', title: 'Marcos de Aluminio', familia: 'marcos' },
+  { id: 'papel', title: 'Papel para Paleta', familia: 'papel' },
+  { id: 'adhesivo', title: 'Adhesivo para Paleta', familia: 'adhesivo' },
+  { id: 'solventes', title: 'Solventes para Limpieza', familia: 'solventes' },
+  { id: 'diluyentes', title: 'Diluyentes para Tintas de Estampado', familia: 'diluyentes' },
+  { id: 'aditivos', title: 'Aditivos para Efectos Especiales', familia: 'aditivos' }
+];
 ---
 
-<Layout title={title} description="En construcción">
+<Layout title={title} description="Catálogo de accesorios y consumibles para serigrafía">
     <PageBanner 
         imageUrl={bannerImage}
         titulo="Accesorios y Consumibles"
     />
     
-    <div class="flex flex-col items-center justify-center py-20 px-4 min-h-[50vh]">
-        <div class="bg-gray-100 p-8 rounded-lg shadow-md text-center max-w-2xl">
-            <svg class="w-20 h-20 text-azulprimario mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-            </svg>
-            <h2 class="text-3xl font-bold text-gray-800 mb-4 font-fuenteprincipal">Sección en Construcción</h2>
-            <p class="text-gray-600 text-lg mb-6">
-                Estamos trabajando para traerte el catálogo completo de esta categoría. 
-                Vuelve pronto para ver nuestros productos.
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-7xl mx-auto space-y-16">
+            <p class="text-lg text-gray-700 text-center mb-10 max-w-3xl mx-auto">
+                Encuentra todo lo necesario para tu taller de serigrafía. Desde mallas de alta tensión hasta químicos de limpieza.
             </p>
-            <a href="/" class="inline-block bg-azulprimario text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors font-semibold">
-                Volver al Inicio
-            </a>
+
+            {sections.map((section) => {
+                const sectionProducts = products.filter(p => p.familia === section.familia);
+                
+                return (
+                    <section id={section.id} class="scroll-mt-24">
+                        <div class="flex items-center gap-4 mb-8">
+                            <h2 class="text-2xl md:text-3xl font-bold text-azulsecundario">{section.title}</h2>
+                            <div class="h-1 flex-grow bg-gray-200 rounded-full"></div>
+                        </div>
+
+                        {sectionProducts.length > 0 ? (
+                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                {sectionProducts.map((producto) => (
+                                    <a 
+                                        href={`/producto/${producto.id}`}
+                                        class="group block bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all hover:-translate-y-1 overflow-hidden"
+                                    >
+                                        <div class="relative aspect-square p-2 bg-gray-50 flex items-center justify-center">
+                                            <div 
+                                                class="absolute top-0 right-0 w-16 h-16 bg-azulprimario/10 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-150"
+                                            ></div>
+                                            
+                                            <Image 
+                                                src={producto.imagenes && producto.imagenes.length > 0 ? producto.imagenes[0] : cubetaImage} 
+                                                alt={producto.titulo}
+                                                class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                                                width={300}
+                                                height={300}
+                                            />
+                                            
+                                            {/* Etiqueta flotante */}
+                                            {producto.items && producto.items[0] && (
+                                                <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-azulprimario border border-blue-100 shadow-sm">
+                                                    {producto.items[0].nombre}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div class="p-5">
+                                            <h3 class="font-bold text-gray-800 text-lg mb-2 group-hover:text-azulprimario transition-colors">
+                                                {producto.titulo}
+                                            </h3>
+                                            <p class="text-sm text-gray-500 line-clamp-2 mb-4">
+                                                {producto.descripcion}
+                                            </p>
+                                            <span class="inline-flex items-center text-sm font-medium text-azulprimario group-hover:underline">
+                                                Ver especificaciones
+                                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                ))}
+                             </div>
+                        ) : (
+                            <div class="bg-gray-50 rounded-lg p-8 text-center border-2 border-dashed border-gray-200">
+                                <p class="text-gray-500 italic">No hay productos disponibles en esta categoría por el momento.</p>
+                            </div>
+                        )}
+                    </section>
+                );
+            })}
         </div>
     </div>
 </Layout>

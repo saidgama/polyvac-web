@@ -26,8 +26,9 @@ import productosData from '../data/productos.js';
 import productosEstampado from '../data/estampado.js';
 import productosColorantes from '../data/colorantes.js';
 import productosEfectos from '../data/efectos-especiales.js';
+import productosAccesorios from '../data/accesorios-consumibles.js';
 
-const productos = [...productosData, ...productosEstampado, ...productosColorantes, ...productosEfectos];
+const productos = [...productosData, ...productosEstampado, ...productosColorantes, ...productosEfectos, ...productosAccesorios];
 
 // Obtener los primeros 4 productos como destacados
 const productosDestacados = productos.slice(0, 4);
@@ -36,6 +37,12 @@ const productosDestacados = productos.slice(0, 4);
 import estampadoImage from '../assets/card1.png';
 import colorantesImage from '../assets/cardColorantes.png';
 import efectosespeciales from '../assets/cardEspeciales.png';
+import tintoreriaImage from '../assets/cardTintoreria.png';
+import masterbatchImage from '../assets/cardMasterbatch.jpeg';
+import consumiblesImage from '../assets/cardConsumibles.png';
+import digitalImage from '../assets/cardDigital.png';
+import pigmentosImage from '../assets/cardPigmentos.jpg';
+
 // Imagen de cubeta para productos
 import cubetaImage from '../assets/cubeta.png';
 
@@ -163,7 +170,7 @@ const industryCarouselSlides = [
 
     <!-- Tintorería -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={tintoreriaImage}
         altText="Productos para tintorería industrial"
         title="Tintorería"
         description="Productos químicos especializados para procesos de teñido industrial y textil."
@@ -196,7 +203,7 @@ const industryCarouselSlides = [
 
     <!-- Zona Digital -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={digitalImage}
         altText="Tintas para impresión digital"
         title="Zona Digital"
         description="Tintas de alta calidad para impresión digital textil y sublimación."
@@ -207,7 +214,7 @@ const industryCarouselSlides = [
 
     <!-- Pigmentos -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={pigmentosImage}
         altText="Pigmentos industriales"
         title="Pigmentos"
         description="Pigmentos de alta solidez y calidad para múltiples aplicaciones industriales."
@@ -218,7 +225,7 @@ const industryCarouselSlides = [
 
     <!-- Masterbatch -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={masterbatchImage}
         altText="Masterbatch para plásticos"
         title="Masterbatch"
         description="Concentrados de color y aditivos para la industria del plástico."
@@ -229,7 +236,7 @@ const industryCarouselSlides = [
 
     <!-- Accesorios y Consumibles -->
     <CategoryCard
-        imageUrl={estampadoImage}
+        imageUrl={consumiblesImage}
         altText="Accesorios y consumibles"
         title="Accesorios y Consumibles"
         description="Herramientas, materiales y consumibles complementarios para la industria."
