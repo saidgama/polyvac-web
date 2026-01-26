@@ -31,7 +31,7 @@ import vactransImage from '../assets/productos/estampado/tintassublimacion/vactr
 import resinasAditivosImage from '../assets/productos/estampado/tintassublimacion/resinas-aditivos.png';
 import quimicosAuxiliaresSublimacionImage from '../assets/productos/estampado/tintassublimacion/auxiliares.png';
 
-/*
+
 //fotoemulsiones
 import txdischargeImage from '../assets/productos/estampado/fotoemulsiones/txdischarge.png';
 import emulsionhdImage from '../assets/productos/estampado/fotoemulsiones/emulsion-hd.png';
@@ -39,34 +39,14 @@ import prochemgtxredImage from '../assets/productos/estampado/fotoemulsiones/pro
 import fotoemulsion750Image from '../assets/productos/estampado/fotoemulsiones/fotoemulsion-750.png';
 
 //pantallas serigraficas
-import gemzymeImage from '../assets/productos/estampado/pantallas-serigraficas/gemzyme.png';
-import hc100Image from '../assets/productos/estampado/pantallas-serigraficas/hc100.png';
-import chembondImage from '../assets/productos/estampado/pantallas-serigraficas/chembond.png';
-import seracleanImage from '../assets/productos/estampado/pantallas-serigraficas/seraclean.png';
-import serasolImage from '../assets/productos/estampado/pantallas-serigraficas/serasol.png';
-import serapastaImage from '../assets/productos/estampado/pantallas-serigraficas/serapasta.png';
-import seracurImage from '../assets/productos/estampado/pantallas-serigraficas/seracur.png';
+import pantallasSerigraficasImage from '../assets/productos/estampado/pantallas-serigraficas/pantallas-serigraficas.png';
 
 //resinas y auxiliares rotativas
-import polycrilPMImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-pm.png';
-import polycrilEPFImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-epf.png';
-import polycrilIBLImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-ibl.png';
-import polycrilACImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycril-ac.png';
-import bindervacImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/bindervac.png';
-import polysoftImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polysoft.png';
-import polyfoamImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyfoam.png';
-import polyfixImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyfix.png';
-import polyclearEPGImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyclear-epg.png';
-import polyclearEPGACImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyclear-epg-ac.png';
-import polyprintEPGImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polyprint-epg.png';
-import polycatImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/polycat.png';
-import uniprintImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/uniprint.png';
-import altomaImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/altoma.png';
-import adhevacImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/adhevac.png';
-import desmanchadorv4000Image from '../assets/productos/estampado/resinas-auxiliares-rotativas/desmanchador-v4000.png';
-import ecowashv8000Image from '../assets/productos/estampado/resinas-auxiliares-rotativas/ecowash-v8000.png';
-import cremalimpiamanosImage from '../assets/productos/estampado/resinas-auxiliares-rotativas/crema-limpiamanos.png';
-*/
+import aditivoRotativassImage from '../assets/productos/estampado/rotativas/aditivos.png';
+import auxiliaresRotativasImage from '../assets/productos/estampado/rotativas/auxiliares.png';
+import bindersImage from '../assets/productos/estampado/rotativas/binders.png';
+
+
 
 //pigmentos en dispersion
 import polyprintImage from '../assets/productos/estampado/pigmentosdispersion/polyprint.png';
@@ -288,39 +268,39 @@ const products = [
     { id: "quimicos-sublimado", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [quimicosAuxiliaresSublimacionImage], placeholder: true },
 
     // FOTOEMULSIONES PARA REVELADO DE PLANTALLAS SERIGRAFICAS - subcategoria: 'fotoemulsiones'
-    { id: "tx-discharge-blue", titulo: "TX DISCHARGE BLUE", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "emulsion-hd", titulo: "EMULSION HD", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "prochem-gtx-red", titulo: "PROCHEM GTX RED", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "fotoemulsion-750", titulo: "FOTOEMULSION 750", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
+    { id: "tx-discharge-blue", titulo: "TX DISCHARGE BLUE", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [txdischargeImage], placeholder: true },
+    { id: "emulsion-hd", titulo: "EMULSION HD", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [emulsionhdImage], placeholder: true },
+    { id: "prochem-gtx-red", titulo: "PROCHEM GTX RED", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [prochemgtxredImage], placeholder: true },
+    { id: "fotoemulsion-750", titulo: "FOTOEMULSION 750", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [fotoemulsion750Image], placeholder: true },
 
     // QUIMICOS PARA PREPARACION Y RECUPERADO DE PANTALLAS SERIGRAFICAS - subcategoria: 'quimicos-preparacion'
-    { id: "gem-zyme", titulo: "GEM ZYME", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "hc-100", titulo: "HC-100", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "chembond-2000", titulo: "CHEMBOND 2000-HTA CATALYST", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "sera-clean", titulo: "SERA CLEAN", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "sera-sol", titulo: "SERA SOL", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "sera-pasta", titulo: "SERA PASTA", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "sera-cur", titulo: "SERA CUR", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
+    { id: "gem-zyme", titulo: "GEM ZYME", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "hc-100", titulo: "HC-100", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "chembond-2000", titulo: "CHEMBOND 2000-HTA CATALYST", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-clean", titulo: "SERA CLEAN", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-sol", titulo: "SERA SOL", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-pasta", titulo: "SERA PASTA", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-cur", titulo: "SERA CUR", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
 
     // RESINAS Y AUXILIARES PARA ESTAMPADO POR ROTATIVAS - subcategoria: 'resinas-rotativas'
-    { id: "polycril-pm", titulo: "POLYCRIL PM", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polycril-epf", titulo: "POLYCRIL EPF/P", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polycril-ibl", titulo: "POLYCRIL IBL", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polycril-ac", titulo: "POLYCRIL AC", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "binder-vac", titulo: "BINDER VAC CONC", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polysoft", titulo: "POLYSOFT EDMS", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polyfoam", titulo: "POLYFOAM SHT", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polyfix", titulo: "POLYFIX BF", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polyclear-epg", titulo: "POLYCLEAR EPG-i", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polyclear-epg-ac", titulo: "POLYCLEAR EPG-AC", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polyprint-epg", titulo: "POLYPRINT EPG", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "polycat", titulo: "POLYCAT E-FF", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "uniprint", titulo: "UNIPRINT AP", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "altoma", titulo: "ALTOMA SCREEN SAVER", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "adhevac", titulo: "ADHEVAC 307", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "desmanchador", titulo: "DESMANCHADOR V-4000", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "ecowash", titulo: "ECOWASH V-8000", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
-    { id: "limpiamanos", titulo: "CREMA LIMPIAMANOS", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [cubetaImage], placeholder: true },
+    { id: "polycril-pm", titulo: "POLYCRIL PM", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [bindersImage], placeholder: true },
+    { id: "polycril-epf", titulo: "POLYCRIL EPF/P", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [bindersImage], placeholder: true },
+    { id: "polycril-ibl", titulo: "POLYCRIL IBL", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [bindersImage], placeholder: true },
+    { id: "polycril-ac", titulo: "POLYCRIL AC", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [bindersImage], placeholder: true },
+    { id: "binder-vac", titulo: "BINDER VAC CONC", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [bindersImage], placeholder: true },
+    { id: "polysoft", titulo: "POLYSOFT EDMS", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "polyfoam", titulo: "POLYFOAM SHT", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "polyfix", titulo: "POLYFIX BF", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "polyclear-epg", titulo: "POLYCLEAR EPG-i", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "polyclear-epg-ac", titulo: "POLYCLEAR EPG-AC", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "polyprint-epg", titulo: "POLYPRINT EPG", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "polycat", titulo: "POLYCAT E-FF", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "uniprint", titulo: "UNIPRINT AP", subtitulo: "ADITIVOS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [aditivoRotativassImage], placeholder: true },
+    { id: "altoma", titulo: "ALTOMA SCREEN SAVER", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [auxiliaresRotativasImage], placeholder: true },
+    { id: "adhevac", titulo: "ADHEVAC 307", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [auxiliaresRotativasImage], placeholder: true },
+    { id: "desmanchador", titulo: "DESMANCHADOR V-4000", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [auxiliaresRotativasImage], placeholder: true },
+    { id: "ecowash", titulo: "ECOWASH V-8000", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [auxiliaresRotativasImage], placeholder: true },
+    { id: "limpiamanos", titulo: "CREMA LIMPIAMANOS", subtitulo: "AUXILIARES PARA ESTAMPADO Y LIMPIEZA", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [auxiliaresRotativasImage], placeholder: true },
 
     // PIGMENTOS EN DISPERSION BASE AGUA PARA PASTAS DE ESTAMPADO - subcategoria: 'pigmentos-dispersion'
     {
