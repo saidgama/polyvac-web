@@ -16,9 +16,9 @@ import reactivos from '../assets/productos/colorantes/colorantes-reactivos.png';
 const products = [
   {
     id: "colorantes-basicos",
-    titulo: "COLORANTES BASICOS",
+    titulo: "COLORANTES BÁSICOS",
     tipo: "basicos", // Campo identificador para agrupación si se requiere en el futuro
-    descripcion: "Línea completa de colorantes basicos.",
+    descripcion: "Línea completa de colorantes básicos.",
     imagenes: [basicosImage],
     fichaTecnica: null,
     esTablaColores: true, // Indica que este producto es principalmente una tabla de colores
@@ -49,9 +49,9 @@ const products = [
   },
   {
     id: "colorantes-acidos",
-    titulo: "COLORANTES ACIDOS",
+    titulo: "COLORANTES ÁCIDOS",
     tipo: "acidos",
-    descripcion: "Línea completa de colorantes acidos.",
+    descripcion: "Línea completa de colorantes ácidos.",
     imagenes: [acidosImage],
     fichaTecnica: null,
     esTablaColores: true,
@@ -118,8 +118,8 @@ const products = [
       { nombre: "AZUL VACDIR BAI DIRECT BLUE 108", hex: "#608ccb" },
       { nombre: "AZUL VACDIR IG DIRECT BLUE 86", hex: "#00c1e0" },
       { nombre: "VERDE VACDIR B DIRECT GREEN 1", hex: "#354645" },
-      { nombre: "CAFE VACDIR C DIRECT BROWN 2", hex: "#694437" },
-      { nombre: "CAFE VACDIR JF DIRECT BROWN 95", hex: "#a16f47" },
+      { nombre: "CAFÉ VACDIR C DIRECT BROWN 2", hex: "#694437" },
+      { nombre: "CAFÉ VACDIR JF DIRECT BROWN 95", hex: "#a16f47" },
       { nombre: "NEGRO VACDIR CC DIRECT BLACK 1600%", hex: "#272d32" },
       { nombre: "NEGRO VACDIR CC DIRECT BLACK 1200%", hex: "#253334" },
       { nombre: "NEGRO VACDIR DI DIRECT BLACK 38", hex: "#1e1f23" },

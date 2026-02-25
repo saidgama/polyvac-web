@@ -60,7 +60,7 @@ const products = [
     // TINTAS TIPO PLASTISOL PARA SERIGRAFIA - subcategoria: 'tintas-plastisol'
     {
         id: "plastivac",
-        titulo: "LINEA PLASTIVAC VS",
+        titulo: "LÍNEA PLASTIVAC VS",
         subcategoria: "tintas-plastisol",
         descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y ftalatos, fabricadas con materias primas de importación, utilizadas para realizar estampaciones en tela de algodón 100% en terminado ahulado , con acabado semi-mate.",
         imagenes: [plastivacImage],
@@ -79,7 +79,7 @@ const products = [
           { nombre: "Verde esmeralda", hex: "#008100f9 " },
           { nombre: "Negro", hex: " #000000" },
           { nombre: "Blanco", hex: "#ffffff " },
-          { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#fefe65 " },
+          { nombre: "Amarillo limón (FLUORESCENTE)", hex: "#fefe65 " },
           { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
           { nombre: "Magenta (FLUORESCENTE)", hex: "#fe00fe " },
           { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
@@ -92,7 +92,7 @@ const products = [
     },
     {
         id: "plastisol",
-        titulo: "LINEA-PLASTISOL VM",
+        titulo: "LÍNEA-PLASTISOL VM",
         subcategoria: "tintas-plastisol",
         descripcion: "Tintas tipo plastisol formuladas para fondos claros y campañas políticas , utilizadas para realizar estampados en tela de algodón 100 % de terminado ahulado, con acabado semi-mate.",
         imagenes: [plastisolImage],
@@ -111,7 +111,7 @@ const products = [
           { nombre: "Verde botella", hex: "#008100f9 " },
           { nombre: "Negro", hex: " #000000" },
           { nombre: "Blanco", hex: "#ffffff " },
-          { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#fefe65 " },
+          { nombre: "Amarillo limón (FLUORESCENTE)", hex: "#fefe65 " },
           { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
           { nombre: "Magenta (FLUORESCENTE)", hex: "#fe00fe " },
           { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
@@ -124,9 +124,9 @@ const products = [
     },
     {
         id: "ahulada",
-        titulo: "LINEA AHULADO AO",
+        titulo: "LÍNEA AHULADO AO",
         subcategoria: "tintas-plastisol",
-        descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y fabricadas con materias primas de importación, con un alto contenido de solidos y buen poder cubriente, utilizadas para realizar estampados en fondos obscuros de algodón 100%.",
+        descripcion: "Tintas tipo plastisol formuladas libres de metales pesados y fabricadas con materias primas de importación, con un alto contenido de sólidos y buen poder cubriente, utilizadas para realizar estampados en fondos obscuros de algodón 100%.",
         imagenes: [ahuladaImage],
         fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_ahulado_ao_ht_ed3af4a320.pdf",
         colores: [
@@ -143,7 +143,7 @@ const products = [
           { nombre: "Verde esmeralda", hex: "#008100f9 " },
           { nombre: "Negro", hex: " #000000" },
           { nombre: "Blanco", hex: "#ffffff " },
-          { nombre: "Amarillo limon (FLUORESCENTE)", hex: "#fefe65 " },
+          { nombre: "Amarillo limón (FLUORESCENTE)", hex: "#fefe65 " },
           { nombre: "Naranja (FLUORESCENTE)", hex: "#fe9900 " },
           { nombre: "Magenta (FLUORESCENTE)", hex: "#fe00fe " },
           { nombre: "Rosa (FLUORESCENTE)", hex: "#fe99cc " }, 
@@ -154,16 +154,16 @@ const products = [
         ],
         colorPrincipal: "#f39c12"
     },
-    { id: "multitone", titulo: "LINEA MULTITONE L.F.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [multitoneImage], placeholder: true },
-    { id: "polyvac-hc", titulo: "LINEA POLYVAC HC", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [polyvacHCImage], placeholder: true },
-    { id: "puff", titulo: "LINEA INFLABLE PUFF", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [inflablePuffImage], placeholder: true },
+    { id: "multitone", titulo: "LÍNEA MULTITONE L.F.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [multitoneImage], placeholder: true },
+    { id: "polyvac-hc", titulo: "LÍNEA POLYVAC HC", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [polyvacHCImage], placeholder: true },
+    { id: "puff", titulo: "LÍNEA INFLABLE PUFF", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [inflablePuffImage], placeholder: true },
     { id: "bases-plastisol", titulo: "BASES, ADHESIVOS Y ADITIVOS.", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [basesAdhesivosImage], placeholder: true },
-    { id: "quimicos-plastisol", titulo: "QUIMICOS Y AUXILIARES", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [quimicosAuxiliaresImage], placeholder: true },
+    { id: "quimicos-plastisol", titulo: "QUÍMICOS Y AUXILIARES", subcategoria: "tintas-plastisol", descripcion: "por agregar", imagenes: [quimicosAuxiliaresImage], placeholder: true },
 
     // TINTAS TEXTILES BASE AGUA PARA SERIGRAFIA - subcategoria: 'tintas-base-agua'
     {
         id: "aquaflex",
-        titulo: "LINEA AQUAFLEX",
+        titulo: "LÍNEA AQUAFLEX",
         subcategoria: "tintas-base-agua",
         descripcion: "Tinta base agua formuladas para la estampación textil directa en Algodón 100% , totalmente libres de gas Nafta, metales pesados , PVC y Orto- Ftalatos; lo cual les da una excelente estabilidad en el esténcil , haciendo posible la estampación en el pulpo manual y automático.",
         imagenes: [aquaflexImage],
@@ -182,24 +182,24 @@ const products = [
           { nombre: "Negro AQUAFLEX V-190", hex: "#000000 " },
           { nombre: "Café AQUAFLEX", hex: " #622c00" },
           { nombre: "Blanco AQUAFLEX", hex: "#ffffff " },
-          { nombre: "Amarillo limon (FLUORESCENTE) AQUAFLEX Fluorescente", hex: "#ffff66 " },
+          { nombre: "Amarillo limón (FLUORESCENTE) AQUAFLEX Fluorescente", hex: "#ffff66 " },
           { nombre: "Naranja (FLUORESCENTE) AQUAFLEX Fluorescente", hex: "#ff9a00 " },
           { nombre: "Rosa (FLUORESCENTE) AQUAFLEX Fluorescente V-185", hex: "#ff9acd " },
           { nombre: "Magenta (FLUORESCENTE) AQUAFLEX Fluorescente V-185", hex: "#ff00ff " }, 
           { nombre: "Azul (FLUORESCENTE) AQUAFLEX Fluorescente V-183", hex: " #009cf9" },
-          { nombre: "Purpura (FLUORESCENTE) AQUAFLEX Fluorescente V-184", hex: " #d250f8" },
+          { nombre: "Púrpura (FLUORESCENTE) AQUAFLEX Fluorescente V-184", hex: " #d250f8" },
           { nombre: "Verde (FLUORESCENTE) AQUAFLEX Fluorescente V-188", hex: "#00ff00 " },
           { nombre: "Rojo (FLUORESCENTE) AQUAFLEX Fluorescente V-188", hex: " #ff0000" },
         ],
         colorPrincipal: "#10a3e8ff"
     },
-    { id: "aquaflex-ao", titulo: "LINEA AQUAFLEX AO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [aquaflexAOImage], placeholder: true },
-    { id: "astrolak", titulo: "LINEA ASTROLAK E-5HB", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakE5HBImage], placeholder: true },
-    { id: "astrolak-eco", titulo: "LINEA ASTROLAK ECO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakEcoImage], placeholder: true },
-    { id: "discharge", titulo: "LINEA DISCHARGE", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [dischargeImage], placeholder: true },
-    { id: "metalicos", titulo: "LINEA DE EFECTOS METALICOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [metalicosImage], placeholder: true },
+    { id: "aquaflex-ao", titulo: "LÍNEA AQUAFLEX AO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [aquaflexAOImage], placeholder: true },
+    { id: "astrolak", titulo: "LÍNEA ASTROLAK E-5HB", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakE5HBImage], placeholder: true },
+    { id: "astrolak-eco", titulo: "LÍNEA ASTROLAK ECO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakEcoImage], placeholder: true },
+    { id: "discharge", titulo: "LÍNEA DISCHARGE", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [dischargeImage], placeholder: true },
+    { id: "metalicos", titulo: "LÍNEA DE EFECTOS METÁLICOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [metalicosImage], placeholder: true },
     { id: "bases-agua", titulo: "BASES, ADHESIVOS Y ADITIVOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [basesAdhesivosAguaImage], placeholder: true },
-    { id: "quimicos-agua", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [quimicosAuxiliaresAguaImage], placeholder: true },
+    { id: "quimicos-agua", titulo: "QUÍMICOS AUXILIARES", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [quimicosAuxiliaresAguaImage], placeholder: true },
 
     // PRODUCTOS BASE AGUA CON FICHA TÉCNICA - subcategoria: 'tintas-base-agua'
     {
@@ -386,9 +386,9 @@ const products = [
     // TINTAS PARA SUBLIMADO POR SERIGRAFIA - subcategoria: 'tintas-sublimacion'
     {
         id: "sublivac",
-        titulo: "LINEA SUBLIVAC",
+        titulo: "LÍNEA SUBLIVAC",
         subcategoria: "tintas-sublimacion",
-        descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-trasferir a tela poliéster 100% logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
+        descripcion: "Tintas de sublimación base agua, diseñadas para impresiones en papel por serigrafía y luego termo-transferir a tela poliéster 100%, logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
         imagenes: [sublivacImage],
         fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel//uploads/ficha_sublivac_ht_dbc9f8d1ec.pdf",
         colores: [
@@ -418,9 +418,9 @@ const products = [
     },
     {
         id: "sublisol",
-        titulo: "LINEA SUBLISOL",
+        titulo: "LÍNEA SUBLISOL",
         subcategoria: "tintas-sublimacion",
-        descripcion: "Tintas de sublimación base solvente, diseñadas para impresiones en papel por serigrafia y termo-transferir a tela poliéster 100%, logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
+        descripcion: "Tintas de sublimación base solvente, diseñadas para impresiones en papel por serigrafía y termo-transferir a tela poliéster 100%, logrando un teñido de gran colorido y permitiendo el brillo natural de la tela.",
         imagenes: [sublisolImage],
         fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel//uploads/ficha_sublisol_ht_65ea8375e2.pdf",
         colores: [
@@ -448,24 +448,24 @@ const products = [
         ],
         colorPrincipal: "#e74c3c"
     },
-    { id: "vactrans", titulo: "LINEA VACTRANS", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [vactransImage], placeholder: true },
+    { id: "vactrans", titulo: "LÍNEA VACTRANS", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [vactransImage], placeholder: true },
     { id: "resinas-sublimado", titulo: "RESINAS Y ADITIVOS PARA SUBLIMADO", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [resinasAditivosImage], placeholder: true },
-    { id: "quimicos-sublimado", titulo: "QUIMICOS AUXILIARES", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [quimicosAuxiliaresSublimacionImage], placeholder: true },
+    { id: "quimicos-sublimado", titulo: "QUÍMICOS AUXILIARES", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [quimicosAuxiliaresSublimacionImage], placeholder: true },
 
     // FOTOEMULSIONES PARA REVELADO DE PLANTALLAS SERIGRAFICAS - subcategoria: 'fotoemulsiones'
-    { id: "tx-discharge-blue", titulo: "TX DISCHARGE BLUE", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [txdischargeImage], placeholder: true },
-    { id: "emulsion-hd", titulo: "EMULSION HD", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [emulsionhdImage], placeholder: true },
-    { id: "prochem-gtx-red", titulo: "PROCHEM GTX RED", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [prochemgtxredImage], placeholder: true },
-    { id: "fotoemulsion-750", titulo: "FOTOEMULSION 750", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [fotoemulsion750Image], placeholder: true },
+    { id: "tx-discharge-blue", titulo: "TX DISCHARGE BLUE", subtitulo: "LÍNEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [txdischargeImage], placeholder: true },
+    { id: "emulsion-hd", titulo: "EMULSIÓN HD", subtitulo: "LÍNEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [emulsionhdImage], placeholder: true },
+    { id: "prochem-gtx-red", titulo: "PROCHEM GTX RED", subtitulo: "LÍNEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [prochemgtxredImage], placeholder: true },
+    { id: "fotoemulsion-750", titulo: "FOTOEMULSIÓN 750", subtitulo: "LÍNEA DE FABRICACIÓN NACIONAL", subcategoria: "fotoemulsiones", descripcion: "por agregar", imagenes: [fotoemulsion750Image], placeholder: true },
 
     // QUIMICOS PARA PREPARACION Y RECUPERADO DE PANTALLAS SERIGRAFICAS - subcategoria: 'quimicos-preparacion'
-    { id: "gem-zyme", titulo: "GEM ZYME", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
-    { id: "hc-100", titulo: "HC-100", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
-    { id: "chembond-2000", titulo: "CHEMBOND 2000-HTA CATALYST", subtitulo: "LINEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
-    { id: "sera-clean", titulo: "SERA CLEAN", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
-    { id: "sera-sol", titulo: "SERA SOL", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
-    { id: "sera-pasta", titulo: "SERA PASTA", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
-    { id: "sera-cur", titulo: "SERA CUR", subtitulo: "LINEA DE FABRICACION NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "gem-zyme", titulo: "GEM ZYME", subtitulo: "LÍNEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "hc-100", titulo: "HC-100", subtitulo: "LÍNEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "chembond-2000", titulo: "CHEMBOND 2000-HTA CATALYST", subtitulo: "LÍNEA IMPORTADA DE Chemical Consultants Inc.", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-clean", titulo: "SERA CLEAN", subtitulo: "LÍNEA DE FABRICACIÓN NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-sol", titulo: "SERA SOL", subtitulo: "LÍNEA DE FABRICACIÓN NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-pasta", titulo: "SERA PASTA", subtitulo: "LÍNEA DE FABRICACIÓN NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
+    { id: "sera-cur", titulo: "SERA CUR", subtitulo: "LÍNEA DE FABRICACIÓN NACIONAL", subcategoria: "quimicos-preparacion", descripcion: "por agregar", imagenes: [pantallasSerigraficasImage], placeholder: true },
 
     // RESINAS Y AUXILIARES PARA ESTAMPADO POR ROTATIVAS - subcategoria: 'resinas-rotativas'
     { id: "polycril-pm", titulo: "POLYCRIL PM", subtitulo: "BINDERS PARA PASTAS DE ESTAMPADO", subcategoria: "resinas-rotativas", descripcion: "por agregar", imagenes: [bindersImage], placeholder: true },
@@ -490,10 +490,10 @@ const products = [
     // PIGMENTOS EN DISPERSION BASE AGUA PARA PASTAS DE ESTAMPADO - subcategoria: 'pigmentos-dispersion'
     {
         id: "polyprint",
-        titulo: "LINEA POLYPRINT",
+        titulo: "LÍNEA POLYPRINT",
         subtitulo: "(IMPORTADA)",
         subcategoria: "pigmentos-dispersion",
-        descripcion: "Son pigmentos tanto orgánicos como inorgánicos dispersados en base agua que deben se fijados por medio de Binders.Debe ser termofijado para tener buena solidez al frote tanto en húmedo como en seco.",
+        descripcion: "Son pigmentos tanto orgánicos como inorgánicos dispersados en base agua que deben ser fijados por medio de binders. Debe ser termofijado para tener buena solidez al frote tanto en húmedo como en seco.",
         imagenes: [polyprintImage],
         fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_polyprint_ht_58cdef145b.pdf",
         colores: [
@@ -525,7 +525,7 @@ const products = [
         ],
         colorPrincipal: "#e67e22"
     },
-    { id: "vacprint", titulo: "LINEA VACPRINT", subtitulo: "(FABRICACION NACIONAL)", subcategoria: "pigmentos-dispersion", descripcion: "por agregar", imagenes: [vacprintImage], placeholder: true }
+    { id: "vacprint", titulo: "LÍNEA VACPRINT", subtitulo: "(FABRICACIÓN NACIONAL)", subcategoria: "pigmentos-dispersion", descripcion: "por agregar", imagenes: [vacprintImage], placeholder: true }
 ];
 
 export default products;

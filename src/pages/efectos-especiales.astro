@@ -20,6 +20,7 @@ const title = "Efectos Especiales - Industrias Polyvac";
         <div class="max-w-4xl mx-auto space-y-16">
             <p class="text-lg text-gray-700 text-center mb-10">
                 Lleva tus diseños al siguiente nivel con nuestra gama de efectos especiales.
+            </p>
 
             {products.map((producto) => (
                 <section id={producto.id} class="bg-white rounded-xl shadow-md p-6">
@@ -43,7 +44,7 @@ const title = "Efectos Especiales - Industrias Polyvac";
                                 class="toggle-table-btn group flex items-center gap-2 bg-azulprimario text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
                                 data-target={`table-${producto.id}`}
                             >
-                                <span>Ver Linea </span>
+                                <span>Ver Línea </span>
                                 <svg class="w-5 h-5 transform group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                         </div>
@@ -76,7 +77,7 @@ const title = "Efectos Especiales - Industrias Polyvac";
                  targetContent.classList.toggle('hidden');
                  const isHidden = targetContent.classList.contains('hidden');
                  const span = btn.querySelector('span');
-                 span.textContent = isHidden ? 'Ver Linea' : 'Ocultar Tabla';
+                 span.textContent = isHidden ? 'Ver Línea' : 'Ocultar Tabla';
                  
                  // Rotación de flecha
                  const svg = btn.querySelector('svg');
