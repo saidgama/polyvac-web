@@ -83,35 +83,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
               </div>
             </div>
 
-            <!-- Auth Required Message -->
-            <div id="auth-required-message" class="hidden">
-              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                <div class="flex items-center gap-3 mb-3">
-                  <svg class="w-8 h-8 text-azulprimario flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                  </svg>
-                  <div>
-                    <h3 class="font-semibold text-gray-900">Iniciar Sesión Requerido</h3>
-                    <p class="text-sm text-gray-600">Para enviar una cotización necesitas iniciar sesión</p>
-                  </div>
-                </div>
-                <div class="space-y-2">
-                  <a 
-                    href="/cuenta" 
-                    class="w-full bg-azulprimario text-white py-2.5 px-4 rounded-md font-medium hover:bg-blue-700 transition-colors text-center block"
-                  >
-                    Iniciar Sesión
-                  </a>
-                  <a 
-                    href="/cuenta" 
-                    class="w-full bg-gray-200 text-gray-700 py-2.5 px-4 rounded-md font-medium hover:bg-gray-300 transition-colors text-center block"
-                  >
-                    Crear Cuenta
-                  </a>
-                </div>
-              </div>
-            </div>
-
             <!-- Contact Form -->
             <form id="quote-form" class="space-y-4">
               <div>
@@ -226,9 +197,8 @@ const description = "Solicita una cotización personalizada para nuestros produc
       itemCount.textContent = `${count} producto${count !== 1 ? 's' : ''}`;
       summaryCount.textContent = count;
 
-      // Enable/disable submit button based on cart items and auth status
-      const isAuthenticated = window.polyvacAuth && window.polyvacAuth.isLoggedIn();
-      submitButton.disabled = count === 0 || !isAuthenticated;
+      // Enable/disable submit button based on cart items
+      submitButton.disabled = count === 0;
 
       if (count === 0) {
         emptyCart.style.display = 'block';
@@ -274,38 +244,15 @@ const description = "Solicita una cotización personalizada para nuestros produc
     }
 
     updateAuthUI() {
-      const isAuthenticated = window.polyvacAuth && window.polyvacAuth.isLoggedIn();
-      const authRequiredMessage = document.getElementById('auth-required-message');
       const quoteForm = document.getElementById('quote-form');
       const submitButton = document.getElementById('submit-quote');
 
-      if (!authRequiredMessage || !quoteForm || !submitButton) {
+      if (!quoteForm || !submitButton) {
         return;
       }
 
-      if (isAuthenticated) {
-        // Usuario autenticado: mostrar formulario, ocultar mensaje de auth
-        authRequiredMessage.classList.add('hidden');
-        quoteForm.classList.remove('hidden');
-        
-        // Prellenar formulario con datos del usuario
-        const user = window.polyvacAuth.getCurrentUser();
-        if (user) {
-          const nameField = document.getElementById('name');
-          const emailField = document.getElementById('email');
-          
-          if (nameField && !nameField.value) {
-            nameField.value = `${user.firstname || ''} ${user.lastname || ''}`.trim();
-          }
-          if (emailField && !emailField.value) {
-            emailField.value = user.email || '';
-          }
-        }
-      } else {
-        // Usuario no autenticado: ocultar formulario, mostrar mensaje de auth
-        authRequiredMessage.classList.remove('hidden');
-        quoteForm.classList.add('hidden');
-      }
+      // Formulario siempre visible (sin autenticación requerida)
+      quoteForm.classList.remove('hidden');
     }
 
     removeItem(productId) {
@@ -352,59 +299,19 @@ const description = "Solicita una cotización personalizada para nuestros produc
         return;
       }
 
-      // Verificar que el usuario esté autenticado
-      if (!window.polyvacAuth || !window.polyvacAuth.isLoggedIn()) {
-        this.cart.showNotification('Debes iniciar sesión para enviar una cotización', 'error');
-        return;
-      }
-
       const formData = new FormData(e.target);
       const contactData = Object.fromEntries(formData);
-      const user = window.polyvacAuth.getCurrentUser();
-      
-      // Preparar datos para enviar a Strapi
-      const cotizacionData = {
-        productos: items,
-        mensaje: contactData.message || '',
-        estado: 'pendiente',
-        fecha: new Date().toISOString(),
-        usuario: user.id,
-        datosContacto: {
-          nombre: contactData.name,
-          email: contactData.email,
-          telefono: contactData.phone || '',
-          empresa: contactData.company || ''
-        }
-      };
 
       try {
-        // Mostrar indicador de carga
-        this.cart.showNotification('Enviando cotización...', 'info');
-        
-        // Enviar a Strapi
-        const response = await window.polyvacAuth.createCotizacion(cotizacionData);
-        
-        if (response.data) {
-          this.cart.showNotification('¡Cotización enviada exitosamente!', 'success');
-          
-          // Limpiar el carrito después de enviar
-          setTimeout(() => {
-            this.cart.clear();
-          }, 2000);
-          
-          // También enviar por email como backup
-          this.sendBackupEmail(contactData, items);
-        }
+        this.cart.showNotification('Preparando cotización...', 'info');
+        this.sendEmail(contactData, items);
       } catch (error) {
         console.error('Error enviando cotización:', error);
-        
-        // Si falla Strapi, usar email como fallback
-        this.cart.showNotification('Error enviando a través del sistema. Enviando por email...', 'warning');
-        this.sendBackupEmail(contactData, items);
+        this.cart.showNotification('Error al enviar. Intenta de nuevo.', 'error');
       }
     }
 
-    sendBackupEmail(contactData, items) {
+    sendEmail(contactData, items) {
       // Generate email content
       const emailBody = this.generateEmailBody(contactData, items);
       
@@ -473,19 +380,6 @@ const description = "Solicita una cotización personalizada para nuestros produc
         }, 100);
       }
     }, 200);
-  });
-
-  // Escuchar eventos de autenticación para actualizar la UI
-  window.addEventListener('authLogin', () => {
-    if (window.quoteCart) {
-      window.quoteCart.updateAuthUI();
-    }
-  });
-
-  window.addEventListener('authLogout', () => {
-    if (window.quoteCart) {
-      window.quoteCart.updateAuthUI();
-    }
   });
 
   // Cleanup al salir de la página

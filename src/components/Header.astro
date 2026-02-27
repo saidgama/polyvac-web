@@ -33,24 +33,12 @@ const categoriasPrincipales = [
   },
   {
     id: 5,
-    nombre: "Zona Digital",
-    slug: "zona-digital",
-    descripcion: "Tintas para impresión digital textil"
-  },
-  {
-    id: 6,
     nombre: "Pigmentos",
     slug: "pigmentos",
     descripcion: "Pigmentos de alta calidad para múltiples usos"
   },
   {
-    id: 7,
-    nombre: "Masterbatch",
-    slug: "masterbatch",
-    descripcion: "Concentrados de color para plásticos"
-  },
-  {
-    id: 8,
+    id: 6,
     nombre: "Accesorios y Consumibles",
     slug: "accesorios-consumibles",
     descripcion: "Herramientas y materiales complementarios"
@@ -396,102 +384,6 @@ const categoriasPrincipales = [
       icon.classList.remove('rotate-180');
     });
   }
-
-  // Funcionalidad del dropdown de usuario autenticado
-  const userNavButton = document.getElementById('user-nav-button');
-  const userNavMenu = document.getElementById('user-nav-menu');
-  const userNavIcon = document.getElementById('user-nav-icon');
-  const logoutButton = document.getElementById('logout-button');
-
-  if (userNavButton && userNavMenu && userNavIcon) {
-    // Toggle dropdown del usuario
-    userNavButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const isHidden = userNavMenu.classList.contains('hidden');
-      
-      // Cerrar otros dropdowns
-      closeAllDropdowns();
-      
-      if (isHidden) {
-        userNavMenu.classList.remove('hidden');
-        userNavIcon.classList.add('rotate-180');
-      } else {
-        userNavMenu.classList.add('hidden');
-        userNavIcon.classList.remove('rotate-180');
-      }
-    });
-
-    // Cerrar dropdown al hacer clic fuera
-    document.addEventListener('click', (e) => {
-      if (!userNavButton.contains(e.target) && !userNavMenu.contains(e.target)) {
-        userNavMenu.classList.add('hidden');
-        userNavIcon.classList.remove('rotate-180');
-      }
-    });
-
-    // Cerrar dropdown al presionar Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        userNavMenu.classList.add('hidden');
-        userNavIcon.classList.remove('rotate-180');
-      }
-    });
-  }
-
-  // Manejar logout
-  if (logoutButton) {
-    logoutButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (window.polyvacAuth) {
-        window.polyvacAuth.logout();
-        updateAuthUI();
-        window.location.href = '/';
-      }
-    });
-  }
-
-  // Función para actualizar la UI basada en el estado de autenticación
-  function updateAuthUI() {
-    const authNavItem = document.getElementById('auth-nav-item');
-    const loginNavLink = document.getElementById('login-nav-link');
-    const userNavDropdown = document.getElementById('user-nav-dropdown');
-    const userNavName = document.getElementById('user-nav-name');
-    const userDropdownName = document.getElementById('user-dropdown-name');
-    const userDropdownEmail = document.getElementById('user-dropdown-email');
-
-    if (!authNavItem) return;
-
-    if (window.polyvacAuth && window.polyvacAuth.isLoggedIn()) {
-      const user = window.polyvacAuth.getCurrentUser();
-      
-      // Mostrar dropdown de usuario
-      loginNavLink.classList.add('hidden');
-      userNavDropdown.classList.remove('hidden');
-      
-      // Actualizar nombre del usuario
-      const displayName = user.firstname ? `${user.firstname} ${user.lastname || ''}`.trim() : user.username;
-      if (userNavName) userNavName.textContent = "Mi Cuenta";
-      if (userDropdownName) userDropdownName.textContent = displayName;
-      if (userDropdownEmail) userDropdownEmail.textContent = user.email;
-    } else {
-      // Mostrar enlace de login
-      if (loginNavLink) loginNavLink.classList.remove('hidden');
-      if (userNavDropdown) userNavDropdown.classList.add('hidden');
-    }
-  }
-
-  // Inicializar UI de autenticación cuando cargue la página
-  document.addEventListener('DOMContentLoaded', () => {
-    if (window.polyvacAuth) {
-      updateAuthUI();
-      
-      // Escuchar cambios en el estado de autenticación
-      window.polyvacAuth.on('login', updateAuthUI);
-      window.polyvacAuth.on('logout', updateAuthUI);
-    }
-  });
 </script>
 
 <style>

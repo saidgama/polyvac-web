@@ -34,16 +34,6 @@ const subcategorias = [
         descripcion: "Emulsiones de alta definición para todo tipo de tintas."
     },
     {
-        titulo: "QUÍMICOS PARA PREPARACIÓN Y RECUPERADO DE PANTALLAS SERIGRÁFICAS",
-        slug: "quimicos-preparacion",
-        descripcion: "Limpieza y mantenimiento profesional de mallas y marcos."
-    },
-    {
-        titulo: "RESINAS Y AUXILIARES PARA ESTAMPADO POR ROTATIVAS",
-        slug: "resinas-rotativas",
-        descripcion: "Insumos industriales para máquinas rotativas de estampado."
-    },
-    {
         titulo: "PIGMENTOS EN DISPERSIÓN BASE AGUA PARA PASTAS DE ESTAMPADO",
         slug: "pigmentos-dispersion",
         descripcion: "Coloración intensa y estable para bases acuosas."
@@ -100,15 +90,9 @@ const subcategorias = [
                                 </h3>
                             )}
 
-                            <div class="relative">
-                                <!-- Contenedor del carrusel -->
-                                <div 
-                                    class="carousel-container overflow-hidden"
-                                    data-carousel={`carousel-${subcategoria.slug}-${groupIndex}`}
-                                >
-                                    <div class="carousel-track flex items-start transition-transform duration-300 ease-in-out">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                         {group.products.map((producto) => (
-                                            <div class="carousel-card card-fixed flex flex-col p-3 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow bg-white">
+                                            <div class="product-card flex flex-col p-3 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow bg-white">
                                                 <a href={`/producto/${producto.id}`} class="block">
                                                     <div class="relative h-48 bg-gray-100 rounded mb-2 flex items-center justify-center overflow-hidden">
                                                         <Image 
@@ -160,27 +144,6 @@ const subcategorias = [
                                                 </a>
                                             </div>
                                         ))}
-                                    </div>
-                                </div>
-
-                                <!-- Botones de navegación del carrusel -->
-                                <button 
-                                    class="carousel-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-azulprimario text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-                                    onclick={`moveCarousel('carousel-${subcategoria.slug}-${groupIndex}', -1)`}
-                                >
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                    </svg>
-                                </button>
-                                
-                                <button 
-                                    class="carousel-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-azulprimario text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-                                    onclick={`moveCarousel('carousel-${subcategoria.slug}-${groupIndex}', 1)`}
-                                >
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </button>
                             </div>
                         </div>
                     ))}
@@ -189,101 +152,7 @@ const subcategorias = [
         })}
     </main>
 
-    <!-- JavaScript para el carrusel -->
     <script is:inline>
-        function moveCarousel(carouselId, direction) {
-            const container = document.querySelector(`[data-carousel="${carouselId}"]`);
-            if (!container) return;
-            
-            const track = container.querySelector('.carousel-track');
-            if (!track) return;
-            
-            const cardWidth = 280; // Ancho de la tarjeta + margen
-            const totalCards = track.children.length;
-            
-            // Obtener posición actual
-            const currentTransform = track.style.transform || 'translateX(0px)';
-            const currentTranslate = parseInt(currentTransform.replace('translateX(', '').replace('px)', '')) || 0;
-            
-            // Calcular nueva posición
-            let newTranslate = currentTranslate + (direction * cardWidth * -1);
-            
-            // Establecer límites
-            const maxTranslate = 0;
-            const minTranslate = -(totalCards - 1) * cardWidth;
-            
-            // Aplicar límites
-            if (newTranslate > maxTranslate) {
-                newTranslate = maxTranslate;
-            } else if (newTranslate < minTranslate) {
-                newTranslate = minTranslate;
-            }
-            
-            // Aplicar transformación
-            track.style.transform = `translateX(${newTranslate}px)`;
-            
-            // Actualizar botones
-            updateCarouselButtons(carouselId, newTranslate, maxTranslate, minTranslate);
-        }
-
-        function updateCarouselButtons(carouselId, currentTranslate, maxTranslate, minTranslate) {
-            const container = document.querySelector(`[data-carousel="${carouselId}"]`);
-            if (!container) return;
-            
-            const prevButton = container.parentElement.querySelector('.carousel-prev');
-            const nextButton = container.parentElement.querySelector('.carousel-next');
-            
-            if (prevButton) {
-                if (currentTranslate >= maxTranslate) {
-                    prevButton.style.opacity = '0.5';
-                    prevButton.style.cursor = 'not-allowed';
-                } else {
-                    prevButton.style.opacity = '1';
-                    prevButton.style.cursor = 'pointer';
-                }
-            }
-            
-            if (nextButton) {
-                if (currentTranslate <= minTranslate) {
-                    nextButton.style.opacity = '0.5';
-                    nextButton.style.cursor = 'not-allowed';
-                } else {
-                    nextButton.style.opacity = '1';
-                    nextButton.style.cursor = 'pointer';
-                }
-            }
-        }
-
-        // Inicializar carruseles cuando la página carga
-        function initializeCarousels() {
-            const carousels = document.querySelectorAll('.carousel-container');
-            carousels.forEach(carousel => {
-                const carouselId = carousel.getAttribute('data-carousel');
-                if (carouselId) {
-                    updateCarouselButtons(carouselId, 0, 0, 0);
-                }
-            });
-        }
-
-        // Reiniciar carruseles en cambio de tamaño
-        function resetCarousels() {
-            const carousels = document.querySelectorAll('.carousel-container');
-            carousels.forEach(carousel => {
-                const track = carousel.querySelector('.carousel-track');
-                if (track) {
-                    track.style.transform = 'translateX(0px)';
-                }
-                const carouselId = carousel.getAttribute('data-carousel');
-                if (carouselId) {
-                    updateCarouselButtons(carouselId, 0, 0, 0);
-                }
-            });
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', initializeCarousels);
-        window.addEventListener('resize', resetCarousels);
-
         // Toggle descripción expandida
         function toggleDescription(event, btn) {
             event.preventDefault();
@@ -322,36 +191,16 @@ const subcategorias = [
         window.addEventListener('resize', initDescriptionToggles);
     </script>
 
-    <!-- Estilos adicionales -->
     <style>
-        .carousel-container {
-            margin: 0 3rem; /* Espacio para los botones de navegación */
-        }
-        
-        @media (max-width: 768px) {
-            .carousel-container {
-                margin: 0 2rem;
-            }
-        }
-
-        /* Estilos para las tarjetas del carrusel */
-        .carousel-card {
-            width: 256px !important; /* Ancho fijo */
-            margin-right: 24px !important; /* Espacio entre tarjetas */
-            flex-shrink: 0; /* No permitir que se reduzcan */
-        }
-
-        /* Altura fija para las cards */
-        .card-fixed {
+        /* Estilos para las tarjetas del grid */
+        .product-card {
             min-height: 380px;
-            height: 380px;
             overflow: visible;
             position: relative;
         }
 
         /* Cuando la descripción se expande, permitir que la card crezca */
-        .card-fixed:has(.desc-expanded) {
-            height: auto;
+        .product-card:has(.desc-expanded) {
             z-index: 5;
         }
 
@@ -362,21 +211,6 @@ const subcategorias = [
         .desc-expanded {
             display: block !important;
             -webkit-line-clamp: unset !important;
-        }
-
-        /* Asegurar que el flex funcione correctamente */
-        .carousel-track {
-            display: flex !important;
-            transition: transform 0.3s ease-in-out !important;
-            height: auto !important; /* Override global style */
-            padding-bottom: 20px; /* Espacio para sombras */
-        }
-
-        /* Estilos para los botones del carrusel */
-        .carousel-prev,
-        .carousel-next {
-            transition: opacity 0.3s ease, background-color 0.3s ease;
-            z-index: 10; /* Reducido para estar por debajo del header */
         }
 
         /* Estilos para truncar texto */

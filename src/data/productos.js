@@ -23,7 +23,7 @@ export default [
     taxonomias: [12, 9], // "Colorantes", "Tintas de sublimación"
     descripcion: "Gama de colorantes líquidos concentrados para sublimación, desarrollados para integrarse fácilmente a pastas de sublimación tanto en base agua 'SUBLIVAC', como base solvente 'SUBLISOL'.",
     imagenes: [polytransferImage],
-    fichaTecnica: "http://ec2-34-205-157-80.compute-1.amazonaws.com/panel/uploads/ficha_polytransfer_ht_8b9a5dc463.pdf",
+    fichaTecnica: "/fichas/estampado/tintas-sublimacion/POLYTRANSFER HT.pdf",
     colores: [
       { nombre: "Amarillo POLYTRANSFER R4", hex: "#ffff00" },
       { nombre: "Naranja POLYTRANSFER 2R", hex: "#ffcd00" },
