@@ -14,11 +14,7 @@ import inflablePuffImage from '../assets/productos/estampado/tintasplastisol/inf
 
 //tintas base agua
 import aquaflexImage from '../assets/productos/estampado/tintasbaseagua/aquaflex.png';
-import aquaflexAOImage from '../assets/productos/estampado/tintasbaseagua/aquaflex-ao.png';
-import astrolakE5HBImage from '../assets/productos/estampado/tintasbaseagua/astrolak-e5hb.png';
 import astrolakEcoImage from '../assets/productos/estampado/tintasbaseagua/astrolak-eco.png';
-import dischargeImage from '../assets/productos/estampado/tintasbaseagua/discharge.png';
-import metalicosImage from '../assets/productos/estampado/tintasbaseagua/metalicos.png';
 import baseAgua1Image from '../assets/productos/estampado/tintasbaseagua/base_agua1.jpg';
 import baseAgua2Image from '../assets/productos/estampado/tintasbaseagua/base-agua2.jpeg';
 import baseAgua3Image from '../assets/productos/estampado/tintasbaseagua/base-agua3.jpeg';
@@ -26,7 +22,6 @@ import baseAgua3Image from '../assets/productos/estampado/tintasbaseagua/base-ag
 // tintas sublimacion
 import sublivacImage from '../assets/productos/estampado/tintassublimacion/sublivac.png';
 import sublisolImage from '../assets/productos/estampado/tintassublimacion/sublisol.png';
-import vactransImage from '../assets/productos/estampado/tintassublimacion/vactrans.png';
 
 
 //fotoemulsiones
@@ -259,8 +254,6 @@ const products = [
         ],
         colorPrincipal: "#10a3e8ff"
     },
-    { id: "aquaflex-ao", titulo: "LÍNEA AQUAFLEX AO", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [aquaflexAOImage], placeholder: true },
-    { id: "astrolak", titulo: "LÍNEA ASTROLAK E-5HB", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [astrolakE5HBImage], placeholder: true },
     {
         id: "astrolak-eco",
         titulo: "LÍNEA ASTROLAK ECO",
@@ -292,8 +285,6 @@ const products = [
         ],
         colorPrincipal: "#2ecc71"
     },
-    { id: "discharge", titulo: "LÍNEA DISCHARGE", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [dischargeImage], placeholder: true },
-    { id: "metalicos", titulo: "LÍNEA DE EFECTOS METÁLICOS", subcategoria: "tintas-base-agua", descripcion: "por agregar", imagenes: [metalicosImage], placeholder: true },
 
     // PRODUCTOS BASE AGUA CON FICHA TÉCNICA - subcategoria: 'tintas-base-agua'
     {
@@ -542,8 +533,6 @@ const products = [
         ],
         colorPrincipal: "#e74c3c"
     },
-    { id: "vactrans", titulo: "LÍNEA VACTRANS", subcategoria: "tintas-sublimacion", descripcion: "por agregar", imagenes: [vactransImage], placeholder: true },
-
     // FOTOEMULSIONES PARA REVELADO DE PLANTALLAS SERIGRAFICAS - subcategoria: 'fotoemulsiones'
     {
         id: "tx-discharge-blue",
