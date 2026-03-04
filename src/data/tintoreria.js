@@ -1,115 +1,11 @@
 export default [
     {
-        id: "base-polyamilase-at-especial-150",
-        titulo: "BASE POLYAMILASE AT ESPECIAL 150",
-        descripcion: "Preparación de amilase para el desencolado textil solubilizando féculas que contiene el urdido. Aplicable desde 25ºC a 95ºC básicamente en prenda y jet.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYAMILASE AT ESPECIAL 150.pdf"
-    },
-    {
-        id: "base-polyfix-ep-f-nuevo",
-        titulo: "BASE POLYFIX EP-F NUEVO",
-        descripcion: "Agente de fijación de colorantes reactivos y directos. Contiene trazas de formaldehído, pero tras su aplicación no se observa la presencia de formol en los productos acabados en cantidades superiores a los 3 ppm.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYFIX EP-F NUEVO.pdf"
-    },
-    {
-        id: "base-polyfix-ff",
-        titulo: "BASE POLYFIX FF",
-        descripcion: "Producto para la fabricación de agentes de fijación de colorantes directos, reactivos y sulfurosos exento de formaldehído.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYFIX FF.pdf"
-    },
-    {
         id: "base-polyfix-pa-ec",
         titulo: "BASE POLYFIX PA-EC",
         descripcion: "Base concentrada para la fabricación de agentes de fijación de colorantes ácidos sobre poliamida. Mejora la solidez al lavado y al agua.",
         categoria: "tintoreria",
         subcategoria: "quimicos-auxiliares",
         fichaTecnica: "/fichas/tintoreria/BASE POLYFIX PA-EC.pdf"
-    },
-    {
-        id: "base-polygal-albi",
-        titulo: "BASE POLYGAL ALBI",
-        descripcion: "Auxiliar de jabonado con características dispersantes para el tratamiento posterior de tinturas y estampados.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYGAL ALBI.pdf"
-    },
-    {
-        id: "base-polylub-msf-200",
-        titulo: "BASE POLYLUB MSF 200",
-        descripcion: "Antiarruga/dispersante a base de lecitina emulsionada. Agente de desmontado y dispersante en tintura de poliester, triacetato y poliamida. No espumante.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYLUB MSF 200.pdf"
-    },
-    {
-        id: "base-polyperox-ac-265-p",
-        titulo: "BASE POLYPEROX AC 265 % -P",
-        descripcion: "Catalasa para la eliminación de restos de agua oxigenada en procesos textiles. Convierte el peróxido de hidrógeno residual en agua y oxígeno de forma rápida y eficaz.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYPEROX AC 265 % -P.pdf"
-    },
-    {
-        id: "base-polyperox-ac-265-p",
-        titulo: "BASE POLYPEROX AC 265%-P",
-        descripcion: "Base concentrada de catalasa para la eliminación de restos de agua oxigenada en procesos textiles.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYPEROX AC 265%-P.pdf"
-    },
-    {
-        id: "base-polyretard-b-80-p",
-        titulo: "BASE POLYRETARD B-80-P",
-        descripcion: "Producto base para la fabricación de un retardador catiónico para la tintura de fibras acrílicas en cualquier estado en que se encuentre la materia: floca, hilado o pieza. También favorece la migración de los colorantes catiónicos.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYRETARD B-80-P.pdf"
-    },
-    {
-        id: "base-polysoft-c-hw",
-        titulo: "BASE POLYSOFT C-HW",
-        descripcion: "Suavizante concentrado basado en una emulsión de silicona, aplicable en procesos de continuos y agotamiento.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYSOFT C-HW.pdf"
-    },
-    {
-        id: "base-polysoft-sini-p",
-        titulo: "BASE POLYSOFT SINI-P",
-        descripcion: "Emulsión suavizante, no iónico a base de siliconas de uso universal.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYSOFT SINI-P.pdf"
-    },
-    {
-        id: "base-polysoft-ter-nuevo",
-        titulo: "BASE POLYSOFT TER NUEVO",
-        descripcion: "Base de elevada concentración para fabricar suavizantes diluidos.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYSOFT TER NUEVO.pdf"
-    },
-    {
-        id: "base-polytol-644-p",
-        titulo: "BASE POLYTOL 644-P",
-        descripcion: "Dispersante aniónico concentrado para colorantes dispersos u tinas.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYTOL 644-P.pdf"
-    },
-    {
-        id: "base-polytol-jet",
-        titulo: "BASE POLYTOL JET",
-        descripcion: "Base igualador / dispersante para tintura de poliéster y poliamida con colorantes dispersos. Posee propiedades detergentes y antirreductoras.",
-        categoria: "tintoreria",
-        subcategoria: "quimicos-auxiliares",
-        fichaTecnica: "/fichas/tintoreria/BASE POLYTOL JET.pdf"
     },
     {
         id: "polyamilase-ago",
