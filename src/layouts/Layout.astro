@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import { contactInfo } from '../data/contacto.js';
 
 const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -14,21 +15,59 @@ const { title, description } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+        
+        <!-- Open Graph -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:locale" content="es_MX" />
+        <meta property="og:site_name" content="Industrias Polyvac" />
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
         
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
+
         
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="d2e8d237-f77c-4cc8-aa40-57c5e45a5369"></script>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="61a85d24-a08e-412d-9499-65ef65f2ac31"></script>
         <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+        
+        <!-- Structured Data -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Industrias Polyvac S.A. de C.V.",
+            "url": "https://polyvac.mx",
+            "telephone": "+525559543369",
+            "email": "pedidos@polyvac.mx",
+            "foundingDate": "1998",
+            "description": "Fabricante y distribuidor de colorantes, tintas, pigmentos y productos químicos para la industria textil y serigrafía en México.",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Luis Pasteur No. 60, Complejo Industrial Cuamatla",
+                "addressLocality": "Cuautitlán Izcalli",
+                "addressRegion": "Estado de México",
+                "postalCode": "54730",
+                "addressCountry": "MX"
+            },
+            "sameAs": [
+                "https://www.facebook.com/p/Industrias-Polyvac-100042747596287/"
+            ]
+        })} />
     </head>
     <body class="bg-gray-200">
         <Header />
         <slot />
         <Footer />
         
-        <!-- WhatsApp Floating Button -->
+        <!-- WhatsApp Flotante -->
         <a 
             href={contactInfo.whatsapp.href}
             target="_blank"

@@ -5,7 +5,7 @@ import bg from '../assets/contacto/contactobg.jpg';
 import { contactInfo } from '../data/contacto.js';
 
 const title = "Contacto - Industrias Polyvac";
-const description = "Página donde se muestra información de contacto y ubicación";
+const description = "Contáctanos por teléfono, email o WhatsApp. Visítanos en Cuautitlán Izcalli, Estado de México. Cotizaciones y soporte técnico para productos textiles.";
 ---
 
 <Layout title={title} description={description}>
@@ -87,97 +87,59 @@ const description = "Página donde se muestra información de contacto y ubicaci
                 </div>
             </div>
         </section>
-        <!-- Formulario de Contacto -->
+
+        <!-- Enviar mensaje por WhatsApp -->
         <section class="py-16 bg-gray-200">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Formulario centrado -->
-                <div class="bg-white p-8 md:p-12  shadow-lg">
+                <div class="bg-white p-8 md:p-12 shadow-lg">
                     <div class="text-center mb-8">
-                        <h2 class="text-4xl font-bold text-azulprimario mb-4">Contáctanos</h2>
+                        <h2 class="text-4xl font-bold text-azulprimario mb-4">Escríbenos por WhatsApp</h2>
                         <p class="text-gray-600 text-lg">
-                            Estamos aquí para ayudarte. Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+                            Completa los campos y te redirigiremos a WhatsApp para iniciar la conversación.
                         </p>
                     </div>
                     
-                    <form class="space-y-6">
-                        <!-- Primera fila: Nombre y Apellido -->
+                    <form id="whatsappForm" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Nombre
-                                </label>
+                                <label for="wa-name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
                                 <input 
                                     type="text" 
-                                    id="firstName" 
-                                    name="firstName"
-                                    placeholder="Ingresa tu nombre"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-azulprimario focus:border-azulprimario outline-none transition-colors"
+                                    id="wa-name" 
+                                    placeholder="Tu nombre"
+                                    required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
                                 >
                             </div>
                             <div>
-                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Apellido
-                                </label>
+                                <label for="wa-empresa" class="block text-sm font-medium text-gray-700 mb-2">Empresa (opcional)</label>
                                 <input 
                                     type="text" 
-                                    id="lastName" 
-                                    name="lastName"
-                                    placeholder="Ingresa tu apellido"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-azulprimario focus:border-azulprimario outline-none transition-colors"
+                                    id="wa-empresa" 
+                                    placeholder="Nombre de tu empresa"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
                                 >
                             </div>
                         </div>
                         
-                        <!-- Segunda fila: Email y Teléfono -->
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Correo electrónico
-                                </label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email"
-                                    placeholder="ejemplo@correo.com"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-azulprimario focus:border-azulprimario outline-none transition-colors"
-                                >
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-                                    Número de teléfono
-                                </label>
-                                <input 
-                                    type="tel" 
-                                    id="phone" 
-                                    name="phone"
-                                    placeholder="+52 55 1234 5678"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-azulprimario focus:border-azulprimario outline-none transition-colors"
-                                >
-                            </div>
-                        </div>
-                        
-                        <!-- Mensaje -->
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
-                                Tu mensaje
-                            </label>
+                            <label for="wa-message" class="block text-sm font-medium text-gray-700 mb-2">Tu mensaje</label>
                             <textarea 
-                                id="message" 
-                                name="message" 
-                                rows="6"
-                                placeholder="Escribe tu mensaje aquí..."
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-azulprimario focus:border-azulprimario outline-none transition-colors resize-none"
+                                id="wa-message" 
+                                rows="4"
+                                placeholder="¿En qué podemos ayudarte?"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors resize-none"
                             ></textarea>
                         </div>
                         
-                        
-                        <!-- Botón -->
                         <div class="text-center">
                             <button 
                                 type="submit"
-                                class="bg-azulprimario text-white px-8 py-3 font-medium hover:bg-blue-700 transition-colors focus:ring-2 focus:ring-azulprimario focus:ring-offset-2 outline-none"
+                                class="inline-flex items-center gap-3 bg-green-500 text-white px-8 py-3 font-medium hover:bg-green-600 transition-colors focus:ring-2 focus:ring-green-500 focus:ring-offset-2 outline-none rounded-lg text-lg"
                             >
-                                Enviar mensaje
+                                <i class='bx bxl-whatsapp text-2xl'></i>
+                                Enviar por WhatsApp
                             </button>
                         </div>
                     </form>
@@ -187,3 +149,19 @@ const description = "Página donde se muestra información de contacto y ubicaci
         
     </div>
 </Layout>
+
+<script>
+    document.getElementById('whatsappForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = (document.getElementById('wa-name') as HTMLInputElement).value.trim();
+        const empresa = (document.getElementById('wa-empresa') as HTMLInputElement).value.trim();
+        const message = (document.getElementById('wa-message') as HTMLTextAreaElement).value.trim();
+        
+        let texto = `Hola, soy ${name}`;
+        if (empresa) texto += ` de ${empresa}`;
+        texto += `. ${message}`;
+        
+        const url = `https://wa.me/525559543369?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+    });
+</script>

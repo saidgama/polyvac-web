@@ -2,8 +2,6 @@
 import { Image } from "astro:assets";
 import logo from "../assets/hero/logohero2.png";
 import { contactInfo } from '../data/contacto.js';
-let currentDate = new Date();
-let currentYear = currentDate.getFullYear();
 ---
 
 <footer class="bg-gray-900 mt-20 shadow-lg border-t border-gray-700">
@@ -96,10 +94,14 @@ let currentYear = currentDate.getFullYear();
 
         <div class="sm:flex sm:items-center sm:justify-between">
             <span class="text-sm sm:text-center text-gray-400"
-                >© {currentYear} <a href="/" class="hover:underline"
+                >© <span id="footer-year"></span> <a href="/" class="hover:underline"
                     >Industrias Polyvac</a
                 >.</span
             >
         </div>
     </div>
 </footer>
+
+<script>
+    document.getElementById('footer-year')!.textContent = new Date().getFullYear().toString();
+</script>

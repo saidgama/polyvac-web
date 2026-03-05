@@ -57,7 +57,7 @@ const categoriasPrincipales = [
     class="flex flex-wrap items-center justify-between mx-auto w-full md:px-[3%]"
   >
     <a href="/" class="flex items-center space-x-3">
-      <Image src={logo} alt="Polyvac Logo" class="h-12 md:h-14 w-auto" />
+      <Image src={logo} alt="Polyvac Logo" class="h-12 md:h-14 w-auto" loading="eager" />
     </a>
     <div class="flex md:order-2">
       <button
@@ -257,45 +257,6 @@ const categoriasPrincipales = [
     });
   }
 
-  // Inicializar contador del carrito cuando la página cargue
-  document.addEventListener('DOMContentLoaded', () => {
-    if (window.polyvacCart) {
-      window.polyvacCart.updateAllCounters();
-    }
-  });
-
-  // Escuchar eventos de actualización del carrito
-  window.addEventListener('cartUpdated', () => {
-    // El counter se actualiza automáticamente via updateAllCounters()
-    // Agregar animación al icono del carrito
-    animateCartIcon();
-  });
-
-  // Función para animar el icono del carrito
-  function animateCartIcon() {
-    const cartIcon = document.getElementById('cart-icon');
-    const cartCounter = document.getElementById('cart-counter');
-    
-    if (cartIcon && cartCounter) {
-      // Remover clases de animación anteriores
-      cartIcon.classList.remove('cart-bounce', 'cart-pulse', 'cart-wiggle', 'cart-highlight');
-      cartCounter.classList.remove('cart-pulse');
-      
-      // Forzar reflow para asegurar que las clases se remuevan
-      cartIcon.offsetHeight;
-      
-      // Agregar animaciones
-      cartIcon.classList.add('cart-bounce', 'cart-highlight');
-      cartCounter.classList.add('cart-pulse');
-      
-      // Remover las clases después de la animación
-      setTimeout(() => {
-        cartIcon.classList.remove('cart-bounce', 'cart-highlight');
-        cartCounter.classList.remove('cart-pulse');
-      }, 800);
-    }
-  }
-
   // Funcionalidad del dropdown de categorías
   const categoriesDropdownButton = document.getElementById('categories-dropdown-button');
   const categoriesDropdownMenu = document.getElementById('categories-dropdown-menu');
@@ -387,77 +348,6 @@ const categoriasPrincipales = [
 </script>
 
 <style>
-  /* Animaciones para el icono del carrito */
-  @keyframes bounce {
-    0%, 20%, 53%, 80%, 100% {
-      transform: translate3d(0, 0, 0);
-    }
-    40%, 43% {
-      transform: translate3d(0, -8px, 0);
-    }
-    70% {
-      transform: translate3d(0, -4px, 0);
-    }
-    90% {
-      transform: translate3d(0, -2px, 0);
-    }
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.15);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes wiggle {
-    0%, 7% {
-      transform: rotateZ(0);
-    }
-    15% {
-      transform: rotateZ(-15deg);
-    }
-    20% {
-      transform: rotateZ(10deg);
-    }
-    25% {
-      transform: rotateZ(-10deg);
-    }
-    30% {
-      transform: rotateZ(6deg);
-    }
-    35% {
-      transform: rotateZ(-4deg);
-    }
-    40%, 100% {
-      transform: rotateZ(0);
-    }
-  }
-
-  /* Clases para activar las animaciones */
-  .cart-bounce {
-    animation: bounce 0.6s ease-in-out;
-  }
-
-  .cart-pulse {
-    animation: pulse 0.4s ease-in-out;
-  }
-
-  .cart-wiggle {
-    animation: wiggle 0.8s ease-in-out;
-  }
-
-  .cart-highlight {
-    fill: #3B82F6 !important;
-    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.4));
-    transition: all 0.3s ease;
-  }
-
   /* Estilos para el dropdown de categorías */
   #categories-dropdown-menu {
     max-height: 300px;

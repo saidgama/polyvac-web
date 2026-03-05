@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "404 - Página no encontrada | Industrias Polyvac";
+const description = "La página que buscas no existe o fue movida.";
+---
+
+<Layout title={title} description={description}>
+    <section class="font-fuenteprincipal min-h-[70vh] flex items-center justify-center bg-gray-200">
+        <div class="text-center px-4">
+            <h1 class="text-9xl font-bold text-azulprimario">404</h1>
+            <p class="text-2xl md:text-3xl font-semibold text-gray-800 mt-4">Página no encontrada</p>
+            <p class="text-gray-600 mt-4 max-w-md mx-auto text-lg">
+                Lo sentimos, la página que buscas no existe o fue movida.
+            </p>
+            <a 
+                href="/" 
+                class="inline-block mt-8 bg-azulprimario text-white px-8 py-3 font-medium hover:bg-blue-700 transition-colors"
+            >
+                Volver al inicio
+            </a>
+        </div>
+    </section>
+</Layout>
