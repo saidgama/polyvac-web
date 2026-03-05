@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 const title = "Industrias Polyvac | Colorantes, Tintas y Pigmentos para Industria Textil";
 const description = "Fabricante y distribuidor de colorantes, tintas, pigmentos y químicos para la industria textil y serigrafía en México. +25 años de experiencia, soporte técnico y certificaciones internacionales.";
@@ -46,6 +46,16 @@ import pigmentosImage from '../assets/cardPigmentos.jpg';
 // Imagen de cubeta para productos
 import cubetaImage from '../assets/cubeta.png';
 
+// Optimizar imágenes de fondo a webp
+const productSplashBgOpt = await getImage({ src: productSplashBg, format: 'webp', quality: 80 });
+const contactoBgOpt = await getImage({ src: contactoBg, format: 'webp', quality: 80 });
+const bgHeroOpt = await getImage({ src: bgHero, format: 'webp', quality: 80 });
+const textilOpt = await getImage({ src: textil, format: 'webp', quality: 80 });
+const maquinaOpt = await getImage({ src: maquina, format: 'webp', quality: 80 });
+const coloresOpt = await getImage({ src: colores, format: 'webp', quality: 80 });
+const colorOpt = await getImage({ src: color, format: 'webp', quality: 80 });
+const maquinariaOpt = await getImage({ src: maquinaria, format: 'webp', quality: 80 });
+
 const industriasCards = [
     {
         id: "01.",
@@ -55,7 +65,7 @@ const industriasCards = [
         description: "Pigmentos de alta solidez y auxiliares que mantienen la precisión del color en cada lote productivo.",
         ctaLabel: "Ver línea textil",
         href: "/estampado",
-        background: textil
+        background: textilOpt.src
     },
     {
         id: "02.",
@@ -65,7 +75,7 @@ const industriasCards = [
         description: "Contamos con la mejor maquinaria para la fabricación de productos químicos industriales.",
         ctaLabel: "Ver más",
         href: "/acerca",
-        background: maquina
+        background: maquinaOpt.src
     },
     {
         id: "03.",
@@ -75,7 +85,7 @@ const industriasCards = [
         description: "Contamos con una amplia variedad de pigmentos y colorantes para satisfacer todas sus necesidades industriales.",
         ctaLabel: "Ver catálogo",
         href: "/estampado",
-        background: colores
+        background: coloresOpt.src
     },
     {
         id: "04.",
@@ -85,7 +95,7 @@ const industriasCards = [
         description: "Tenemos una fábrica para atender sus necesidades industriales.",
         ctaLabel: "Contáctanos",
         href: "/contacto",
-        background: contactoBg
+        background: contactoBgOpt.src
     }
 ];
 
@@ -120,7 +130,7 @@ const industryCarouselSlides = [
 
 <Layout title={title} description={description}>
     <section class="hero-section" id="home">
-        <div class="hero-background"></div>
+        <div class="hero-background" style={`background-image: url(${bgHeroOpt.src});`}></div>
         <canvas id="lava-lamp-canvas"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -242,7 +252,7 @@ const industryCarouselSlides = [
         <!-- Fondo con imagen -->
         <div
             class="product-splash-bg absolute inset-0 -z-10"
-            style={`background-image: url(${productSplashBg.src});`}
+            style={`background-image: url(${productSplashBgOpt.src});`}
         ></div>
         <div class="relative mx-auto max-w-7xl px-0 sm:px-6 lg:px-8">
             <div class="relative h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem]">
@@ -306,7 +316,7 @@ const industryCarouselSlides = [
                 {industriasCards.map((card) => (
                     <article
                         class="industry-card"
-                        style={`background-image: linear-gradient(140deg, rgba(5, 8, 20, 0.85), rgba(5, 8, 20, 0.4)), url(${card.background ? card.background.src : bgHero.src});`}
+                        style={`background-image: linear-gradient(140deg, rgba(5, 8, 20, 0.85), rgba(5, 8, 20, 0.4)), url(${card.background || bgHeroOpt.src});`}
                         tabindex="0"
                     >
                         <div class="industry-card__static">
