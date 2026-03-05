@@ -99,9 +99,14 @@ function initLavaLamp() {
 
     animate();
 
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        if (resizeTimeout) return;
+        resizeTimeout = requestAnimationFrame(() => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            resizeTimeout = null;
+        });
     });
 }
 
