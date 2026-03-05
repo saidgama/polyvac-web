@@ -8,7 +8,18 @@ import productosEfectos from "../data/efectos-especiales.js";
 import productosAccesorios from "../data/accesorios-consumibles.js";
 import productosTintoreria from "../data/tintoreria.js";
 
-const productos = [...productosData, ...productosEstampado, ...productosColorantes, ...productosEfectos, ...productosAccesorios, ...productosTintoreria];
+const categoriaDefaults = [
+  [productosData, null],
+  [productosEstampado, "estampado"],
+  [productosColorantes, "colorantes"],
+  [productosEfectos, "efectos especiales"],
+  [productosAccesorios, "accesorios"],
+  [productosTintoreria, "tintorería"],
+];
+
+const productos = categoriaDefaults.flatMap(([items, fallback]) =>
+  items.map(p => ({ ...p, categoria: p.categoria || fallback }))
+);
 
 const title = "Búsqueda - Industrias Polyvac";
 const description = "Busca colorantes, tintas, pigmentos y productos químicos en el catálogo de Industrias Polyvac.";
@@ -251,7 +262,7 @@ const query = url.searchParams.get('q') || '';
             <div class="p-4">
               <p class="text-sm text-gray-600 mb-3 line-clamp-3">${product.descripcion || ''}</p>
               <div class="flex items-center justify-between">
-                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">${product.categoria}</span>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">${product.categoria || 'Producto'}</span>
                 <span class="text-azulprimario text-sm font-medium">Ver detalles →</span>
               </div>
             </div>
